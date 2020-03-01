@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Autofac" Version="2.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Core\Ctrl.Core.DataAccess\Ctrl.Core.DataAccess.csproj" />
+    <ProjectReference Include="..\Ctrl.Domain.Models\Ctrl.Domain.Models.csproj" />
+  </ItemGroup>
+
+</Project>

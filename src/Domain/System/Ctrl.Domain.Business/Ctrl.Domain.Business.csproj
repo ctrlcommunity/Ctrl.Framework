@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Abp" Version="5.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="3.1.1" />
+    <PackageReference Include="Volo.Abp.Autofac" Version="2.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Core\Ctrl.Core.Business\Ctrl.Core.Business.csproj" />
+    <ProjectReference Include="..\..\..\Core\Ctrl.Core.Entities\Ctrl.Core.Entities.csproj" />
+    <ProjectReference Include="..\Ctrl.Domain.DataAccess\Ctrl.Domain.DataAccess.csproj" />
+    <ProjectReference Include="..\Ctrl.Domain.Models\Ctrl.Domain.Models.csproj" />
+  </ItemGroup>
+
+</Project>

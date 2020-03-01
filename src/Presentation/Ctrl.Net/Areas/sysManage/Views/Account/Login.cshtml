@@ -1,0 +1,77 @@
+﻿@{
+    ViewData["Title"] = "后台管理系统-登录";
+}
+@section style{
+    <style type="text/css">
+        .parsley-required {
+            margin: 3px 0px 0px 30px;
+            color: red;
+            float: left;
+        }
+    </style>
+}
+<div class="login">
+    <div class="login-header">
+        <div class="container">
+            <a class="pull-left"><img class="logo" src="~/images/logo.png" alt="开创云"></a>
+        </div>
+    </div>
+    <div class="login-con">
+        <div class="panel panel-default">
+            <div slot="header" class="clearfix panel-heading">
+                <i class="far fa-edit"></i><span> 欢迎登录</span>
+            </div>
+            <div class="panel-body form-con">
+                <form class="form-horizontal" asp-antiforgery="true">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fas fa-user"></i></span>
+                            <input type="text" class="form-control" name="Code" value="admin" placeholder="请输入登录名" data-parsley-required="登录名">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group ">
+                            <span class="input-group-addon"><i class="fas fa-key"></i></span>
+                            <input type="password" class="form-control" name="Password" value="admin" placeholder="请输入密码" data-parsley-required="密码">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit"  class="btn btn-primary" id="btnLogin" value="登 录"/>
+                    </div>
+                </form>
+                <p class="ot_login">
+                    其他方式登录:<img class="img-circle image-responsive" src="/images/qq.jpg" alt="QQ" />
+                </p>
+            </div>
+        </div>
+    </div>
+    <footer class="navbar-fixed-bottom">© @DateTime.Now.Year Ctrl <a href="https://www.ctrl.cn/" target="_blank">开创云</a></footer>
+</div>
+
+
+
+<script type="text/javascript">
+    $(function () {
+        var $form = $('form');
+        var instance = $form.parsley();
+        $("#btnLogin").bind("click", function () {
+            $("#btnLogin").attr({ "disabled": "disabled" });
+            $("#btnLogin").text("登录中.....");
+            if (instance.isValid()) {
+                $post("/SysManage/Account/Submit", $form.serialize()).then(function (data) {
+                    $.Alert(data, function () {
+                        if (data.resultSign==0) {
+                            location.href = "/SysManage/Home/Index";
+                        }
+                        $("#btnLogin").removeAttr("disabled");
+                        $("#btnLogin").text("登  录");
+                    });
+                })
+                return false;
+            } else {
+                $("#btnLogin").removeAttr("disabled");
+                 $("#btnLogin").text("登  录");
+            }
+        })
+    });
+</script>
