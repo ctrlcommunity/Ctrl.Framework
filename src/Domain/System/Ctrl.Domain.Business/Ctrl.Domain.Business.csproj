@@ -5,9 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Abp" Version="5.2.0" />
     <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="3.1.1" />
     <PackageReference Include="Volo.Abp.Autofac" Version="2.1.1" />
+    <PackageReference Include="Volo.Abp.Dapper" Version="2.1.1" />
   </ItemGroup>
 
   <ItemGroup>

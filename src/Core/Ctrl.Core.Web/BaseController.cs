@@ -1,7 +1,7 @@
-﻿using Abp.AspNetCore.Mvc.Controllers;
-using Ctrl.Core.Core.Auth;
+﻿using Ctrl.Core.Core.Auth;
 using Ctrl.Core.Entities.Paging;
 using Microsoft.AspNetCore.Mvc;
+using Volo.Abp.AspNetCore.Mvc;
 
 namespace Ctrl.Core.Web
 {
@@ -33,9 +33,7 @@ namespace Ctrl.Core.Web
         /// <summary>
         ///     当前登录用户信息
         /// </summary>
-        protected  virtual PrincipalUser CurrentUser { get {
-                return AuthenticationExtension.Current();
-            } }
+        protected new virtual PrincipalUser CurrentUser => AuthenticationExtension.Current();
 
         #endregion
     }

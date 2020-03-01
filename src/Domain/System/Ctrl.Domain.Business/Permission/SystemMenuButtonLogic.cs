@@ -28,10 +28,10 @@ namespace Ctrl.System.Business
         #endregion
 
         #region 方法
+
         /// <summary>
         ///     获取按钮分页
         /// </summary>
-        /// <param name="queryParam">分页信息</param>
         /// <returns></returns>
         public Task<PagedResults<SystemMenuButtonOutput>> GetPagingMenuButton(QueryParam param)
         {

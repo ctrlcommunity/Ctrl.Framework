@@ -1,4 +1,6 @@
-﻿using Ctrl.Core.Core.Utils;
+﻿using System;
+using System.Data;
+using Ctrl.Core.Core.Utils;
 using Ctrl.Core.DataAccess;
 using Ctrl.Core.Entities;
 using Ctrl.Core.Entities.Dtos;
@@ -8,11 +10,14 @@ using Ctrl.Domain.Models.Dtos;
 using Ctrl.Domain.Models.Dtos.Identity;
 using Ctrl.Domain.Models.Entities;
 using System.Threading.Tasks;
-using Volo.Abp.DependencyInjection;
+using Ctrl.Core.EntityFrameworkCore.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using Volo.Abp.Domain.Repositories.EntityFrameworkCore;
+using Volo.Abp.EntityFrameworkCore;
 
 namespace Ctrl.Domain.DataAccess.Identity
 {
-    public class SystemUserRepository : PetaPocoRepository<SystemUser>, ISystemUserRepository, IScopedDependency
+    public class SystemUserRepository : EfCoreRepository<CtrlDbContext,SystemUser,Guid>, ISystemUserRepository
     {
         /// <summary>
         ///     根据用户名和密码查询用户信息
@@ -86,6 +91,14 @@ namespace Ctrl.Domain.DataAccess.Identity
                 sql += " And UserId!=@UserId";
             }
             return SqlMapperUtil.SqlWithParamsBool<SystemUser>(sql,new { param=input.Param, UserId=input.Id});
+        }
+        public Task<SystemUser> GetUserByUserId(Guid userId)
+        {
+            return DbSet.FirstOrDefaultAsync(u => u.Id == userId);
+        }
+
+        public SystemUserRepository(IDbContextProvider<CtrlDbContext> dbContextProvider) : base(dbContextProvider)
+        {
         }
     }
 }

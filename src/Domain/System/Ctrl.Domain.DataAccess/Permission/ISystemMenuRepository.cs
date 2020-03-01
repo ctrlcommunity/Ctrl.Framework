@@ -5,13 +5,14 @@ using Ctrl.Domain.Models.Dtos.Permission;
 using Ctrl.System.Models.Entities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Volo.Abp.Domain.Repositories.Dapper;
 
 namespace Ctrl.System.DataAccess
 {
     /// <summary>
     /// 系统菜单数据访问接口
     /// </summary>
-    public interface ISystemMenuRepository: IRepository<SystemMenu>
+    public interface ISystemMenuRepository: IDapperRepository
     {
         /// <summary>
         ///     查询所有菜单

@@ -1,4 +1,5 @@
-﻿using Ctrl.Core.DataAccess;
+﻿using System;
+using Ctrl.Core.DataAccess;
 using Ctrl.Core.Entities;
 using Ctrl.Core.Entities.Dtos;
 using Ctrl.Core.Entities.Paging;
@@ -6,10 +7,11 @@ using Ctrl.Domain.Models.Dtos;
 using Ctrl.Domain.Models.Dtos.Identity;
 using Ctrl.Domain.Models.Entities;
 using System.Threading.Tasks;
+using Volo.Abp.Domain.Repositories;
 
 namespace Ctrl.Domain.DataAccess.Identity
 {
-    public interface ISystemUserRepository: IRepository<SystemUser>
+    public interface ISystemUserRepository: IBasicRepository<SystemUser,Guid>
     {
         /// <summary>
         ///     根据用户名和密码查询用户信息
@@ -48,5 +50,11 @@ namespace Ctrl.Domain.DataAccess.Identity
         /// <param name="input">需要验证的参数</param>
         /// <returns></returns>
         Task<bool> CheckUserCode(CheckSameValueInput input);
+        /// <summary>
+        ///     根据用户编码获取用户信息
+        /// </summary>
+        /// <param name="UserId"></param>
+        /// <returns></returns>
+        Task<SystemUser> GetUserByUserId(Guid UserId);
     }
 }

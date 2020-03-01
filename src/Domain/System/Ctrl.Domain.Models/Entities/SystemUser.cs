@@ -1,21 +1,16 @@
-﻿using Ctrl.Core.Entities;
-using Ctrl.Core.PetaPoco;
+﻿using Ctrl.Core.PetaPoco;
 using System;
+using Volo.Abp.Domain.Entities;
 
 namespace Ctrl.Domain.Models.Entities
 {
     /// <summary>
     ///     Sys_User类
     /// </summary>
-    [Serializable]
     [TableName("Sys_User")]
     [PrimaryKey("UserId")]
-    public class SystemUser:EntityBase
+    public class SystemUser: Entity<Guid>
     {
-        /// <summary>
-        ///     主键编码
-        /// </summary>
-        public string UserId { get; set; }
         /// <summary>
         ///     登录名
         /// </summary>
@@ -59,10 +54,28 @@ namespace Ctrl.Domain.Models.Entities
         /// <summary>
         ///     冻结
         /// </summary>
-        public bool IsFreeze { get; set; }
+        public bool? IsFreeze { get; set; }
         /// <summary>
         ///     头像路径
         /// </summary>
         public string ImgUrl { get; set; }
+
+        public SystemUser() { }
+        public SystemUser(Guid id,string code, string name, string password, string mobile, string email, DateTime? firstVisitTime, DateTime? lastVisitTime, string remark, bool isAdmin, DateTime? createTime, bool? isFreeze, string imgUrl)
+        {
+            Id = id;
+            Code = code;
+            Name = name;
+            Password = password;
+            Mobile = mobile;
+            Email = email;
+            FirstVisitTime = firstVisitTime;
+            LastVisitTime = lastVisitTime;
+            Remark = remark;
+            IsAdmin = isAdmin;
+            CreateTime = createTime;
+            IsFreeze = isFreeze;
+            ImgUrl = imgUrl;
+        }
     }
 }

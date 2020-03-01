@@ -27,7 +27,7 @@ namespace Ctrl.Domain.Business.Identity
         private readonly ISystemUserRepository _systemUserRepository;
         private readonly ISystemPermissionUserLogic _permissionUserLogic;
 
-        public SystemUserLogic(ISystemUserRepository systemUserRepository, ISystemPermissionUserLogic _permissionUserLogic) : base(systemUserRepository)
+        public SystemUserLogic(ISystemUserRepository systemUserRepository, ISystemPermissionUserLogic _permissionUserLogic)
         {
             _systemUserRepository = systemUserRepository;
             this._permissionUserLogic = _permissionUserLogic;
@@ -93,26 +93,29 @@ namespace Ctrl.Domain.Business.Identity
         {
             return _systemUserRepository.GetPagingSysUser(queryParam);
         }
+
         /// <summary>
         ///     保存人员信息
         /// </summary>
         /// <param name="user">人员信息</param>
-        /// <param name="RoleId">业务表Id：如组织机构、角色Id</param>
         /// <returns></returns>
         public async Task<OperateStatus> SaveUser(SystemUserSaveInput user)
         {
             OperateStatus operateStatus;
-            if (string.IsNullOrWhiteSpace(user.UserId))
+            if (string.IsNullOrWhiteSpace(user.Id.ToString()))
             {
                 user.CreateTime = DateTime.Now;
-                user.UserId = CombUtil.NewComb().ToString();
-                user.Password = _3DESEncrypt.Encrypt("123456"); ;
-                operateStatus = await InsertAsync(user as SystemUser);
+                user.Password = _3DESEncrypt.Encrypt("123456");
+                operateStatus = await InsertAsync(
+                    new SystemUser(CombUtil.NewComb(), user.Code, user.Name, user.Password, user.Mobile,
+                        user.Email, user.FirstVisitTime, user.LastVisitTime, user.Remark, user.IsAdmin, user.CreateTime,
+                        user.IsFreeze, user.ImgUrl));
+
                 if (operateStatus.ResultSign == ResultSign.Successful)
                 {
                     //添加用户到组织机构
                     operateStatus = await _permissionUserLogic.SavePermissionUser(EnumPrivilegeMaster.角色, user.RoleId,
-                        new List<string> { user.UserId });
+                        new List<string> { user.Id.ToString() });
                     if (operateStatus.ResultSign == ResultSign.Successful)
                     {
                         return operateStatus;
@@ -126,14 +129,14 @@ namespace Ctrl.Domain.Business.Identity
             else
             {
                 //删除对应组织机构
-                operateStatus = await _permissionUserLogic.DeletePrivilegeMasterUser(user.UserId, EnumPrivilegeMaster.角色);
+                operateStatus = await _permissionUserLogic.DeletePrivilegeMasterUser(user.Id.ToString(), EnumPrivilegeMaster.角色);
                 if (operateStatus.ResultSign == ResultSign.Successful)
                 {
                     //添加用户到组织机构
-                    operateStatus = await _permissionUserLogic.SavePermissionUser(EnumPrivilegeMaster.角色, user.RoleId, new List<string> { user.UserId });
+                    operateStatus = await _permissionUserLogic.SavePermissionUser(EnumPrivilegeMaster.角色, user.RoleId, new List<string> { user.Id.ToString() });
                     if (operateStatus.ResultSign == ResultSign.Successful)
                     {
-                        var userInfo = await GetById(user.UserId);
+                        var userInfo = await GetById(user.Id);
                         user.Password = userInfo.Password;
                         return await UpdateAsync(user);
                     }
@@ -169,7 +172,6 @@ namespace Ctrl.Domain.Business.Identity
         public async Task<OperateStatus> CheckUserCode(CheckSameValueInput input)
         {
             var operateStatus = new OperateStatus();
-            var sss = await _systemUserRepository.CheckUserCode(input);
             if (await _systemUserRepository.CheckUserCode(input))
             {
                 operateStatus.ResultSign = ResultSign.Error;

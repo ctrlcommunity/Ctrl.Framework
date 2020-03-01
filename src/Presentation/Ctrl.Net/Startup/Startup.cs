@@ -30,15 +30,15 @@ namespace Ctrl.Web.Host.Startup
                 o.ConnectionString = "Data Source=.;Initial Catalog=Ctrl.Framework;User ID=sa;Password=sa;MultipleActiveResultSets=true;";
                 o.Name = "mssql";
             });
-            services.AddControllersWithViews(options =>
-            {
-                options.Filters.Add(typeof(OperationLogAttribute));
-                options.Filters.Add(typeof(ExceptionFilterAttribute));
-                options.Filters.Add(typeof(WebPermissionFilter));
-            }).AddNewtonsoftJson(options =>
-            {
-                options.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss";
-            });
+            //services.AddControllersWithViews(options =>
+            //{
+            //    options.Filters.Add(typeof(OperationLogAttribute));
+            //    options.Filters.Add(typeof(ExceptionFilterAttribute));
+            //    options.Filters.Add(typeof(WebPermissionFilter));
+            //}).AddNewtonsoftJson(options =>
+            //{
+            //    options.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss";
+            //});
             services.AddApplication<AppModule>();
         }
 

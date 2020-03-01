@@ -1,20 +1,25 @@
 using System.Collections.Generic;
+using System.Data;
 using System.Text;
 using System.Threading.Tasks;
 using Ctrl.Core.DataAccess;
 using Ctrl.Core.Entities.Dtos;
 using Ctrl.Core.Entities.Tree;
+using Ctrl.Core.EntityFrameworkCore.EntityFrameworkCore;
 using Ctrl.Core.PetaPoco;
 using Ctrl.Domain.Models.Dtos;
 using Ctrl.Domain.Models.Dtos.Permission;
 using Ctrl.System.Models.Entities;
+using Dapper;
 using Volo.Abp.DependencyInjection;
+using Volo.Abp.Domain.Repositories.Dapper;
+using Volo.Abp.EntityFrameworkCore;
 
 namespace Ctrl.System.DataAccess {
     /// <summary>
     ///     系统菜单数据访问接口实现
     /// /// </summary>
-    public class SystemMenuRepository : PetaPocoRepository<SystemMenu>, ISystemMenuRepository, IScopedDependency
+    public class SystemMenuRepository : DapperRepository<CtrlDbContext>, ISystemMenuRepository, IScopedDependency
     {
         /// <summary>
         ///     查询所有菜单
@@ -34,7 +39,7 @@ namespace Ctrl.System.DataAccess {
                 sql.Append (" WHERE menu.IsShowMenu='true'");
             }
             sql.Append (" ORDER BY menu.OrderNo");
-            return SqlMapperUtil.Query<TreeEntity> (sql.ToString ());
+            return DbConnection.QueryAsync<TreeEntity>(sql.ToString(), transaction: DbTransaction);
         }
         /// <summary>
         ///     根据父级查询下级
@@ -50,7 +55,11 @@ namespace Ctrl.System.DataAccess {
             if (!string.IsNullOrWhiteSpace(input.Id))
                 sql.AppendFormat(" AND  menu.ParentId='{0}'", input.Id);
             sql.Append(" ORDER BY menu.menuid");
-            return SqlMapperUtil.Query<SystemMenuOutput>(sql.ToString());
+            return DbConnection.QueryAsync<SystemMenuOutput>(sql.ToString());
+        }
+
+        public SystemMenuRepository(IDbContextProvider<CtrlDbContext> dbContextProvider) : base(dbContextProvider)
+        {
         }
     }
 }

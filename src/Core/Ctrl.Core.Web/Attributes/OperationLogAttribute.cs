@@ -1,11 +1,10 @@
 ﻿using Ctrl.Core.Core.Auth;
 using Ctrl.Core.Core.Http;
 using Ctrl.Core.Core.Log;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using System;
 using System.ComponentModel;
 using System.Linq;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Ctrl.Core.Web.Attributes
 {

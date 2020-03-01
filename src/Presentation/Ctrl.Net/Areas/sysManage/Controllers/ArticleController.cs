@@ -10,6 +10,7 @@ using Ctrl.System.Models.Entities;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel;
 using System.Threading.Tasks;
+using Ctrl.Domain.Models.Entities;
 
 namespace Ctrl.Net.Areas.sysManage.Controllers
 {

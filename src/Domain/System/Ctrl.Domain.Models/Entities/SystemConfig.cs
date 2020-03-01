@@ -1,16 +1,16 @@
 using Ctrl.Core.PetaPoco;
 using System;
 using Ctrl.Core.Entities;
+using Volo.Abp.MultiTenancy;
 
 namespace Ctrl.System.Models.Entities
 {
 	/// <summary>
     ///    网站配置表实体类
     /// </summary>
-    [Serializable]
     [TableName("Sys_Config")]
     [PrimaryKey("Id")]
-    public class SystemConfig: EntityBase
+    public class SystemConfig: EntityBase, IMultiTenant
     {
 		        /// <summary>
         /// 主键编码
@@ -41,6 +41,6 @@ namespace Ctrl.System.Models.Entities
         /// </summary>
         public DateTime CreateTime { get; set; }
 
-
+        public Guid? TenantId { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 using Ctrl.Core.PetaPoco;
 using System;
 using Ctrl.Core.Entities;
+using Volo.Abp.MultiTenancy;
 
 namespace Ctrl.System.Models.Entities
 {
@@ -10,7 +11,7 @@ namespace Ctrl.System.Models.Entities
     [Serializable]
     [TableName("Sys_ArticleType")]
     [PrimaryKey("ArticleTypeId")]
-    public class SystemArticleType: EntityBase
+    public class SystemArticleType: EntityBase, IMultiTenant
     {
 		/// <summary>
         /// 主键编码  
@@ -56,6 +57,6 @@ namespace Ctrl.System.Models.Entities
         /// </summary>
         public DateTime CreateTime { get; set; }
 
-
+        public Guid? TenantId { get; set; }
     }
 }

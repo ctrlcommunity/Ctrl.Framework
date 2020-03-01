@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Ctrl.Core.Core.Utils;
 using Ctrl.Core.Entities.Paging;
 using Ctrl.Domain.Models.Dtos.Article;
+using Ctrl.Domain.Models.Entities;
 using Volo.Abp.DependencyInjection;
 
 namespace Ctrl.System.Business

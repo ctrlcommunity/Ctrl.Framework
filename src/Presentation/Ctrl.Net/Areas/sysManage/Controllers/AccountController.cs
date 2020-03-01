@@ -10,7 +10,9 @@ using Ctrl.Domain.Business.Identity;
 using Ctrl.Domain.Models.Dtos;
 using Ctrl.Domain.Models.Entities;
 using Ctrl.Domain.Models.Enums;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 
 namespace Ctrl.Web.Host.Areas.sysManage.Controllers
 {
@@ -33,6 +35,16 @@ namespace Ctrl.Web.Host.Areas.sysManage.Controllers
         [SkipPermission]
         public  ActionResult Login()
         {
+            Response.Cookies.Append(
+                "_tenant",
+                Guid.NewGuid().ToString(),
+                new CookieOptions
+                {
+                    Path = "/",
+                    HttpOnly = false,
+                    Expires = DateTimeOffset.Now.AddYears(10)
+                }
+            );
             return View();
         }
         /// <summary>
@@ -50,8 +62,7 @@ namespace Ctrl.Web.Host.Areas.sysManage.Controllers
         /// <returns></returns>
         public async Task<ActionResult> PerInfo()
         {
-            SystemUser user = new SystemUser();
-            user = await _systemUserLogic.GetById(CurrentUser.UserId);
+            var user = await _systemUserLogic.GetById(CurrentUser.UserId);
             return View(user);
         }
         /// <summary>

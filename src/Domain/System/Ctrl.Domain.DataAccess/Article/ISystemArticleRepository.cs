@@ -4,6 +4,7 @@ using Ctrl.Domain.Models.Dtos;
 using Ctrl.Domain.Models.Dtos.Article;
 using Ctrl.System.Models.Entities;
 using System.Threading.Tasks;
+using Ctrl.Domain.Models.Entities;
 
 namespace Ctrl.System.DataAccess
 {

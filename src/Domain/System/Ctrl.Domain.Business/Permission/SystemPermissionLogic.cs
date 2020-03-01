@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Ctrl.Core.Business;
 using Ctrl.Core.Core.Resource;
 using Ctrl.Core.Entities;
@@ -11,13 +7,16 @@ using Ctrl.Domain.DataAccess.Identity;
 using Ctrl.Domain.Models.Dtos.Permission;
 using Ctrl.Domain.Models.Entities;
 using Ctrl.Domain.Models.Enums;
-using Ctrl.System.Business;
 using Ctrl.System.DataAccess;
 using Ctrl.System.Models.Entities;
 using Microsoft.Extensions.Caching.Memory;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Volo.Abp.DependencyInjection;
 
-namespace Ctrl.Domain.Business.Permission
+namespace Ctrl.System.Business
 {
     /// <summary>
     ///     ///权限记录表业务逻辑接口实现
@@ -60,7 +59,7 @@ namespace Ctrl.Domain.Business.Permission
             IList<TreeEntity> treeEntities = this._cache.Get<List<TreeEntity>>(cacheKey);
             if (treeEntities==null)
             {
-                var userInfo = await _userRepository.GetById(userId);
+                var userInfo = await _userRepository.GetAsync(userId);
                 //判断当前用户是否是超级管理员:若是超级管理员则显示所有菜单
                 if (userInfo != null)
                 {
@@ -70,7 +69,7 @@ namespace Ctrl.Domain.Business.Permission
                         treeEntities = (await _menuRepository.GetAllMenu(true, true)).ToList();
                         return treeEntities;
                     }
-                    treeEntities = (await _systemPermissionRepository.GetSystemPermissionMenuByUserId(userInfo.UserId)).ToList();
+                    treeEntities = (await _systemPermissionRepository.GetSystemPermissionMenuByUserId(userInfo.Id.ToString())).ToList();
                 }
             }
             return treeEntities;
@@ -86,16 +85,16 @@ namespace Ctrl.Domain.Business.Permission
             try
             {
                 //获取所有菜单
-                var GetMenuAll = (await _menuRepository.GetAllMenu()).ToList();
-                IEnumerable<SystemPermission> GetPermissionByMaster = (await _systemPermissionRepository.GetPermissionByPrivilegeMasterValue(input)).ToList();
-                List<TreeEntity> TreeList = new List<TreeEntity>();
-                foreach (TreeEntity tree in GetMenuAll)
+                var getMenuAll = (await _menuRepository.GetAllMenu()).ToList();
+                IEnumerable<SystemPermission> getPermissionByMaster = (await _systemPermissionRepository.GetPermissionByPrivilegeMasterValue(input)).ToList();
+                List<TreeEntity> treeList = new List<TreeEntity>();
+                foreach (TreeEntity tree in getMenuAll)
                 {
-                    tree.Checked = GetPermissionByMaster.Count(m => m.PrivilegeAccessValue.ToString() == tree.id.ToString()) == 0 ? false : true;
-                    tree.isParent = GetMenuAll.Select(m1 => m1.pId).Contains(tree.id);
-                    TreeList.Add(tree);
+                    tree.Checked = getPermissionByMaster.Count(m => m.PrivilegeAccessValue.ToString() == tree.id.ToString()) != 0;
+                    tree.isParent = getMenuAll.Select(m1 => m1.pId).Contains(tree.id);
+                    treeList.Add(tree);
                 }
-                return TreeList;
+                return treeList;
             }
             catch
             {
@@ -176,7 +175,7 @@ namespace Ctrl.Domain.Business.Permission
             try
             {
                 //判断当前人员是否为超级管理员若是超级管理员则具有最大权限
-                var userInfo = await _userRepository.GetById(UserId);
+                var userInfo = await _userRepository.GetUserByUserId(Guid.Parse(UserId));
                 var result = await _buttonRepository.GetMenuButtonByUserId(UserId, userInfo.IsAdmin);
                 return result;
             }
@@ -193,8 +192,8 @@ namespace Ctrl.Domain.Business.Permission
         /// <returns></returns>
         public async Task<IEnumerable<TreeEntity>> GetMenuHavePermissionByPrivilegeMasterValue(GetMenuHavePermissionByPrivilegeMasterValueInput input)
         {
-            var TreeList = await _systemPermissionRepository.GetMenuHavePermissionByPrivilegeMasterValue(input);
-            return TreeList;
+            var treeList = await _systemPermissionRepository.GetMenuHavePermissionByPrivilegeMasterValue(input);
+            return treeList;
         }
         /// <summary>
         ///     根据权限ID查询权限信息

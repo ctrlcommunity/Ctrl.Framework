@@ -5,13 +5,14 @@ using Ctrl.Core.Entities.Paging;
 using Ctrl.Core.Entities.Tree;
 using Ctrl.Core.PetaPoco;
 using Ctrl.System.Models.Entities;
+using Volo.Abp.DependencyInjection;
 
 namespace Ctrl.System.DataAccess
 {
     /// <summary>
     ///     角色表数据访问接口实现
     /// </summary>
-    public class SystemRoleRepository : PetaPocoRepository<SystemRole>, ISystemRoleRepository
+    public class SystemRoleRepository : PetaPocoRepository<SystemRole>, ISystemRoleRepository,IScopedDependency
     {
         /// <summary>
         ///     获取所有角色

@@ -1,4 +1,5 @@
 ﻿using Ctrl.Core.Entities.Dtos;
+using Ctrl.Domain.Models.Entities;
 using Ctrl.System.Models.Entities;
 
 namespace Ctrl.Domain.Models.Dtos.Article

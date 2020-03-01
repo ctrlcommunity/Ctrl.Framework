@@ -1,18 +1,18 @@
-using Ctrl.Core.PetaPoco;
 using System;
 using Ctrl.Core.Entities;
+using Ctrl.Core.PetaPoco;
+using Volo.Abp.MultiTenancy;
 
-namespace Ctrl.System.Models.Entities
+namespace Ctrl.Domain.Models.Entities
 {
-	/// <summary>
+    /// <summary>
     ///    文章表实体类
     /// </summary>
-    [Serializable]
     [TableName("Sys_Article")]
     [PrimaryKey("ArticleId")]
-    public class SystemArticle: EntityBase
+    public class SystemArticle: EntityBase, IMultiTenant
     {
-		        /// <summary>
+        /// <summary>
         /// 主键编码
         /// </summary>
         public Guid ArticleId { get; set; }
@@ -35,7 +35,7 @@ namespace Ctrl.System.Models.Entities
         /// <summary>
         /// 是否显示
         /// </summary>
-        public bool isShow { get; set; }
+        public bool IsShow { get; set; }
 
         /// <summary>
         /// 排序码
@@ -82,6 +82,6 @@ namespace Ctrl.System.Models.Entities
         /// </summary>
         public string SeoKey { get; set; }
 
-
+        public Guid? TenantId { get; set; }
     }
 }

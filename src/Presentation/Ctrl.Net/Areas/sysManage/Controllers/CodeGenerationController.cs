@@ -1,4 +1,11 @@
-﻿using Ctrl.Core.Core.Attributes;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Ctrl.Core.Core.Attributes;
 using Ctrl.Core.Core.Converts;
 using Ctrl.Core.Core.Utils;
 using Ctrl.Core.Entities;
@@ -7,16 +14,8 @@ using Ctrl.Core.Web;
 using Ctrl.Domain.Business.Config;
 using Ctrl.Domain.Models.Dtos.Config;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-
-namespace Ctrl.Net.Areas.sysManage.Controllers
+namespace Ctrl.Web.Host.Areas.sysManage.Controllers
 {
     /// <summary>
     /// 代码生成控制器

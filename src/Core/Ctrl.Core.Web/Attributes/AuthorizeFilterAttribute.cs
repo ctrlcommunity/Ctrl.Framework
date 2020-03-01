@@ -85,9 +85,8 @@ namespace Ctrl.Core.Web.Attributes
                 {
                     return;
                 }
-                OperateStatus operate = new OperateStatus();
-                operate.Message = "抱歉，您无当前操作权限";
-                operate.ResultSign = ResultSign.Error;
+
+                OperateStatus operate = new OperateStatus {Message = "抱歉，您无当前操作权限", ResultSign = ResultSign.Error};
                 ContentResult contentResult = new ContentResult() { Content = JsonConvert.SerializeObject(operate) };
                 filterContext.HttpContext.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
                 filterContext.Result = contentResult;
