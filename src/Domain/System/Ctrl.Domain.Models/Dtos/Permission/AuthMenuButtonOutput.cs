@@ -4,7 +4,7 @@ using Volo.Abp.Application.Dtos;
 
 namespace Ctrl.Domain.Models.Dtos.Permission
 {
-    public class AuthMenuButtonOutput:SystemMenuButton, IEntityDto<Guid>
+    public class AuthMenuButtonOutput:SystemMenuButton, IEntityDto<string>
     {
         /// <summary>
         ///     区域
@@ -19,6 +19,6 @@ namespace Ctrl.Domain.Models.Dtos.Permission
         /// </summary>
         public string Action { get; set; }
 
-        public Guid Id { get; set; }
+        public string Id { get; set; }
     }
 }

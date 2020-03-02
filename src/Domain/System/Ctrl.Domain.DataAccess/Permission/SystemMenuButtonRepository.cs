@@ -29,6 +29,7 @@ namespace Ctrl.Domain.DataAccess.Permission
     ///     菜单按钮数据访问接口实现
     /// </summary>
     public class SystemMenuButtonDapperRepository : DapperRepository<CtrlDbContext>, ISystemMenuButtonDapperRepository, IScopedDependency
+    //    public class SystemMenuRepository : DapperRepository<CtrlDbContext>, ISystemMenuRepository, IScopedDependency
     {
         public SystemMenuButtonDapperRepository(IDbContextProvider<CtrlDbContext> dbContextProvider) : base(dbContextProvider)
         {
@@ -56,15 +57,7 @@ namespace Ctrl.Domain.DataAccess.Permission
         /// <param name="isAdmin"></param> 
         /// <returns></returns>
         public Task<IEnumerable<AuthMenuButtonOutput>> GetMenuButtonByUserId(string userId, bool isAdmin)
-        {
-            var sql1 = @"select sysUser.Id,sysUser.Code,sysUser.Name,sysUser.IsAdmin,role.Name RoleName,sysUser.IsFreeze,sysUser.FirstVisitTime,sysUser.ImgUrl  from Sys_User sysUser
-                    left join Sys_PermissionUser per on sysUser.Id=per.PrivilegeMasterUserId
-                    left join Sys_Role role on  role.RoleId=per.PrivilegeMasterValue
-                   ";
-
-            var result= DbConnection.QueryFirstOrDefaultAsync<UserLoginOutput>(sql1, DbTransaction).Result;
-
-
+        { 
             StringBuilder sql = new StringBuilder();
             sql.Append(@"	SELECT
 	                            func.* ,menu.Area,menu.Controller,menu.Action
@@ -79,7 +72,7 @@ namespace Ctrl.Domain.DataAccess.Permission
                 sql.AppendFormat(" and spuser.PrivilegeMasterUserId='{0}'", userId);
             }
             sql.Append("	order by OrderNo desc");
-            return DbConnection.QueryAsync<AuthMenuButtonOutput>(sql.ToString(),DbTransaction);
+            return DbConnection.QueryAsync<AuthMenuButtonOutput>(sql.ToString(),transaction: DbTransaction);
         }
 
         /// <summary>
