@@ -3,6 +3,7 @@ using Ctrl.Domain.Models.Dtos.Permission;
 using Ctrl.System.Business;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using Ctrl.Domain.Business.Permission;
 
 namespace Ctrl.Net.Areas.sysManage.Controllers
 {

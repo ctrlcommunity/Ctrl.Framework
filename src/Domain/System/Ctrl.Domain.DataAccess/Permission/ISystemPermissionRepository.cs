@@ -7,7 +7,8 @@ using Ctrl.System.Models.Entities;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
- 
+using Ctrl.Domain.Models.Entities;
+
 namespace Ctrl.System.DataAccess
 {
      /// <summary>

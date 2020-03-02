@@ -9,6 +9,7 @@ using Ctrl.Domain.Models.Entities;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel;
 using System.Threading.Tasks;
+using Volo.Abp.Application.Dtos;
 
 namespace Ctrl.Net.Areas.sysManage.Controllers
 {
@@ -54,8 +55,9 @@ namespace Ctrl.Net.Areas.sysManage.Controllers
         [HttpPost]
         [CreateBy("冯辉")]
         [Description("用户列表-方法-列表-获取用户列表")]
-        public async Task<JsonResult> GetPagingUser(QueryParam queryParam) {
-            return JsonForGridPaging(await _systemUserLogic.GetPagingSysUser(queryParam));
+        public async Task<JsonResult> GetPagingUser(PagedAndSortedResultRequestDto queryParam) {
+            //return JsonForGridPaging(await _systemUserLogic.GetPagingSysUser(queryParam));
+            return Json(await _systemUserLogic.GetPagingSysUser(queryParam));
         }
         [HttpPost]
         [CreateBy("冯辉")]

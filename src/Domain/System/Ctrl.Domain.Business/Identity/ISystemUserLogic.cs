@@ -5,14 +5,17 @@ using Ctrl.Core.Entities.Paging;
 using Ctrl.Domain.Models.Dtos;
 using Ctrl.Domain.Models.Dtos.Identity;
 using Ctrl.Domain.Models.Entities;
+using System;
 using System.Threading.Tasks;
+using Volo.Abp.Application.Dtos;
+using Volo.Abp.Application.Services;
 
 namespace Ctrl.Domain.Business.Identity
 {
     /// <summary>
     ///     用户业务逻辑
     /// </summary>
-    public interface ISystemUserLogic: IAsyncLogic<SystemUser>
+    public interface ISystemUserLogic: ICrudAppService<UserLoginOutput,Guid>
     {
         /// <summary>
         ///     根据登录代码和密码查询用户信息
@@ -20,13 +23,13 @@ namespace Ctrl.Domain.Business.Identity
         /// <param name="input">用户名、密码等</param>
         /// <returns></returns>
         Task<OperateStatus<UserLoginOutput>> CheckUserByCodeAndPwdAsync(UserLoginInput input);
-        /// <summary>
-        ///     获取用户列表分页
-        /// </summary>
-        /// <param name="queryParam">分页参数</param>
-        /// <returns></returns>
-        Task<PagedResults<SystemUser>> GetPagingSysUser(QueryParam queryParam);
-
+        ///// <summary>
+        /////     获取用户列表分页
+        ///// </summary>
+        ///// <param name="queryParam">分页参数</param>
+        ///// <returns></returns>
+        //Task<PagedResults<SystemUser>> GetPagingSysUser(QueryParam queryParam);
+        Task<PagedResultDto<UserLoginOutput>> GetPagingSysUser(PagedAndSortedResultRequestDto queryParam);
         /// <summary>
         ///     保存人员信息
         /// </summary>

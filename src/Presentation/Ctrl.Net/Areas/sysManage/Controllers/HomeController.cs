@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Ctrl.Core.Core.Attributes;
 using Ctrl.Core.Web;
 using Ctrl.Core.Web.Attributes;
+using Ctrl.Domain.Business.Permission;
 using Ctrl.System.Business;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,7 +20,7 @@ namespace Ctrl.Web.Host.Areas.sysManage.Controllers
         private readonly ISystemPermissionLogic _permissionLogic;
         public HomeController(ISystemPermissionLogic permissionLogic)
         {
-            this._permissionLogic = permissionLogic;
+            _permissionLogic = permissionLogic;
         }
 
         #endregion
@@ -58,8 +59,9 @@ namespace Ctrl.Web.Host.Areas.sysManage.Controllers
         [HttpPost]
         [CreateBy("冯辉")]
         [Description("首页-方法-获取菜单模块权限")]
-        public async Task<JsonResult>LoadMenuPermission(){
-            var data=(await _permissionLogic.GetSystemPermissionMenuByUserId(CurrentUser.UserId)).ToList();
+        public async Task<JsonResult>LoadMenuPermission()
+        {
+            var data = (await _permissionLogic.GetSystemPermissionMenuByUserId(CurrentUser.UserId)).ToList();
             return Json(data);
         }
 

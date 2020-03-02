@@ -1,16 +1,15 @@
-using Ctrl.Core.PetaPoco;
 using System;
-using Ctrl.Core.Entities;
- 
-namespace Ctrl.System.Models.Entities
+using Ctrl.Core.PetaPoco;
+using Volo.Abp.Domain.Entities;
+
+namespace Ctrl.Domain.Models.Entities
 {
     /// <summary>
     ///    权限记录表表实体类
     /// </summary>
-    [Serializable]
     [TableName("Sys_Permission")]
     [PrimaryKey("PrivilegeAccess")]
-    public class SystemPermission: EntityBase
+    public class SystemPermission: Entity<Guid>
     {
                 /// <summary>
         /// 权限归属(0菜单、1按钮、字段等)
@@ -36,7 +35,8 @@ namespace Ctrl.System.Models.Entities
         /// 菜单ID
         /// </summary>
         public Guid PrivilegeMenuId { get; set; }
- 
- 
+        public SystemPermission() { }
+
+
     }
 }

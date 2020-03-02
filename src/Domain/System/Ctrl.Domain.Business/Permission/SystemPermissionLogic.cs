@@ -1,4 +1,3 @@
-using Ctrl.Core.Business;
 using Ctrl.Core.Core.Resource;
 using Ctrl.Core.Entities;
 using Ctrl.Core.Entities.Dtos;
@@ -14,36 +13,38 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Ctrl.Domain.Models.Dtos.Identity;
+using Volo.Abp.Application.Services;
 using Volo.Abp.DependencyInjection;
+using Volo.Abp.Domain.Repositories;
 
-namespace Ctrl.System.Business
+namespace Ctrl.Domain.Business.Permission
 {
     /// <summary>
     ///     ///权限记录表业务逻辑接口实现
     /// </summary>
-    public class SystemPermissionLogic : AsyncLogic<SystemPermission>, ISystemPermissionLogic,IScopedDependency
+    public class SystemPermissionLogic : CrudAppService<SystemPermission, UserLoginOutput, Guid>, ISystemPermissionLogic, IScopedDependency
     {
         #region 构造函数
         private readonly ISystemPermissionRepository _systemPermissionRepository;
+        private readonly ISystemMenuButtonDapperRepository _systemMenuButtonDapperRepository;
         private readonly ISystemMenuRepository _menuRepository;
         private readonly ISystemUserRepository _userRepository;
         private readonly ISystemPermissionUserRepository _permissionUserRepository;
         private readonly ISystemMenuButtonRepository _buttonRepository;
         private readonly IMemoryCache _cache;
         public const string USER_MENU_CACHE_KEY = "_USERMENU_";
-
-        public SystemPermissionLogic(
-            ISystemPermissionRepository systemPermissionRepository,
-            ISystemMenuRepository menuRepository,
-            ISystemUserRepository userRepository, ISystemPermissionUserRepository permissionUserRepository, ISystemMenuButtonRepository buttonRepository,IMemoryCache cache) : base(systemPermissionRepository)
+        public SystemPermissionLogic(IRepository<SystemPermission, Guid> repository, ISystemPermissionRepository systemPermissionRepository, ISystemMenuButtonDapperRepository systemMenuButtonDapperRepository, ISystemMenuRepository menuRepository, ISystemUserRepository userRepository, ISystemPermissionUserRepository permissionUserRepository, ISystemMenuButtonRepository buttonRepository, IMemoryCache cache) : base(repository)
         {
             _systemPermissionRepository = systemPermissionRepository;
-            this._menuRepository = menuRepository;
-            this._userRepository = userRepository;
-            this._permissionUserRepository = permissionUserRepository;
-            this._buttonRepository = buttonRepository;
-            this._cache = cache;
+            _systemMenuButtonDapperRepository = systemMenuButtonDapperRepository;
+            _menuRepository = menuRepository;
+            _userRepository = userRepository;
+            _permissionUserRepository = permissionUserRepository;
+            _buttonRepository = buttonRepository;
+            _cache = cache;
         }
+        
 
         #endregion
 
@@ -59,7 +60,7 @@ namespace Ctrl.System.Business
             IList<TreeEntity> treeEntities = this._cache.Get<List<TreeEntity>>(cacheKey);
             if (treeEntities==null)
             {
-                var userInfo = await _userRepository.GetAsync(userId);
+                var userInfo = await _userRepository.GetAsync(userId,false);
                 //判断当前用户是否是超级管理员:若是超级管理员则显示所有菜单
                 if (userInfo != null)
                 {
@@ -73,7 +74,6 @@ namespace Ctrl.System.Business
                 }
             }
             return treeEntities;
-
         }
         /// <summary>
         ///     根据权限id获取权限信息
@@ -175,11 +175,11 @@ namespace Ctrl.System.Business
             try
             {
                 //判断当前人员是否为超级管理员若是超级管理员则具有最大权限
-                var userInfo = await _userRepository.GetUserByUserId(Guid.Parse(UserId));
-                var result = await _buttonRepository.GetMenuButtonByUserId(UserId, userInfo.IsAdmin);
+                var userInfo = await _userRepository.GetAsync(Guid.Parse(UserId),false);
+                var result = await _systemMenuButtonDapperRepository.GetMenuButtonByUserId(UserId, userInfo.IsAdmin);
                 return result;
             }
-            catch
+            catch(Exception ex)
             {
 
                 return null;
@@ -205,5 +205,7 @@ namespace Ctrl.System.Business
             return _systemPermissionRepository.GetPermissionByPrivilegeMasterValue(input);
         }
         #endregion
+
+  
     }
 }

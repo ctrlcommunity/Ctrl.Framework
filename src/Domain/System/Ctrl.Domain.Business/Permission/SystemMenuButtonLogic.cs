@@ -20,9 +20,11 @@ namespace Ctrl.System.Business
     {
         #region 构造函数
         private readonly ISystemMenuButtonRepository _systemMenuButtonRepository;
+        private readonly ISystemMenuButtonDapperRepository _systemMenuButtonDapperRepository;
 
-        public SystemMenuButtonLogic(ISystemMenuButtonRepository systemMenuButtonRepository):base(systemMenuButtonRepository) {
+        public SystemMenuButtonLogic(ISystemMenuButtonRepository systemMenuButtonRepository,ISystemMenuButtonDapperRepository systemMenuButtonDapperRepository) {
             _systemMenuButtonRepository = systemMenuButtonRepository;
+            this._systemMenuButtonDapperRepository = systemMenuButtonDapperRepository;
         }
 
         #endregion
@@ -35,7 +37,7 @@ namespace Ctrl.System.Business
         /// <returns></returns>
         public Task<PagedResults<SystemMenuButtonOutput>> GetPagingMenuButton(QueryParam param)
         {
-            return _systemMenuButtonRepository.GetPagingMenuButton(param);
+            return _systemMenuButtonDapperRepository.GetPagingMenuButton(param);
         }
         /// <summary>
         ///     保存功能项信息  
@@ -43,15 +45,17 @@ namespace Ctrl.System.Business
         /// <returns>功能项信息</returns>
         public async Task<OperateStatus> SaveMenuButton(SystemMenuButton menuButton)
         {
-            if (menuButton.MenuButtonId.IsEmptyGuid())
+            if (menuButton.Id.IsEmptyGuid())
             {
                 menuButton.CreateTime = DateTime.Now;
-                menuButton.MenuButtonId = CombUtil.NewComb();
+                //TODO 先注释
+                //menuButton.Id = CombUtil.NewComb();
                 return await InsertAsync(menuButton);
             }
             else {
-                var  sysbutton=await _systemMenuButtonRepository.GetById(menuButton.MenuButtonId);
-                menuButton.CreateTime = sysbutton.CreateTime;
+                //TODO 先注释
+                //var  sysbutton=await _systemMenuButtonRepository.GetById(menuButton.MenuButtonId);
+              //  menuButton.CreateTime = sysbutton.CreateTime;
                 return await UpdateAsync(menuButton);
             }
         }
@@ -60,7 +64,7 @@ namespace Ctrl.System.Business
         /// </summary>
         /// <returns></returns>
         public Task<IEnumerable<SystemMenuButtonOutput>> GetMenuButtonByMenuId(IdInput input) {
-            return _systemMenuButtonRepository.GetMenuButtonByMenuId(input);
+            return _systemMenuButtonDapperRepository.GetMenuButtonByMenuId(input);
         }
         #endregion
     }

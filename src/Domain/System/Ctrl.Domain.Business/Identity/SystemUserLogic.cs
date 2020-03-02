@@ -1,10 +1,8 @@
-﻿using Ctrl.Core.Business;
-using Ctrl.Core.Core.Resource;
+﻿using Ctrl.Core.Core.Resource;
 using Ctrl.Core.Core.Security;
 using Ctrl.Core.Core.Utils;
 using Ctrl.Core.Entities;
 using Ctrl.Core.Entities.Dtos;
-using Ctrl.Core.Entities.Paging;
 using Ctrl.Domain.Business.Permission;
 using Ctrl.Domain.DataAccess.Identity;
 using Ctrl.Domain.Models.Dtos;
@@ -14,23 +12,28 @@ using Ctrl.Domain.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Volo.Abp.Application.Dtos;
+using Volo.Abp.Application.Services;
 using Volo.Abp.DependencyInjection;
+using Volo.Abp.Domain.Repositories;
 
 namespace Ctrl.Domain.Business.Identity
 {
     /// <summary>
     ///     用户业务逻辑实现
     /// </summary>
-    public class SystemUserLogic : AsyncLogic<SystemUser>, ISystemUserLogic,IScopedDependency
+    public class SystemUserLogic : CrudAppService<SystemUser, UserLoginOutput,Guid>, ISystemUserLogic,IScopedDependency
     {
         #region 构造函数
         private readonly ISystemUserRepository _systemUserRepository;
         private readonly ISystemPermissionUserLogic _permissionUserLogic;
+        private readonly ISystemUserDapperRepository _systemUserDapperRepository;
 
-        public SystemUserLogic(ISystemUserRepository systemUserRepository, ISystemPermissionUserLogic _permissionUserLogic)
+        public SystemUserLogic(IRepository<SystemUser, Guid> repository, ISystemUserRepository systemUserRepository, ISystemPermissionUserLogic permissionUserLogic, ISystemUserDapperRepository systemUserDapperRepository) : base(repository)
         {
-            _systemUserRepository = systemUserRepository;
-            this._permissionUserLogic = _permissionUserLogic;
+            this._systemUserRepository = systemUserRepository;
+            this._permissionUserLogic = permissionUserLogic;
+            this._systemUserDapperRepository = systemUserDapperRepository;
         }
 
         #endregion
@@ -46,7 +49,7 @@ namespace Ctrl.Domain.Business.Identity
             var operateStatus = new OperateStatus<UserLoginOutput>();
             try
             {
-                var data = await _systemUserRepository.CheckUserByCodeAndPwd(input);
+                var data = await _systemUserDapperRepository.CheckUserByCodeAndPwd(input);
                 //是否存在
                 if (data == null)
                 {
@@ -67,10 +70,10 @@ namespace Ctrl.Domain.Business.Identity
                 if (data.FirstVisitTime == null)
                 {
                     //更新用户最后一次登录时间
-                    await _systemUserRepository.UpdateFirstVisitTime(new IdInput(data.UserId));
+                    await _systemUserDapperRepository.UpdateFirstVisitTime(new IdInput(data.Id.ToString()));
                 }
                 //更新用户最后一次登录时间
-                await _systemUserRepository.UpdateLastLoginTime(new IdInput(data.UserId));
+                await _systemUserDapperRepository.UpdateLastLoginTime(new IdInput(data.Id.ToString()));
             }
             catch(Exception ex)
             {
@@ -89,9 +92,10 @@ namespace Ctrl.Domain.Business.Identity
         /// </summary>
         /// <param name="queryParam"></param>
         /// <returns></returns>
-        public Task<PagedResults<SystemUser>> GetPagingSysUser(QueryParam queryParam)
+        public Task<PagedResultDto<UserLoginOutput>> GetPagingSysUser(PagedAndSortedResultRequestDto queryParam)
         {
-            return _systemUserRepository.GetPagingSysUser(queryParam);
+            return GetListAsync(queryParam);
+            //return _systemUserDapperRepository.GetPagingSysUser(queryParam);
         }
 
         /// <summary>
@@ -101,17 +105,16 @@ namespace Ctrl.Domain.Business.Identity
         /// <returns></returns>
         public async Task<OperateStatus> SaveUser(SystemUserSaveInput user)
         {
-            OperateStatus operateStatus;
+            OperateStatus operateStatus=new OperateStatus();
             if (string.IsNullOrWhiteSpace(user.Id.ToString()))
             {
                 user.CreateTime = DateTime.Now;
                 user.Password = _3DESEncrypt.Encrypt("123456");
-                operateStatus = await InsertAsync(
+                var resultUser = await _systemUserRepository.InsertAsync(
                     new SystemUser(CombUtil.NewComb(), user.Code, user.Name, user.Password, user.Mobile,
                         user.Email, user.FirstVisitTime, user.LastVisitTime, user.Remark, user.IsAdmin, user.CreateTime,
                         user.IsFreeze, user.ImgUrl));
-
-                if (operateStatus.ResultSign == ResultSign.Successful)
+                if (resultUser !=null)
                 {
                     //添加用户到组织机构
                     operateStatus = await _permissionUserLogic.SavePermissionUser(EnumPrivilegeMaster.角色, user.RoleId,
@@ -136,9 +139,14 @@ namespace Ctrl.Domain.Business.Identity
                     operateStatus = await _permissionUserLogic.SavePermissionUser(EnumPrivilegeMaster.角色, user.RoleId, new List<string> { user.Id.ToString() });
                     if (operateStatus.ResultSign == ResultSign.Successful)
                     {
-                        var userInfo = await GetById(user.Id);
+                        var userInfo = await _systemUserRepository.GetAsync(user.Id);
                         user.Password = userInfo.Password;
-                        return await UpdateAsync(user);
+                        var result = await _systemUserRepository.UpdateAsync(user);
+                        if (result!=null)
+                        {
+                            operateStatus.Message = "Success";
+                            operateStatus.ResultSign = ResultSign.Successful;
+                        }
                     }
                 }
             }
@@ -152,7 +160,7 @@ namespace Ctrl.Domain.Business.Identity
         public async Task<OperateStatus> UserInfoUpdateSave(UserUpdateInput input)
         {
             OperateStatus operateStatus = new OperateStatus() ;
-            if (!await _systemUserRepository.UserInfoUpdateSave(input))
+            if (!await _systemUserDapperRepository.UserInfoUpdateSave(input))
             {
                 operateStatus.ResultSign = ResultSign.Successful;
                 operateStatus.Message = Chs.Successful;
@@ -172,7 +180,7 @@ namespace Ctrl.Domain.Business.Identity
         public async Task<OperateStatus> CheckUserCode(CheckSameValueInput input)
         {
             var operateStatus = new OperateStatus();
-            if (await _systemUserRepository.CheckUserCode(input))
+            if (await _systemUserDapperRepository.CheckUserCode(input))
             {
                 operateStatus.ResultSign = ResultSign.Error;
                 operateStatus.Message = string.Format(Chs.HaveCode, input.Id);
@@ -186,5 +194,6 @@ namespace Ctrl.Domain.Business.Identity
         }
 
         #endregion
+
     }
 }

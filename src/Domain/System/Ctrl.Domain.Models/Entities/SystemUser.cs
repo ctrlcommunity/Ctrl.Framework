@@ -28,6 +28,10 @@ namespace Ctrl.Domain.Models.Entities
         /// </summary>
         public string Mobile { get; set; }
         /// <summary>
+        ///     头像路径
+        /// </summary>
+        public string ImgUrl { get; set; }
+        /// <summary>
         ///     邮箱
         /// </summary>
         public string Email { get; set; }
@@ -55,10 +59,7 @@ namespace Ctrl.Domain.Models.Entities
         ///     冻结
         /// </summary>
         public bool? IsFreeze { get; set; }
-        /// <summary>
-        ///     头像路径
-        /// </summary>
-        public string ImgUrl { get; set; }
+
 
         public SystemUser() { }
         public SystemUser(Guid id,string code, string name, string password, string mobile, string email, DateTime? firstVisitTime, DateTime? lastVisitTime, string remark, bool isAdmin, DateTime? createTime, bool? isFreeze, string imgUrl)

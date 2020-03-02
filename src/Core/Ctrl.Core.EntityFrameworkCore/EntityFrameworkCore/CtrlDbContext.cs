@@ -1,4 +1,5 @@
 ﻿using Ctrl.Domain.Models.Entities;
+using Ctrl.System.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;
@@ -10,6 +11,8 @@ namespace Ctrl.Core.EntityFrameworkCore.EntityFrameworkCore
     public class CtrlDbContext : AbpDbContext<CtrlDbContext>
     {
         public DbSet<SystemUser> Users { get; set; }
+
+        public DbSet<SystemPermission> Permissions { get; set; }
 
         public CtrlDbContext(DbContextOptions<CtrlDbContext> options):base(options)
         {
@@ -23,6 +26,17 @@ namespace Ctrl.Core.EntityFrameworkCore.EntityFrameworkCore
                 b.ToTable("Sys_User");
                 b.ConfigureByConvention();
 
+            });
+            builder.Entity<SystemMenuButton>(b =>
+            {
+                b.ToTable("Sys_MenuButton");
+                b.ConfigureByConvention();
+
+            });
+            builder.Entity<SystemPermission>(b =>
+            {
+                b.ToTable("Sys_Permission");
+                b.ConfigureByConvention();
             });
         }
     }

@@ -1,21 +1,21 @@
-using Ctrl.Core.Business;
-using Ctrl.Core.Entities;
-using Ctrl.Core.Entities.Dtos;
-using Ctrl.Core.Entities.Tree;
-using Ctrl.Domain.Models.Dtos;
-using Ctrl.Domain.Models.Dtos.Permission;
-using Ctrl.Domain.Models.Enums;
-using Ctrl.System.Models.Entities;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
- 
-namespace Ctrl.System.Business
+using Ctrl.Core.Entities;
+using Ctrl.Core.Entities.Dtos;
+using Ctrl.Core.Entities.Tree;
+using Ctrl.Domain.Models.Dtos.Identity;
+using Ctrl.Domain.Models.Dtos.Permission;
+using Ctrl.Domain.Models.Entities;
+using Ctrl.System.Models.Entities;
+using Volo.Abp.Application.Services;
+
+namespace Ctrl.Domain.Business.Permission
 {
     /// <summary>
     /// 权限记录表业务逻辑接口
     /// </summary>
-    public interface ISystemPermissionLogic: IAsyncLogic<SystemPermission>
+    public interface ISystemPermissionLogic: ICrudAppService<UserLoginOutput, Guid>
     {
         ///<summary>
         /// 根据用户id获取具有权限的菜单

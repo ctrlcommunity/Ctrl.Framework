@@ -1,23 +1,23 @@
-﻿using System;
-using System.Data;
-using Ctrl.Core.Core.Utils;
-using Ctrl.Core.DataAccess;
-using Ctrl.Core.Entities;
+﻿using Ctrl.Core.Core.Utils;
 using Ctrl.Core.Entities.Dtos;
 using Ctrl.Core.Entities.Paging;
+using Ctrl.Core.EntityFrameworkCore.EntityFrameworkCore;
 using Ctrl.Core.PetaPoco;
 using Ctrl.Domain.Models.Dtos;
 using Ctrl.Domain.Models.Dtos.Identity;
 using Ctrl.Domain.Models.Entities;
+using System;
+using System.Globalization;
 using System.Threading.Tasks;
-using Ctrl.Core.EntityFrameworkCore.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
+using Dapper;
+using Volo.Abp.DependencyInjection;
+using Volo.Abp.Domain.Repositories.Dapper;
 using Volo.Abp.Domain.Repositories.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
 
 namespace Ctrl.Domain.DataAccess.Identity
 {
-    public class SystemUserRepository : EfCoreRepository<CtrlDbContext,SystemUser,Guid>, ISystemUserRepository
+    public class SystemUserDapperRepository : DapperRepository<CtrlDbContext>, ISystemUserDapperRepository,IScopedDependency
     {
         /// <summary>
         ///     根据用户名和密码查询用户信息
@@ -27,11 +27,14 @@ namespace Ctrl.Domain.DataAccess.Identity
         /// <returns></returns>
         public Task<UserLoginOutput> CheckUserByCodeAndPwd(UserLoginInput input)
         {
-            var sql= @"select sysUser.UserId,sysUser.Code,sysUser.Name,sysUser.IsAdmin,role.Name RoleName,sysUser.IsFreeze,sysUser.FirstVisitTime,sysUser.ImgUrl  from Sys_User sysUser
-                    left join Sys_PermissionUser per on sysUser.UserId=per.PrivilegeMasterUserId
+            var sql = @"select sysUser.Id,sysUser.Code,sysUser.Name,sysUser.IsAdmin,role.Name RoleName,sysUser.IsFreeze,sysUser.FirstVisitTime,sysUser.ImgUrl  from Sys_User sysUser
+                    left join Sys_PermissionUser per on sysUser.Id=per.PrivilegeMasterUserId
                     left join Sys_Role role on  role.RoleId=per.PrivilegeMasterValue
                     where sysUser.Code=@Code and sysUser.Password=@pwd";
-            return SqlMapperUtil.FirstOrDefault<UserLoginOutput>(sql,new { Code=input.Code,pwd=input.Password});
+
+            return DbConnection.QueryFirstOrDefaultAsync<UserLoginOutput>(sql,
+                new {input.Code, pwd = input.Password},DbTransaction);
+
         }
         /// <summary>
         ///     获取用户列表
@@ -41,7 +44,7 @@ namespace Ctrl.Domain.DataAccess.Identity
         public Task<PagedResults<SystemUser>> GetPagingSysUser(QueryParam queryParam)
         {
             var sql = "SELECT * FROM [dbo].[Sys_User] sysUser";
-            return SqlMapperUtil.PagingQuery<SystemUser>(sql,queryParam);
+            return SqlMapperUtil.PagingQuery<SystemUser>(sql, queryParam);
         }
 
         /// <summary>
@@ -49,10 +52,10 @@ namespace Ctrl.Domain.DataAccess.Identity
         /// </summary>
         /// <param name="input">用户Id</param>
         /// <returns></returns>
-        public Task<bool> UpdateLastLoginTime(IdInput input)
+        public async Task<bool> UpdateLastLoginTime(IdInput input)
         {
-            const string sql = @"UPDATE [Sys_User] SET LastVisitTime=getdate() WHERE UserId=@userId";
-            return SqlMapperUtil.InsertUpdateOrDeleteSqlBool(sql, new { userId = input.Id });
+            var sql = $@"UPDATE [Sys_User] SET LastVisitTime='{DateTime.Now.ToString(CultureInfo.InvariantCulture)}' WHERE Id=@userId";
+            return (await DbConnection.ExecuteAsync(sql, new {userId = input.Id},DbTransaction))>0;
         }
 
         /// <summary>
@@ -60,10 +63,10 @@ namespace Ctrl.Domain.DataAccess.Identity
         /// </summary>
         /// <param name="input">用户Id</param>
         /// <returns></returns>
-        public Task<bool> UpdateFirstVisitTime(IdInput input)
+        public async Task<bool> UpdateFirstVisitTime(IdInput input)
         {
-            const string sql = @"UPDATE [Sys_User] SET FirstVisitTime=getdate() WHERE UserId=@userId";
-            return SqlMapperUtil.InsertUpdateOrDeleteSqlBool(sql, new { userId = input.Id });
+            var sql = $@"UPDATE [Sys_User] SET FirstVisitTime='{DateTime.Now.ToString(CultureInfo.InvariantCulture)}' WHERE Id=@userId";
+            return (await DbConnection.ExecuteAsync(sql, new { userId = input.Id }, DbTransaction))>0;
         }
         /// <summary>
         ///     用户信息修改
@@ -75,8 +78,8 @@ namespace Ctrl.Domain.DataAccess.Identity
             const string sql = @"UPDATE [Sys_User] 
                                 SET ImgUrl=@ImgUrl,
                                 Name=@Name
-                                WHERE UserId=@userId";
-            return SqlMapperUtil.InsertUpdateOrDeleteSqlBool(sql,input);
+                                WHERE Id=@userId";
+            return SqlMapperUtil.InsertUpdateOrDeleteSqlBool(sql, input);
         }
         /// <summary>
         ///     检测代码是否已经具有重复项
@@ -88,17 +91,23 @@ namespace Ctrl.Domain.DataAccess.Identity
             string sql = "select UserId from Sys_User where Code=@param";
             if (!input.Id.IsNullOrEmptyGuid())
             {
-                sql += " And UserId!=@UserId";
+                sql += " And Id!=@UserId";
             }
-            return SqlMapperUtil.SqlWithParamsBool<SystemUser>(sql,new { param=input.Param, UserId=input.Id});
+            return SqlMapperUtil.SqlWithParamsBool<SystemUser>(sql, new { param = input.Param, UserId = input.Id });
         }
-        public Task<SystemUser> GetUserByUserId(Guid userId)
+        public SystemUserDapperRepository(IDbContextProvider<CtrlDbContext> dbContextProvider) : base(dbContextProvider)
         {
-            return DbSet.FirstOrDefaultAsync(u => u.Id == userId);
         }
+    }
+
+
+
+    public class SystemUserRepository : EfCoreRepository<CtrlDbContext,SystemUser,Guid>, ISystemUserRepository
+    {
 
         public SystemUserRepository(IDbContextProvider<CtrlDbContext> dbContextProvider) : base(dbContextProvider)
         {
         }
+
     }
 }

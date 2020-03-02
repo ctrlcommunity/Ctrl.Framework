@@ -49,6 +49,5 @@
             set { _filters = value; }
         }
 
-
     }
 }

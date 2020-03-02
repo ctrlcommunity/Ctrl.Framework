@@ -62,7 +62,7 @@ namespace Ctrl.Web.Host.Areas.sysManage.Controllers
         /// <returns></returns>
         public async Task<ActionResult> PerInfo()
         {
-            var user = await _systemUserLogic.GetById(CurrentUser.UserId);
+            var user = await _systemUserLogic.GetAsync(CurrentUser.UserId);
             return View(user);
         }
         /// <summary>
@@ -81,7 +81,7 @@ namespace Ctrl.Web.Host.Areas.sysManage.Controllers
         ///     登录
         /// </summary>
         /// <param name="input">登录参数</param>
-        /// <returns></returns>
+        /// <returns></returns> 
         //[ValidateAntiForgeryToken]
         [HttpPost]
         public async Task<JsonResult> Submit(UserLoginInput model)
@@ -92,7 +92,7 @@ namespace Ctrl.Web.Host.Areas.sysManage.Controllers
             {
                 var prin = new PrincipalUser()
                 {
-                    UserId = Guid.Parse(info.Data.UserId),
+                    UserId = info.Data.Id,
                     Code = info.Data.Code,
                     Name = info.Data.Name,
                     IsAdmin = info.Data.IsAdmin,
@@ -107,7 +107,7 @@ namespace Ctrl.Web.Host.Areas.sysManage.Controllers
                 AuthenticationExtension.SetAuthCookie(prin);
 
                 //写入日志
-                var logHandler = new LoginLogHandler(info.Data.UserId, info.Data.Code, info.Data.Name, (int)EnumLoginType.账号密码登录);
+                var logHandler = new LoginLogHandler(info.Data.Id.ToString(), info.Data.Code, info.Data.Name, (int)EnumLoginType.账号密码登录);
                 logHandler.WriteLog();
             }
             return Json(info);

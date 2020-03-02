@@ -1,3 +1,4 @@
+using System;
 using Ctrl.Core.DataAccess;
 using Ctrl.Core.Entities.Dtos;
 using Ctrl.Core.Entities.Paging;
@@ -6,13 +7,22 @@ using Ctrl.Domain.Models.Dtos.Permission;
 using Ctrl.System.Models.Entities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Ctrl.Domain.Models.Entities;
+using Volo.Abp.Domain.Repositories;
+using Volo.Abp.Domain.Repositories.Dapper;
 
 namespace Ctrl.System.DataAccess
 {
 	 /// <summary>
     /// 菜单按钮数据访问接口
     /// </summary>
-    public interface ISystemMenuButtonRepository: IRepository<SystemMenuButton>
+    public interface ISystemMenuButtonRepository : IBasicRepository<SystemMenuButton, Guid>
+    {
+       
+    }
+
+
+    public interface ISystemMenuButtonDapperRepository : IDapperRepository
     {
         /// <summary>
         ///     获取按钮分页

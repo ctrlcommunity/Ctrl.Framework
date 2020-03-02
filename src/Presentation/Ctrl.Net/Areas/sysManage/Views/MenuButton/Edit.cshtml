@@ -3,7 +3,7 @@
     Layout = "~/Areas/SysManage/Views/Shared/_LayoutPageBaseForm.cshtml";
 }
 <form class="form-horizontal ctrl-form">
-    <input hidden value="@Model.MenuButtonId" name="MenuButtonId" id="MenuButtonId" />
+    <input hidden value="@Model.Id" name="MenuButtonId" id="MenuButtonId" />
     @Html.AntiForgeryToken()
     <div class="form-group">
         <label class="col-sm-2 control-label">归属模块：</label>

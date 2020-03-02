@@ -1,12 +1,10 @@
-﻿using Ctrl.Core.Entities.Dtos;
-using Ctrl.System.Models.Entities;
+﻿using Ctrl.System.Models.Entities;
 using System;
-using System.Collections.Generic;
-using System.Text;
+using Volo.Abp.Application.Dtos;
 
 namespace Ctrl.Domain.Models.Dtos.Permission
 {
-    public class AuthMenuButtonOutput:SystemMenuButton,IOutputDto
+    public class AuthMenuButtonOutput:SystemMenuButton, IEntityDto<Guid>
     {
         /// <summary>
         ///     区域
@@ -20,5 +18,7 @@ namespace Ctrl.Domain.Models.Dtos.Permission
         ///     方法
         /// </summary>
         public string Action { get; set; }
+
+        public Guid Id { get; set; }
     }
 }

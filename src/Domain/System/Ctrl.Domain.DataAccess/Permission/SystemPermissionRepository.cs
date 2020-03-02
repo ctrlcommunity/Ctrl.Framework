@@ -7,6 +7,7 @@ using Ctrl.Core.Entities.Tree;
 using Ctrl.Core.PetaPoco;
 using Ctrl.Domain.Models.Dtos;
 using Ctrl.Domain.Models.Dtos.Permission;
+using Ctrl.Domain.Models.Entities;
 using Ctrl.Domain.Models.Enums;
 using Ctrl.System.Models.Entities;
 using Volo.Abp.DependencyInjection;

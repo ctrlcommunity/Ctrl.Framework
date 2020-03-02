@@ -1,15 +1,15 @@
 using System;
-using Ctrl.Core.Entities.Dtos;
+using Volo.Abp.Application.Dtos;
 
 namespace Ctrl.Domain.Models.Dtos.Identity
 {
-    public class UserLoginOutput:IOutputDto
+    public class UserLoginOutput: EntityDto<Guid>
     {
         /// <summary>
         ///     用户主键编码
         /// </summary>
         /// <value></value>
-        public string UserId{ get; set; }
+        public Guid Id{ get; set; }
         /// <summary>
         ///     登录代码
         /// </summary>

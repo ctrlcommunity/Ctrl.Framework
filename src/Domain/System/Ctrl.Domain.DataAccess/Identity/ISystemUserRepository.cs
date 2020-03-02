@@ -8,10 +8,11 @@ using Ctrl.Domain.Models.Dtos.Identity;
 using Ctrl.Domain.Models.Entities;
 using System.Threading.Tasks;
 using Volo.Abp.Domain.Repositories;
+using Volo.Abp.Domain.Repositories.Dapper;
 
 namespace Ctrl.Domain.DataAccess.Identity
 {
-    public interface ISystemUserRepository: IBasicRepository<SystemUser,Guid>
+    public interface ISystemUserDapperRepository : IDapperRepository
     {
         /// <summary>
         ///     根据用户名和密码查询用户信息
@@ -50,11 +51,10 @@ namespace Ctrl.Domain.DataAccess.Identity
         /// <param name="input">需要验证的参数</param>
         /// <returns></returns>
         Task<bool> CheckUserCode(CheckSameValueInput input);
-        /// <summary>
-        ///     根据用户编码获取用户信息
-        /// </summary>
-        /// <param name="UserId"></param>
-        /// <returns></returns>
-        Task<SystemUser> GetUserByUserId(Guid UserId);
+    }
+
+    public interface ISystemUserRepository: IBasicRepository<SystemUser,Guid>
+    {
+
     }
 }
