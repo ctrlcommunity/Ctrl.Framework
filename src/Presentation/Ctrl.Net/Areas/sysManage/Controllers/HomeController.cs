@@ -7,19 +7,25 @@ using Ctrl.Core.Web.Attributes;
 using Ctrl.Domain.Business.Permission;
 using Ctrl.System.Business;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection;
+using Volo.Abp.AspNetCore.Mvc;
+using Volo.Abp.Autofac;
+using Volo.Abp.Modularity;
+using Volo.Abp.ObjectMapping;
 
 namespace Ctrl.Web.Host.Areas.sysManage.Controllers
 {
     /// <summary>
     ///     首页
     /// </summary>
-    public class HomeController : BaseController
+    public class HomeController : AbpController
     {
 
         #region 构造函数
         private readonly ISystemPermissionLogic _permissionLogic;
         public HomeController(ISystemPermissionLogic permissionLogic)
         {
+            IObjectMapper _objectMapper =HttpContext.RequestServices.GetRequiredService<IObjectMapper>();
             _permissionLogic = permissionLogic;
         }
 
@@ -56,14 +62,14 @@ namespace Ctrl.Web.Host.Areas.sysManage.Controllers
         #endregion
 
         #region 方法 
-        [HttpPost]
-        [CreateBy("冯辉")]
-        [Description("首页-方法-获取菜单模块权限")]
-        public async Task<JsonResult>LoadMenuPermission()
-        {
-            var data = (await _permissionLogic.GetSystemPermissionMenuByUserId(CurrentUser.UserId)).ToList();
-            return Json(data);
-        }
+        //[HttpPost]
+        //[CreateBy("冯辉")]
+        //[Description("首页-方法-获取菜单模块权限")]
+        //public async Task<JsonResult>LoadMenuPermission()
+        //{
+        //    var data = (await _permissionLogic.GetSystemPermissionMenuByUserId(CurrentUser.UserId)).ToList();
+        //    return Json(data);
+        //}
 
         #endregion
 

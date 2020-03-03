@@ -1,18 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
-
+  <Import Project="..\..\..\configureawait.props" />
   <PropertyGroup>
     <ApplicationIcon>wwwroot\favicon.ico</ApplicationIcon>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="ConfigureAwait.Fody" Version="3.3.1" />
-    <PackageReference Include="Fody" Version="6.1.1">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
     <PackageReference Include="Volo.Abp.AspNetCore.MultiTenancy" Version="2.1.1" />
     <PackageReference Include="Volo.Abp.AspNetCore.Mvc" Version="2.1.1" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic" Version="2.1.1" />
     <PackageReference Include="Volo.Abp.Autofac" Version="2.1.1" />
     <PackageReference Include="Volo.Abp.AutoMapper" Version="2.1.1" />
     <PackageReference Include="Volo.Abp.MultiTenancy" Version="2.1.1" />
@@ -33,12 +29,6 @@
 
   <ItemGroup>
     <Folder Include="Properties\PublishProfiles\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="Volo.Abp.MultiTenancy">
-      <HintPath>..\..\..\..\..\..\Person\OpenSource\abp\framework\src\Volo.Abp.MultiTenancy\bin\Debug\netstandard2.0\Volo.Abp.MultiTenancy.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
   <ProjectExtensions>
