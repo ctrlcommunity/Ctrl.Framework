@@ -29,7 +29,6 @@ namespace Ctrl.Domain.DataAccess.Permission
     ///     菜单按钮数据访问接口实现
     /// </summary>
     public class SystemMenuButtonDapperRepository : DapperRepository<CtrlDbContext>, ISystemMenuButtonDapperRepository, IScopedDependency
-    //    public class SystemMenuRepository : DapperRepository<CtrlDbContext>, ISystemMenuRepository, IScopedDependency
     {
         public SystemMenuButtonDapperRepository(IDbContextProvider<CtrlDbContext> dbContextProvider) : base(dbContextProvider)
         {
@@ -64,7 +63,7 @@ namespace Ctrl.Domain.DataAccess.Permission
                             FROM
 	                            sys_menubutton func
 	                            LEFT JOIN sys_menu menu ON func.MenuId = menu.MenuId
-	                            LEFT JOIN sys_permission sper ON sper.PrivilegeAccessValue = func.MenuButtonId
+	                            LEFT JOIN sys_permission sper ON sper.PrivilegeAccessValue = func.Id
 	                            LEFT JOIN sys_permissionuser spuser ON sper.PrivilegeMasterValue = spuser.PrivilegeMasterValue
 	                            WHERE 1=1 ");
             if (!isAdmin)

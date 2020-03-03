@@ -31,7 +31,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ctrl.Domain.Models", "src\D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ctrl.Web.Host", "src\Presentation\Ctrl.Net\Ctrl.Web.Host.csproj", "{E71F7D68-9837-4BA8-90FD-EC487A87C028}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ctrl.Core.EntityFrameworkCore", "src\Core\Ctrl.Core.EntityFrameworkCore\Ctrl.Core.EntityFrameworkCore.csproj", "{F3AB4097-8F8A-47DA-AB57-13597B2D24A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ctrl.Core.EntityFrameworkCore", "src\Core\Ctrl.Core.EntityFrameworkCore\Ctrl.Core.EntityFrameworkCore.csproj", "{F3AB4097-8F8A-47DA-AB57-13597B2D24A1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Volo.Abp.Ddd.Application", "..\..\..\Person\OpenSource\abp\framework\src\Volo.Abp.Ddd.Application\Volo.Abp.Ddd.Application.csproj", "{2F247397-8F18-469C-8996-3D6077E3FA00}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,6 +85,10 @@ Global
 		{F3AB4097-8F8A-47DA-AB57-13597B2D24A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3AB4097-8F8A-47DA-AB57-13597B2D24A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3AB4097-8F8A-47DA-AB57-13597B2D24A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F247397-8F18-469C-8996-3D6077E3FA00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F247397-8F18-469C-8996-3D6077E3FA00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F247397-8F18-469C-8996-3D6077E3FA00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F247397-8F18-469C-8996-3D6077E3FA00}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

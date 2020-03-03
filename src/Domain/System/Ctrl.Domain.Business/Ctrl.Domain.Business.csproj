@@ -8,10 +8,10 @@
     <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="3.1.1" />
     <PackageReference Include="Volo.Abp.Autofac" Version="2.1.1" />
     <PackageReference Include="Volo.Abp.Dapper" Version="2.1.1" />
-    <PackageReference Include="Volo.Abp.Ddd.Application" Version="2.1.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\..\..\Person\OpenSource\abp\framework\src\Volo.Abp.Ddd.Application\Volo.Abp.Ddd.Application.csproj" />
     <ProjectReference Include="..\..\..\Core\Ctrl.Core.Business\Ctrl.Core.Business.csproj" />
     <ProjectReference Include="..\..\..\Core\Ctrl.Core.Entities\Ctrl.Core.Entities.csproj" />
     <ProjectReference Include="..\Ctrl.Domain.DataAccess\Ctrl.Domain.DataAccess.csproj" />

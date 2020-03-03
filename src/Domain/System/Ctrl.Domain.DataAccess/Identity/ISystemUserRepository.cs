@@ -55,6 +55,5 @@ namespace Ctrl.Domain.DataAccess.Identity
 
     public interface ISystemUserRepository: IBasicRepository<SystemUser,Guid>
     {
-
     }
 }

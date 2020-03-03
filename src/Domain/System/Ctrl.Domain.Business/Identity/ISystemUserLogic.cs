@@ -15,7 +15,7 @@ namespace Ctrl.Domain.Business.Identity
     /// <summary>
     ///     用户业务逻辑
     /// </summary>
-    public interface ISystemUserLogic: ICrudAppService<UserLoginOutput,Guid>
+    public interface ISystemUserLogic : ICrudAppService<UserLoginOutput, Guid>
     {
         /// <summary>
         ///     根据登录代码和密码查询用户信息

@@ -9,6 +9,7 @@ using Ctrl.Domain.Models.Dtos;
 using Ctrl.Domain.Models.Dtos.Identity;
 using Ctrl.Domain.Models.Entities;
 using Ctrl.Domain.Models.Enums;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -16,6 +17,7 @@ using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Domain.Repositories;
+using Volo.Abp.ObjectMapping;
 
 namespace Ctrl.Domain.Business.Identity
 {
@@ -28,12 +30,14 @@ namespace Ctrl.Domain.Business.Identity
         private readonly ISystemUserRepository _systemUserRepository;
         private readonly ISystemPermissionUserLogic _permissionUserLogic;
         private readonly ISystemUserDapperRepository _systemUserDapperRepository;
+        private readonly IObjectMapper _objectMapper;
 
         public SystemUserLogic(IRepository<SystemUser, Guid> repository, ISystemUserRepository systemUserRepository, ISystemPermissionUserLogic permissionUserLogic, ISystemUserDapperRepository systemUserDapperRepository) : base(repository)
         {
             this._systemUserRepository = systemUserRepository;
             this._permissionUserLogic = permissionUserLogic;
             this._systemUserDapperRepository = systemUserDapperRepository;
+            _objectMapper = ServiceProvider.GetRequiredService<IObjectMapper>();
         }
 
         #endregion
@@ -57,21 +61,21 @@ namespace Ctrl.Domain.Business.Identity
                     operateStatus.Message = ResourceSystem.用户名或密码错误;
                     goto End;
                 }
-                if (data.IsFreeze)
-                {
-                    operateStatus.ResultSign = ResultSign.Error;
-                    operateStatus.Message = ResourceSystem.登录用户已冻结;
-                    goto End;
-                }
+                //if (data.IsFreeze.HasValue)
+                //{
+                //    operateStatus.ResultSign = ResultSign.Error;
+                //    operateStatus.Message = ResourceSystem.登录用户已冻结;
+                //    goto End;
+                //}
                 operateStatus.ResultSign = ResultSign.Successful;
                 operateStatus.Message = "登录成功!";
                 operateStatus.Message = string.Format(Chs.Successful, "登录成功");
                 operateStatus.Data = data;
-                if (data.FirstVisitTime == null)
-                {
-                    //更新用户最后一次登录时间
-                    await _systemUserDapperRepository.UpdateFirstVisitTime(new IdInput(data.Id.ToString()));
-                }
+                //if (data.FirstVisitTime == null)
+                //{
+                //    //更新用户最后一次登录时间
+                //    await _systemUserDapperRepository.UpdateFirstVisitTime(new IdInput(data.Id.ToString()));
+                //}
                 //更新用户最后一次登录时间
                 await _systemUserDapperRepository.UpdateLastLoginTime(new IdInput(data.Id.ToString()));
             }
@@ -92,9 +96,17 @@ namespace Ctrl.Domain.Business.Identity
         /// </summary>
         /// <param name="queryParam"></param>
         /// <returns></returns>
-        public Task<PagedResultDto<UserLoginOutput>> GetPagingSysUser(PagedAndSortedResultRequestDto queryParam)
+        public async Task<PagedResultDto<UserLoginOutput>> GetPagingSysUser(PagedAndSortedResultRequestDto queryParam)
         {
-            return GetListAsync(queryParam);
+            var MaxResultCount = queryParam.MaxResultCount;
+            var Sorting = queryParam.Sorting;
+            var SkipCount = queryParam.SkipCount;
+
+
+            var result = await GetEntityByIdAsync(Guid.Parse("741051ca-52fb-47e3-a4b3-aa290119aca6"));
+            var objmap = _objectMapper;
+           var sss= _objectMapper.Map<SystemUser,UserLoginOutput>(result);
+            return await GetListAsync(new PagedAndSortedResultRequestDto());
             //return _systemUserDapperRepository.GetPagingSysUser(queryParam);
         }
 

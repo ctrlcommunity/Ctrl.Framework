@@ -1,13 +1,9 @@
-﻿using System;
-using Ctrl.Core.Core.Http;
+﻿using Ctrl.Core.Core.Http;
 using Ctrl.Core.PetaPoco.DependencyInjection;
-using Ctrl.Core.Web.Attributes;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
-using Volo.Abp;
 
 namespace Ctrl.Web.Host.Startup
 {
@@ -39,6 +35,7 @@ namespace Ctrl.Web.Host.Startup
             //{
             //    options.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss";
             //});
+
             services.AddApplication<AppModule>();
         }
 

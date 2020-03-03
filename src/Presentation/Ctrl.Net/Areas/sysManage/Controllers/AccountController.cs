@@ -94,10 +94,11 @@ namespace Ctrl.Web.Host.Areas.sysManage.Controllers
                 {
                     UserId = info.Data.Id,
                     Code = info.Data.Code,
-                    Name = info.Data.Name,
-                    IsAdmin = info.Data.IsAdmin,
-                    RoleName = info.Data.RoleName,
-                    ImgUrl=info.Data.ImgUrl
+                    //Name = info.Data.Name,
+                    //IsAdmin = info.Data.IsAdmin,
+                    //TODO先注释
+                    //RoleName = info.Data.RoleName,
+                    //ImgUrl=info.Data.ImgUrl
                 };
                 if (prin.Code=="admin")
                 {
@@ -107,8 +108,8 @@ namespace Ctrl.Web.Host.Areas.sysManage.Controllers
                 AuthenticationExtension.SetAuthCookie(prin);
 
                 //写入日志
-                var logHandler = new LoginLogHandler(info.Data.Id.ToString(), info.Data.Code, info.Data.Name, (int)EnumLoginType.账号密码登录);
-                logHandler.WriteLog();
+                //var logHandler = new LoginLogHandler(info.Data.Id.ToString(), info.Data.Code, info.Data.Name, (int)EnumLoginType.账号密码登录);
+                //logHandler.WriteLog();
             }
             return Json(info);
         }
