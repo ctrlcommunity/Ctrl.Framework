@@ -94,11 +94,11 @@ namespace Ctrl.Web.Host.Areas.sysManage.Controllers
                 {
                     UserId = info.Data.Id,
                     Code = info.Data.Code,
-                    //Name = info.Data.Name,
-                    //IsAdmin = info.Data.IsAdmin,
+                    Name = info.Data.Name,
+                    IsAdmin = info.Data.IsAdmin,
                     //TODO先注释
                     //RoleName = info.Data.RoleName,
-                    //ImgUrl=info.Data.ImgUrl
+                    ImgUrl =info.Data.ImgUrl
                 };
                 if (prin.Code=="admin")
                 {

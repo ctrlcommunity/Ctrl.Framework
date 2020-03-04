@@ -4,13 +4,14 @@ using Ctrl.Domain.Models.Dtos.Logs;
 using Ctrl.Domain.Models.Entities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Volo.Abp.DependencyInjection;
 
 namespace Ctrl.Domain.Business.Log
 {
     /// <summary>
     ///     登录日志业务逻辑接口
     /// </summary>
-    public interface ISystemLoginLogLogic :IAsyncLogic<SystemLoginLog>
+    public interface ISystemLoginLogLogic :IAsyncLogic<SystemLoginLog>,IScopedDependency
     {
         /// <summary>
         ///     分页查询登录信息

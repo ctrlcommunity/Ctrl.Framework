@@ -6,13 +6,14 @@ using Ctrl.Domain.Models.Entities;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Volo.Abp.DependencyInjection;
 
 namespace Ctrl.Domain.DataAccess.Log
 {
     /// <summary>
     ///     登录日志数据访问
     /// </summary>
-    public class SystemLoginLogRepository: PetaPocoRepository<SystemLoginLog>,ISystemLoginLogRepository
+    public class SystemLoginLogRepository: PetaPocoRepository<SystemLoginLog>,ISystemLoginLogRepository, IScopedDependency
     {
         /// <summary>
         ///     获取一个月数据

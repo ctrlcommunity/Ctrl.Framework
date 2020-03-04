@@ -26,7 +26,7 @@ namespace Ctrl.Domain.Business.Permission
     public class SystemPermissionLogic : CrudAppService<SystemPermission, UserLoginOutput, Guid>, ISystemPermissionLogic, IScopedDependency
     {
         #region 构造函数
-        private readonly ISystemPermissionRepository _systemPermissionRepository;
+        private readonly ISystemPermissionDapperRepository _systemPermissionDapperRepository;
         private readonly ISystemMenuButtonDapperRepository _systemMenuButtonDapperRepository;
         private readonly ISystemMenuRepository _menuRepository;
         private readonly ISystemUserRepository _userRepository;
@@ -34,9 +34,9 @@ namespace Ctrl.Domain.Business.Permission
         private readonly ISystemMenuButtonRepository _buttonRepository;
         private readonly IMemoryCache _cache;
         public const string USER_MENU_CACHE_KEY = "_USERMENU_";
-        public SystemPermissionLogic(IRepository<SystemPermission, Guid> repository, ISystemPermissionRepository systemPermissionRepository, ISystemMenuButtonDapperRepository systemMenuButtonDapperRepository, ISystemMenuRepository menuRepository, ISystemUserRepository userRepository, ISystemPermissionUserRepository permissionUserRepository, ISystemMenuButtonRepository buttonRepository, IMemoryCache cache) : base(repository)
+        public SystemPermissionLogic(IRepository<SystemPermission, Guid> repository, ISystemPermissionDapperRepository systemPermissionDapperRepository, ISystemMenuButtonDapperRepository systemMenuButtonDapperRepository, ISystemMenuRepository menuRepository, ISystemUserRepository userRepository, ISystemPermissionUserRepository permissionUserRepository, ISystemMenuButtonRepository buttonRepository, IMemoryCache cache) : base(repository)
         {
-            _systemPermissionRepository = systemPermissionRepository;
+            _systemPermissionDapperRepository = systemPermissionDapperRepository;
             _systemMenuButtonDapperRepository = systemMenuButtonDapperRepository;
             _menuRepository = menuRepository;
             _userRepository = userRepository;
@@ -70,7 +70,7 @@ namespace Ctrl.Domain.Business.Permission
                         treeEntities = (await _menuRepository.GetAllMenu(true, true)).ToList();
                         return treeEntities;
                     }
-                    treeEntities = (await _systemPermissionRepository.GetSystemPermissionMenuByUserId(userInfo.Id.ToString())).ToList();
+                    treeEntities = (await _systemPermissionDapperRepository.GetSystemPermissionMenuByUserId(userInfo.Id.ToString())).ToList();
                 }
             }
             return treeEntities;
@@ -86,7 +86,7 @@ namespace Ctrl.Domain.Business.Permission
             {
                 //获取所有菜单
                 var getMenuAll = (await _menuRepository.GetAllMenu()).ToList();
-                IEnumerable<SystemPermission> getPermissionByMaster = (await _systemPermissionRepository.GetPermissionByPrivilegeMasterValue(input)).ToList();
+                IEnumerable<SystemPermission> getPermissionByMaster = (await _systemPermissionDapperRepository.GetPermissionByPrivilegeMasterValue(input)).ToList();
                 List<TreeEntity> treeList = new List<TreeEntity>();
                 foreach (TreeEntity tree in getMenuAll)
                 {
@@ -122,7 +122,7 @@ namespace Ctrl.Domain.Business.Permission
                     PrivilegeMenuId = input.PrivilegeMenuId
                 }).ToList();
                 //删除该角色的权限信息
-                await _systemPermissionRepository.DeletePermissionByPrivilegeMasterValue(input.PrivilegeAccess, input.PrivilegeMasterValue, input.PrivilegeMenuId);
+                await _systemPermissionDapperRepository.DeletePermissionByPrivilegeMasterValue(input.PrivilegeAccess, input.PrivilegeMasterValue, input.PrivilegeMenuId);
                 if (input.PrivilegeMaster == EnumPrivilegeMaster.人员)
                 {
                     //删除对应人员数据
@@ -150,7 +150,7 @@ namespace Ctrl.Domain.Business.Permission
                     operateStatus.Message = Chs.Successful;
                     return operateStatus;
                 }
-                await _systemPermissionRepository.InsertMultiplePetaPocoAsync(systemPermissions);
+               // await _systemPermissionDapperRepository.InsertMultiplePetaPocoAsync(systemPermissions);
                 operateStatus.ResultSign = ResultSign.Successful;
                 operateStatus.Message = Chs.Successful;
                 return operateStatus;
@@ -192,7 +192,7 @@ namespace Ctrl.Domain.Business.Permission
         /// <returns></returns>
         public async Task<IEnumerable<TreeEntity>> GetMenuHavePermissionByPrivilegeMasterValue(GetMenuHavePermissionByPrivilegeMasterValueInput input)
         {
-            var treeList = await _systemPermissionRepository.GetMenuHavePermissionByPrivilegeMasterValue(input);
+            var treeList = await _systemPermissionDapperRepository.GetMenuHavePermissionByPrivilegeMasterValue(input);
             return treeList;
         }
         /// <summary>
@@ -202,7 +202,7 @@ namespace Ctrl.Domain.Business.Permission
         /// <returns></returns>
         public Task<IEnumerable<SystemPermission>> GetPermissionByPrivilegeMasterValue(GetPermissionByPrivilegeMasterValueInput input)
         {
-            return _systemPermissionRepository.GetPermissionByPrivilegeMasterValue(input);
+            return _systemPermissionDapperRepository.GetPermissionByPrivilegeMasterValue(input);
         }
         #endregion
 

@@ -1,6 +1,7 @@
 using System;
 using Ctrl.Core.Entities;
 using Ctrl.Core.PetaPoco;
+using Volo.Abp.Domain.Entities;
 using Volo.Abp.MultiTenancy;
 
 namespace Ctrl.Domain.Models.Entities
@@ -10,12 +11,12 @@ namespace Ctrl.Domain.Models.Entities
     /// </summary>
     [TableName("Sys_Article")]
     [PrimaryKey("ArticleId")]
-    public class SystemArticle: EntityBase, IMultiTenant
+    public class SystemArticle: Entity<Guid>
     {
-        /// <summary>
-        /// 主键编码
-        /// </summary>
-        public Guid ArticleId { get; set; }
+        ///// <summary>
+        ///// 主键编码
+        ///// </summary>
+        //public Guid ArticleId { get; set; }
 
         /// <summary>
         /// 标题
@@ -82,6 +83,5 @@ namespace Ctrl.Domain.Models.Entities
         /// </summary>
         public string SeoKey { get; set; }
 
-        public Guid? TenantId { get; set; }
     }
 }

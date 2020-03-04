@@ -14,9 +14,11 @@ namespace Ctrl.Core.Web.Attributes
         public const string USER_PERMITS_CACHE_KEY = "_UPERMITS_";
         public const string USER_PERMITSAj_CACHE_KEY = "_UPERMITSAj_";
         IMemoryCache _cache;
-        public WebPermissionFilter(IMemoryCache cache)
+        ISystemPermissionDapperRepository _systemPermissionDapper;
+        public WebPermissionFilter(IMemoryCache cache, ISystemPermissionDapperRepository systemPermissionDapper)
         {
             this._cache = cache;
+            this._systemPermissionDapper = systemPermissionDapper;
         }
 
         protected override bool HasExecutePermission(ActionExecutingContext filterContext, string Area, string Controller, string Action) {
@@ -25,12 +27,12 @@ namespace Ctrl.Core.Web.Attributes
                 return true;
             else {
                 List<HavePermisionOutput> usePermits = null;
-                ISystemPermissionRepository systemPermission = new SystemPermissionRepository();
+                //ISystemPermissionDapperRepository systemPermission = new SystemPermissionDapperRepository();
                 string cacheKey = USER_PERMITS_CACHE_KEY + userinfo.UserId.ToString();
                 usePermits = this._cache.Get<List<HavePermisionOutput>>(cacheKey);
                 if (usePermits == null)
                 {
-                    usePermits = systemPermission.GetHavePermisionByUserId(userinfo.UserId.ToString()).Result.ToList();
+                    usePermits = _systemPermissionDapper.GetHavePermisionByUserId(userinfo.UserId.ToString()).Result.ToList();
                 }
                  _cache.Set(cacheKey, usePermits, TimeSpan.FromMinutes(10));//缓存10分钟，10分钟后重新加载
                 if (!usePermits.Any(a => Area.Equals(a.Area, StringComparison.OrdinalIgnoreCase)&&Controller.Equals(a.Controller,StringComparison.OrdinalIgnoreCase)&&Action.Equals(a.Action,StringComparison.OrdinalIgnoreCase)))
@@ -53,7 +55,7 @@ namespace Ctrl.Core.Web.Attributes
                 if (usePermits == null)
                 {
                     ISystemPermissionRepository systemPermission = new SystemPermissionRepository();
-                    usePermits = systemPermission.GetHavePermisionStrByUserId(userId).Result.ToList();
+                    usePermits = _systemPermissionDapper.GetHavePermisionStrByUserId(userId).Result.ToList();
                     _cache.Set(cacheKey, usePermits, TimeSpan.FromMinutes(15));//缓存15分钟，15分钟后重新加载
                 }
                 foreach (var permit in permissionCodes)

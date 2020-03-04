@@ -4,21 +4,25 @@ using System.Text;
 using System.Threading.Tasks;
 using Ctrl.Core.DataAccess;
 using Ctrl.Core.Entities.Tree;
+using Ctrl.Core.EntityFrameworkCore.EntityFrameworkCore;
 using Ctrl.Core.PetaPoco;
 using Ctrl.Domain.Models.Dtos;
 using Ctrl.Domain.Models.Dtos.Permission;
 using Ctrl.Domain.Models.Entities;
 using Ctrl.Domain.Models.Enums;
 using Ctrl.System.Models.Entities;
+using Dapper;
 using Volo.Abp.DependencyInjection;
+using Volo.Abp.Domain.Repositories.Dapper;
+using Volo.Abp.EntityFrameworkCore;
 
 namespace Ctrl.System.DataAccess
 {
-    /// <summary>
-    ///     权限记录表数据访问接口实现
-    /// </summary>
-    public class SystemPermissionRepository : PetaPocoRepository<SystemPermission>, ISystemPermissionRepository, IScopedDependency
+    public class SystemPermissionDapperRepository : DapperRepository<CtrlDbContext>, ISystemPermissionDapperRepository, IScopedDependency
     {
+        public SystemPermissionDapperRepository(IDbContextProvider<CtrlDbContext> dbContextProvider) : base(dbContextProvider)
+        {
+        }
 
         /// <summary>
         ///     根据角色id获取具有的菜单信息
@@ -38,7 +42,8 @@ namespace Ctrl.System.DataAccess
             {
                 privilegeAccess = (byte)input.PrivilegeAccess,
                 privilegeMasterValue = input.PrivilegeMasterValue
-                ,privilegeMenuId = input.PrivilegeMenuId
+                ,
+                privilegeMenuId = input.PrivilegeMenuId
             });
         }
         /// <summary>
@@ -91,7 +96,8 @@ namespace Ctrl.System.DataAccess
                                                 menu.icon 
                                             ORDER BY
 	                                            menu.OrderNo");
-            return SqlMapperUtil.Query<TreeEntity>(sql.ToString(),
+
+            return DbConnection.QueryAsync<TreeEntity>(sql.ToString(),
                 new { privilegeAccess = (byte)EnumPrivilegeAccess.菜单, isShowMenu = true, isFreeze = false, userId });
         }
         /// <summary>
@@ -134,7 +140,7 @@ namespace Ctrl.System.DataAccess
 	                                            menu.Code
                                             FROM
 	                                            Sys_MenuButton menu
-	                                            LEFT JOIN Sys_permission sper ON sper.PrivilegeAccessValue = menu.MenuButtonId
+	                                            LEFT JOIN Sys_permission sper ON sper.PrivilegeAccessValue = menu.Id
 	                                            LEFT JOIN Sys_permissionuser speruser ON sper.PrivilegeMasterValue = speruser.PrivilegeMasterValue 
 												where
                                                sper.PrivilegeAccess = @privilegeAccess 
@@ -142,7 +148,7 @@ namespace Ctrl.System.DataAccess
                                             GROUP BY
 												menu.Code
                       ");
-            return SqlMapperUtil.SqlWithParams<string>(sql.ToString(),
+            return DbConnection.QueryAsync<string>(sql.ToString(),
                 new { privilegeAccess = (byte)EnumPrivilegeAccess.菜单按钮, userId });
         }
 
@@ -165,5 +171,16 @@ order by OrderNo");
               });
 
         }
+
+    }
+
+
+
+    /// <summary>
+    ///     权限记录表数据访问接口实现
+    /// </summary>
+    public class SystemPermissionRepository : PetaPocoRepository<SystemPermission>, ISystemPermissionRepository, IScopedDependency
+    {
+
     }
 }

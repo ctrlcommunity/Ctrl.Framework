@@ -4,10 +4,11 @@ using Ctrl.Core.Entities.Paging;
 using Ctrl.Domain.DataAccess.Log;
 using Ctrl.Domain.Models.Dtos.Logs;
 using Ctrl.Domain.Models.Entities;
+using Volo.Abp.DependencyInjection;
 
 namespace Ctrl.Domain.Business.Log
 {
-    public class SystemOperationLogLogic : AsyncLogic<SystemOperateLog>, ISystemOperationLogLogic
+    public class SystemOperationLogLogic : AsyncLogic<SystemOperateLog>, ISystemOperationLogLogic,IScopedDependency
     {
         #region 构造函数
 

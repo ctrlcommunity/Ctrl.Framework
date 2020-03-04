@@ -7,10 +7,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Volo.Abp.DependencyInjection;
 
 namespace Ctrl.Domain.Business.Log
 {
-    public class SystemExceptionLogLogic : AsyncLogic<SystemExceptionLog>, ISystemExceptionLogLogic
+    public class SystemExceptionLogLogic : AsyncLogic<SystemExceptionLog>, ISystemExceptionLogLogic, IScopedDependency
     {
         #region 构造函数
         private readonly ISystemExceptionLogRepository _exceptionLogRepository;

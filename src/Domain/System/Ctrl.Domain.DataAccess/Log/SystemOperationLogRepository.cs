@@ -5,13 +5,14 @@ using Ctrl.Core.Entities.Paging;
 using Ctrl.Core.PetaPoco;
 using Ctrl.Domain.Models.Dtos.Logs;
 using Ctrl.Domain.Models.Entities;
+using Volo.Abp.DependencyInjection;
 
 namespace Ctrl.Domain.DataAccess.Log
 {
     /// <summary>
     ///     操作日志数据访问实现
     /// </summary>
-    public class SystemOperationLogRepository : PetaPocoRepository<SystemOperateLog>, ISystemOperationLogRepository
+    public class SystemOperationLogRepository : PetaPocoRepository<SystemOperateLog>, ISystemOperationLogRepository,IScopedDependency
     {
         public Task<PagedResults<SystemOperateLog>> GetPagingOperationLog(SystemLoginLogPagingInput param)
         {

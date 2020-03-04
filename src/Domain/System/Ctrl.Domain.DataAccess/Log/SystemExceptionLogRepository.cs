@@ -5,13 +5,14 @@ using Ctrl.Domain.Models.Dtos.Logs;
 using Ctrl.Domain.Models.Entities;
 using System;
 using System.Threading.Tasks;
+using Volo.Abp.DependencyInjection;
 
 namespace Ctrl.Domain.DataAccess.Log
 {
     /// <summary>
     ///     异常日志数据访问层实现
     /// </summary>
-    public class SystemExceptionLogRepository: PetaPocoRepository<SystemExceptionLog>,ISystemExceptionLogRepository
+    public class SystemExceptionLogRepository: PetaPocoRepository<SystemExceptionLog>,ISystemExceptionLogRepository, IScopedDependency
     {
         /// <summary>
         ///     异常信息分页
@@ -37,7 +38,7 @@ namespace Ctrl.Domain.DataAccess.Log
             {
                 strWhere += $" AND CreateTime<='{param.endTime}' ";
             }
-             string sql = $"select * from Sys_ExceptionLog where 1=1 {strWhere}";
+            string sql = $"select * from Sys_ExceptionLog where 1=1 {strWhere}";
             return SqlMapperUtil.PagingQuery<SystemExceptionLog>(sql, param);
         }
     }

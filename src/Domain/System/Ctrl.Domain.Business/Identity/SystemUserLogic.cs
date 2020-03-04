@@ -30,14 +30,13 @@ namespace Ctrl.Domain.Business.Identity
         private readonly ISystemUserRepository _systemUserRepository;
         private readonly ISystemPermissionUserLogic _permissionUserLogic;
         private readonly ISystemUserDapperRepository _systemUserDapperRepository;
-        private readonly IObjectMapper _objectMapper;
 
         public SystemUserLogic(IRepository<SystemUser, Guid> repository, ISystemUserRepository systemUserRepository, ISystemPermissionUserLogic permissionUserLogic, ISystemUserDapperRepository systemUserDapperRepository) : base(repository)
         {
             this._systemUserRepository = systemUserRepository;
             this._permissionUserLogic = permissionUserLogic;
             this._systemUserDapperRepository = systemUserDapperRepository;
-            _objectMapper = ServiceProvider.GetRequiredService<IObjectMapper>();
+        
         }
 
         #endregion
@@ -61,12 +60,12 @@ namespace Ctrl.Domain.Business.Identity
                     operateStatus.Message = ResourceSystem.用户名或密码错误;
                     goto End;
                 }
-                //if (data.IsFreeze.HasValue)
-                //{
-                //    operateStatus.ResultSign = ResultSign.Error;
-                //    operateStatus.Message = ResourceSystem.登录用户已冻结;
-                //    goto End;
-                //}
+                if (data.IsFreeze.HasValue)
+                {
+                    operateStatus.ResultSign = ResultSign.Error;
+                    operateStatus.Message = ResourceSystem.登录用户已冻结;
+                    goto End;
+                }
                 operateStatus.ResultSign = ResultSign.Successful;
                 operateStatus.Message = "登录成功!";
                 operateStatus.Message = string.Format(Chs.Successful, "登录成功");
@@ -96,18 +95,9 @@ namespace Ctrl.Domain.Business.Identity
         /// </summary>
         /// <param name="queryParam"></param>
         /// <returns></returns>
-        public async Task<PagedResultDto<UserLoginOutput>> GetPagingSysUser(PagedAndSortedResultRequestDto queryParam)
+        public Task<PagedResultDto<UserLoginOutput>> GetPagingSysUser(PagedAndSortedResultRequestDto queryParam)
         {
-            var MaxResultCount = queryParam.MaxResultCount;
-            var Sorting = queryParam.Sorting;
-            var SkipCount = queryParam.SkipCount;
-
-
-            var result = await GetEntityByIdAsync(Guid.Parse("741051ca-52fb-47e3-a4b3-aa290119aca6"));
-            var objmap = _objectMapper;
-           var sss= _objectMapper.Map<SystemUser,UserLoginOutput>(result);
-            return await GetListAsync(new PagedAndSortedResultRequestDto());
-            //return _systemUserDapperRepository.GetPagingSysUser(queryParam);
+            return GetListAsync(new PagedAndSortedResultRequestDto());
         }
 
         /// <summary>

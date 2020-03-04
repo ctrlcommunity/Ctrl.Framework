@@ -6,13 +6,14 @@ using Ctrl.Domain.Models.Entities;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Volo.Abp.DependencyInjection;
 
 namespace Ctrl.Domain.Business.Log
 {
     /// <summary>
     ///     登录日志业务逻辑实现
     /// </summary>
-    public class SystemLoginLogLogic : AsyncLogic<SystemLoginLog>, ISystemLoginLogLogic
+    public class SystemLoginLogLogic : AsyncLogic<SystemLoginLog>, ISystemLoginLogLogic, IScopedDependency
     {
         #region 构造函数
         private readonly ISystemLoginLogRepository _loginLogRepository;

@@ -1,18 +1,17 @@
 using Ctrl.Core.DataAccess;
 using Ctrl.Core.Entities.Paging;
 using Ctrl.Core.PetaPoco;
-using Ctrl.Domain.Models.Dtos;
 using Ctrl.Domain.Models.Dtos.Article;
-using Ctrl.System.Models.Entities;
-using System.Threading.Tasks;
 using Ctrl.Domain.Models.Entities;
+using System.Threading.Tasks;
+using Volo.Abp.DependencyInjection;
 
 namespace Ctrl.System.DataAccess
 {
     /// <summary>
     ///     文章数据访问接口实现
     /// </summary>
-    public class SystemArticleRepository : PetaPocoRepository<SystemArticle>, ISystemArticleRepository
+    public class SystemArticleRepository : PetaPocoRepository<SystemArticle>, ISystemArticleRepository, IScopedDependency
     {
         /// <summary>
         ///     获取文章分页

@@ -55,9 +55,9 @@ namespace Ctrl.Net.Areas.sysManage.Controllers
         [HttpPost]
         [CreateBy("冯辉")]
         [Description("用户列表-方法-列表-获取用户列表")]
-        public async Task<JsonResult> GetPagingUser(PagedAndSortedResultRequestDto queryParam) {
+        public Task<PagedResultDto<UserLoginOutput>> GetPagingUser(PagedAndSortedResultRequestDto queryParam) {
             //return JsonForGridPaging(await _systemUserLogic.GetPagingSysUser(queryParam));
-            return Json(await _systemUserLogic.GetPagingSysUser(queryParam));
+            return _systemUserLogic.GetPagingSysUser(queryParam);
         }
         [HttpPost]
         [CreateBy("冯辉")]

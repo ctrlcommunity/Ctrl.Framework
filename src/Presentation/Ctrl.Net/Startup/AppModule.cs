@@ -1,6 +1,7 @@
 ﻿using System;
 using Ctrl.Core.Core.Http;
 using Ctrl.Core.EntityFrameworkCore.EntityFrameworkCore;
+using Ctrl.Domain.Business;
 using Ctrl.Domain.Models;
 using Ctrl.Domain.Models.Dtos.Identity;
 using Ctrl.System.Business;
@@ -37,13 +38,13 @@ namespace Ctrl.Web.Host.Startup
         typeof(AbpAspNetCoreMultiTenancyModule),
         typeof(CtrlEntityFrameworkCoreModule),
         typeof(AbpDddApplicationModule),
-             // typeof(AbpAutoMapperModule),
+        typeof(AbpAutoMapperModule),
         typeof(AbpAutofacModule),
+        typeof(AbpDddApplicationModule),
+        typeof(CtrlDomainBusinessModule),
         typeof(AbpDapperModule))]
     public class AppModule:AbpModule
     {
-   
-
         public override void OnApplicationInitialization(ApplicationInitializationContext context)
         {
             var app = context.GetApplicationBuilder();
@@ -58,7 +59,7 @@ namespace Ctrl.Web.Host.Startup
             {
                 ContentTypeProvider = provider
             });
-            
+           
             app.UseMultiTenancy();
             app.UseStaticHttpContext();
             app.UseCookiePolicy();
@@ -75,7 +76,6 @@ namespace Ctrl.Web.Host.Startup
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
             context.Services.AddAssemblyOf<ISystemSqlLogLogic>();
-          
             context.Services.AddAssemblyOf<ISystemSqlLogRepository>();
            // context.Services.AddAutoMapperObjectMapper<AppModule>();
             Configure<AbpMultiTenancyOptions>(options =>
@@ -89,30 +89,18 @@ namespace Ctrl.Web.Host.Startup
                 options.TenantResolvers.Add(new HeaderTenantResolveContributor());
                 options.TenantResolvers.Add(new CookieTenantResolveContributor());
             });
-            // context.Services.AddApplication<AppModule>();
-            // ConfigureAutoMapper();
-            context.Services.Insert(0,
-                ServiceDescriptor.Singleton<IConfigureOptions<RazorViewEngineOptions>>(
-                    new ConfigureOptions<RazorViewEngineOptions>(options =>
-                        {
-                        
-                        
-                        }
-                    )
-                )
-            );
+            ConfigureAutoMapper();
             context.Services.GetSingletonInstance<IObjectAccessor<IServiceProvider>>();
         }
-   
 
-        //private void ConfigureAutoMapper()
-        //{
-        //    Configure<AbpAutoMapperOptions>(options =>
-        //    {
-        //        options.AddMaps<AppModule>(validate: true);
-        //    });
+        private void ConfigureAutoMapper()
+        {
+            Configure<AbpAutoMapperOptions>(options =>
+            {
+                options.AddMaps<AppModule>(validate: true);
+            });
 
-        //}
+        }
 
 
     }

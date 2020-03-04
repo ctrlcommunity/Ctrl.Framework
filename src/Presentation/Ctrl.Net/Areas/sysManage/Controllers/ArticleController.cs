@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel;
 using System.Threading.Tasks;
 using Ctrl.Domain.Models.Entities;
+using Volo.Abp.Application.Dtos;
 
 namespace Ctrl.Net.Areas.sysManage.Controllers
 {
@@ -20,15 +21,11 @@ namespace Ctrl.Net.Areas.sysManage.Controllers
     public class  ArticleController : BaseController
     {
         #region 构造函数
-
         private readonly ISystemArticleLogic _systemArticleLogic;
-
-
         public ArticleController(ISystemArticleLogic systemArticleLogic)
         {
             _systemArticleLogic = systemArticleLogic;
         }
-
         #endregion
 
         #region 视图
@@ -54,7 +51,7 @@ namespace Ctrl.Net.Areas.sysManage.Controllers
             SystemArticle Article = new SystemArticle();
             if (!input.Id.IsNullOrEmptyGuid())
             {
-                Article = await _systemArticleLogic.GetById(input.Id);
+              //  Article = await _systemArticleLogic.GetById(input.Id);
             }
             return View(Article);
         }
@@ -69,7 +66,8 @@ namespace Ctrl.Net.Areas.sysManage.Controllers
         [Description("应用系统-文章-方法-获取文章")]
         public async Task<JsonResult> GetList()
         {
-            return Json(await _systemArticleLogic.GetAllEnumerableAsync());
+            return null;
+            // return Json(await _systemArticleLogic.GetAllEnumerableAsync());
         }
 
         /// <summary>
@@ -78,9 +76,10 @@ namespace Ctrl.Net.Areas.sysManage.Controllers
         /// <returns></returns>
         [CreateBy("冯辉")]
         [Description("应用系统-文章-方法-获取文章列表")]
-        public async Task<JsonResult> GetPagingArticle(SystemArticlePagingInput param)
+        //public async Task<JsonResult> GetPagingArticle(SystemArticlePagingInput param)
+        public async Task<PagedResultDto<SystemArticleOutput>> GetPagingArticle(PagedAndSortedResultRequestDto param)
         {
-            return JsonForGridPaging(await _systemArticleLogic.GetPagingArticle(param));
+            return await _systemArticleLogic.GetPagingArticle(param);
         }
 
 

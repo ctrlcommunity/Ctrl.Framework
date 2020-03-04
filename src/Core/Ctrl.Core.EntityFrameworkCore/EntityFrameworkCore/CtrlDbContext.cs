@@ -14,6 +14,8 @@ namespace Ctrl.Core.EntityFrameworkCore.EntityFrameworkCore
 
         public DbSet<SystemPermission> Permissions { get; set; }
 
+        public DbSet<SystemArticle> SystemArticles { get; set; }
+
         public CtrlDbContext(DbContextOptions<CtrlDbContext> options):base(options)
         {
         }
@@ -36,6 +38,11 @@ namespace Ctrl.Core.EntityFrameworkCore.EntityFrameworkCore
             builder.Entity<SystemPermission>(b =>
             {
                 b.ToTable("Sys_Permission");
+                b.ConfigureByConvention();
+            });
+            builder.Entity<SystemArticle>(b =>
+            {
+                b.ToTable("Sys_Article");
                 b.ConfigureByConvention();
             });
         }

@@ -108,7 +108,7 @@ ctrlGrid.prototype = {
     },
     //内容填充
     createTableBody: function (pn) {
-       var index= layer.load(1);
+        var index= layer.load(1);
         var columns = _op.settings.columns;
         var self = this;
         self.settings.pageindex = pn;
@@ -118,22 +118,24 @@ ctrlGrid.prototype = {
         self.params.Sord = self.settings.Sord;
         _.assign(self.params, self.settings.Swhere);
         $post(_op.settings.url, $.param(self.params)).then(function (json) {
-            self.settings.dataall=json;
-            self.settings.totalpage = json.total;
+            self.settings.dataall = json.items;
+            self.settings.totalpage = json.totalCount / self.settings.pagerow;
+            if ((json.totalCount % self.settings.pagerow) !== 0)
+                self.settings.totalpage++;
+            self.settings.totalpage = parseInt(self.settings.totalpage)
             var rowsdata = "";
-            if (!self.settings.pagination) {
-                json.rows = json;
-            }
-            _.forEach(json.rows, function (data, i) {
+            //if (!self.settings.pagination) {
+            //    json.rows = json.items;
+            //}
+            json.rows = json.items;
+            _.forEach(json.items, function (data, i) {
                 rowsdata += "<tr data-id=" + i + ">";
-
                 _.forEach(columns, function (column, j) {
                     if (j==0) {
                         if (self.settings.Serial) {
                             rowsdata += `<td style='width:10px'>${(i + 1) + (self.params.pagerow * (pn - 1))}</td>`;
                         }
                     }
-
                     if (!column.hidden) {
                         if (column.field === 'ck') rowsdata += '<td  style="text-align: center;width:50px" ><input name="chk"  type="checkbox"></td>';
                         else {
@@ -159,8 +161,6 @@ ctrlGrid.prototype = {
             return false;
         }
         var footHtml = '          <div class="pull-right"> <nav aria-label="..."> <ul class="pager">';
-        //footHtml += "<span id='firstPage'><a disabled='disabled' >首页</a></span>";
-        //footHtml += " <span id='UpPage'><a disabled='disabled'>上一页</a></span>";
         footHtml += '<li><a id="UpPage">&laquo;上一页</a></li>';
         var self = this;
         if (self.settings.pageindex <= self.settings.totalpage) {
@@ -281,24 +281,8 @@ ctrlGrid.prototype = {
         var jsonArr=[];
         var $chkBoxes = $('table').find('input:checked');
         $($chkBoxes).each(function () {
-            jsonArr.push(self.settings.dataall.rows[$(this).parent().parent().attr("data-id")]);
+            jsonArr.push(self.settings.dataall[$(this).parent().parent().attr("data-id")]);
         });
-        // var jsonArr = [];
-        // //遍历被选中的checkbox集
-        // $($chkBoxes).each(function () {
-        //     var jsonstr = "{";
-        //     $('td', $(this).parent().parent()).each(function (index, td) {
-        //         if (!($(td).attr("data-field") === undefined)) {
-        //             jsonstr += `"${$(td).attr("data-field")}":"${$(td).text()}",`;
-        //         }
-        //     });
-        //     jsonstr = jsonstr.substring(0, jsonstr.length - 1);
-        //     jsonstr += "}";
-        //     jsonstr = jsonstr.replace(/\n/g, "").replace(/\r/g, "");//去掉字符串中的换行符
-        //     jsonstr = jsonstr.replace(/\n/g, "").replace(/\s|\xA0/g, "");//去掉字符串中的所有空格
-        //     jsonArr.push(JSON.parse(jsonstr));
-
-        // });
         callback(jsonArr);
     }, registerAllcheck: function () {
         $("table").delegate('#allcheck', "click", function () {
@@ -317,7 +301,7 @@ ctrlGrid.prototype = {
         var self = this;
         $("table").delegate("td", "click", function () {
             $("tr").removeClass("ctrltable-selected");
-            obj=self.settings.dataall.rows[$(this).parent().attr("data-id")];
+            obj=self.settings.dataall[$(this).parent().attr("data-id")];
             $(this).parent().addClass("ctrltable-selected");
             self.settings.onSelectRow(obj);
         });
