@@ -9,6 +9,7 @@ using Ctrl.Domain.Models.Entities;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel;
 using System.Threading.Tasks;
+using Volo.Abp.Application.Dtos;
 
 namespace Ctrl.Net.Areas.SysManage.Controllers
 {
@@ -137,9 +138,9 @@ namespace Ctrl.Net.Areas.SysManage.Controllers
 
         [CreateBy("冯辉")]
         [Description("错误日志-方法-列表-获取所有异常日志信息")]
-        public async Task<JsonResult> GetPagingExceptionLog(SystemLoginLogPagingInput queryParam)
+        public async Task<PagedResultDto<SystemExceptionLogDto>> GetPagingExceptionLog(PagedAndSortedResultRequestDto queryParam)
         {
-            return JsonForGridPaging(await _exceptionLogLogic.PagingExceptionLogQuery(queryParam));
+            return await _exceptionLogLogic.PagingExceptionLogQuery(queryParam);
         }
         /// <summary>
         ///     错误日志详情
@@ -150,7 +151,7 @@ namespace Ctrl.Net.Areas.SysManage.Controllers
             SystemExceptionLog exceptionLog = new SystemExceptionLog();
             if (!input.Id.IsNullOrEmptyGuid())
             {
-                exceptionLog = await _exceptionLogLogic.GetById(input.Id);
+                //exceptionLog = await _exceptionLogLogic.GetById(input.Id);
             }
             return View(exceptionLog);
         }

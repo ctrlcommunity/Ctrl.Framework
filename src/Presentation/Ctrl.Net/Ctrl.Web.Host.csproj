@@ -18,7 +18,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Core\Ctrl.Core.Core\Ctrl.Core.Core.csproj" />
     <ProjectReference Include="..\..\Core\Ctrl.Core.Web\Ctrl.Core.Web.csproj" />
-    <ProjectReference Include="..\..\Domain\System\Ctrl.Domain.Business\Ctrl.Domain.Business.csproj" />
+    <ProjectReference Include="..\..\Domain\System\Ctrl.Domain.Business\Ctrl.Domain.Business.csproj" /> 
     <ProjectReference Include="..\..\Domain\System\Ctrl.Domain.Models\Ctrl.Domain.Models.csproj" />
   </ItemGroup>
 

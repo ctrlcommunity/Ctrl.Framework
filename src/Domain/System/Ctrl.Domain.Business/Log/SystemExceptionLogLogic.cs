@@ -7,27 +7,37 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Volo.Abp.Application.Dtos;
+using Volo.Abp.Application.Services;
 using Volo.Abp.DependencyInjection;
+using Volo.Abp.Domain.Repositories;
 
 namespace Ctrl.Domain.Business.Log
 {
-    public class SystemExceptionLogLogic : AsyncLogic<SystemExceptionLog>, ISystemExceptionLogLogic, IScopedDependency
+    public class SystemExceptionLogLogic : CrudAppService<SystemExceptionLog, SystemExceptionLogDto,Guid>, ISystemExceptionLogLogic, IScopedDependency
     {
-        #region 构造函数
-        private readonly ISystemExceptionLogRepository _exceptionLogRepository;
-        public SystemExceptionLogLogic(ISystemExceptionLogRepository exceptionLogRepository)
-            : base(exceptionLogRepository)
+        public SystemExceptionLogLogic(IRepository<SystemExceptionLog, Guid> repository) : base(repository)
         {
-            this._exceptionLogRepository = exceptionLogRepository;
         }
+        #region 构造函数
+        //private readonly ISystemExceptionLogRepository _exceptionLogRepository;
+        //public SystemExceptionLogLogic(ISystemExceptionLogRepository exceptionLogRepository)
+        //    : base(exceptionLogRepository)
+        //{
+        //    this._exceptionLogRepository = exceptionLogRepository;
+        //}
+
+
+
+
         /// <summary>
         ///     异常信息分页
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>
-        public Task<PagedResults<SystemExceptionLog>> PagingExceptionLogQuery(SystemLoginLogPagingInput query)
+        public Task<PagedResultDto<SystemExceptionLogDto>> PagingExceptionLogQuery(PagedAndSortedResultRequestDto query)
         {
-            return  _exceptionLogRepository.PagingExceptionLogQuery(query);
+            return GetListAsync(query);
         }
         #endregion
     }

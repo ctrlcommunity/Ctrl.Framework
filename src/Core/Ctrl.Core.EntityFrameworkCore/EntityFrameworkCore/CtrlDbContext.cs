@@ -16,6 +16,8 @@ namespace Ctrl.Core.EntityFrameworkCore.EntityFrameworkCore
 
         public DbSet<SystemArticle> SystemArticles { get; set; }
 
+        public DbSet<SystemExceptionLog> SystemExceptionLogs { get; set; }
+
         public CtrlDbContext(DbContextOptions<CtrlDbContext> options):base(options)
         {
         }
@@ -43,6 +45,12 @@ namespace Ctrl.Core.EntityFrameworkCore.EntityFrameworkCore
             builder.Entity<SystemArticle>(b =>
             {
                 b.ToTable("Sys_Article");
+                b.ConfigureByConvention();
+            });
+
+            builder.Entity<SystemExceptionLog>(b =>
+            {
+                b.ToTable("Sys_ExceptionLog");
                 b.ConfigureByConvention();
             });
         }

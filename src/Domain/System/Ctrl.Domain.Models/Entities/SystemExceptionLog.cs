@@ -1,6 +1,6 @@
-﻿using Ctrl.Core.Entities;
-using Ctrl.Core.PetaPoco;
+﻿using Ctrl.Core.PetaPoco;
 using System;
+using Volo.Abp.Domain.Entities;
 
 namespace Ctrl.Domain.Models.Entities
 {
@@ -10,12 +10,8 @@ namespace Ctrl.Domain.Models.Entities
     [Serializable]
     [TableName("Sys_ExceptionLog")]
     [PrimaryKey("ExceptionLogId")]
-    public class SystemExceptionLog : EntityBase
+    public class SystemExceptionLog : Entity<Guid>
     {
-        /// <summary>
-        ///     主键编码
-        /// </summary>
-        public string ExceptionLogId { get; set; }
         /// <summary>
         ///  消息
         /// </summary>
