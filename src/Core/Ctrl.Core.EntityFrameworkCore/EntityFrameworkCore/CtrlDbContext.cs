@@ -7,7 +7,7 @@ using Volo.Abp.EntityFrameworkCore.Modeling;
 
 namespace Ctrl.Core.EntityFrameworkCore.EntityFrameworkCore
 {
-    [ConnectionStringName("Default")]
+    [ConnectionStringName("Test")]
     public class CtrlDbContext : AbpDbContext<CtrlDbContext>
     {
         public DbSet<SystemUser> Users { get; set; }
@@ -18,6 +18,30 @@ namespace Ctrl.Core.EntityFrameworkCore.EntityFrameworkCore
 
         public DbSet<SystemExceptionLog> SystemExceptionLogs { get; set; }
 
+        public DbSet<SystemArticleType> SystemArticleTypes { get; set; }
+
+        public DbSet<SystemConfig> SystemConfigs { get; set; }
+
+        public DbSet<SystemDictionary> SystemDictionaries { get; set; }
+
+        public DbSet<SystemLoginLog> SystemLoginLogs { get; set; }
+
+        public DbSet<SystemMenu> SystemMenus { get; set; }
+
+        public DbSet<SystemMenuButton> SystemMenuButtons { get; set; }
+
+        public DbSet<SystemOperateLog> SystemOperateLogs { get; set; }
+
+        public DbSet<SystemPermission> SystemPermissions { get; set; }
+
+        public DbSet<SystemPermissionUser> SystemPermissionUsers { get; set; }
+
+        public DbSet<SystemRole> SystemRoles { get; set; }
+
+        public DbSet<SystemSqlLog> SystemSqlLogs { get; set; }
+
+        public DbSet<SystemUser> SystemUsers { get; set; }
+
         public CtrlDbContext(DbContextOptions<CtrlDbContext> options):base(options)
         {
         }
@@ -25,34 +49,7 @@ namespace Ctrl.Core.EntityFrameworkCore.EntityFrameworkCore
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            builder.Entity<SystemUser>(b =>
-            {
-                b.ToTable("Sys_User");
-                b.ConfigureByConvention();
-
-            });
-            builder.Entity<SystemMenuButton>(b =>
-            {
-                b.ToTable("Sys_MenuButton");
-                b.ConfigureByConvention();
-
-            });
-            builder.Entity<SystemPermission>(b =>
-            {
-                b.ToTable("Sys_Permission");
-                b.ConfigureByConvention();
-            });
-            builder.Entity<SystemArticle>(b =>
-            {
-                b.ToTable("Sys_Article");
-                b.ConfigureByConvention();
-            });
-
-            builder.Entity<SystemExceptionLog>(b =>
-            {
-                b.ToTable("Sys_ExceptionLog");
-                b.ConfigureByConvention();
-            });
+            builder.ConfigureCtrl();
         }
     }
 }

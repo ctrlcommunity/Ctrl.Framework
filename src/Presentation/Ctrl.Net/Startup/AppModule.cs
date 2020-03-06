@@ -89,6 +89,7 @@ namespace Ctrl.Web.Host.Startup
             });
             ConfigureAutoMapper();
             context.Services.GetSingletonInstance<IObjectAccessor<IServiceProvider>>();
+
         }
 
         private void ConfigureAutoMapper()
