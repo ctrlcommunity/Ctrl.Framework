@@ -59,7 +59,6 @@ namespace Ctrl.Web.Host.Startup
             {
                 ContentTypeProvider = provider
             });
-           
             app.UseMultiTenancy();
             app.UseStaticHttpContext();
             app.UseCookiePolicy();
@@ -77,7 +76,6 @@ namespace Ctrl.Web.Host.Startup
         {
             context.Services.AddAssemblyOf<ISystemSqlLogLogic>();
             context.Services.AddAssemblyOf<ISystemSqlLogRepository>();
-           // context.Services.AddAutoMapperObjectMapper<AppModule>();
             Configure<AbpMultiTenancyOptions>(options =>
             {
                 options.IsEnabled = true;
