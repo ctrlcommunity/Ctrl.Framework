@@ -3,74 +3,72 @@ using System;
 using Ctrl.EntityFrameworkCore.DbMigrations.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
 {
     [DbContext(typeof(CtrlMigrationsDbContext))]
-    [Migration("20200307041615_InitCreate")]
-    partial class InitCreate
+    [Migration("20200307122311_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.0")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("Ctrl.Domain.Models.Entities.SystemArticle", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("char(36)");
 
                     b.Property<Guid>("ArticleTypeId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("Author")
-                        .HasColumnType("nvarchar(50)")
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
                         .HasMaxLength(50);
 
                     b.Property<string>("Contents")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("Counter")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("CreateTime")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<bool>("IsShow")
-                        .HasColumnType("bit");
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<int>("OrderNo")
                         .HasColumnType("int");
 
                     b.Property<string>("Pic")
-                        .HasColumnType("nvarchar(100)")
+                        .HasColumnType("varchar(100) CHARACTER SET utf8mb4")
                         .HasMaxLength(100);
 
                     b.Property<string>("SeoDes")
-                        .HasColumnType("nvarchar(128)")
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
                         .HasMaxLength(128);
 
                     b.Property<string>("SeoKey")
-                        .HasColumnType("nvarchar(128)")
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
                         .HasMaxLength(128);
 
                     b.Property<string>("SeoTitle")
-                        .HasColumnType("nvarchar(128)")
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
                         .HasMaxLength(128);
 
                     b.Property<string>("Summary")
-                        .HasColumnType("nvarchar(500)")
+                        .HasColumnType("varchar(500) CHARACTER SET utf8mb4")
                         .HasMaxLength(500);
 
                     b.Property<string>("Title")
-                        .HasColumnType("nvarchar(64)")
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
                         .HasMaxLength(64);
 
                     b.HasKey("Id");
@@ -82,67 +80,67 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("ClientAddress")
-                        .HasColumnType("nvarchar(128)")
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
                         .HasMaxLength(128);
 
                     b.Property<string>("ClientHost")
-                        .HasColumnType("nvarchar(128)")
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
                         .HasMaxLength(128);
 
                     b.Property<DateTime>("CreateTime")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("CreateUserCode")
-                        .HasColumnType("nvarchar(50)")
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
                         .HasMaxLength(50);
 
                     b.Property<string>("CreateUserId")
-                        .HasColumnType("nvarchar(50)")
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
                         .HasMaxLength(50);
 
                     b.Property<string>("CreateUserName")
-                        .HasColumnType("nvarchar(50)")
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
                         .HasMaxLength(50);
 
                     b.Property<string>("ExceptionType")
-                        .HasColumnType("nvarchar(512)")
+                        .HasColumnType("varchar(512) CHARACTER SET utf8mb4")
                         .HasMaxLength(512);
 
                     b.Property<string>("HttpMethod")
-                        .HasColumnType("nvarchar(16)")
+                        .HasColumnType("varchar(16) CHARACTER SET utf8mb4")
                         .HasMaxLength(16);
 
                     b.Property<string>("InnerException")
-                        .HasColumnType("nvarchar(2048)")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4")
                         .HasMaxLength(2048);
 
                     b.Property<string>("Message")
-                        .HasColumnType("nvarchar(2048)")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4")
                         .HasMaxLength(2048);
 
                     b.Property<string>("RequestData")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("RequestUrl")
-                        .HasColumnType("nvarchar(128)")
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
                         .HasMaxLength(128);
 
                     b.Property<string>("Runtime")
-                        .HasColumnType("nvarchar(16)")
+                        .HasColumnType("varchar(16) CHARACTER SET utf8mb4")
                         .HasMaxLength(16);
 
                     b.Property<string>("ServerHost")
-                        .HasColumnType("nvarchar(128)")
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
                         .HasMaxLength(128);
 
                     b.Property<string>("StackTrace")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("UserAgent")
-                        .HasColumnType("nvarchar(1024)")
+                        .HasColumnType("varchar(1024) CHARACTER SET utf8mb4")
                         .HasMaxLength(1024);
 
                     b.HasKey("Id");
@@ -153,45 +151,45 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
             modelBuilder.Entity("Ctrl.Domain.Models.Entities.SystemLoginLog", b =>
                 {
                     b.Property<string>("LoginLogId")
-                        .HasColumnType("nvarchar(50)")
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
                         .HasMaxLength(50);
 
                     b.Property<string>("ClientHost")
-                        .HasColumnType("nvarchar(50)")
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
                         .HasMaxLength(50);
 
                     b.Property<DateTime>("CreateTime")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("CreateUserCode")
-                        .HasColumnType("nvarchar(50)")
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
                         .HasMaxLength(50);
 
                     b.Property<string>("CreateUserId")
-                        .HasColumnType("nvarchar(50)")
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
                         .HasMaxLength(50);
 
                     b.Property<string>("CreateUserName")
-                        .HasColumnType("nvarchar(50)")
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
                         .HasMaxLength(50);
 
                     b.Property<string>("IpAddressName")
-                        .HasColumnType("nvarchar(50)")
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
                         .HasMaxLength(50);
 
                     b.Property<DateTime>("LoginTime")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("OsVersion")
-                        .HasColumnType("nvarchar(128)")
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
                         .HasMaxLength(128);
 
                     b.Property<string>("ServerHost")
-                        .HasColumnType("nvarchar(50)")
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
                         .HasMaxLength(50);
 
                     b.Property<string>("UserAgent")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("LoginLogId");
 
@@ -201,75 +199,75 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
             modelBuilder.Entity("Ctrl.Domain.Models.Entities.SystemOperateLog", b =>
                 {
                     b.Property<string>("OperateLogId")
-                        .HasColumnType("nvarchar(50)")
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
                         .HasMaxLength(50);
 
                     b.Property<decimal>("ActionExecutionTime")
                         .HasColumnType("decimal(18,7)");
 
                     b.Property<string>("ActionName")
-                        .HasColumnType("nvarchar(64)")
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
                         .HasMaxLength(64);
 
                     b.Property<string>("ClientHost")
-                        .HasColumnType("nvarchar(64)")
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
                         .HasMaxLength(64);
 
                     b.Property<string>("ControllerName")
-                        .HasColumnType("nvarchar(64)")
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
                         .HasMaxLength(64);
 
                     b.Property<string>("CreateTime")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("CreateUserCode")
-                        .HasColumnType("nvarchar(256)")
+                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
                         .HasMaxLength(256);
 
                     b.Property<string>("CreateUserId")
-                        .HasColumnType("nvarchar(50)")
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
                         .HasMaxLength(50);
 
                     b.Property<string>("CreateUserName")
-                        .HasColumnType("nvarchar(32)")
+                        .HasColumnType("varchar(32) CHARACTER SET utf8mb4")
                         .HasMaxLength(32);
 
                     b.Property<string>("Describe")
-                        .HasColumnType("nvarchar(512)")
+                        .HasColumnType("varchar(512) CHARACTER SET utf8mb4")
                         .HasMaxLength(512);
 
                     b.Property<int>("RequestContentLength")
                         .HasColumnType("int");
 
                     b.Property<string>("RequestData")
-                        .HasColumnType("nvarchar(1024)")
+                        .HasColumnType("varchar(1024) CHARACTER SET utf8mb4")
                         .HasMaxLength(1024);
 
                     b.Property<string>("RequestType")
-                        .HasColumnType("nvarchar(64)")
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
                         .HasMaxLength(64);
 
                     b.Property<string>("ResponseStatus")
-                        .HasColumnType("nvarchar(64)")
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
                         .HasMaxLength(64);
 
                     b.Property<decimal>("ResultExecutionTime")
                         .HasColumnType("decimal(18,7)");
 
                     b.Property<string>("ServerHost")
-                        .HasColumnType("nvarchar(64)")
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
                         .HasMaxLength(64);
 
                     b.Property<string>("Url")
-                        .HasColumnType("nvarchar(128)")
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
                         .HasMaxLength(128);
 
                     b.Property<string>("UrlReferrer")
-                        .HasColumnType("nvarchar(12)")
+                        .HasColumnType("varchar(12) CHARACTER SET utf8mb4")
                         .HasMaxLength(12);
 
                     b.Property<string>("UserAgent")
-                        .HasColumnType("nvarchar(128)")
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
                         .HasMaxLength(128);
 
                     b.HasKey("OperateLogId");
@@ -281,24 +279,24 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("char(36)");
 
                     b.Property<short>("PrivilegeAccess")
                         .HasColumnType("smallint")
                         .HasMaxLength(50);
 
                     b.Property<string>("PrivilegeAccessValue")
-                        .HasColumnType("nvarchar(50)")
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
                         .HasMaxLength(50);
 
                     b.Property<short>("PrivilegeMaster")
                         .HasColumnType("smallint");
 
                     b.Property<Guid>("PrivilegeMasterValue")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("char(36)");
 
                     b.Property<Guid>("PrivilegeMenuId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("char(36)");
 
                     b.HasKey("Id");
 
@@ -311,11 +309,11 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("PrivilegeMasterUserId")
-                        .HasColumnType("nvarchar(50)")
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
                         .HasMaxLength(50);
 
                     b.Property<string>("PrivilegeMasterValue")
-                        .HasColumnType("nvarchar(50)")
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
                         .HasMaxLength(50);
 
                     b.ToTable("Sys_PermissionUser");
@@ -325,49 +323,49 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("Code")
-                        .HasColumnType("nvarchar(50)")
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
                         .HasMaxLength(50);
 
                     b.Property<DateTime?>("CreateTime")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Email")
-                        .HasColumnType("nvarchar(256)")
+                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
                         .HasMaxLength(256);
 
                     b.Property<DateTime?>("FirstVisitTime")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("ImgUrl")
-                        .HasColumnType("nvarchar(128)")
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
                         .HasMaxLength(128);
 
                     b.Property<bool>("IsAdmin")
-                        .HasColumnType("bit");
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<bool?>("IsFreeze")
-                        .HasColumnType("bit");
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<DateTime?>("LastVisitTime")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Mobile")
-                        .HasColumnType("nvarchar(50)")
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
                         .HasMaxLength(50);
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(64)")
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
                         .HasMaxLength(64);
 
                     b.Property<string>("Password")
-                        .HasColumnType("nvarchar(128)")
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
                         .HasMaxLength(128);
 
                     b.Property<string>("Remark")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
@@ -376,9 +374,9 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("316ac0bc-8fb5-467b-a209-546414f7ea7b"),
+                            Id = new Guid("da906042-dc9b-4ad4-a54b-7ff4b2281091"),
                             Code = "admin",
-                            CreateTime = new DateTime(2020, 3, 7, 12, 16, 15, 411, DateTimeKind.Local).AddTicks(6513),
+                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 437, DateTimeKind.Local).AddTicks(1785),
                             ImgUrl = "/Files/2019/04/04-29/d9a7bd7d-030d-4a74-b6f2-6bb31cf9b10a.png",
                             IsAdmin = true,
                             IsFreeze = false,
@@ -392,41 +390,41 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                 {
                     b.Property<Guid>("ArticleTypeId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("char(50)")
                         .HasMaxLength(50);
 
                     b.Property<DateTime>("CreateTime")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<bool>("IsShow")
-                        .HasColumnType("bit");
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(64)")
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
                         .HasMaxLength(64);
 
                     b.Property<int>("OrderNo")
                         .HasColumnType("int");
 
                     b.Property<Guid>("ParentId")
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("char(50)")
                         .HasMaxLength(50);
 
                     b.Property<string>("SeoDes")
-                        .HasColumnType("nvarchar(64)")
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
                         .HasMaxLength(64);
 
                     b.Property<string>("SeoKey")
-                        .HasColumnType("nvarchar(64)")
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
                         .HasMaxLength(64);
 
                     b.Property<string>("SeoTitle")
-                        .HasColumnType("nvarchar(64)")
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
                         .HasMaxLength(64);
 
                     b.Property<Guid?>("TenantId")
                         .HasColumnName("TenantId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("char(36)");
 
                     b.HasKey("ArticleTypeId");
 
@@ -437,30 +435,30 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("char(50)")
                         .HasMaxLength(50);
 
                     b.Property<string>("CopyRight")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<DateTime>("CreateTime")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(128)")
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
                         .HasMaxLength(128);
 
                     b.Property<string>("Keywords")
-                        .HasColumnType("nvarchar(64)")
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
                         .HasMaxLength(64);
 
                     b.Property<string>("SiteName")
-                        .HasColumnType("nvarchar(64)")
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
                         .HasMaxLength(64);
 
                     b.Property<Guid?>("TenantId")
                         .HasColumnName("TenantId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("char(36)");
 
                     b.HasKey("Id");
 
@@ -471,40 +469,40 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                 {
                     b.Property<Guid>("DictionaryId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("char(50)")
                         .HasMaxLength(50);
 
                     b.Property<string>("Code")
-                        .HasColumnType("nvarchar(128)")
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
                         .HasMaxLength(128);
 
                     b.Property<DateTime?>("CreateTime")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<bool>("IsFreeze")
-                        .HasColumnType("bit");
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(128)")
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
                         .HasMaxLength(128);
 
                     b.Property<int>("OrderNo")
                         .HasColumnType("int");
 
                     b.Property<Guid>("ParentId")
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("char(128)")
                         .HasMaxLength(128);
 
                     b.Property<string>("Remark")
-                        .HasColumnType("nvarchar(512)")
+                        .HasColumnType("varchar(512) CHARACTER SET utf8mb4")
                         .HasMaxLength(512);
 
                     b.Property<Guid?>("TenantId")
                         .HasColumnName("TenantId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("Value")
-                        .HasColumnType("nvarchar(128)")
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
                         .HasMaxLength(128);
 
                     b.HasKey("DictionaryId");
@@ -516,56 +514,56 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                 {
                     b.Property<Guid>("MenuId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("Action")
-                        .HasColumnType("nvarchar(128)")
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
                         .HasMaxLength(128);
 
                     b.Property<string>("Area")
-                        .HasColumnType("nvarchar(64)")
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
                         .HasMaxLength(64);
 
                     b.Property<bool>("CanbeDelete")
-                        .HasColumnType("bit");
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Code")
-                        .HasColumnType("nvarchar(64)")
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
                         .HasMaxLength(64);
 
                     b.Property<string>("Controller")
-                        .HasColumnType("nvarchar(128)")
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
                         .HasMaxLength(128);
 
                     b.Property<string>("Icon")
-                        .HasColumnType("nvarchar(32)")
+                        .HasColumnType("varchar(32) CHARACTER SET utf8mb4")
                         .HasMaxLength(32);
 
                     b.Property<bool>("IsFreeze")
-                        .HasColumnType("bit");
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<bool>("IsShowMenu")
-                        .HasColumnType("bit");
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(512)")
+                        .HasColumnType("varchar(512) CHARACTER SET utf8mb4")
                         .HasMaxLength(512);
 
                     b.Property<byte[]>("OpenType")
-                        .HasColumnType("varbinary(max)");
+                        .HasColumnType("longblob");
 
                     b.Property<string>("OpenUrl")
-                        .HasColumnType("nvarchar(256)")
+                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
                         .HasMaxLength(256);
 
                     b.Property<int>("OrderNo")
                         .HasColumnType("int");
 
                     b.Property<Guid>("ParentId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("Remark")
-                        .HasColumnType("nvarchar(512)")
+                        .HasColumnType("varchar(512) CHARACTER SET utf8mb4")
                         .HasMaxLength(512);
 
                     b.HasKey("MenuId");
@@ -899,35 +897,35 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("Code")
-                        .HasColumnType("nvarchar(64)")
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
                         .HasMaxLength(64);
 
                     b.Property<DateTime>("CreateTime")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Icon")
-                        .HasColumnType("nvarchar(32)")
+                        .HasColumnType("varchar(32) CHARACTER SET utf8mb4")
                         .HasMaxLength(32);
 
                     b.Property<Guid>("MenuId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(64)")
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
                         .HasMaxLength(64);
 
                     b.Property<int>("OrderNo")
                         .HasColumnType("int");
 
                     b.Property<string>("Remark")
-                        .HasColumnType("nvarchar(512)")
+                        .HasColumnType("varchar(512) CHARACTER SET utf8mb4")
                         .HasMaxLength(512);
 
                     b.Property<string>("Script")
-                        .HasColumnType("nvarchar(64)")
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
                         .HasMaxLength(64);
 
                     b.HasKey("Id");
@@ -937,9 +935,9 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("e3121ecb-e702-4df1-9a46-6cc4ef4f1771"),
+                            Id = new Guid("ea0c6981-23a3-4725-8f22-9cda4662496f"),
                             Code = "xtgl-cdan-SaveMenuButton",
-                            CreateTime = new DateTime(2020, 3, 7, 12, 16, 15, 413, DateTimeKind.Local).AddTicks(6086),
+                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 442, DateTimeKind.Local).AddTicks(7671),
                             Icon = "fas fa-plus",
                             MenuId = new Guid("6a1969b8-31ee-4bd7-9ca4-4375ddceba73"),
                             Name = "新增",
@@ -948,8 +946,8 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         },
                         new
                         {
-                            Id = new Guid("895d1275-3a97-4e13-bd9c-bad1fee25b30"),
-                            CreateTime = new DateTime(2020, 3, 7, 12, 16, 15, 413, DateTimeKind.Local).AddTicks(9002),
+                            Id = new Guid("b2217d51-666a-455a-9946-e39231fb567d"),
+                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5402),
                             Icon = "fas fa-edit",
                             MenuId = new Guid("6a1969b8-31ee-4bd7-9ca4-4375ddceba73"),
                             Name = "编辑",
@@ -958,9 +956,9 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         },
                         new
                         {
-                            Id = new Guid("74ea2be0-52af-457f-9d1b-10caeae7b0a9"),
+                            Id = new Guid("a2667ffe-7911-4f87-94b7-61c379620c0e"),
                             Code = "xtgl-jswh-Chosen",
-                            CreateTime = new DateTime(2020, 3, 7, 12, 16, 15, 413, DateTimeKind.Local).AddTicks(9064),
+                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5588),
                             Icon = "fas fa-user-lock",
                             MenuId = new Guid("40793482-245c-4a1c-8c58-351b6d1b2e7f"),
                             Name = "模块权限",
@@ -969,9 +967,9 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         },
                         new
                         {
-                            Id = new Guid("dbd8d36b-336c-4243-a039-bf198dec985f"),
+                            Id = new Guid("5fe76e91-9e61-4823-8b6b-5bbdc36a92fc"),
                             Code = "xtgl-jswh-ChosenButton",
-                            CreateTime = new DateTime(2020, 3, 7, 12, 16, 15, 413, DateTimeKind.Local).AddTicks(9083),
+                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5601),
                             Icon = "fas fa-user-minus",
                             MenuId = new Guid("40793482-245c-4a1c-8c58-351b6d1b2e7f"),
                             Name = "按钮权限",
@@ -980,9 +978,9 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         },
                         new
                         {
-                            Id = new Guid("9eb747da-6e10-4847-9435-78315a50e7a7"),
+                            Id = new Guid("2550bdae-2c09-4f7b-b658-f3ed0b48a39d"),
                             Code = "xtgl-jswh-SaveRole",
-                            CreateTime = new DateTime(2020, 3, 7, 12, 16, 15, 413, DateTimeKind.Local).AddTicks(9086),
+                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5613),
                             Icon = "fas fa-plus",
                             MenuId = new Guid("40793482-245c-4a1c-8c58-351b6d1b2e7f"),
                             Name = "新增",
@@ -991,9 +989,9 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         },
                         new
                         {
-                            Id = new Guid("2eb06b15-9106-4501-8e57-d0f95d1c0278"),
+                            Id = new Guid("43ad2588-4bfb-4463-9b7e-1e92e211f41c"),
                             Code = "xtgl-xtyh-SaveUser",
-                            CreateTime = new DateTime(2020, 3, 7, 12, 16, 15, 413, DateTimeKind.Local).AddTicks(9092),
+                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5637),
                             Icon = "fas fa-plus",
                             MenuId = new Guid("004e1aeb-5270-42cf-945c-dd7a1f277ced"),
                             Name = "新增",
@@ -1002,9 +1000,9 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         },
                         new
                         {
-                            Id = new Guid("94385e39-6177-451d-9f7f-7e3de680bf80"),
+                            Id = new Guid("30a8e873-1a14-43e8-8aef-af86441a984b"),
                             Code = "xtgl-mkwh-SaveMenu",
-                            CreateTime = new DateTime(2020, 3, 7, 12, 16, 15, 413, DateTimeKind.Local).AddTicks(9096),
+                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5647),
                             Icon = "fas fa-plus",
                             MenuId = new Guid("fc239bef-8bfa-48a4-ad99-150a1b1a017e"),
                             Name = "新增",
@@ -1013,9 +1011,9 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         },
                         new
                         {
-                            Id = new Guid("a243eba3-2cf1-4ce8-94ba-b6e190f9af94"),
+                            Id = new Guid("6054574b-9ad6-4f47-868c-84bd8a9abbb1"),
                             Code = "xtgl-mkwh-SaveMenu",
-                            CreateTime = new DateTime(2020, 3, 7, 12, 16, 15, 413, DateTimeKind.Local).AddTicks(9100),
+                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5659),
                             Icon = "fas fa-edit",
                             MenuId = new Guid("fc239bef-8bfa-48a4-ad99-150a1b1a017e"),
                             Name = "编辑",
@@ -1024,8 +1022,8 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         },
                         new
                         {
-                            Id = new Guid("053e4f24-7b39-4cba-b50f-b05207a3e392"),
-                            CreateTime = new DateTime(2020, 3, 7, 12, 16, 15, 413, DateTimeKind.Local).AddTicks(9103),
+                            Id = new Guid("5cd7d37f-73ff-443b-8c59-e6423343e36b"),
+                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5670),
                             Icon = "fas fa-chart-pie",
                             MenuId = new Guid("d19e918c-0694-437e-b604-b989a5668695"),
                             Name = "数据分析",
@@ -1034,9 +1032,9 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         },
                         new
                         {
-                            Id = new Guid("faa5eea4-1560-4a8a-9a2e-0a06b9004915"),
+                            Id = new Guid("1c47ce2e-f2c7-4bce-80ba-d926a885c207"),
                             Code = "xtgl-zffs-SavePays",
-                            CreateTime = new DateTime(2020, 3, 7, 12, 16, 15, 413, DateTimeKind.Local).AddTicks(9107),
+                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5681),
                             Icon = "fas fa-plus",
                             MenuId = new Guid("8f9d406f-70f0-4a11-9380-616fe2395c9e"),
                             Name = "新增",
@@ -1045,9 +1043,9 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         },
                         new
                         {
-                            Id = new Guid("50535c38-cb29-4cd5-ad09-6c7653e52e77"),
+                            Id = new Guid("5e7bb3b6-70a0-4d92-8127-425a80c71a71"),
                             Code = "xtgl-wzlx-SaveArticleType",
-                            CreateTime = new DateTime(2020, 3, 7, 12, 16, 15, 413, DateTimeKind.Local).AddTicks(9111),
+                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5694),
                             Icon = "fas fa-plus",
                             MenuId = new Guid("93967f84-2598-4aca-9a50-5c4a7719820f"),
                             Name = "新增",
@@ -1056,8 +1054,8 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         },
                         new
                         {
-                            Id = new Guid("151e9ee8-1292-4976-b060-98f105aac78d"),
-                            CreateTime = new DateTime(2020, 3, 7, 12, 16, 15, 413, DateTimeKind.Local).AddTicks(9117),
+                            Id = new Guid("38b08da7-6d50-4fdf-ac8a-d11ca05941cc"),
+                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5705),
                             Icon = "fas fa-edit",
                             MenuId = new Guid("93967f84-2598-4aca-9a50-5c4a7719820f"),
                             Name = "编辑",
@@ -1066,8 +1064,8 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         },
                         new
                         {
-                            Id = new Guid("a5c44359-7a62-47df-90ff-a802260726e2"),
-                            CreateTime = new DateTime(2020, 3, 7, 12, 16, 15, 413, DateTimeKind.Local).AddTicks(9120),
+                            Id = new Guid("f7440017-337e-4a68-9edd-14b478b59f0c"),
+                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5715),
                             Icon = "fas fa-plus",
                             MenuId = new Guid("e0d226e9-6253-42c7-abbd-65111f73d406"),
                             Name = "新增",
@@ -1076,9 +1074,9 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         },
                         new
                         {
-                            Id = new Guid("67269800-8778-47d6-a116-40816d08c1b6"),
+                            Id = new Guid("78bb4ba6-9de5-4def-aadf-46de47f51b3d"),
                             Code = "xtgl-wz-SaveArticle",
-                            CreateTime = new DateTime(2020, 3, 7, 12, 16, 15, 413, DateTimeKind.Local).AddTicks(9124),
+                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5730),
                             Icon = "fas fa-plus",
                             MenuId = new Guid("e0d226e9-6253-42c7-abbd-65111f73d406"),
                             Name = "编辑",
@@ -1087,9 +1085,9 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         },
                         new
                         {
-                            Id = new Guid("db1f02d7-1d2d-4720-9279-ce97875282d8"),
+                            Id = new Guid("00773067-437f-4a23-a87b-15a6d32574d3"),
                             Code = "xtgl-mkwh-DeleteMenu",
-                            CreateTime = new DateTime(2020, 3, 7, 12, 16, 15, 413, DateTimeKind.Local).AddTicks(9127),
+                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5742),
                             Icon = "far fa-trash-alt",
                             MenuId = new Guid("fc239bef-8bfa-48a4-ad99-150a1b1a017e"),
                             Name = "删除",
@@ -1098,9 +1096,9 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         },
                         new
                         {
-                            Id = new Guid("f4d9de8e-9bb0-49f3-a3e4-0811967b4c00"),
+                            Id = new Guid("465f4755-6cb0-49ad-8109-18fc7568738e"),
                             Code = "xtgl-zdgl-SaveSystemDictionary",
-                            CreateTime = new DateTime(2020, 3, 7, 12, 16, 15, 413, DateTimeKind.Local).AddTicks(9130),
+                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5754),
                             Icon = "fas fa-plus",
                             MenuId = new Guid("af66d9a6-3567-4267-a7cc-a79982b53fd0"),
                             Name = "新增",
@@ -1109,9 +1107,9 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         },
                         new
                         {
-                            Id = new Guid("ca4fef20-fb65-4ee2-9cb7-dea0c4c594ed"),
+                            Id = new Guid("d07dfe90-ba40-4725-b334-566a3f4c88f3"),
                             Code = "xtgl-cdan-SaveMenuButton",
-                            CreateTime = new DateTime(2020, 3, 7, 12, 16, 15, 413, DateTimeKind.Local).AddTicks(9134),
+                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5765),
                             Icon = "fas fa-edit",
                             MenuId = new Guid("8f9d406f-70f0-4a11-9380-616fe2395c9e"),
                             Name = "编辑",
@@ -1120,9 +1118,9 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         },
                         new
                         {
-                            Id = new Guid("bb280590-731c-4201-9c1d-c197c85a3148"),
+                            Id = new Guid("49d8de58-364c-41c5-88c2-cb161870976a"),
                             Code = "xtgl-zdgl-SaveSystemDictionary",
-                            CreateTime = new DateTime(2020, 3, 7, 12, 16, 15, 413, DateTimeKind.Local).AddTicks(9137),
+                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5775),
                             Icon = "fas fa-edit",
                             MenuId = new Guid("af66d9a6-3567-4267-a7cc-a79982b53fd0"),
                             Name = "编辑",
@@ -1131,9 +1129,9 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         },
                         new
                         {
-                            Id = new Guid("931bbf33-50a1-4bcc-99e2-b05df7fff15a"),
+                            Id = new Guid("27eca2c0-c172-416a-b4de-cc15a943adaa"),
                             Code = "ljgl-ljlx-SaveSystemLinkType",
-                            CreateTime = new DateTime(2020, 3, 7, 12, 16, 15, 413, DateTimeKind.Local).AddTicks(9141),
+                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5785),
                             Icon = "fas fa-plus",
                             MenuId = new Guid("271fade9-0e28-411b-ad92-7fc9a3b57990"),
                             Name = "新增",
@@ -1142,9 +1140,9 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         },
                         new
                         {
-                            Id = new Guid("5c299c4f-bb0d-48fc-9bb3-7391d6c92ed3"),
+                            Id = new Guid("feca74e6-2d77-4d2e-b290-43ef8be6e7eb"),
                             Code = "ljgl-ljlx-SaveSystemLinkType",
-                            CreateTime = new DateTime(2020, 3, 7, 12, 16, 15, 413, DateTimeKind.Local).AddTicks(9146),
+                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5796),
                             Icon = "fas fa-edit",
                             MenuId = new Guid("271fade9-0e28-411b-ad92-7fc9a3b57990"),
                             Name = "编辑",
@@ -1153,9 +1151,9 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         },
                         new
                         {
-                            Id = new Guid("d52ba0a8-07d6-41fa-ab4a-8fc47b28a026"),
+                            Id = new Guid("14ed1348-0793-4c18-8781-c75fd85e8e0b"),
                             Code = "wzgl-wzlb-Delete",
-                            CreateTime = new DateTime(2020, 3, 7, 12, 16, 15, 413, DateTimeKind.Local).AddTicks(9150),
+                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5806),
                             Icon = "fas fa-trash-alt",
                             MenuId = new Guid("e0d226e9-6253-42c7-abbd-65111f73d406"),
                             Name = "删除",
@@ -1168,46 +1166,46 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                 {
                     b.Property<Guid>("RoleId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("char(36)");
 
                     b.Property<bool>("CanbeDelete")
-                        .HasColumnType("bit");
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<DateTime?>("CreateTime")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<Guid>("CreateUserId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("CreateUserName")
-                        .HasColumnType("nvarchar(32)")
+                        .HasColumnType("varchar(32) CHARACTER SET utf8mb4")
                         .HasMaxLength(32);
 
                     b.Property<bool>("IsFreeze")
-                        .HasColumnType("bit");
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(64)")
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
                         .HasMaxLength(64);
 
                     b.Property<int>("OrderNo")
                         .HasColumnType("int");
 
                     b.Property<string>("Remark")
-                        .HasColumnType("nvarchar(512)")
+                        .HasColumnType("varchar(512) CHARACTER SET utf8mb4")
                         .HasMaxLength(512);
 
                     b.Property<int>("State")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("UpdateTime")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<Guid>("UpdateUserId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("UpdateUserName")
-                        .HasColumnType("nvarchar(32)")
+                        .HasColumnType("varchar(32) CHARACTER SET utf8mb4")
                         .HasMaxLength(32);
 
                     b.HasKey("RoleId");
@@ -1218,35 +1216,35 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
             modelBuilder.Entity("Ctrl.System.Models.Entities.SystemSqlLog", b =>
                 {
                     b.Property<string>("SqlLogId")
-                        .HasColumnType("nvarchar(50)")
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
                         .HasMaxLength(50);
 
                     b.Property<DateTime>("CreateTime")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("CreateUserCode")
-                        .HasColumnType("nvarchar(50)")
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
                         .HasMaxLength(50);
 
                     b.Property<string>("CreateUserId")
-                        .HasColumnType("nvarchar(50)")
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
                         .HasMaxLength(50);
 
                     b.Property<string>("CreateUserName")
-                        .HasColumnType("nvarchar(50)")
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
                         .HasMaxLength(50);
 
                     b.Property<decimal>("ElapsedTime")
                         .HasColumnType("decimal(18,6)");
 
                     b.Property<DateTime>("EndDateTime")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("OperateSql")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Parameter")
-                        .HasColumnType("nvarchar(512)")
+                        .HasColumnType("varchar(512) CHARACTER SET utf8mb4")
                         .HasMaxLength(512);
 
                     b.HasKey("SqlLogId");

@@ -27,7 +27,8 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         .HasColumnType("char(36)");
 
                     b.Property<string>("Author")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
+                        .HasMaxLength(50);
 
                     b.Property<string>("Contents")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -45,22 +46,28 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Pic")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(100) CHARACTER SET utf8mb4")
+                        .HasMaxLength(100);
 
                     b.Property<string>("SeoDes")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
+                        .HasMaxLength(128);
 
                     b.Property<string>("SeoKey")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
+                        .HasMaxLength(128);
 
                     b.Property<string>("SeoTitle")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
+                        .HasMaxLength(128);
 
                     b.Property<string>("Summary")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(500) CHARACTER SET utf8mb4")
+                        .HasMaxLength(500);
 
                     b.Property<string>("Title")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
+                        .HasMaxLength(64);
 
                     b.HasKey("Id");
 
@@ -74,52 +81,65 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         .HasColumnType("char(36)");
 
                     b.Property<string>("ClientAddress")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
+                        .HasMaxLength(128);
 
                     b.Property<string>("ClientHost")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
+                        .HasMaxLength(128);
 
                     b.Property<DateTime>("CreateTime")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("CreateUserCode")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
+                        .HasMaxLength(50);
 
                     b.Property<string>("CreateUserId")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
+                        .HasMaxLength(50);
 
                     b.Property<string>("CreateUserName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
+                        .HasMaxLength(50);
 
                     b.Property<string>("ExceptionType")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(512) CHARACTER SET utf8mb4")
+                        .HasMaxLength(512);
 
                     b.Property<string>("HttpMethod")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(16) CHARACTER SET utf8mb4")
+                        .HasMaxLength(16);
 
                     b.Property<string>("InnerException")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4")
+                        .HasMaxLength(2048);
 
                     b.Property<string>("Message")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4")
+                        .HasMaxLength(2048);
 
                     b.Property<string>("RequestData")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("RequestUrl")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
+                        .HasMaxLength(128);
 
                     b.Property<string>("Runtime")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(16) CHARACTER SET utf8mb4")
+                        .HasMaxLength(16);
 
                     b.Property<string>("ServerHost")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
+                        .HasMaxLength(128);
 
                     b.Property<string>("StackTrace")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("UserAgent")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(1024) CHARACTER SET utf8mb4")
+                        .HasMaxLength(1024);
 
                     b.HasKey("Id");
 
@@ -129,34 +149,42 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
             modelBuilder.Entity("Ctrl.Domain.Models.Entities.SystemLoginLog", b =>
                 {
                     b.Property<string>("LoginLogId")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
+                        .HasMaxLength(50);
 
                     b.Property<string>("ClientHost")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
+                        .HasMaxLength(50);
 
                     b.Property<DateTime>("CreateTime")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("CreateUserCode")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
+                        .HasMaxLength(50);
 
                     b.Property<string>("CreateUserId")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
+                        .HasMaxLength(50);
 
                     b.Property<string>("CreateUserName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
+                        .HasMaxLength(50);
 
                     b.Property<string>("IpAddressName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
+                        .HasMaxLength(50);
 
                     b.Property<DateTime>("LoginTime")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("OsVersion")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
+                        .HasMaxLength(128);
 
                     b.Property<string>("ServerHost")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
+                        .HasMaxLength(50);
 
                     b.Property<string>("UserAgent")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -169,61 +197,76 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
             modelBuilder.Entity("Ctrl.Domain.Models.Entities.SystemOperateLog", b =>
                 {
                     b.Property<string>("OperateLogId")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
+                        .HasMaxLength(50);
 
                     b.Property<decimal>("ActionExecutionTime")
-                        .HasColumnType("decimal(65,30)");
+                        .HasColumnType("decimal(18,7)");
 
                     b.Property<string>("ActionName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
+                        .HasMaxLength(64);
 
                     b.Property<string>("ClientHost")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
+                        .HasMaxLength(64);
 
                     b.Property<string>("ControllerName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
+                        .HasMaxLength(64);
 
                     b.Property<string>("CreateTime")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("CreateUserCode")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
+                        .HasMaxLength(256);
 
                     b.Property<string>("CreateUserId")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
+                        .HasMaxLength(50);
 
                     b.Property<string>("CreateUserName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(32) CHARACTER SET utf8mb4")
+                        .HasMaxLength(32);
 
                     b.Property<string>("Describe")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(512) CHARACTER SET utf8mb4")
+                        .HasMaxLength(512);
 
                     b.Property<int>("RequestContentLength")
                         .HasColumnType("int");
 
                     b.Property<string>("RequestData")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(1024) CHARACTER SET utf8mb4")
+                        .HasMaxLength(1024);
 
                     b.Property<string>("RequestType")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
+                        .HasMaxLength(64);
 
                     b.Property<string>("ResponseStatus")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
+                        .HasMaxLength(64);
 
                     b.Property<decimal>("ResultExecutionTime")
-                        .HasColumnType("decimal(65,30)");
+                        .HasColumnType("decimal(18,7)");
 
                     b.Property<string>("ServerHost")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
+                        .HasMaxLength(64);
 
                     b.Property<string>("Url")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
+                        .HasMaxLength(128);
 
                     b.Property<string>("UrlReferrer")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(12) CHARACTER SET utf8mb4")
+                        .HasMaxLength(12);
 
                     b.Property<string>("UserAgent")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
+                        .HasMaxLength(128);
 
                     b.HasKey("OperateLogId");
 
@@ -237,10 +280,12 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         .HasColumnType("char(36)");
 
                     b.Property<short>("PrivilegeAccess")
-                        .HasColumnType("smallint");
+                        .HasColumnType("smallint")
+                        .HasMaxLength(50);
 
                     b.Property<string>("PrivilegeAccessValue")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
+                        .HasMaxLength(50);
 
                     b.Property<short>("PrivilegeMaster")
                         .HasColumnType("smallint");
@@ -262,10 +307,12 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("PrivilegeMasterUserId")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
+                        .HasMaxLength(50);
 
                     b.Property<string>("PrivilegeMasterValue")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
+                        .HasMaxLength(50);
 
                     b.ToTable("Sys_PermissionUser");
                 });
@@ -277,19 +324,22 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         .HasColumnType("char(36)");
 
                     b.Property<string>("Code")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
+                        .HasMaxLength(50);
 
                     b.Property<DateTime?>("CreateTime")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Email")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
+                        .HasMaxLength(256);
 
                     b.Property<DateTime?>("FirstVisitTime")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("ImgUrl")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
+                        .HasMaxLength(128);
 
                     b.Property<bool>("IsAdmin")
                         .HasColumnType("tinyint(1)");
@@ -301,13 +351,16 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Mobile")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
+                        .HasMaxLength(50);
 
                     b.Property<string>("Name")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
+                        .HasMaxLength(64);
 
                     b.Property<string>("Password")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
+                        .HasMaxLength(128);
 
                     b.Property<string>("Remark")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -315,13 +368,28 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Sys_User");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("da906042-dc9b-4ad4-a54b-7ff4b2281091"),
+                            Code = "admin",
+                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 437, DateTimeKind.Local).AddTicks(1785),
+                            ImgUrl = "/Files/2019/04/04-29/d9a7bd7d-030d-4a74-b6f2-6bb31cf9b10a.png",
+                            IsAdmin = true,
+                            IsFreeze = false,
+                            Name = "admin",
+                            Password = "S0JRR96eei0=",
+                            Remark = "系统管理员"
+                        });
                 });
 
             modelBuilder.Entity("Ctrl.System.Models.Entities.SystemArticleType", b =>
                 {
                     b.Property<Guid>("ArticleTypeId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
+                        .HasColumnType("char(50)")
+                        .HasMaxLength(50);
 
                     b.Property<DateTime>("CreateTime")
                         .HasColumnType("datetime(6)");
@@ -330,22 +398,27 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
+                        .HasMaxLength(64);
 
                     b.Property<int>("OrderNo")
                         .HasColumnType("int");
 
                     b.Property<Guid>("ParentId")
-                        .HasColumnType("char(36)");
+                        .HasColumnType("char(50)")
+                        .HasMaxLength(50);
 
                     b.Property<string>("SeoDes")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
+                        .HasMaxLength(64);
 
                     b.Property<string>("SeoKey")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
+                        .HasMaxLength(64);
 
                     b.Property<string>("SeoTitle")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
+                        .HasMaxLength(64);
 
                     b.Property<Guid?>("TenantId")
                         .HasColumnName("TenantId")
@@ -360,7 +433,8 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
+                        .HasColumnType("char(50)")
+                        .HasMaxLength(50);
 
                     b.Property<string>("CopyRight")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -369,13 +443,16 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Description")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
+                        .HasMaxLength(128);
 
                     b.Property<string>("Keywords")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
+                        .HasMaxLength(64);
 
                     b.Property<string>("SiteName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
+                        .HasMaxLength(64);
 
                     b.Property<Guid?>("TenantId")
                         .HasColumnName("TenantId")
@@ -390,10 +467,12 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                 {
                     b.Property<Guid>("DictionaryId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
+                        .HasColumnType("char(50)")
+                        .HasMaxLength(50);
 
                     b.Property<string>("Code")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
+                        .HasMaxLength(128);
 
                     b.Property<DateTime?>("CreateTime")
                         .HasColumnType("datetime(6)");
@@ -402,23 +481,27 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
+                        .HasMaxLength(128);
 
                     b.Property<int>("OrderNo")
                         .HasColumnType("int");
 
                     b.Property<Guid>("ParentId")
-                        .HasColumnType("char(36)");
+                        .HasColumnType("char(128)")
+                        .HasMaxLength(128);
 
                     b.Property<string>("Remark")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(512) CHARACTER SET utf8mb4")
+                        .HasMaxLength(512);
 
                     b.Property<Guid?>("TenantId")
                         .HasColumnName("TenantId")
                         .HasColumnType("char(36)");
 
                     b.Property<string>("Value")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
+                        .HasMaxLength(128);
 
                     b.HasKey("DictionaryId");
 
@@ -432,22 +515,27 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         .HasColumnType("char(36)");
 
                     b.Property<string>("Action")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
+                        .HasMaxLength(128);
 
                     b.Property<string>("Area")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
+                        .HasMaxLength(64);
 
                     b.Property<bool>("CanbeDelete")
                         .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Code")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
+                        .HasMaxLength(64);
 
                     b.Property<string>("Controller")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
+                        .HasMaxLength(128);
 
                     b.Property<string>("Icon")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(32) CHARACTER SET utf8mb4")
+                        .HasMaxLength(32);
 
                     b.Property<bool>("IsFreeze")
                         .HasColumnType("tinyint(1)");
@@ -456,13 +544,15 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(512) CHARACTER SET utf8mb4")
+                        .HasMaxLength(512);
 
                     b.Property<byte[]>("OpenType")
                         .HasColumnType("longblob");
 
                     b.Property<string>("OpenUrl")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
+                        .HasMaxLength(256);
 
                     b.Property<int>("OrderNo")
                         .HasColumnType("int");
@@ -471,11 +561,334 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         .HasColumnType("char(36)");
 
                     b.Property<string>("Remark")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(512) CHARACTER SET utf8mb4")
+                        .HasMaxLength(512);
 
                     b.HasKey("MenuId");
 
                     b.ToTable("Sys_Menu");
+
+                    b.HasData(
+                        new
+                        {
+                            MenuId = new Guid("fc239bef-8bfa-48a4-ad99-150a1b1a017e"),
+                            Action = "Index",
+                            Area = "SysManage",
+                            CanbeDelete = false,
+                            Code = "",
+                            Controller = "Menu",
+                            Icon = "fas fa-list",
+                            IsFreeze = false,
+                            IsShowMenu = true,
+                            Name = "模块维护",
+                            OpenUrl = "/SysManage/Menu/Index",
+                            OrderNo = 0,
+                            ParentId = new Guid("7c9c9976-336c-443a-8a16-88574e887905")
+                        },
+                        new
+                        {
+                            MenuId = new Guid("26d560a2-c68a-4796-afcd-29ddce64d1f8"),
+                            Action = "",
+                            Area = "",
+                            CanbeDelete = false,
+                            Code = "",
+                            Controller = "",
+                            Icon = "far fa-sun",
+                            IsFreeze = false,
+                            IsShowMenu = true,
+                            Name = "系统设置",
+                            OpenUrl = "",
+                            OrderNo = 0,
+                            ParentId = new Guid("9d804188-dded-418f-99c4-c9ee145673fb")
+                        },
+                        new
+                        {
+                            MenuId = new Guid("52ff87fd-aa44-43e8-a8c2-2ed8be1d2511"),
+                            Action = "ExceptionLog",
+                            Area = "SysManage",
+                            CanbeDelete = false,
+                            Code = "",
+                            Controller = "Log",
+                            Icon = "fas fa-bug",
+                            IsFreeze = false,
+                            IsShowMenu = true,
+                            Name = "错误日志",
+                            OpenUrl = "/SysManage/Log/ExceptionLog",
+                            OrderNo = 0,
+                            ParentId = new Guid("b75ce484-8d7a-469e-8661-565585d302e3")
+                        },
+                        new
+                        {
+                            MenuId = new Guid("40793482-245c-4a1c-8c58-351b6d1b2e7f"),
+                            Action = "Index",
+                            Area = "SysManage",
+                            CanbeDelete = false,
+                            Code = "",
+                            Controller = "Role",
+                            Icon = "fas fa-users",
+                            IsFreeze = false,
+                            IsShowMenu = true,
+                            Name = "角色维护",
+                            OpenUrl = "/SysManage/Role/Index",
+                            OrderNo = 0,
+                            ParentId = new Guid("65294c4a-6bc4-49e7-8169-ffa7d628a8f6")
+                        },
+                        new
+                        {
+                            MenuId = new Guid("6a1969b8-31ee-4bd7-9ca4-4375ddceba73"),
+                            Action = "Index",
+                            Area = "SysManage",
+                            CanbeDelete = false,
+                            Code = "",
+                            Controller = "MenuButton",
+                            Icon = "fas fa-cubes",
+                            IsFreeze = false,
+                            IsShowMenu = true,
+                            Name = "按钮管理",
+                            OpenUrl = "/SysManage/MenuButton/Index",
+                            OrderNo = 0,
+                            ParentId = new Guid("7c9c9976-336c-443a-8a16-88574e887905")
+                        },
+                        new
+                        {
+                            MenuId = new Guid("8ba0133b-3c19-4bca-a86d-527463ff4fd3"),
+                            Action = "OperationLog",
+                            Area = "SysManage",
+                            CanbeDelete = false,
+                            Code = "",
+                            Controller = "Log",
+                            Icon = "fas fa-eye",
+                            IsFreeze = false,
+                            IsShowMenu = true,
+                            Name = "操作日志",
+                            OpenUrl = "/SysManage/Log/OperationLog",
+                            OrderNo = 0,
+                            ParentId = new Guid("b75ce484-8d7a-469e-8661-565585d302e3")
+                        },
+                        new
+                        {
+                            MenuId = new Guid("b75ce484-8d7a-469e-8661-565585d302e3"),
+                            Action = "",
+                            Area = "",
+                            CanbeDelete = false,
+                            Code = "",
+                            Controller = "",
+                            Icon = "fas fa-paste",
+                            IsFreeze = false,
+                            IsShowMenu = true,
+                            Name = "系统日志",
+                            OpenUrl = "",
+                            OrderNo = 0,
+                            ParentId = new Guid("9d804188-dded-418f-99c4-c9ee145673fb")
+                        },
+                        new
+                        {
+                            MenuId = new Guid("93967f84-2598-4aca-9a50-5c4a7719820f"),
+                            Action = "Index",
+                            Area = "SysManage",
+                            CanbeDelete = false,
+                            Code = "",
+                            Controller = "ArticleType",
+                            Icon = "fas fa-th-list",
+                            IsFreeze = false,
+                            IsShowMenu = true,
+                            Name = "文章类别",
+                            OpenUrl = "/SysManage/ArticleType/Index",
+                            OrderNo = 0,
+                            ParentId = new Guid("2986d468-ffe7-4a52-ab24-a594f5f79f33")
+                        },
+                        new
+                        {
+                            MenuId = new Guid("8f9d406f-70f0-4a11-9380-616fe2395c9e"),
+                            Action = "Index",
+                            Area = "sysManage",
+                            CanbeDelete = false,
+                            Code = "",
+                            Controller = "Pays",
+                            Icon = "fab fa-apple-pay",
+                            IsFreeze = false,
+                            IsShowMenu = true,
+                            Name = "支付方式",
+                            OpenUrl = "/SysManage/Pays/Index",
+                            OrderNo = 0,
+                            ParentId = new Guid("9d804188-dded-418f-99c4-c9ee145673fb")
+                        },
+                        new
+                        {
+                            MenuId = new Guid("e0d226e9-6253-42c7-abbd-65111f73d406"),
+                            Action = "Index",
+                            Area = "SysManage",
+                            CanbeDelete = false,
+                            Code = "",
+                            Controller = "Article",
+                            Icon = "fas fa-align-justify",
+                            IsFreeze = false,
+                            IsShowMenu = true,
+                            Name = "文章列表",
+                            OpenUrl = "/SysManage/Article/Index",
+                            OrderNo = 0,
+                            ParentId = new Guid("2986d468-ffe7-4a52-ab24-a594f5f79f33")
+                        },
+                        new
+                        {
+                            MenuId = new Guid("271fade9-0e28-411b-ad92-7fc9a3b57990"),
+                            Action = "Index",
+                            Area = "SysManage",
+                            CanbeDelete = false,
+                            Code = "",
+                            Controller = "LinkType",
+                            Icon = "fas fa-external-link-alt",
+                            IsFreeze = false,
+                            IsShowMenu = true,
+                            Name = "链接类型",
+                            OpenUrl = "/SysManage/LinkType/Index",
+                            OrderNo = 0,
+                            ParentId = new Guid("517d48c3-8551-4d2d-8a0c-3f060077b236")
+                        },
+                        new
+                        {
+                            MenuId = new Guid("7c9c9976-336c-443a-8a16-88574e887905"),
+                            Action = "",
+                            Area = "",
+                            CanbeDelete = false,
+                            Code = "",
+                            Controller = "",
+                            Icon = "fas fa-desktop",
+                            IsFreeze = false,
+                            IsShowMenu = true,
+                            Name = "权限信息",
+                            OpenUrl = "",
+                            OrderNo = 0,
+                            ParentId = new Guid("9d804188-dded-418f-99c4-c9ee145673fb")
+                        },
+                        new
+                        {
+                            MenuId = new Guid("89532468-de42-4f17-b681-8db668c5e50c"),
+                            Action = "",
+                            Area = "",
+                            CanbeDelete = false,
+                            Code = "",
+                            Controller = "",
+                            Icon = "fas fa-handshake",
+                            IsFreeze = false,
+                            IsShowMenu = true,
+                            Name = "敏捷开发",
+                            OpenUrl = "",
+                            OrderNo = 0,
+                            ParentId = new Guid("9d804188-dded-418f-99c4-c9ee145673fb")
+                        },
+                        new
+                        {
+                            MenuId = new Guid("de921f49-b63d-47c8-95b1-93d13ecab2ca"),
+                            Action = "Index",
+                            Area = "SysManage",
+                            CanbeDelete = false,
+                            Code = "",
+                            Controller = "Config",
+                            Icon = "fas fa-cogs",
+                            IsFreeze = false,
+                            IsShowMenu = true,
+                            Name = "系统配置",
+                            OpenUrl = "/SysManage/Config/Index",
+                            OrderNo = 0,
+                            ParentId = new Guid("26d560a2-c68a-4796-afcd-29ddce64d1f8")
+                        },
+                        new
+                        {
+                            MenuId = new Guid("2986d468-ffe7-4a52-ab24-a594f5f79f33"),
+                            Action = "",
+                            Area = "",
+                            CanbeDelete = false,
+                            Code = "",
+                            Controller = "",
+                            Icon = "fas fa-book-reader",
+                            IsFreeze = false,
+                            IsShowMenu = true,
+                            Name = "文章管理",
+                            OpenUrl = "",
+                            OrderNo = 0,
+                            ParentId = new Guid("00000000-0000-0000-0000-000000000000")
+                        },
+                        new
+                        {
+                            MenuId = new Guid("af66d9a6-3567-4267-a7cc-a79982b53fd0"),
+                            Action = "Index",
+                            Area = "SysManage",
+                            CanbeDelete = false,
+                            Code = "",
+                            Controller = "Dictionary",
+                            Icon = "fas fa-book",
+                            IsFreeze = false,
+                            IsShowMenu = true,
+                            Name = "字典管理",
+                            OpenUrl = "/SysManage/Log/Login",
+                            OrderNo = 0,
+                            ParentId = new Guid("26d560a2-c68a-4796-afcd-29ddce64d1f8")
+                        },
+                        new
+                        {
+                            MenuId = new Guid("9d804188-dded-418f-99c4-c9ee145673fb"),
+                            Action = "",
+                            Area = "",
+                            CanbeDelete = false,
+                            Code = "",
+                            Controller = "",
+                            Icon = "fas fa-cog",
+                            IsFreeze = false,
+                            IsShowMenu = true,
+                            Name = "系统管理",
+                            OpenUrl = "",
+                            OrderNo = 0,
+                            ParentId = new Guid("00000000-0000-0000-0000-000000000000")
+                        },
+                        new
+                        {
+                            MenuId = new Guid("004e1aeb-5270-42cf-945c-dd7a1f277ced"),
+                            Action = "Index",
+                            Area = "SysManage",
+                            CanbeDelete = false,
+                            Code = "",
+                            Controller = "User",
+                            Icon = "fas fa-user",
+                            IsFreeze = false,
+                            IsShowMenu = true,
+                            Name = "系统用户",
+                            OpenUrl = "/SysManage/User/Index",
+                            OrderNo = 0,
+                            ParentId = new Guid("65294c4a-6bc4-49e7-8169-ffa7d628a8f6")
+                        },
+                        new
+                        {
+                            MenuId = new Guid("52453f3e-02e7-47d0-a5c8-fcaa5e26005d"),
+                            Action = "Index",
+                            Area = "SysManage",
+                            CanbeDelete = false,
+                            Code = "",
+                            Controller = "CodeGeneration",
+                            Icon = "fas fa-code",
+                            IsFreeze = false,
+                            IsShowMenu = true,
+                            Name = "代码生成",
+                            OpenUrl = "/SysManage/CodeGeneration/Index",
+                            OrderNo = 0,
+                            ParentId = new Guid("89532468-de42-4f17-b681-8db668c5e50c")
+                        },
+                        new
+                        {
+                            MenuId = new Guid("65294c4a-6bc4-49e7-8169-ffa7d628a8f6"),
+                            Action = "",
+                            Area = "",
+                            CanbeDelete = false,
+                            Code = "",
+                            Controller = "",
+                            Icon = "fas fa-user",
+                            IsFreeze = false,
+                            IsShowMenu = true,
+                            Name = "用户管理",
+                            OpenUrl = "",
+                            OrderNo = 0,
+                            ParentId = new Guid("00000000-0000-0000-0000-000000000000")
+                        });
                 });
 
             modelBuilder.Entity("Ctrl.System.Models.Entities.SystemMenuButton", b =>
@@ -485,32 +898,266 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         .HasColumnType("char(36)");
 
                     b.Property<string>("Code")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
+                        .HasMaxLength(64);
 
                     b.Property<DateTime>("CreateTime")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Icon")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(32) CHARACTER SET utf8mb4")
+                        .HasMaxLength(32);
 
                     b.Property<Guid>("MenuId")
                         .HasColumnType("char(36)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
+                        .HasMaxLength(64);
 
                     b.Property<int>("OrderNo")
                         .HasColumnType("int");
 
                     b.Property<string>("Remark")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(512) CHARACTER SET utf8mb4")
+                        .HasMaxLength(512);
 
                     b.Property<string>("Script")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
+                        .HasMaxLength(64);
 
                     b.HasKey("Id");
 
                     b.ToTable("Sys_MenuButton");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("ea0c6981-23a3-4725-8f22-9cda4662496f"),
+                            Code = "xtgl-cdan-SaveMenuButton",
+                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 442, DateTimeKind.Local).AddTicks(7671),
+                            Icon = "fas fa-plus",
+                            MenuId = new Guid("6a1969b8-31ee-4bd7-9ca4-4375ddceba73"),
+                            Name = "新增",
+                            OrderNo = 0,
+                            Script = "btn_add_box()"
+                        },
+                        new
+                        {
+                            Id = new Guid("b2217d51-666a-455a-9946-e39231fb567d"),
+                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5402),
+                            Icon = "fas fa-edit",
+                            MenuId = new Guid("6a1969b8-31ee-4bd7-9ca4-4375ddceba73"),
+                            Name = "编辑",
+                            OrderNo = 0,
+                            Script = "btn_edit_box()"
+                        },
+                        new
+                        {
+                            Id = new Guid("a2667ffe-7911-4f87-94b7-61c379620c0e"),
+                            Code = "xtgl-jswh-Chosen",
+                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5588),
+                            Icon = "fas fa-user-lock",
+                            MenuId = new Guid("40793482-245c-4a1c-8c58-351b6d1b2e7f"),
+                            Name = "模块权限",
+                            OrderNo = 0,
+                            Script = "menuPermission()"
+                        },
+                        new
+                        {
+                            Id = new Guid("5fe76e91-9e61-4823-8b6b-5bbdc36a92fc"),
+                            Code = "xtgl-jswh-ChosenButton",
+                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5601),
+                            Icon = "fas fa-user-minus",
+                            MenuId = new Guid("40793482-245c-4a1c-8c58-351b6d1b2e7f"),
+                            Name = "按钮权限",
+                            OrderNo = 0,
+                            Script = "buttonPermission()"
+                        },
+                        new
+                        {
+                            Id = new Guid("2550bdae-2c09-4f7b-b658-f3ed0b48a39d"),
+                            Code = "xtgl-jswh-SaveRole",
+                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5613),
+                            Icon = "fas fa-plus",
+                            MenuId = new Guid("40793482-245c-4a1c-8c58-351b6d1b2e7f"),
+                            Name = "新增",
+                            OrderNo = 0,
+                            Script = "btn_add_box()"
+                        },
+                        new
+                        {
+                            Id = new Guid("43ad2588-4bfb-4463-9b7e-1e92e211f41c"),
+                            Code = "xtgl-xtyh-SaveUser",
+                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5637),
+                            Icon = "fas fa-plus",
+                            MenuId = new Guid("004e1aeb-5270-42cf-945c-dd7a1f277ced"),
+                            Name = "新增",
+                            OrderNo = 0,
+                            Script = "btn_add_box()"
+                        },
+                        new
+                        {
+                            Id = new Guid("30a8e873-1a14-43e8-8aef-af86441a984b"),
+                            Code = "xtgl-mkwh-SaveMenu",
+                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5647),
+                            Icon = "fas fa-plus",
+                            MenuId = new Guid("fc239bef-8bfa-48a4-ad99-150a1b1a017e"),
+                            Name = "新增",
+                            OrderNo = 0,
+                            Script = "btn_add_box()"
+                        },
+                        new
+                        {
+                            Id = new Guid("6054574b-9ad6-4f47-868c-84bd8a9abbb1"),
+                            Code = "xtgl-mkwh-SaveMenu",
+                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5659),
+                            Icon = "fas fa-edit",
+                            MenuId = new Guid("fc239bef-8bfa-48a4-ad99-150a1b1a017e"),
+                            Name = "编辑",
+                            OrderNo = 0,
+                            Script = "btn_edit_box()"
+                        },
+                        new
+                        {
+                            Id = new Guid("5cd7d37f-73ff-443b-8c59-e6423343e36b"),
+                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5670),
+                            Icon = "fas fa-chart-pie",
+                            MenuId = new Guid("d19e918c-0694-437e-b604-b989a5668695"),
+                            Name = "数据分析",
+                            OrderNo = 0,
+                            Script = "btn_data_box()"
+                        },
+                        new
+                        {
+                            Id = new Guid("1c47ce2e-f2c7-4bce-80ba-d926a885c207"),
+                            Code = "xtgl-zffs-SavePays",
+                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5681),
+                            Icon = "fas fa-plus",
+                            MenuId = new Guid("8f9d406f-70f0-4a11-9380-616fe2395c9e"),
+                            Name = "新增",
+                            OrderNo = 0,
+                            Script = "btn_add_box()"
+                        },
+                        new
+                        {
+                            Id = new Guid("5e7bb3b6-70a0-4d92-8127-425a80c71a71"),
+                            Code = "xtgl-wzlx-SaveArticleType",
+                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5694),
+                            Icon = "fas fa-plus",
+                            MenuId = new Guid("93967f84-2598-4aca-9a50-5c4a7719820f"),
+                            Name = "新增",
+                            OrderNo = 0,
+                            Script = "btn_add_box()"
+                        },
+                        new
+                        {
+                            Id = new Guid("38b08da7-6d50-4fdf-ac8a-d11ca05941cc"),
+                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5705),
+                            Icon = "fas fa-edit",
+                            MenuId = new Guid("93967f84-2598-4aca-9a50-5c4a7719820f"),
+                            Name = "编辑",
+                            OrderNo = 0,
+                            Script = "btn_edit_box()"
+                        },
+                        new
+                        {
+                            Id = new Guid("f7440017-337e-4a68-9edd-14b478b59f0c"),
+                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5715),
+                            Icon = "fas fa-plus",
+                            MenuId = new Guid("e0d226e9-6253-42c7-abbd-65111f73d406"),
+                            Name = "新增",
+                            OrderNo = 0,
+                            Script = "btn_add_box()"
+                        },
+                        new
+                        {
+                            Id = new Guid("78bb4ba6-9de5-4def-aadf-46de47f51b3d"),
+                            Code = "xtgl-wz-SaveArticle",
+                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5730),
+                            Icon = "fas fa-plus",
+                            MenuId = new Guid("e0d226e9-6253-42c7-abbd-65111f73d406"),
+                            Name = "编辑",
+                            OrderNo = 0,
+                            Script = "btn_edit_box()"
+                        },
+                        new
+                        {
+                            Id = new Guid("00773067-437f-4a23-a87b-15a6d32574d3"),
+                            Code = "xtgl-mkwh-DeleteMenu",
+                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5742),
+                            Icon = "far fa-trash-alt",
+                            MenuId = new Guid("fc239bef-8bfa-48a4-ad99-150a1b1a017e"),
+                            Name = "删除",
+                            OrderNo = 0,
+                            Script = "btn_edit_box()"
+                        },
+                        new
+                        {
+                            Id = new Guid("465f4755-6cb0-49ad-8109-18fc7568738e"),
+                            Code = "xtgl-zdgl-SaveSystemDictionary",
+                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5754),
+                            Icon = "fas fa-plus",
+                            MenuId = new Guid("af66d9a6-3567-4267-a7cc-a79982b53fd0"),
+                            Name = "新增",
+                            OrderNo = 0,
+                            Script = "btn_add_box()"
+                        },
+                        new
+                        {
+                            Id = new Guid("d07dfe90-ba40-4725-b334-566a3f4c88f3"),
+                            Code = "xtgl-cdan-SaveMenuButton",
+                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5765),
+                            Icon = "fas fa-edit",
+                            MenuId = new Guid("8f9d406f-70f0-4a11-9380-616fe2395c9e"),
+                            Name = "编辑",
+                            OrderNo = 0,
+                            Script = "btn_edit_box()"
+                        },
+                        new
+                        {
+                            Id = new Guid("49d8de58-364c-41c5-88c2-cb161870976a"),
+                            Code = "xtgl-zdgl-SaveSystemDictionary",
+                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5775),
+                            Icon = "fas fa-edit",
+                            MenuId = new Guid("af66d9a6-3567-4267-a7cc-a79982b53fd0"),
+                            Name = "编辑",
+                            OrderNo = 0,
+                            Script = "btn_edit_box()"
+                        },
+                        new
+                        {
+                            Id = new Guid("27eca2c0-c172-416a-b4de-cc15a943adaa"),
+                            Code = "ljgl-ljlx-SaveSystemLinkType",
+                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5785),
+                            Icon = "fas fa-plus",
+                            MenuId = new Guid("271fade9-0e28-411b-ad92-7fc9a3b57990"),
+                            Name = "新增",
+                            OrderNo = 0,
+                            Script = "btn_add_box()"
+                        },
+                        new
+                        {
+                            Id = new Guid("feca74e6-2d77-4d2e-b290-43ef8be6e7eb"),
+                            Code = "ljgl-ljlx-SaveSystemLinkType",
+                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5796),
+                            Icon = "fas fa-edit",
+                            MenuId = new Guid("271fade9-0e28-411b-ad92-7fc9a3b57990"),
+                            Name = "编辑",
+                            OrderNo = 0,
+                            Script = "btn_add_box()"
+                        },
+                        new
+                        {
+                            Id = new Guid("14ed1348-0793-4c18-8781-c75fd85e8e0b"),
+                            Code = "wzgl-wzlb-Delete",
+                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5806),
+                            Icon = "fas fa-trash-alt",
+                            MenuId = new Guid("e0d226e9-6253-42c7-abbd-65111f73d406"),
+                            Name = "删除",
+                            OrderNo = 0,
+                            Script = "btn_delete_box()"
+                        });
                 });
 
             modelBuilder.Entity("Ctrl.System.Models.Entities.SystemRole", b =>
@@ -529,19 +1176,22 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         .HasColumnType("char(36)");
 
                     b.Property<string>("CreateUserName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(32) CHARACTER SET utf8mb4")
+                        .HasMaxLength(32);
 
                     b.Property<bool>("IsFreeze")
                         .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
+                        .HasMaxLength(64);
 
                     b.Property<int>("OrderNo")
                         .HasColumnType("int");
 
                     b.Property<string>("Remark")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(512) CHARACTER SET utf8mb4")
+                        .HasMaxLength(512);
 
                     b.Property<int>("State")
                         .HasColumnType("int");
@@ -553,7 +1203,8 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         .HasColumnType("char(36)");
 
                     b.Property<string>("UpdateUserName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(32) CHARACTER SET utf8mb4")
+                        .HasMaxLength(32);
 
                     b.HasKey("RoleId");
 
@@ -563,22 +1214,26 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
             modelBuilder.Entity("Ctrl.System.Models.Entities.SystemSqlLog", b =>
                 {
                     b.Property<string>("SqlLogId")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
+                        .HasMaxLength(50);
 
                     b.Property<DateTime>("CreateTime")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("CreateUserCode")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
+                        .HasMaxLength(50);
 
                     b.Property<string>("CreateUserId")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
+                        .HasMaxLength(50);
 
                     b.Property<string>("CreateUserName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
+                        .HasMaxLength(50);
 
                     b.Property<decimal>("ElapsedTime")
-                        .HasColumnType("decimal(65,30)");
+                        .HasColumnType("decimal(18,6)");
 
                     b.Property<DateTime>("EndDateTime")
                         .HasColumnType("datetime(6)");
@@ -587,7 +1242,8 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Parameter")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(512) CHARACTER SET utf8mb4")
+                        .HasMaxLength(512);
 
                     b.HasKey("SqlLogId");
 

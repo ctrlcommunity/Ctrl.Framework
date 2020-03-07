@@ -5,11 +5,13 @@ using System.Text;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore.MySQL;
 using Volo.Abp.EntityFrameworkCore.SqlServer;
+using Volo.Abp.Guids;
 using Volo.Abp.Modularity;
 
 namespace Ctrl.Core.EntityFrameworkCore.EntityFrameworkCore
 {
-    [DependsOn(typeof(AbpEntityFrameworkCoreMySQLModule))]
+    [DependsOn(typeof(AbpEntityFrameworkCoreMySQLModule),
+        typeof(AbpGuidsModule))]
     public class CtrlEntityFrameworkCoreModule:AbpModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
