@@ -21,7 +21,15 @@ ASP.NET Core3.1、AbpvNext、BootStrap进行构建的快速开发通用型基础
 
 ![admin](https://raw.githubusercontent.com/ctrlcommunity/ASP.NET-Core-BaseDesign/dev/src/Presentation/Ctrl.Net/wwwroot/images/admin-button.png)
 
+# 使用
 
+通过Ctrl.EntityFrameworkCore.DbMigrations,修改**appsettings.json**中连接字符串执行如下命令附加数据库
+
+```cmd
+Add-Migration InitCreate
+
+Update-Database
+```
 
 # 代码贡献
 

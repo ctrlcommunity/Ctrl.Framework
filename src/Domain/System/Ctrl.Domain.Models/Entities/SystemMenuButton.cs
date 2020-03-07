@@ -50,6 +50,18 @@ namespace Ctrl.System.Models.Entities
         ///     权限代码
         /// </summary>
         public string Code { get; set; }
-
+        public SystemMenuButton() { }
+        public SystemMenuButton(Guid id,Guid menuId, string name, string icon, string script, int orderNo, string remark, DateTime createTime, string code)
+        {
+            Id = id;
+            MenuId = menuId;
+            Name = name;
+            Icon = icon;
+            Script = script;
+            OrderNo = orderNo;
+            Remark = remark;
+            CreateTime = createTime;
+            Code = code;
+        }
     }
 }
