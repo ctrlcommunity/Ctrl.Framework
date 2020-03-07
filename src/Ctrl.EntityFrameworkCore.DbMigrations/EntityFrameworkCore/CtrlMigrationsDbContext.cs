@@ -1,7 +1,4 @@
 ﻿using Ctrl.Core.EntityFrameworkCore.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
 

@@ -84,7 +84,24 @@ namespace Ctrl.System.Models.Entities
         ///  显示
         /// </summary>
         public bool IsShowMenu { get; set; }
-
-
+        public SystemMenu() { }
+        public SystemMenu(Guid menuId, Guid parentId, string code, string name, byte[] openType, string icon, string area, string controller, string action, string openUrl, string remark, int orderNo, bool canbeDelete, bool isFreeze, bool isShowMenu)
+        {
+            MenuId = menuId;
+            ParentId = parentId;
+            Code = code;
+            Name = name;
+            OpenType = openType;
+            Icon = icon;
+            Area = area;
+            Controller = controller;
+            Action = action;
+            OpenUrl = openUrl;
+            Remark = remark;
+            OrderNo = orderNo;
+            CanbeDelete = canbeDelete;
+            IsFreeze = isFreeze;
+            IsShowMenu = isShowMenu;
+        }
     }
 }
