@@ -36,7 +36,7 @@ namespace Ctrl.System.DataAccess {
             }
             sql.Append (" from Sys_Menu menu");
             if (isMenuShow) {
-                sql.Append (" WHERE menu.IsShowMenu='true'");
+                sql.Append (" WHERE menu.IsShowMenu=true");
             }
             sql.Append (" ORDER BY menu.OrderNo");
             return DbConnection.QueryAsync<TreeEntity>(sql.ToString(), transaction: DbTransaction);

@@ -43,7 +43,7 @@ namespace Ctrl.Domain.DataAccess.Identity
         /// <returns></returns>
         public Task<PagedResults<SystemUser>> GetPagingSysUser(QueryParam queryParam)
         {
-            var sql = "SELECT * FROM [dbo].[Sys_User] sysUser";
+            var sql = "SELECT * FROM Sys_User sysUser";
             return SqlMapperUtil.PagingQuery<SystemUser>(sql, queryParam);
         }
 
@@ -54,7 +54,7 @@ namespace Ctrl.Domain.DataAccess.Identity
         /// <returns></returns>
         public async Task<bool> UpdateLastLoginTime(IdInput input)
         {
-            var sql = $@"UPDATE [Sys_User] SET LastVisitTime='{DateTime.Now.ToString(CultureInfo.InvariantCulture)}' WHERE Id=@userId";
+            var sql = $@"UPDATE Sys_User SET LastVisitTime='{DateTime.Now.ToString("yyyy-MM-dd H:mm:ss")}' WHERE Id=@userId";
             return (await DbConnection.ExecuteAsync(sql, new {userId = input.Id},DbTransaction))>0;
         }
 
@@ -65,7 +65,7 @@ namespace Ctrl.Domain.DataAccess.Identity
         /// <returns></returns>
         public async Task<bool> UpdateFirstVisitTime(IdInput input)
         {
-            var sql = $@"UPDATE [Sys_User] SET FirstVisitTime='{DateTime.Now.ToString(CultureInfo.InvariantCulture)}' WHERE Id=@userId";
+            var sql = $@"UPDATE Sys_User SET FirstVisitTime='{DateTime.Now.ToString("yyyy-MM-dd H:mm:ss")}' WHERE Id=@userId";
             return (await DbConnection.ExecuteAsync(sql, new { userId = input.Id }, DbTransaction))>0;
         }
         /// <summary>
@@ -75,7 +75,7 @@ namespace Ctrl.Domain.DataAccess.Identity
         /// <returns></returns>
         public Task<bool> UserInfoUpdateSave(UserUpdateInput input)
         {
-            const string sql = @"UPDATE [Sys_User] 
+            const string sql = @"UPDATE Sys_User 
                                 SET ImgUrl=@ImgUrl,
                                 Name=@Name
                                 WHERE Id=@userId";

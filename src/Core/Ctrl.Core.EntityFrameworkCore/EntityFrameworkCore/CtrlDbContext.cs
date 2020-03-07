@@ -7,7 +7,7 @@ using Volo.Abp.EntityFrameworkCore.Modeling;
 
 namespace Ctrl.Core.EntityFrameworkCore.EntityFrameworkCore
 {
-    [ConnectionStringName("Test")]
+    [ConnectionStringName("Default")]
     public class CtrlDbContext : AbpDbContext<CtrlDbContext>
     {
         public DbSet<SystemUser> Users { get; set; }

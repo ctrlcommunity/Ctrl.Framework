@@ -60,7 +60,7 @@ namespace Ctrl.Domain.Business.Identity
                     operateStatus.Message = ResourceSystem.用户名或密码错误;
                     goto End;
                 }
-                if (data.IsFreeze.HasValue)
+                if (data.IsFreeze.Value)
                 {
                     operateStatus.ResultSign = ResultSign.Error;
                     operateStatus.Message = ResourceSystem.登录用户已冻结;

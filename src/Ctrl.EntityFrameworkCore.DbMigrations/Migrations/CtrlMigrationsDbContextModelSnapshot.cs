@@ -372,9 +372,9 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("da906042-dc9b-4ad4-a54b-7ff4b2281091"),
+                            Id = new Guid("a175036a-4e9e-451e-8980-b5f79a0cdbf9"),
                             Code = "admin",
-                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 437, DateTimeKind.Local).AddTicks(1785),
+                            CreateTime = new DateTime(2020, 3, 7, 22, 11, 43, 580, DateTimeKind.Local).AddTicks(1310),
                             ImgUrl = "/Files/2019/04/04-29/d9a7bd7d-030d-4a74-b6f2-6bb31cf9b10a.png",
                             IsAdmin = true,
                             IsFreeze = false,
@@ -933,9 +933,9 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("ea0c6981-23a3-4725-8f22-9cda4662496f"),
+                            Id = new Guid("f5a0851b-28f7-47d3-ada3-08d5232b3aff"),
                             Code = "xtgl-cdan-SaveMenuButton",
-                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 442, DateTimeKind.Local).AddTicks(7671),
+                            CreateTime = new DateTime(2020, 3, 7, 22, 11, 43, 585, DateTimeKind.Local).AddTicks(3020),
                             Icon = "fas fa-plus",
                             MenuId = new Guid("6a1969b8-31ee-4bd7-9ca4-4375ddceba73"),
                             Name = "新增",
@@ -944,8 +944,8 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         },
                         new
                         {
-                            Id = new Guid("b2217d51-666a-455a-9946-e39231fb567d"),
-                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5402),
+                            Id = new Guid("d2a7363e-39a6-4021-ae64-862210d849c8"),
+                            CreateTime = new DateTime(2020, 3, 7, 22, 11, 43, 585, DateTimeKind.Local).AddTicks(7050),
                             Icon = "fas fa-edit",
                             MenuId = new Guid("6a1969b8-31ee-4bd7-9ca4-4375ddceba73"),
                             Name = "编辑",
@@ -954,9 +954,9 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         },
                         new
                         {
-                            Id = new Guid("a2667ffe-7911-4f87-94b7-61c379620c0e"),
+                            Id = new Guid("5c6bd640-d849-44c2-bf49-2aef505b70cb"),
                             Code = "xtgl-jswh-Chosen",
-                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5588),
+                            CreateTime = new DateTime(2020, 3, 7, 22, 11, 43, 585, DateTimeKind.Local).AddTicks(7160),
                             Icon = "fas fa-user-lock",
                             MenuId = new Guid("40793482-245c-4a1c-8c58-351b6d1b2e7f"),
                             Name = "模块权限",
@@ -965,9 +965,9 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         },
                         new
                         {
-                            Id = new Guid("5fe76e91-9e61-4823-8b6b-5bbdc36a92fc"),
+                            Id = new Guid("18647505-cb99-4b84-af6a-28ca0e95fe13"),
                             Code = "xtgl-jswh-ChosenButton",
-                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5601),
+                            CreateTime = new DateTime(2020, 3, 7, 22, 11, 43, 585, DateTimeKind.Local).AddTicks(7170),
                             Icon = "fas fa-user-minus",
                             MenuId = new Guid("40793482-245c-4a1c-8c58-351b6d1b2e7f"),
                             Name = "按钮权限",
@@ -976,9 +976,9 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         },
                         new
                         {
-                            Id = new Guid("2550bdae-2c09-4f7b-b658-f3ed0b48a39d"),
+                            Id = new Guid("a9d43c5b-7bf5-4696-9221-181c5a05981e"),
                             Code = "xtgl-jswh-SaveRole",
-                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5613),
+                            CreateTime = new DateTime(2020, 3, 7, 22, 11, 43, 585, DateTimeKind.Local).AddTicks(7180),
                             Icon = "fas fa-plus",
                             MenuId = new Guid("40793482-245c-4a1c-8c58-351b6d1b2e7f"),
                             Name = "新增",
@@ -987,9 +987,9 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         },
                         new
                         {
-                            Id = new Guid("43ad2588-4bfb-4463-9b7e-1e92e211f41c"),
+                            Id = new Guid("566bea7d-0a62-469d-8e8b-5f3c6126c697"),
                             Code = "xtgl-xtyh-SaveUser",
-                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5637),
+                            CreateTime = new DateTime(2020, 3, 7, 22, 11, 43, 585, DateTimeKind.Local).AddTicks(7190),
                             Icon = "fas fa-plus",
                             MenuId = new Guid("004e1aeb-5270-42cf-945c-dd7a1f277ced"),
                             Name = "新增",
@@ -998,9 +998,9 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         },
                         new
                         {
-                            Id = new Guid("30a8e873-1a14-43e8-8aef-af86441a984b"),
+                            Id = new Guid("8ef1e014-0698-407c-bd57-569c0e239f61"),
                             Code = "xtgl-mkwh-SaveMenu",
-                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5647),
+                            CreateTime = new DateTime(2020, 3, 7, 22, 11, 43, 585, DateTimeKind.Local).AddTicks(7190),
                             Icon = "fas fa-plus",
                             MenuId = new Guid("fc239bef-8bfa-48a4-ad99-150a1b1a017e"),
                             Name = "新增",
@@ -1009,9 +1009,9 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         },
                         new
                         {
-                            Id = new Guid("6054574b-9ad6-4f47-868c-84bd8a9abbb1"),
+                            Id = new Guid("4637f33f-bb02-40c2-bc09-91260d292da9"),
                             Code = "xtgl-mkwh-SaveMenu",
-                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5659),
+                            CreateTime = new DateTime(2020, 3, 7, 22, 11, 43, 585, DateTimeKind.Local).AddTicks(7200),
                             Icon = "fas fa-edit",
                             MenuId = new Guid("fc239bef-8bfa-48a4-ad99-150a1b1a017e"),
                             Name = "编辑",
@@ -1020,8 +1020,8 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         },
                         new
                         {
-                            Id = new Guid("5cd7d37f-73ff-443b-8c59-e6423343e36b"),
-                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5670),
+                            Id = new Guid("90c2653a-63bd-4e92-b228-ed04d0adf0cf"),
+                            CreateTime = new DateTime(2020, 3, 7, 22, 11, 43, 585, DateTimeKind.Local).AddTicks(7210),
                             Icon = "fas fa-chart-pie",
                             MenuId = new Guid("d19e918c-0694-437e-b604-b989a5668695"),
                             Name = "数据分析",
@@ -1030,9 +1030,9 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         },
                         new
                         {
-                            Id = new Guid("1c47ce2e-f2c7-4bce-80ba-d926a885c207"),
+                            Id = new Guid("4cefe5bf-dedc-41a0-a585-1b8334e30403"),
                             Code = "xtgl-zffs-SavePays",
-                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5681),
+                            CreateTime = new DateTime(2020, 3, 7, 22, 11, 43, 585, DateTimeKind.Local).AddTicks(7340),
                             Icon = "fas fa-plus",
                             MenuId = new Guid("8f9d406f-70f0-4a11-9380-616fe2395c9e"),
                             Name = "新增",
@@ -1041,9 +1041,9 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         },
                         new
                         {
-                            Id = new Guid("5e7bb3b6-70a0-4d92-8127-425a80c71a71"),
+                            Id = new Guid("7adc969c-079c-4afc-a4f0-4060ae7fb48a"),
                             Code = "xtgl-wzlx-SaveArticleType",
-                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5694),
+                            CreateTime = new DateTime(2020, 3, 7, 22, 11, 43, 585, DateTimeKind.Local).AddTicks(7350),
                             Icon = "fas fa-plus",
                             MenuId = new Guid("93967f84-2598-4aca-9a50-5c4a7719820f"),
                             Name = "新增",
@@ -1052,8 +1052,8 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         },
                         new
                         {
-                            Id = new Guid("38b08da7-6d50-4fdf-ac8a-d11ca05941cc"),
-                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5705),
+                            Id = new Guid("4e98c3ba-4faa-4969-b661-07ceb39a88e4"),
+                            CreateTime = new DateTime(2020, 3, 7, 22, 11, 43, 585, DateTimeKind.Local).AddTicks(7360),
                             Icon = "fas fa-edit",
                             MenuId = new Guid("93967f84-2598-4aca-9a50-5c4a7719820f"),
                             Name = "编辑",
@@ -1062,8 +1062,8 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         },
                         new
                         {
-                            Id = new Guid("f7440017-337e-4a68-9edd-14b478b59f0c"),
-                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5715),
+                            Id = new Guid("d4be5c5e-070f-46c5-b9b7-51ca52b2151a"),
+                            CreateTime = new DateTime(2020, 3, 7, 22, 11, 43, 585, DateTimeKind.Local).AddTicks(7360),
                             Icon = "fas fa-plus",
                             MenuId = new Guid("e0d226e9-6253-42c7-abbd-65111f73d406"),
                             Name = "新增",
@@ -1072,9 +1072,9 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         },
                         new
                         {
-                            Id = new Guid("78bb4ba6-9de5-4def-aadf-46de47f51b3d"),
+                            Id = new Guid("f3654739-a1ed-470a-9a69-47c0e54f4e8b"),
                             Code = "xtgl-wz-SaveArticle",
-                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5730),
+                            CreateTime = new DateTime(2020, 3, 7, 22, 11, 43, 585, DateTimeKind.Local).AddTicks(7370),
                             Icon = "fas fa-plus",
                             MenuId = new Guid("e0d226e9-6253-42c7-abbd-65111f73d406"),
                             Name = "编辑",
@@ -1083,9 +1083,9 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         },
                         new
                         {
-                            Id = new Guid("00773067-437f-4a23-a87b-15a6d32574d3"),
+                            Id = new Guid("30e896a3-2657-4d56-918f-bd2cf3047974"),
                             Code = "xtgl-mkwh-DeleteMenu",
-                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5742),
+                            CreateTime = new DateTime(2020, 3, 7, 22, 11, 43, 585, DateTimeKind.Local).AddTicks(7380),
                             Icon = "far fa-trash-alt",
                             MenuId = new Guid("fc239bef-8bfa-48a4-ad99-150a1b1a017e"),
                             Name = "删除",
@@ -1094,9 +1094,9 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         },
                         new
                         {
-                            Id = new Guid("465f4755-6cb0-49ad-8109-18fc7568738e"),
+                            Id = new Guid("9b1b56c0-36f7-4567-ad5e-2a9d6f05b47f"),
                             Code = "xtgl-zdgl-SaveSystemDictionary",
-                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5754),
+                            CreateTime = new DateTime(2020, 3, 7, 22, 11, 43, 585, DateTimeKind.Local).AddTicks(7390),
                             Icon = "fas fa-plus",
                             MenuId = new Guid("af66d9a6-3567-4267-a7cc-a79982b53fd0"),
                             Name = "新增",
@@ -1105,9 +1105,9 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         },
                         new
                         {
-                            Id = new Guid("d07dfe90-ba40-4725-b334-566a3f4c88f3"),
+                            Id = new Guid("8a1c0ba3-8026-438b-ac78-994b071aa0d2"),
                             Code = "xtgl-cdan-SaveMenuButton",
-                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5765),
+                            CreateTime = new DateTime(2020, 3, 7, 22, 11, 43, 585, DateTimeKind.Local).AddTicks(7390),
                             Icon = "fas fa-edit",
                             MenuId = new Guid("8f9d406f-70f0-4a11-9380-616fe2395c9e"),
                             Name = "编辑",
@@ -1116,9 +1116,9 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         },
                         new
                         {
-                            Id = new Guid("49d8de58-364c-41c5-88c2-cb161870976a"),
+                            Id = new Guid("d3281c1a-87b8-4e55-95fa-ab7a7cc59c64"),
                             Code = "xtgl-zdgl-SaveSystemDictionary",
-                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5775),
+                            CreateTime = new DateTime(2020, 3, 7, 22, 11, 43, 585, DateTimeKind.Local).AddTicks(7400),
                             Icon = "fas fa-edit",
                             MenuId = new Guid("af66d9a6-3567-4267-a7cc-a79982b53fd0"),
                             Name = "编辑",
@@ -1127,9 +1127,9 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         },
                         new
                         {
-                            Id = new Guid("27eca2c0-c172-416a-b4de-cc15a943adaa"),
+                            Id = new Guid("1c2ba4c5-753e-42b3-8ff1-910310de6bd3"),
                             Code = "ljgl-ljlx-SaveSystemLinkType",
-                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5785),
+                            CreateTime = new DateTime(2020, 3, 7, 22, 11, 43, 585, DateTimeKind.Local).AddTicks(7410),
                             Icon = "fas fa-plus",
                             MenuId = new Guid("271fade9-0e28-411b-ad92-7fc9a3b57990"),
                             Name = "新增",
@@ -1138,9 +1138,9 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         },
                         new
                         {
-                            Id = new Guid("feca74e6-2d77-4d2e-b290-43ef8be6e7eb"),
+                            Id = new Guid("361e227d-2a0f-4150-880e-ba70c7fcc0c8"),
                             Code = "ljgl-ljlx-SaveSystemLinkType",
-                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5796),
+                            CreateTime = new DateTime(2020, 3, 7, 22, 11, 43, 585, DateTimeKind.Local).AddTicks(7410),
                             Icon = "fas fa-edit",
                             MenuId = new Guid("271fade9-0e28-411b-ad92-7fc9a3b57990"),
                             Name = "编辑",
@@ -1149,9 +1149,9 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                         },
                         new
                         {
-                            Id = new Guid("14ed1348-0793-4c18-8781-c75fd85e8e0b"),
+                            Id = new Guid("fa481983-f1bb-405b-b405-8098fb6989f4"),
                             Code = "wzgl-wzlb-Delete",
-                            CreateTime = new DateTime(2020, 3, 7, 20, 23, 11, 443, DateTimeKind.Local).AddTicks(5806),
+                            CreateTime = new DateTime(2020, 3, 7, 22, 11, 43, 585, DateTimeKind.Local).AddTicks(7420),
                             Icon = "fas fa-trash-alt",
                             MenuId = new Guid("e0d226e9-6253-42c7-abbd-65111f73d406"),
                             Name = "删除",

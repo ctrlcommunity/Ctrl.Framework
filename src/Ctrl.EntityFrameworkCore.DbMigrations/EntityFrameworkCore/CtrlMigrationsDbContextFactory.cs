@@ -12,7 +12,7 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.EntityFrameworkCore
             var configuration = BuildConfiguration();
 
             var builder = new DbContextOptionsBuilder<CtrlMigrationsDbContext>()
-                .UseMySql(configuration.GetConnectionString("Test"));
+                .UseMySql(configuration.GetConnectionString("Default"));
 
             return new CtrlMigrationsDbContext(builder.Options);
         }
