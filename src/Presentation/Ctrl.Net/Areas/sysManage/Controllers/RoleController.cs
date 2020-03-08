@@ -17,6 +17,8 @@ using Ctrl.System.Models.Entities;
 using Ctrl.Core.Web;
 using Ctrl.Core.Entities.Paging;
 using Ctrl.Core.Web.Attributes;
+using Volo.Abp.Application.Dtos;
+using Ctrl.Domain.Models.Dtos.Identity;
 
 namespace Ctrl.Net.Areas.sysManage.Controllers
 {
@@ -97,9 +99,9 @@ namespace Ctrl.Net.Areas.sysManage.Controllers
         [HttpPost]
         [CreateBy("冯辉")]
         [Description("角色列表-方法-列表-获取角色列表")]
-        public async Task<JsonResult> GetPagingRole(QueryParam queryParam)
+        public Task<PagedResultDto<SystemRoleOutput>> GetPagingRole(PagedAndSortedResultRequestDto queryParam)
         {
-            return JsonForGridPaging(await _systemRoleLogic.GetPagingSysRole(queryParam));
+            return _systemRoleLogic.GetPagingSysRole(queryParam);
         }
         
         #endregion

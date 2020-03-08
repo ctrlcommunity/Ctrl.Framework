@@ -196,7 +196,7 @@ namespace Ctrl.Core.EntityFrameworkCore.EntityFrameworkCore
             builder.Entity<SystemRole>(b =>
             {
                 b.ToTable("Sys_Role");
-                b.HasKey(p => p.RoleId);
+                b.HasKey(p => p.Id);
                 b.Property(p => p.Name).HasMaxLength(64);
                 b.Property(p => p.Remark).HasMaxLength(512);
                 b.Property(p => p.CreateUserName).HasMaxLength(32);

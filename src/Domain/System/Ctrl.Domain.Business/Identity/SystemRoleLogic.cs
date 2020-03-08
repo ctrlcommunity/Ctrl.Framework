@@ -3,24 +3,29 @@ using Ctrl.Core.Core.Utils;
 using Ctrl.Core.Entities;
 using Ctrl.Core.Entities.Paging;
 using Ctrl.Core.Entities.Tree;
+using Ctrl.Domain.Models.Dtos.Identity;
 using Ctrl.System.DataAccess;
 using Ctrl.System.Models.Entities;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Volo.Abp.Application.Dtos;
+using Volo.Abp.Application.Services;
 using Volo.Abp.DependencyInjection;
+using Volo.Abp.Domain.Repositories;
 
 namespace Ctrl.System.Business
 {
     /// <summary>
     ///     角色表业务逻辑接口实现
     /// /// </summary>
-    public class SystemRoleLogic:AsyncLogic<SystemRole>,ISystemRoleLogic, IScopedDependency
+    public class SystemRoleLogic:CrudAppService<SystemRole,SystemRoleOutput,Guid>,ISystemRoleLogic, IScopedDependency
     {
         #region 构造函数
         private readonly ISystemRoleRepository _systemRoleRepository;
 
-        public SystemRoleLogic(ISystemRoleRepository systemRoleRepository):base(systemRoleRepository) {
+        public SystemRoleLogic(IRepository<SystemRole, Guid> repository,ISystemRoleRepository systemRoleRepository) : base(repository)
+        {
             _systemRoleRepository = systemRoleRepository;
         }
         #endregion
@@ -33,11 +38,12 @@ namespace Ctrl.System.Business
         /// <returns></returns>
         public  Task<OperateStatus> SaveRole(SystemRole role)
         {
-            if (role.RoleId.IsEmptyGuid())
+            if (role.Id.IsEmptyGuid())
             {
                 role.CreateTime = DateTime.Now;
-                role.RoleId = Guid.NewGuid();
-                return InsertAsync(role);
+               // role.RoleId = Guid.NewGuid();
+                //return InsertAsync(role);
+                return null;
             }
             return null;
         }
@@ -46,9 +52,9 @@ namespace Ctrl.System.Business
         /// </summary>
         /// <param name="queryParam">分页信息</param>
         /// <returns></returns>
-        public  Task<PagedResults<SystemRole>> GetPagingSysRole(QueryParam queryParam)
+        public Task<PagedResultDto<SystemRoleOutput>> GetPagingSysRole(PagedAndSortedResultRequestDto queryParam)
         {
-            return  _systemRoleRepository.GetPagingSysRole(queryParam);
+            return  GetListAsync(queryParam);
         }
         /// <summary>
         ///     获取角色树

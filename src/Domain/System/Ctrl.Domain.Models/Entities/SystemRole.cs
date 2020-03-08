@@ -1,6 +1,7 @@
 using Ctrl.Core.PetaPoco;
 using System;
 using Ctrl.Core.Entities;
+using Volo.Abp.Domain.Entities;
 
 namespace Ctrl.System.Models.Entities
 {   
@@ -10,13 +11,8 @@ namespace Ctrl.System.Models.Entities
     [Serializable]
     [TableName("Sys_Role")]
     [PrimaryKey("RoleId")]
-    public class SystemRole : EntityBase
+    public class SystemRole : Entity<Guid>
     {
-        /// <summary>
-        /// 角色id
-        /// </summary>
-        public Guid RoleId { get; set; }
-
         /// <summary>
         /// 角色名称
         /// </summary>

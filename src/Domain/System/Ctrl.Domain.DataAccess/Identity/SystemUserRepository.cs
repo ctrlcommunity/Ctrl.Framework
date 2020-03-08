@@ -29,7 +29,7 @@ namespace Ctrl.Domain.DataAccess.Identity
         {
             var sql = @"select sysUser.Id,sysUser.Code,sysUser.Name,sysUser.IsAdmin,role.Name RoleName,sysUser.IsFreeze,sysUser.FirstVisitTime,sysUser.ImgUrl  from Sys_User sysUser
                     left join Sys_PermissionUser per on sysUser.Id=per.PrivilegeMasterUserId
-                    left join Sys_Role role on  role.RoleId=per.PrivilegeMasterValue
+                    left join Sys_Role role on  role.Id=per.PrivilegeMasterValue
                     where sysUser.Code=@Code and sysUser.Password=@pwd";
 
             return DbConnection.QueryFirstOrDefaultAsync<UserLoginOutput>(sql,

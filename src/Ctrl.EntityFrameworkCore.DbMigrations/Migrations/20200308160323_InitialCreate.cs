@@ -241,7 +241,7 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                 name: "Sys_Role",
                 columns: table => new
                 {
-                    RoleId = table.Column<Guid>(nullable: false),
+                    Id = table.Column<Guid>(nullable: false),
                     Name = table.Column<string>(maxLength: 64, nullable: true),
                     State = table.Column<int>(nullable: false),
                     CanbeDelete = table.Column<bool>(nullable: false),
@@ -257,7 +257,7 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Sys_Role", x => x.RoleId);
+                    table.PrimaryKey("PK_Sys_Role", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -320,7 +320,7 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                     { new Guid("de921f49-b63d-47c8-95b1-93d13ecab2ca"), "Index", "SysManage", false, "", "Config", "fas fa-cogs", false, true, "系统配置", null, "/SysManage/Config/Index", 0, new Guid("26d560a2-c68a-4796-afcd-29ddce64d1f8"), null },
                     { new Guid("93967f84-2598-4aca-9a50-5c4a7719820f"), "Index", "SysManage", false, "", "ArticleType", "fas fa-th-list", false, true, "文章类别", null, "/SysManage/ArticleType/Index", 0, new Guid("2986d468-ffe7-4a52-ab24-a594f5f79f33"), null },
                     { new Guid("b75ce484-8d7a-469e-8661-565585d302e3"), "", "", false, "", "", "fas fa-paste", false, true, "系统日志", null, "", 0, new Guid("9d804188-dded-418f-99c4-c9ee145673fb"), null },
-                    { new Guid("8ba0133b-3c19-4bca-a86d-527463ff4fd3"), "OperationLog", "SysManage", false, "", "Log", "fas fa-eye", false, true, "操作日志", null, "/SysManage/Log/OperationLog", 0, new Guid("b75ce484-8d7a-469e-8661-565585d302e3"), null },
+                    { new Guid("8ba0133b-3c19-4bca-a86d-527463ff4fd3"), "OperationLog", "SysManage", false, "", "Log", "fas fa-eye", false, true, "操作日志", null, "/SysManage/Log/OperationLog", 0, new Guid("9d804188-dded-418f-99c4-c9ee145673fb"), null },
                     { new Guid("6a1969b8-31ee-4bd7-9ca4-4375ddceba73"), "Index", "SysManage", false, "", "MenuButton", "fas fa-cubes", false, true, "按钮管理", null, "/SysManage/MenuButton/Index", 0, new Guid("7c9c9976-336c-443a-8a16-88574e887905"), null },
                     { new Guid("40793482-245c-4a1c-8c58-351b6d1b2e7f"), "Index", "SysManage", false, "", "Role", "fas fa-users", false, true, "角色维护", null, "/SysManage/Role/Index", 0, new Guid("65294c4a-6bc4-49e7-8169-ffa7d628a8f6"), null },
                     { new Guid("52ff87fd-aa44-43e8-a8c2-2ed8be1d2511"), "ExceptionLog", "SysManage", false, "", "Log", "fas fa-bug", false, true, "错误日志", null, "/SysManage/Log/ExceptionLog", 0, new Guid("b75ce484-8d7a-469e-8661-565585d302e3"), null },
@@ -334,33 +334,33 @@ namespace Ctrl.EntityFrameworkCore.DbMigrations.Migrations
                 columns: new[] { "Id", "Code", "CreateTime", "Icon", "MenuId", "Name", "OrderNo", "Remark", "Script" },
                 values: new object[,]
                 {
-                    { new Guid("4e98c3ba-4faa-4969-b661-07ceb39a88e4"), null, new DateTime(2020, 3, 7, 22, 11, 43, 585, DateTimeKind.Local).AddTicks(7360), "fas fa-edit", new Guid("93967f84-2598-4aca-9a50-5c4a7719820f"), "编辑", 0, null, "btn_edit_box()" },
-                    { new Guid("d4be5c5e-070f-46c5-b9b7-51ca52b2151a"), null, new DateTime(2020, 3, 7, 22, 11, 43, 585, DateTimeKind.Local).AddTicks(7360), "fas fa-plus", new Guid("e0d226e9-6253-42c7-abbd-65111f73d406"), "新增", 0, null, "btn_add_box()" },
-                    { new Guid("f3654739-a1ed-470a-9a69-47c0e54f4e8b"), "xtgl-wz-SaveArticle", new DateTime(2020, 3, 7, 22, 11, 43, 585, DateTimeKind.Local).AddTicks(7370), "fas fa-plus", new Guid("e0d226e9-6253-42c7-abbd-65111f73d406"), "编辑", 0, null, "btn_edit_box()" },
-                    { new Guid("30e896a3-2657-4d56-918f-bd2cf3047974"), "xtgl-mkwh-DeleteMenu", new DateTime(2020, 3, 7, 22, 11, 43, 585, DateTimeKind.Local).AddTicks(7380), "far fa-trash-alt", new Guid("fc239bef-8bfa-48a4-ad99-150a1b1a017e"), "删除", 0, null, "btn_edit_box()" },
-                    { new Guid("1c2ba4c5-753e-42b3-8ff1-910310de6bd3"), "ljgl-ljlx-SaveSystemLinkType", new DateTime(2020, 3, 7, 22, 11, 43, 585, DateTimeKind.Local).AddTicks(7410), "fas fa-plus", new Guid("271fade9-0e28-411b-ad92-7fc9a3b57990"), "新增", 0, null, "btn_add_box()" },
-                    { new Guid("8a1c0ba3-8026-438b-ac78-994b071aa0d2"), "xtgl-cdan-SaveMenuButton", new DateTime(2020, 3, 7, 22, 11, 43, 585, DateTimeKind.Local).AddTicks(7390), "fas fa-edit", new Guid("8f9d406f-70f0-4a11-9380-616fe2395c9e"), "编辑", 0, null, "btn_edit_box()" },
-                    { new Guid("d3281c1a-87b8-4e55-95fa-ab7a7cc59c64"), "xtgl-zdgl-SaveSystemDictionary", new DateTime(2020, 3, 7, 22, 11, 43, 585, DateTimeKind.Local).AddTicks(7400), "fas fa-edit", new Guid("af66d9a6-3567-4267-a7cc-a79982b53fd0"), "编辑", 0, null, "btn_edit_box()" },
-                    { new Guid("7adc969c-079c-4afc-a4f0-4060ae7fb48a"), "xtgl-wzlx-SaveArticleType", new DateTime(2020, 3, 7, 22, 11, 43, 585, DateTimeKind.Local).AddTicks(7350), "fas fa-plus", new Guid("93967f84-2598-4aca-9a50-5c4a7719820f"), "新增", 0, null, "btn_add_box()" },
-                    { new Guid("9b1b56c0-36f7-4567-ad5e-2a9d6f05b47f"), "xtgl-zdgl-SaveSystemDictionary", new DateTime(2020, 3, 7, 22, 11, 43, 585, DateTimeKind.Local).AddTicks(7390), "fas fa-plus", new Guid("af66d9a6-3567-4267-a7cc-a79982b53fd0"), "新增", 0, null, "btn_add_box()" },
-                    { new Guid("4cefe5bf-dedc-41a0-a585-1b8334e30403"), "xtgl-zffs-SavePays", new DateTime(2020, 3, 7, 22, 11, 43, 585, DateTimeKind.Local).AddTicks(7340), "fas fa-plus", new Guid("8f9d406f-70f0-4a11-9380-616fe2395c9e"), "新增", 0, null, "btn_add_box()" },
-                    { new Guid("fa481983-f1bb-405b-b405-8098fb6989f4"), "wzgl-wzlb-Delete", new DateTime(2020, 3, 7, 22, 11, 43, 585, DateTimeKind.Local).AddTicks(7420), "fas fa-trash-alt", new Guid("e0d226e9-6253-42c7-abbd-65111f73d406"), "删除", 0, null, "btn_delete_box()" },
-                    { new Guid("4637f33f-bb02-40c2-bc09-91260d292da9"), "xtgl-mkwh-SaveMenu", new DateTime(2020, 3, 7, 22, 11, 43, 585, DateTimeKind.Local).AddTicks(7200), "fas fa-edit", new Guid("fc239bef-8bfa-48a4-ad99-150a1b1a017e"), "编辑", 0, null, "btn_edit_box()" },
-                    { new Guid("8ef1e014-0698-407c-bd57-569c0e239f61"), "xtgl-mkwh-SaveMenu", new DateTime(2020, 3, 7, 22, 11, 43, 585, DateTimeKind.Local).AddTicks(7190), "fas fa-plus", new Guid("fc239bef-8bfa-48a4-ad99-150a1b1a017e"), "新增", 0, null, "btn_add_box()" },
-                    { new Guid("566bea7d-0a62-469d-8e8b-5f3c6126c697"), "xtgl-xtyh-SaveUser", new DateTime(2020, 3, 7, 22, 11, 43, 585, DateTimeKind.Local).AddTicks(7190), "fas fa-plus", new Guid("004e1aeb-5270-42cf-945c-dd7a1f277ced"), "新增", 0, null, "btn_add_box()" },
-                    { new Guid("a9d43c5b-7bf5-4696-9221-181c5a05981e"), "xtgl-jswh-SaveRole", new DateTime(2020, 3, 7, 22, 11, 43, 585, DateTimeKind.Local).AddTicks(7180), "fas fa-plus", new Guid("40793482-245c-4a1c-8c58-351b6d1b2e7f"), "新增", 0, null, "btn_add_box()" },
-                    { new Guid("18647505-cb99-4b84-af6a-28ca0e95fe13"), "xtgl-jswh-ChosenButton", new DateTime(2020, 3, 7, 22, 11, 43, 585, DateTimeKind.Local).AddTicks(7170), "fas fa-user-minus", new Guid("40793482-245c-4a1c-8c58-351b6d1b2e7f"), "按钮权限", 0, null, "buttonPermission()" },
-                    { new Guid("5c6bd640-d849-44c2-bf49-2aef505b70cb"), "xtgl-jswh-Chosen", new DateTime(2020, 3, 7, 22, 11, 43, 585, DateTimeKind.Local).AddTicks(7160), "fas fa-user-lock", new Guid("40793482-245c-4a1c-8c58-351b6d1b2e7f"), "模块权限", 0, null, "menuPermission()" },
-                    { new Guid("d2a7363e-39a6-4021-ae64-862210d849c8"), null, new DateTime(2020, 3, 7, 22, 11, 43, 585, DateTimeKind.Local).AddTicks(7050), "fas fa-edit", new Guid("6a1969b8-31ee-4bd7-9ca4-4375ddceba73"), "编辑", 0, null, "btn_edit_box()" },
-                    { new Guid("f5a0851b-28f7-47d3-ada3-08d5232b3aff"), "xtgl-cdan-SaveMenuButton", new DateTime(2020, 3, 7, 22, 11, 43, 585, DateTimeKind.Local).AddTicks(3020), "fas fa-plus", new Guid("6a1969b8-31ee-4bd7-9ca4-4375ddceba73"), "新增", 0, null, "btn_add_box()" },
-                    { new Guid("361e227d-2a0f-4150-880e-ba70c7fcc0c8"), "ljgl-ljlx-SaveSystemLinkType", new DateTime(2020, 3, 7, 22, 11, 43, 585, DateTimeKind.Local).AddTicks(7410), "fas fa-edit", new Guid("271fade9-0e28-411b-ad92-7fc9a3b57990"), "编辑", 0, null, "btn_add_box()" },
-                    { new Guid("90c2653a-63bd-4e92-b228-ed04d0adf0cf"), null, new DateTime(2020, 3, 7, 22, 11, 43, 585, DateTimeKind.Local).AddTicks(7210), "fas fa-chart-pie", new Guid("d19e918c-0694-437e-b604-b989a5668695"), "数据分析", 0, null, "btn_data_box()" }
+                    { new Guid("76651cb8-8f18-4951-8f12-6751ec0a2118"), null, new DateTime(2020, 3, 9, 0, 3, 22, 854, DateTimeKind.Local).AddTicks(7660), "fas fa-edit", new Guid("93967f84-2598-4aca-9a50-5c4a7719820f"), "编辑", 0, null, "btn_edit_box()" },
+                    { new Guid("438e6b43-eb20-4571-b79b-7f829b0c4cf7"), null, new DateTime(2020, 3, 9, 0, 3, 22, 854, DateTimeKind.Local).AddTicks(7660), "fas fa-plus", new Guid("e0d226e9-6253-42c7-abbd-65111f73d406"), "新增", 0, null, "btn_add_box()" },
+                    { new Guid("d1ade9e8-931b-45ee-a74a-cb101b3df915"), "xtgl-wz-SaveArticle", new DateTime(2020, 3, 9, 0, 3, 22, 854, DateTimeKind.Local).AddTicks(7670), "fas fa-plus", new Guid("e0d226e9-6253-42c7-abbd-65111f73d406"), "编辑", 0, null, "btn_edit_box()" },
+                    { new Guid("06ed2fa4-098f-4aae-a14c-8ba32a510b0a"), "xtgl-mkwh-DeleteMenu", new DateTime(2020, 3, 9, 0, 3, 22, 854, DateTimeKind.Local).AddTicks(7680), "far fa-trash-alt", new Guid("fc239bef-8bfa-48a4-ad99-150a1b1a017e"), "删除", 0, null, "btn_edit_box()" },
+                    { new Guid("8044b82c-b73d-4589-935d-ad410d3f7e82"), "ljgl-ljlx-SaveSystemLinkType", new DateTime(2020, 3, 9, 0, 3, 22, 854, DateTimeKind.Local).AddTicks(7710), "fas fa-plus", new Guid("271fade9-0e28-411b-ad92-7fc9a3b57990"), "新增", 0, null, "btn_add_box()" },
+                    { new Guid("12ca23d1-43d8-4137-87fd-1f145cdff29f"), "xtgl-cdan-SaveMenuButton", new DateTime(2020, 3, 9, 0, 3, 22, 854, DateTimeKind.Local).AddTicks(7690), "fas fa-edit", new Guid("8f9d406f-70f0-4a11-9380-616fe2395c9e"), "编辑", 0, null, "btn_edit_box()" },
+                    { new Guid("10056c71-d2df-4d91-accf-d44a3fe4eab7"), "xtgl-zdgl-SaveSystemDictionary", new DateTime(2020, 3, 9, 0, 3, 22, 854, DateTimeKind.Local).AddTicks(7700), "fas fa-edit", new Guid("af66d9a6-3567-4267-a7cc-a79982b53fd0"), "编辑", 0, null, "btn_edit_box()" },
+                    { new Guid("39d43afb-e915-454f-997c-1cc599d35de2"), "xtgl-wzlx-SaveArticleType", new DateTime(2020, 3, 9, 0, 3, 22, 854, DateTimeKind.Local).AddTicks(7650), "fas fa-plus", new Guid("93967f84-2598-4aca-9a50-5c4a7719820f"), "新增", 0, null, "btn_add_box()" },
+                    { new Guid("7a644004-ed18-4063-a935-1928ac625400"), "xtgl-zdgl-SaveSystemDictionary", new DateTime(2020, 3, 9, 0, 3, 22, 854, DateTimeKind.Local).AddTicks(7690), "fas fa-plus", new Guid("af66d9a6-3567-4267-a7cc-a79982b53fd0"), "新增", 0, null, "btn_add_box()" },
+                    { new Guid("17ec62f3-ed8d-41d3-b36a-bb26afe4d3ee"), "xtgl-zffs-SavePays", new DateTime(2020, 3, 9, 0, 3, 22, 854, DateTimeKind.Local).AddTicks(7640), "fas fa-plus", new Guid("8f9d406f-70f0-4a11-9380-616fe2395c9e"), "新增", 0, null, "btn_add_box()" },
+                    { new Guid("a690ed06-8877-4ea3-b144-13c34c5fd153"), "wzgl-wzlb-Delete", new DateTime(2020, 3, 9, 0, 3, 22, 854, DateTimeKind.Local).AddTicks(7720), "fas fa-trash-alt", new Guid("e0d226e9-6253-42c7-abbd-65111f73d406"), "删除", 0, null, "btn_delete_box()" },
+                    { new Guid("2ce3be57-86a7-45ff-929e-28630a5592b9"), "xtgl-mkwh-SaveMenu", new DateTime(2020, 3, 9, 0, 3, 22, 854, DateTimeKind.Local).AddTicks(7620), "fas fa-edit", new Guid("fc239bef-8bfa-48a4-ad99-150a1b1a017e"), "编辑", 0, null, "btn_edit_box()" },
+                    { new Guid("eb885b0f-5dcf-4de8-b50a-560837b5225e"), "xtgl-mkwh-SaveMenu", new DateTime(2020, 3, 9, 0, 3, 22, 854, DateTimeKind.Local).AddTicks(7620), "fas fa-plus", new Guid("fc239bef-8bfa-48a4-ad99-150a1b1a017e"), "新增", 0, null, "btn_add_box()" },
+                    { new Guid("13f21d35-0a4f-44e5-a6e8-682d69cc4a6c"), "xtgl-xtyh-SaveUser", new DateTime(2020, 3, 9, 0, 3, 22, 854, DateTimeKind.Local).AddTicks(7610), "fas fa-plus", new Guid("004e1aeb-5270-42cf-945c-dd7a1f277ced"), "新增", 0, null, "btn_add_box()" },
+                    { new Guid("c257ff21-48ef-4b18-a14e-d1da46864376"), "xtgl-jswh-SaveRole", new DateTime(2020, 3, 9, 0, 3, 22, 854, DateTimeKind.Local).AddTicks(7590), "fas fa-plus", new Guid("40793482-245c-4a1c-8c58-351b6d1b2e7f"), "新增", 0, null, "btn_add_box()" },
+                    { new Guid("5bb88f87-577a-46b0-987a-5b5588f65ef2"), "xtgl-jswh-ChosenButton", new DateTime(2020, 3, 9, 0, 3, 22, 854, DateTimeKind.Local).AddTicks(7590), "fas fa-user-minus", new Guid("40793482-245c-4a1c-8c58-351b6d1b2e7f"), "按钮权限", 0, null, "buttonPermission()" },
+                    { new Guid("1890444c-d70f-42e8-91b1-6d46ba1f17f8"), "xtgl-jswh-Chosen", new DateTime(2020, 3, 9, 0, 3, 22, 854, DateTimeKind.Local).AddTicks(7580), "fas fa-user-lock", new Guid("40793482-245c-4a1c-8c58-351b6d1b2e7f"), "模块权限", 0, null, "menuPermission()" },
+                    { new Guid("af4d0c18-603f-4a90-b7f2-934e72b3012e"), null, new DateTime(2020, 3, 9, 0, 3, 22, 854, DateTimeKind.Local).AddTicks(7470), "fas fa-edit", new Guid("6a1969b8-31ee-4bd7-9ca4-4375ddceba73"), "编辑", 0, null, "btn_edit_box()" },
+                    { new Guid("95f4624e-3df2-418a-ba48-f2fa4ed9ef6e"), "xtgl-cdan-SaveMenuButton", new DateTime(2020, 3, 9, 0, 3, 22, 854, DateTimeKind.Local).AddTicks(3340), "fas fa-plus", new Guid("6a1969b8-31ee-4bd7-9ca4-4375ddceba73"), "新增", 0, null, "btn_add_box()" },
+                    { new Guid("04ea8029-1cd4-4e66-a68c-03ef4bb5b03c"), "ljgl-ljlx-SaveSystemLinkType", new DateTime(2020, 3, 9, 0, 3, 22, 854, DateTimeKind.Local).AddTicks(7720), "fas fa-edit", new Guid("271fade9-0e28-411b-ad92-7fc9a3b57990"), "编辑", 0, null, "btn_add_box()" },
+                    { new Guid("122509ec-4b4c-470e-9799-e6175639051e"), null, new DateTime(2020, 3, 9, 0, 3, 22, 854, DateTimeKind.Local).AddTicks(7630), "fas fa-chart-pie", new Guid("8ba0133b-3c19-4bca-a86d-527463ff4fd3"), "数据分析", 0, null, "btn_data_box()" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Sys_User",
                 columns: new[] { "Id", "Code", "CreateTime", "Email", "FirstVisitTime", "ImgUrl", "IsAdmin", "IsFreeze", "LastVisitTime", "Mobile", "Name", "Password", "Remark" },
-                values: new object[] { new Guid("a175036a-4e9e-451e-8980-b5f79a0cdbf9"), "admin", new DateTime(2020, 3, 7, 22, 11, 43, 580, DateTimeKind.Local).AddTicks(1310), null, null, "/Files/2019/04/04-29/d9a7bd7d-030d-4a74-b6f2-6bb31cf9b10a.png", true, false, null, null, "admin", "S0JRR96eei0=", "系统管理员" });
+                values: new object[] { new Guid("ed9adc2c-fa2a-412c-82f5-e1595086e712"), "admin", new DateTime(2020, 3, 9, 0, 3, 22, 845, DateTimeKind.Local).AddTicks(9590), null, null, "/images/u.jpg", true, false, null, null, "admin", "S0JRR96eei0=", "系统管理员" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
