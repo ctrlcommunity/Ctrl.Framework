@@ -24,12 +24,50 @@ ASP.NET Core3.1、AbpvNext、BootStrap进行构建的快速开发通用型基础
 # 使用
 
 通过Ctrl.EntityFrameworkCore.DbMigrations,修改**appsettings.json**中连接字符串执行如下命令附加数据库
-
 ```cmd
 Add-Migration InitCreate
 
 Update-Database
 ```
+本框架默认为MySQL数据库如果您有其他数据库需求那么您可以从如下代码中进行修改
+
+```csharp
+  public class CtrlMigrationsDbContextFactory : IDesignTimeDbContextFactory<CtrlMigrationsDbContext>
+    {
+        public CtrlMigrationsDbContext CreateDbContext(string[] args)
+        {
+            var configuration = BuildConfiguration();
+
+            var builder = new DbContextOptionsBuilder<CtrlMigrationsDbContext>()
+                .UseSqlServer(configuration.GetConnectionString("Test"));
+
+            return new CtrlMigrationsDbContext(builder.Options);
+        }
+    }
+```
+```csharp
+    [DependsOn(typeof(AbpEntityFrameworkCoreSqlServerModule),
+        typeof(AbpGuidsModule))]
+    public class CtrlEntityFrameworkCoreModule:AbpModule
+    {
+        public override void ConfigureServices(ServiceConfigurationContext context)
+        {
+            context.Services.AddAbpDbContext<CtrlDbContext>(options =>
+            {
+                /* Remove "includeAllEntities: true" to create
+                 * default repositories only for aggregate roots */
+                options.AddDefaultRepositories(includeAllEntities: true);
+            });
+
+            Configure<AbpDbContextOptions>(options =>
+            {
+                options.UseSqlServer();
+            });
+        }
+    }
+```
+
+
 
 # 代码贡献
 
