@@ -3,6 +3,8 @@
 
 ![LICENSE](https://img.shields.io/github/license/ctrlcommunity/Ctrl.Framework?style=plastic)
 
+在线预览地址：http://abp.stackable.cn/
+
 前言
 =====
 
