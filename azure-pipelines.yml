@@ -19,6 +19,14 @@ variables:
 
 
 steps:
+- task: CmdLine@2
+  inputs:
+    script: |
+      echo ready to execute command
+      ls
+      sed -i 's/{Writable}/$(Writable)/g' src/Presentation/Ctrl.Net/appsettings.Production.json
+      sed -i 's/{ReadOnly}/$(ReadOnly)/g' src/Presentation/Ctrl.Net/appsettings.Production.json
+      echo command executed
 - script: |
     docker build -f $(dockerfilepath) -t $(imageName) .
     docker login -u $(dockerId) -p $(pwd) $(registry)
