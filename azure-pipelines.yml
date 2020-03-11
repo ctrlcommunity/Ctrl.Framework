@@ -16,11 +16,6 @@ variables:
   imageName: ctrlframework                        # °¢ÀïÔÆ ²Ö¿âÃû³Æ
   registry: registry.cn-shenzhen.aliyuncs.com   # °¢ÀïÔÆ ¹«ÍøµØÖ·
   dockerfilepath:  src/Presentation/Ctrl.Net/Dockerfile       # Github DockerfileÏà¶ÔÂ·¾¶
-  dockerId: 695979933@qq.com                  # é˜¿é‡Œäº?login username
-  namespace: fhdotnet                              # é˜¿é‡Œäº?å‘½åç©ºé—´
-  imageName: ctrlframework                        # é˜¿é‡Œäº?ä»“åº“åç§°
-  registry: registry.cn-shenzhen.aliyuncs.com   # é˜¿é‡Œäº?å…¬ç½‘åœ°å€
-  dockerfilepath:  src/Presentation/Ctrl.Net/Dockerfile       # Github Dockerfileç›¸å¯¹è·¯å¾„
 
 
 steps:
