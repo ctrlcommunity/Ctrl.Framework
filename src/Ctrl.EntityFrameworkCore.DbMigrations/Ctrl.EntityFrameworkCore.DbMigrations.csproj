@@ -1,8 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20200311015606_InitialCreate1.cs" />
+    <Compile Remove="Migrations\20200311015606_InitialCreate1.Designer.cs" />
+  </ItemGroup>
 
   <ItemGroup>
     <None Remove="appsettings.json" />
