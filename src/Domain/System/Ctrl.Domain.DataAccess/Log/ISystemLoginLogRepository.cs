@@ -17,7 +17,7 @@ namespace Ctrl.Domain.DataAccess.Log
         /// </summary>
         /// <param name="param"></param>
         /// <returns></returns>
-        Task<PagedResults<SystemLoginLog>> PagingLoginLogQuery(SystemLoginLogPagingInput param);
+        Task<PagedResultsDto<SystemLoginLog>> PagingLoginLogQuery(SystemLoginLogPagingInput param);
         /// <summary>
         ///     根据区域查询登录次数
         /// </summary>

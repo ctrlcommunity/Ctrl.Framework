@@ -30,7 +30,7 @@ namespace Ctrl.System.DataAccess
         /// </summary>
         /// <param name="param"></param>
         /// <returns></returns>
-        public Task<PagedResults<SystemArticleTypeOutput>> GetPagingArticleType(QueryParam param)
+        public Task<PagedResultsDto<SystemArticleTypeOutput>> GetPagingArticleType(QueryParam param)
         {
             string sql = @"select arttype.* ,arttype1.Name ParentName
             from Sys_ArticleType arttype

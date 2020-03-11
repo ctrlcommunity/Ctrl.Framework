@@ -35,7 +35,7 @@ namespace Ctrl.System.Business
         ///     获取按钮分页
         /// </summary>
         /// <returns></returns>
-        public Task<PagedResults<SystemMenuButtonOutput>> GetPagingMenuButton(QueryParam param)
+        public Task<PagedResultsDto<SystemMenuButtonOutput>> GetPagingMenuButton(QueryParam param)
         {
             return _systemMenuButtonDapperRepository.GetPagingMenuButton(param);
         }

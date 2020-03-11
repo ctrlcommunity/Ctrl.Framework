@@ -17,7 +17,7 @@ namespace Ctrl.Core.Entities.Paging
     ///     说明：分页信息
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class PagedResults<T>
+    public class PagedResultsDto<T>
     {
         /// <summary>
         ///     分页信息

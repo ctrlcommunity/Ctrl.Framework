@@ -19,7 +19,7 @@ namespace Ctrl.Domain.DataAccess.Log
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>
-        public Task<PagedResults<SystemExceptionLog>> PagingExceptionLogQuery(SystemLoginLogPagingInput param)
+        public Task<PagedResultsDto<SystemExceptionLog>> PagingExceptionLogQuery(SystemLoginLogPagingInput param)
         {
             string strWhere = "";
             if (!string.IsNullOrWhiteSpace(param.CreateUserCode))

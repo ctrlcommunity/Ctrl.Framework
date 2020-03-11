@@ -26,7 +26,7 @@ namespace Ctrl.System.DataAccess
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>
-        Task<PagedResults<SystemDictionaryOutput>> PagingDictionaryQuery(SystemDictionaryPagingInput query);
+        Task<PagedResultsDto<SystemDictionaryOutput>> PagingDictionaryQuery(SystemDictionaryPagingInput query);
         /// <summary>
         ///     根据父级编码获取子级
         /// </summary>

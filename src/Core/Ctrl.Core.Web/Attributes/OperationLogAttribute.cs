@@ -48,8 +48,6 @@ namespace Ctrl.Core.Web.Attributes
                 var info = descriptionAttribute[0] as DescriptionAttribute;
                 if (info != null)
                 {
-
-
                     var description = info.Description;
                     _operationLogHandler.log.ControllerName =
                      ((Microsoft.AspNetCore.Mvc.Controllers.ControllerActionDescriptor)filterContext.ActionDescriptor).ControllerName;

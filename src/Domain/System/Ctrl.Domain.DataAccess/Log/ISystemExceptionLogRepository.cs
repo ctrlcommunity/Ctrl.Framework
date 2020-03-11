@@ -11,6 +11,6 @@ namespace Ctrl.Domain.DataAccess.Log
     /// </summary>
     public interface ISystemExceptionLogRepository : IRepository<SystemExceptionLog>
     {
-        Task<PagedResults<SystemExceptionLog>> PagingExceptionLogQuery(SystemLoginLogPagingInput query);
+        Task<PagedResultsDto<SystemExceptionLog>> PagingExceptionLogQuery(SystemLoginLogPagingInput query);
     }
 }

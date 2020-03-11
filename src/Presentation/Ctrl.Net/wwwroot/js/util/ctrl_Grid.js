@@ -13,7 +13,7 @@ var ctrlGrid = function (ele, opt) {
         //页显示
         pagerow: 15,
         //页索引
-        pageindex: 1,
+        pageindex: 0,
         //总页数
         totalpage: 1,
         //  排序字段
@@ -27,14 +27,16 @@ var ctrlGrid = function (ele, opt) {
     };
     this.params = {
         //页显示
-        pagerow: this.defaults.pagerow,
+        //pagerow: this.defaults.pagerow,
         //页索引
-        pageindex: this.defaults.pageindex,
+        //pageindex: this.defaults.pageindex,
         //  排序字段
-        Sidx: this.defaults.Sidx,
+        //Sidx: this.defaults.Sidx,
         // 默认排序方式,如:asc
-        Sord: this.defaults.Sord,
-        Swhere: this.Swhere
+        //Sord: this.defaults.Sord,
+        //Swhere: this.Swhere
+        MaxResultCount: this.defaults.pagerow,
+        SkipCount: this.defaults.pageindex * this.defaults.pagerow
     };
     this.settings = $.extend({}, this.defaults, opt);
 };
@@ -116,6 +118,7 @@ ctrlGrid.prototype = {
         self.params.pageindex = pn;
         self.params.Sidx = self.settings.Sidx;
         self.params.Sord = self.settings.Sord;
+        self.params.SkipCount = (pn-1) * self.defaults.pagerow;
         _.assign(self.params, self.settings.Swhere);
         $post(_op.settings.url, $.param(self.params)).then(function (json) {
             self.settings.dataall = json.items;

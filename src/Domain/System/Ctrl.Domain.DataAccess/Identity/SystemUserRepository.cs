@@ -41,7 +41,7 @@ namespace Ctrl.Domain.DataAccess.Identity
         /// </summary>
         /// <param name="queryParam">分页参数</param>
         /// <returns></returns>
-        public Task<PagedResults<SystemUser>> GetPagingSysUser(QueryParam queryParam)
+        public Task<PagedResultsDto<SystemUser>> GetPagingSysUser(QueryParam queryParam)
         {
             var sql = "SELECT * FROM Sys_User sysUser";
             return SqlMapperUtil.PagingQuery<SystemUser>(sql, queryParam);

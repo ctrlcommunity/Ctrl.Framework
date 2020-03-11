@@ -18,6 +18,6 @@ namespace Ctrl.System.DataAccess
         /// </summary>
         /// <param name="param"></param>
         /// <returns></returns>
-        Task<PagedResults<SystemArticleOutput>> GetPagingArticleType(SystemArticlePagingInput param);
+        Task<PagedResultsDto<SystemArticleOutput>> GetPagingArticleType(SystemArticlePagingInput param);
     }
 }

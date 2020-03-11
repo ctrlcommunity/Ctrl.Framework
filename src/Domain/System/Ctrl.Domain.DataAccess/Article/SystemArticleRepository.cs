@@ -18,7 +18,7 @@ namespace Ctrl.System.DataAccess
         /// </summary>
         /// <param name="param"></param>
         /// <returns></returns>
-        public Task<PagedResults<SystemArticleOutput>> GetPagingArticleType(SystemArticlePagingInput param)
+        public Task<PagedResultsDto<SystemArticleOutput>> GetPagingArticleType(SystemArticlePagingInput param)
         {
             string sWhere = "";
             if (!string.IsNullOrWhiteSpace(param.Title))

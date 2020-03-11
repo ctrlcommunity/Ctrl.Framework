@@ -30,7 +30,7 @@ namespace Ctrl.Domain.Business.Log
         /// </summary>
         /// <param name="param"></param>
         /// <returns></returns>
-        public Task<PagedResults<SystemLoginLog>> PagingLoginLogQuery(SystemLoginLogPagingInput logPagingInput)
+        public Task<PagedResultsDto<SystemLoginLog>> PagingLoginLogQuery(SystemLoginLogPagingInput logPagingInput)
         {
             return _loginLogRepository.PagingLoginLogQuery(logPagingInput);
         }

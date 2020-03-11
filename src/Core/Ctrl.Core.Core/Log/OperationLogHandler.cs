@@ -20,7 +20,7 @@ namespace Ctrl.Core.Core.Log
             var request = HttpContexts.Current.Request;
             log = new OperateLog()
             {
-                OperateLogId = CombUtil.NewComb(),
+                Id = CombUtil.NewComb(),
                 CreateTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
                 ServerHost = String.Format("{0}【{1}】", IpBrowserUtil.GetServerHost(), IpBrowserUtil.GetServerHostIp()),
                 ClientHost = String.Format("{0}", IpBrowserUtil.GetClientIp()),

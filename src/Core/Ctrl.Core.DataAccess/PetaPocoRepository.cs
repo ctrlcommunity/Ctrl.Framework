@@ -35,7 +35,7 @@ namespace Ctrl.Core.DataAccess
             return SqlMapperUtil.Insert(entity);
         }
 
-        public Task<PagedResults<T>> PagingQuery(QueryParam queryParam, string sql)
+        public Task<PagedResultsDto<T>> PagingQuery(QueryParam queryParam, string sql)
         {
             return SqlMapperUtil.PagingQuery<T>(sql,queryParam);
         }

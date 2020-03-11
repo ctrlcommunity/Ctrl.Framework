@@ -29,7 +29,7 @@ namespace Ctrl.System.DataAccess
         /// </summary>
         /// <param name="param"></param> 
         /// <returns></returns>
-        Task<PagedResults<SystemMenuButtonOutput>> GetPagingMenuButton(QueryParam param);
+        Task<PagedResultsDto<SystemMenuButtonOutput>> GetPagingMenuButton(QueryParam param);
         /// <summary>
         ///     根据菜单获取功能项信息
         /// </summary>

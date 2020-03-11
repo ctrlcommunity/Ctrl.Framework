@@ -13,6 +13,7 @@ namespace Ctrl.Web.Host.Startup
             CreateMap<SystemUser, UserLoginOutput>().ReverseMap();
             CreateMap<SystemArticle, SystemArticleOutput>().ReverseMap();
             CreateMap<SystemExceptionLog, SystemExceptionLogDto>().ReverseMap();
+            CreateMap<SystemOperateLog, SystemOperateLogOutput>().ReverseMap();
         }
     }
 }

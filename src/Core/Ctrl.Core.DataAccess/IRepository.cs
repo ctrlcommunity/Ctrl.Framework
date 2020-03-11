@@ -76,7 +76,7 @@ namespace Ctrl.Core.DataAccess
         /// <returns></returns>
         Task<bool> Exists(object id);
 
-        Task<PagedResults<T>> PagingQuery(QueryParam queryParam, string sql);
+        Task<PagedResultsDto<T>> PagingQuery(QueryParam queryParam, string sql);
 
 
 

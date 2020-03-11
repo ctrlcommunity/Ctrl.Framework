@@ -69,7 +69,7 @@ namespace Ctrl.Domain.Business.Config
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>
-        public Task<PagedResults<SystemDictionaryOutput>> PagingDictionaryQuery(SystemDictionaryPagingInput query)
+        public Task<PagedResultsDto<SystemDictionaryOutput>> PagingDictionaryQuery(SystemDictionaryPagingInput query)
         {
             return _systemDictionaryRepository.PagingDictionaryQuery(query);
         }

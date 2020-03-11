@@ -30,7 +30,7 @@ namespace Ctrl.System.DataAccess
         /// </summary>
         /// <param name="queryParam"></param>
         /// <returns></returns>
-        public Task<PagedResults<SystemRole>> GetPagingSysRole(QueryParam queryParam)
+        public Task<PagedResultsDto<SystemRole>> GetPagingSysRole(QueryParam queryParam)
         {
             var sql = "SELECT * FROM Sys_Role";
             return SqlMapperUtil.PagingQuery<SystemRole>(sql, queryParam);

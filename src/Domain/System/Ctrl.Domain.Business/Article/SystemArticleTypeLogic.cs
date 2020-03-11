@@ -65,7 +65,7 @@ namespace Ctrl.System.Business
         /// </summary>
         /// <param name="param"></param>
         /// <returns></returns>
-        public Task<PagedResults<SystemArticleTypeOutput>> GetPagingArticleType(QueryParam param)
+        public Task<PagedResultsDto<SystemArticleTypeOutput>> GetPagingArticleType(QueryParam param)
         {
             return _systemArticleTypeRepository.GetPagingArticleType(param);
         }

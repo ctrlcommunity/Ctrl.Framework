@@ -18,34 +18,33 @@
     </div>
     <div class="login-con">
         <div class="panel panel-default">
-            <div slot="header" class="clearfix panel-heading">
-                <i class="far fa-edit"></i><span> 欢迎登录</span>
-            </div>
-            <div class="panel-body form-con">
-                <form class="form-horizontal" asp-antiforgery="true">
-                    <div class="form-group">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fas fa-user"></i></span>
-                            <input type="text" class="form-control" name="Code" value="admin" placeholder="请输入登录名" data-parsley-required="登录名">
+                <div class="panel-body form-con">
+                    <form class="form-horizontal" asp-antiforgery="true">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fas fa-user"></i></span>
+                                <input type="text" class="form-control" name="Code" value="admin" placeholder="请输入登录名" data-parsley-required="登录名">
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="input-group ">
-                            <span class="input-group-addon"><i class="fas fa-key"></i></span>
-                            <input type="password" class="form-control" name="Password" value="admin" placeholder="请输入密码" data-parsley-required="密码">
+                        <div class="form-group">
+                            <div class="input-group ">
+                                <span class="input-group-addon"><i class="fas fa-key"></i></span>
+                                <input type="password" class="form-control" name="Password" value="admin" placeholder="请输入密码" data-parsley-required="密码">
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <input type="submit"  class="btn btn-primary" id="btnLogin" value="登 录"/>
-                    </div>
-                </form>
-                <p class="ot_login">
-                    其他方式登录:<img class="img-circle image-responsive" src="/images/qq.jpg" alt="QQ" />
-                </p>
+                        <div class="form-group">
+                            <input type="submit"  class="btn btn-primary" id="btnLogin" value="登 录"/>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </div>
     </div>
-    <footer class="navbar-fixed-bottom">© @DateTime.Now.Year Ctrl <a href="https://www.ctrl.cn/" target="_blank">开创云</a></footer>
+
+    <footer class="navbar-fixed-bottom ">
+        <div class="container">
+            © @DateTime.Now.Year Ctrl <a href="https://www.ctrl.cn/" target="_blank">开创云</a>
+        </div>
+    </footer>
 </div>
 
 

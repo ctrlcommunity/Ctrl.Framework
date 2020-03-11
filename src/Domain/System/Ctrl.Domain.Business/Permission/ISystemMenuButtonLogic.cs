@@ -20,7 +20,7 @@ namespace Ctrl.System.Business
         /// </summary>
         /// <param name="queryParam">分页信息</param>
         /// <returns></returns>
-        Task<PagedResults<SystemMenuButtonOutput>> GetPagingMenuButton(QueryParam param);
+        Task<PagedResultsDto<SystemMenuButtonOutput>> GetPagingMenuButton(QueryParam param);
 
         /// <summary>
         ///     保存功能项信息

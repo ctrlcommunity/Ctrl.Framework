@@ -16,6 +16,6 @@ namespace Ctrl.Domain.DataAccess.Log
         /// </summary>
         /// <param name="param"></param>
         /// <returns></returns>
-        Task<PagedResults<SystemOperateLog>> GetPagingOperationLog(SystemLoginLogPagingInput queryParam);
+        Task<PagedResultsDto<SystemOperateLog>> GetPagingOperationLog(SystemLoginLogPagingInput queryParam);
     }
 }

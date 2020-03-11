@@ -14,7 +14,7 @@ namespace Ctrl.Domain.DataAccess.Log
     /// </summary>
     public class SystemOperationLogRepository : PetaPocoRepository<SystemOperateLog>, ISystemOperationLogRepository,IScopedDependency
     {
-        public Task<PagedResults<SystemOperateLog>> GetPagingOperationLog(SystemLoginLogPagingInput param)
+        public Task<PagedResultsDto<SystemOperateLog>> GetPagingOperationLog(SystemLoginLogPagingInput param)
         {
 
             string strWhere = "";

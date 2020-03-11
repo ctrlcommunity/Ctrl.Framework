@@ -55,7 +55,7 @@ dateadd(dd,number,dateadd(month,-1,getdate()))<=getdate()";
         /// </summary>
         /// <param name="param"></param>
         /// <returns></returns>
-        public Task<PagedResults<SystemLoginLog>> PagingLoginLogQuery(SystemLoginLogPagingInput param)
+        public Task<PagedResultsDto<SystemLoginLog>> PagingLoginLogQuery(SystemLoginLogPagingInput param)
         {
             string strWhere = "";
             if (!string.IsNullOrWhiteSpace(param.CreateUserCode))

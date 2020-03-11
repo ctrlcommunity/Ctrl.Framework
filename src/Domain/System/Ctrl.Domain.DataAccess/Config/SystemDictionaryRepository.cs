@@ -46,7 +46,7 @@ namespace Ctrl.System.DataAccess
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>
-        public Task<PagedResults<SystemDictionaryOutput>> PagingDictionaryQuery(SystemDictionaryPagingInput query)
+        public Task<PagedResultsDto<SystemDictionaryOutput>> PagingDictionaryQuery(SystemDictionaryPagingInput query)
         {
             string swhere = "";
             if (!string.IsNullOrWhiteSpace(query.Id))

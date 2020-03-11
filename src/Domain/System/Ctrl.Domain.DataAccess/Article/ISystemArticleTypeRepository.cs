@@ -19,6 +19,6 @@ namespace Ctrl.System.DataAccess
         /// </summary>
         /// <param name="param"></param>
         /// <returns></returns>
-        Task<PagedResults<SystemArticleTypeOutput>> GetPagingArticleType(QueryParam param);
+        Task<PagedResultsDto<SystemArticleTypeOutput>> GetPagingArticleType(QueryParam param);
     }
 }

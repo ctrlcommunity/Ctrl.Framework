@@ -16,7 +16,7 @@ namespace Ctrl.Core.Web
         /// <typeparam name="T"></typeparam>
         /// <param name="pagedResults"></param>
         /// <returns></returns>
-        protected JsonResult JsonForGridPaging<T>(PagedResults<T> pagedResults)
+        protected JsonResult JsonForGridPaging<T>(PagedResultsDto<T> pagedResults)
         {
             return Json(new
             {

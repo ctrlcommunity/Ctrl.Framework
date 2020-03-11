@@ -79,7 +79,7 @@ namespace Ctrl.Domain.DataAccess.Permission
         /// </summary>
         /// <param name="param"></param>
         /// <returns></returns>
-        public Task<PagedResults<SystemMenuButtonOutput>> GetPagingMenuButton(QueryParam param)
+        public Task<PagedResultsDto<SystemMenuButtonOutput>> GetPagingMenuButton(QueryParam param)
         {
             string sql = @"select button.*,menu.Name menuname
                         from Sys_MenuButton button

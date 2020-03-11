@@ -125,7 +125,7 @@ namespace Ctrl.Core.Core.Log
         /// <summary>
         ///     主键编码
         /// </summary>
-        public Guid OperateLogId { get; set; }
+        public Guid Id { get; set; }
         /// <summary>
         ///     客户端
         /// </summary>

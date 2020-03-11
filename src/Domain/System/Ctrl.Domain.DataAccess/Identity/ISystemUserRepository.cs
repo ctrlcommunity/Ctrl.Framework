@@ -26,7 +26,7 @@ namespace Ctrl.Domain.DataAccess.Identity
         /// </summary>
         /// <param name="queryParam">分页参数</param>
         /// <returns></returns>
-        Task<PagedResults<SystemUser>> GetPagingSysUser(QueryParam queryParam);
+        Task<PagedResultsDto<SystemUser>> GetPagingSysUser(QueryParam queryParam);
         /// <summary>
         ///     更新第一次登录时间
         /// </summary>

@@ -157,8 +157,8 @@ namespace Ctrl.Core.EntityFrameworkCore.EntityFrameworkCore
             builder.Entity<SystemOperateLog>(b =>
             {
                 b.ToTable("Sys_OperateLog");
-                b.HasKey(p => p.OperateLogId);
-                b.Property(p => p.OperateLogId).HasMaxLength(50);
+                b.HasKey(p => p.Id);
+                b.Property(p => p.Id).HasMaxLength(50);
                 b.Property(p => p.ClientHost).HasMaxLength(64);
                 b.Property(p => p.ServerHost).HasMaxLength(64);
                 b.Property(p => p.RequestType).HasMaxLength(64);

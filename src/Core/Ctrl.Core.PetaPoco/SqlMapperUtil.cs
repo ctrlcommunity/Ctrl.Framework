@@ -165,7 +165,7 @@ namespace Ctrl.Core.PetaPoco
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public static Task<PagedResults<T>> PagingQuery<T> (string sql, QueryParam queryParam) {
+        public static Task<PagedResultsDto<T>> PagingQuery<T> (string sql, QueryParam queryParam) {
             using (var db = CreateDbBase ()) {
                 string OrderBy = !string.IsNullOrEmpty (queryParam.Sidx) ?
                     $" Order by {queryParam.Sidx} {queryParam.Sord}" :
@@ -178,7 +178,7 @@ namespace Ctrl.Core.PetaPoco
                 pagerInfo.Pagerow = result.ItemsPerPage;
                 pagerInfo.RecordCount = result.TotalItems;
                 
-                return Task.Factory.StartNew (() => new PagedResults<T> { Data = result.Items, pagerInfo = pagerInfo });
+                return Task.Factory.StartNew (() => new PagedResultsDto<T> { Data = result.Items, pagerInfo = pagerInfo });
             }
         }
 

@@ -18,7 +18,7 @@ namespace Ctrl.Domain.Business.Log
         /// </summary>
         /// <param name="param"></param>
         /// <returns></returns>
-        Task<PagedResults<SystemLoginLog>> PagingLoginLogQuery(SystemLoginLogPagingInput logPagingInput);
+        Task<PagedResultsDto<SystemLoginLog>> PagingLoginLogQuery(SystemLoginLogPagingInput logPagingInput);
         /// <summary>
         ///     登录数据分析图数据
         /// </summary>

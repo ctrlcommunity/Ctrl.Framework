@@ -43,15 +43,7 @@
     },
     {
       "provider": "unpkg",
-      "library": "promise-polyfill@8.1.0",
-      "destination": "wwwroot/lib/promise-polyfill",
-      "files": [
-        "dist/polyfill.min.js"
-      ]
-    },
-    {
-      "provider": "unpkg",
-      "library": "lodash@4.17.11",
+      "library": "lodash@4.17.15",
       "destination": "wwwroot/lib/lodash/",
       "files": [
         "lodash.js",
@@ -72,16 +64,18 @@
     },
     {
       "provider": "unpkg",
-      "library": "bootstrap@3.3.7",
+      "library": "bootstrap@4.4.1",
       "destination": "wwwroot/lib/bootstarp",
       "files": [
         "dist/css/bootstrap.css",
         "dist/js/bootstrap.js",
-        "dist/fonts/glyphicons-halflings-regular.woff2",
+        //"dist/fonts/glyphicons-halflings-regular.woff2",
         "dist/css/bootstrap.css.map",
         "dist/js/bootstrap.min.js",
         "dist/css/bootstrap.min.css",
-        "dist/css/bootstrap.min.css.map"
+        "dist/css/bootstrap.min.css.map",
+        "scss/mixins/_grid.scss"
+      
       ]
     },
     {
@@ -298,17 +292,26 @@
         "js/select2.min.js"
       ]
     }
+    ,
+    {
+      "provider": "unpkg",
+      "library": "promise-polyfill@8.1.3",
+      "destination": "wwwroot/lib/promise-polyfill",
+      "files": [
+        "dist/polyfill.min.js"
+      ]
+    }
     //,
-    //{
-    //  "provider": "cdnjs",
-    //  "library": "parsley.js@2.9.0",
-    //  "destination": "wwwroot/lib/parsley/",
-    //  "files": [
-    //    "dist/i18n/zh_cn.js",
-    //    "src/parsley.css",
-    //    "dist/parsley.min.js"
-    //  ]
-    //}
+      //{
+      //  "provider": "cdnjs",
+      //  "library": "parsley.js@2.9.0",
+      //  "destination": "wwwroot/lib/parsley/",
+      //  "files": [
+      //    "dist/i18n/zh_cn.js",
+      //    "src/parsley.css",
+      //    "dist/parsley.min.js"
+      //  ]
+      //}
 
 
   ]

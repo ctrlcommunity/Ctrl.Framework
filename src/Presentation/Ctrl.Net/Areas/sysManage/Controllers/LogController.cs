@@ -111,8 +111,8 @@ namespace Ctrl.Net.Areas.SysManage.Controllers
         [HttpPost]
         [CreateBy("冯辉")]
         [Description("操作日志-方法-列表-获取所有操作日志信息")]
-        public async Task<JsonResult> GetPagingOperationLog(SystemLoginLogPagingInput queryParam) {
-            return JsonForGridPaging(await _operationLogLogic.GetPagingOperationLog(queryParam));
+        public async Task<PagedResultDto<SystemOperateLogOutput>> GetPagingOperationLog(PagedAndSortedResultRequestDto queryParam) {
+            return await _operationLogLogic.GetPagingOperationLog(queryParam);
         }
         /// <summary>
         ///     操作日志详情
@@ -123,7 +123,7 @@ namespace Ctrl.Net.Areas.SysManage.Controllers
             SystemOperateLog operateLog = new SystemOperateLog();
             if (!input.Id.IsNullOrEmptyGuid())
             {
-                operateLog = await _operationLogLogic.GetById(input.Id);
+                //operateLog = await _operationLogLogic.GetById(input.Id);
             }
             return View(operateLog);
         }

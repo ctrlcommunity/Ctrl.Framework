@@ -18,7 +18,7 @@ namespace Ctrl.System.DataAccess
         /// </summary>
         /// <param name="queryParam">分页信息</param>
         /// <returns></returns>
-        Task<PagedResults<SystemRole>> GetPagingSysRole(QueryParam queryParam);
+        Task<PagedResultsDto<SystemRole>> GetPagingSysRole(QueryParam queryParam);
 
         /// <summary>
         ///     获取所有角色
