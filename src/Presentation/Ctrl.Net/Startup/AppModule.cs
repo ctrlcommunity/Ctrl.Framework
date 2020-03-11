@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
+using NLog;
 using Volo.Abp;
 using Volo.Abp.Application;
 using Volo.Abp.AspNetCore.MultiTenancy;
@@ -59,6 +60,11 @@ namespace Ctrl.Web.Host.Startup
             {
                 ContentTypeProvider = provider
             });
+
+            #region Nlog
+            LogManager.Configuration.Variables["connectionString"] = context.GetConfiguration()["ConnectionStrings:Default"];
+            LogManager.Configuration.Variables["nlogDbProvider"] = context.GetConfiguration()["ConnectionStrings:Default"];
+            #endregion
             app.UseMultiTenancy();
             app.UseStaticHttpContext();
             app.UseCookiePolicy();

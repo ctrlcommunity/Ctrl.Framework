@@ -163,7 +163,7 @@ namespace Ctrl.Core.EntityFrameworkCore.EntityFrameworkCore
                 b.Property(p => p.ServerHost).HasMaxLength(64);
                 b.Property(p => p.RequestType).HasMaxLength(64);
                 b.Property(p => p.Url).HasMaxLength(128);
-                b.Property(p => p.UrlReferrer).HasMaxLength(12);
+                b.Property(p => p.UrlReferrer).HasMaxLength(1024);
                 b.Property(p => p.RequestData).HasMaxLength(1024);
                 b.Property(p => p.UserAgent).HasMaxLength(128);
                 b.Property(p => p.ControllerName).HasMaxLength(64);

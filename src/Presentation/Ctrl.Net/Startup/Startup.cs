@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using NLog;
 using Volo.Abp.Modularity;
 
 namespace Ctrl.Web.Host.Startup
@@ -31,8 +32,8 @@ namespace Ctrl.Web.Host.Startup
             });
             services.AddControllersWithViews(options =>
             {
-                //options.Filters.Add(typeof(OperationLogAttribute));
-               // options.Filters.Add(typeof(ExceptionFilterAttribute));
+                options.Filters.Add(typeof(OperationLogAttribute));
+                options.Filters.Add(typeof(ExceptionFilterAttribute));
                 options.Filters.Add(typeof(WebPermissionFilter));
             });
             //.AddNewtonsoftJson(options =>
