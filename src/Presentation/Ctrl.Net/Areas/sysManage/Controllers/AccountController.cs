@@ -84,7 +84,7 @@ namespace Ctrl.Web.Host.Areas.sysManage.Controllers
         /// <returns></returns> 
         //[ValidateAntiForgeryToken]
         [HttpPost]
-        public async Task<JsonResult> Submit(UserLoginInput model)
+        public async Task<JsonResult> Login(UserLoginInput model)
         {
             model.Password = _3DESEncrypt.Encrypt(model.Password);
             var info = await _systemUserLogic.CheckUserByCodeAndPwdAsync(model);
