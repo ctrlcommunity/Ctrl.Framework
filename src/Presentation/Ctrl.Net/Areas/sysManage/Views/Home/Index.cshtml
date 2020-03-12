@@ -89,11 +89,11 @@
                 _.forEach(data, function (row, i) {
                     if ($.IsEmptyGuid(row.pId)) {
                         strhtml += `<li>
-                                                <a href="#${row.id}" class="collapsed" data-toggle="collapse">
-                                                    <i class="${row.icon}"></i>
-                                                    <span>	${row.name}</span>
-                                                    <span class="pull-right glyphicon glyphicon-chevron-toggle"></span>
-                                                </a>`;
+                                                        <a href="#${row.id}" class="collapsed" data-toggle="collapse">
+                                                            <i class="${row.icon}"></i>
+                                                            <span>	${row.name}</span>
+                                                            <span class="pull-right glyphicon glyphicon-chevron-toggle"></span>
+                                                        </a>`;
                         strhtml += ` <ul id="${row.id}" class="nav nav-list secondmenu collapse" style="height: 0px;">`;
                         _.forEach(_.filter(data, function (o) {
                             return o.pId == row.id
@@ -104,7 +104,7 @@
 
                             if (_.size(filterArr) > 0) {
                                 strhtml += ` <li><a href="#${row1.id}" class="collapsed" data-toggle="collapse" href="${row1.url}" target="iFrameMain"><span> <i class="${row1.icon}"></i>&nbsp;${row1.name}</span></a>
-                                                        <ul id="${row1.id}" class="nav nav-list secondmenu collapse" style="height: 0px;"> `;
+                                                                <ul id="${row1.id}" class="nav nav-list secondmenu collapse" style="height: 0px;"> `;
                                 _.forEach(filterArr, function (row2, k) {
 
                                     strhtml += ` <li><a href="${row2.url}"target="iFrameMain"><span> <i class="${row2.icon}"></i>&nbsp;${row2.name}</span></a></li>`;

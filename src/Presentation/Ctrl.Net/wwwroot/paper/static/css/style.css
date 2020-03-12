@@ -1,0 +1,51 @@
+textarea {
+    font-family: Inconsolata, Monaco, Consolas, "Lucida Console", monospace;
+    font-size: 14px;
+    color: #555;
+    width: 100%;
+    padding: 7px;
+    outline: 0;
+    border: 1px solid #bbb;
+}
+ #beautified{
+ margin-left: 10px;
+ }
+.main .formatted {
+    width: 370px;
+    display: inline;
+    float: left;
+    margin-left: 20px;
+    margin-top:20px;
+ 
+}
+.main .raw h2,.main .formatted h2{
+    font-size:14px;
+}
+.main .raw {
+    width: 370px;
+    display: inline;
+    float: left;   
+    margin-top:20px;
+}
+
+.main .raw textarea {
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+    transition: border linear 0.25s, box-shadow linear 0.25s;
+    -webkit-transition: border linear 0.25s, box-shadow linear 0.25s;
+    -moz-transition: border linear 0.25s, box-shadow linear 0.25s;
+    -o-transition: border linear 0.25s, box-shadow linear 0.25s;
+}
+
+.main .raw textarea:focus {
+    border-color: rgba(60, 200, 1, 0.8);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(60, 200, 1, 0.4);
+    -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(60, 200, 1, 0.4);
+    -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(60, 200, 1, 0.4);
+}
+
+
+.main .formatted textarea {
+    color: #000;
+}
