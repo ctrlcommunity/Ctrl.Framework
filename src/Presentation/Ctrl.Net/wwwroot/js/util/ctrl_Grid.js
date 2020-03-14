@@ -96,7 +96,7 @@ ctrlGrid.prototype = {
                     $(self._id + " thead tr").append("<th style='text-align:center;width:50px'><input  type='checkbox' id='allcheck'></th>");
                   
                 } else {
-                    if (i==0) {
+                    if (i===0) {
                         if (self.settings.Serial) {
                             $(self._id + " thead tr").append("<th></th>");
                         }
@@ -125,7 +125,7 @@ ctrlGrid.prototype = {
             self.settings.totalpage = json.totalCount / self.settings.pagerow;
             if ((json.totalCount % self.settings.pagerow) !== 0)
                 self.settings.totalpage++;
-            self.settings.totalpage = parseInt(self.settings.totalpage)
+            self.settings.totalpage = parseInt(self.settings.totalpage);
             var rowsdata = "";
             //if (!self.settings.pagination) {
             //    json.rows = json.items;
@@ -134,7 +134,7 @@ ctrlGrid.prototype = {
             _.forEach(json.items, function (data, i) {
                 rowsdata += "<tr data-id=" + i + ">";
                 _.forEach(columns, function (column, j) {
-                    if (j==0) {
+                    if (j===0) {
                         if (self.settings.Serial) {
                             rowsdata += `<td style='width:10px'>${(i + 1) + (self.params.pagerow * (pn - 1))}</td>`;
                         }
@@ -163,34 +163,34 @@ ctrlGrid.prototype = {
         if (typeof(this.settings.totalpage) ==='undefined') {
             return false;
         }
-        var footHtml = '          <div class="pull-right"> <nav aria-label="..."> <ul class="pager">';
-        footHtml += '<li><a id="UpPage">&laquo;上一页</a></li>';
+        var footHtml = '<ul class="pagination pagination-sm no-margin float-right">';
+        footHtml += '<li class="page-item"><a id="UpPage" class="page-link">&laquo;上一页</a></li>';
         var self = this;
         if (self.settings.pageindex <= self.settings.totalpage) {
             for (x = (self.settings.pageindex - 2); x < (self.settings.pageindex + 2); x++) {
                 if (x < self.settings.totalpage && x > 0) {
                     if (x == self.settings.pageindex) {
-                        footHtml += " <li class='disabled'><a>" + self.settings.pageindex + "</a></li>";
+                        footHtml += " <li class='disabled'><a class='page-link'>" + self.settings.pageindex + "</a></li>";
                     } else {
-                        footHtml += " <li id='clickPage'><a>" + x + "</a></li>";
+                        footHtml += " <li id='clickPage' class='page-item'><a class='page-link'>" + x + "</a></li>";
                     }
                 }
             }
         }
         if ((!(self.settings.totalpage === 1)) && self.settings.totalpage>2) {
-            footHtml += " <li><a>...</a></li>";
+            footHtml += " <li  class='page-item'><a class='page-link'>...</a></li>";
         }
         if (self.settings.totalpage === self.settings.pageindex) {
-            footHtml += " <li  class='disabled'><a>" + self.settings.pageindex + "</a></li>";
+            footHtml += " <li  class='disabled'><a class='page-link'>" + self.settings.pageindex + "</a></li>";
         } else {
-            footHtml += " <li id='clickPage'><a>" + self.settings.totalpage + "</a></li>";
+            footHtml += " <li  class='page-item' id='clickPage'><a class='page-link'>" + self.settings.totalpage + "</a></li>";
         }
-        footHtml += '<li><a id="nextPage">下一页&raquo;</a></li>';
+        footHtml += '<li class="page-item"><a id="nextPage" class="page-link">下一页&raquo;</a></li>';
        // footHtml += " <span id='clickPage'>" + self.settings.totalpage + "</span>";
         //footHtml += "<span id='nextPage'><a>下一页</a></span>";
         //footHtml += "  <span id='lastPage'><a>尾页</a></span>";
         //footHtml += "<input type='text'/><span id='skippage'><a>跳转</a></span>";
-        footHtml += " </ul></nav></div>";
+        footHtml += " </ul>";
         $(this._id + ' .table').next().remove();
         $(this._id + ' .table').after(footHtml);
     },

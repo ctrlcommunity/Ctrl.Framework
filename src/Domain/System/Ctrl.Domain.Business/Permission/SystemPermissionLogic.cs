@@ -31,17 +31,16 @@ namespace Ctrl.Domain.Business.Permission
         private readonly ISystemMenuRepository _menuRepository;
         private readonly ISystemUserRepository _userRepository;
         private readonly ISystemPermissionUserRepository _permissionUserRepository;
-        private readonly ISystemMenuButtonRepository _buttonRepository;
+
         private readonly IMemoryCache _cache;
         public const string USER_MENU_CACHE_KEY = "_USERMENU_";
-        public SystemPermissionLogic(IRepository<SystemPermission, Guid> repository, ISystemPermissionDapperRepository systemPermissionDapperRepository, ISystemMenuButtonDapperRepository systemMenuButtonDapperRepository, ISystemMenuRepository menuRepository, ISystemUserRepository userRepository, ISystemPermissionUserRepository permissionUserRepository, ISystemMenuButtonRepository buttonRepository, IMemoryCache cache) : base(repository)
+        public SystemPermissionLogic(IRepository<SystemPermission, Guid> repository, ISystemPermissionDapperRepository systemPermissionDapperRepository, ISystemMenuButtonDapperRepository systemMenuButtonDapperRepository, ISystemMenuRepository menuRepository, ISystemUserRepository userRepository, ISystemPermissionUserRepository permissionUserRepository,IMemoryCache cache) : base(repository)
         {
             _systemPermissionDapperRepository = systemPermissionDapperRepository;
             _systemMenuButtonDapperRepository = systemMenuButtonDapperRepository;
             _menuRepository = menuRepository;
             _userRepository = userRepository;
             _permissionUserRepository = permissionUserRepository;
-            _buttonRepository = buttonRepository;
             _cache = cache;
         }
         
@@ -72,6 +71,7 @@ namespace Ctrl.Domain.Business.Permission
                     }
                     treeEntities = (await _systemPermissionDapperRepository.GetSystemPermissionMenuByUserId(userInfo.Id.ToString())).ToList();
                 }
+                this._cache.Set(cacheKey, treeEntities);
             }
             return treeEntities;
         }

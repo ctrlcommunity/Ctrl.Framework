@@ -29,11 +29,11 @@ ASP.NET Core3.1、AbpvNext、BootStrap进行构建的快速开发通用型基础
 =====
 **Ctrl.Framework**是一个升级版基础权限开发型框架，支持权限管理，代码生成，日志审计等。
 
-![admin](https://raw.githubusercontent.com/ctrlcommunity/ASP.NET-Core-BaseDesign/dev/src/Presentation/Ctrl.Net/wwwroot/images/admin.png)
+![](https://imgkr.cn-bj.ufileos.com/0299c942-8cc3-4b8f-96b0-02f474d89e53.png)
 
-![admin](https://raw.githubusercontent.com/ctrlcommunity/ASP.NET-Core-BaseDesign/dev/src/Presentation/Ctrl.Net/wwwroot/images/admin-oplog.png)
+![](https://imgkr.cn-bj.ufileos.com/1d96f50f-8417-4de6-8b96-d161b714b46a.png)
 
-![admin](https://raw.githubusercontent.com/ctrlcommunity/ASP.NET-Core-BaseDesign/dev/src/Presentation/Ctrl.Net/wwwroot/images/admin-button.png)
+
 
 # 使用
 

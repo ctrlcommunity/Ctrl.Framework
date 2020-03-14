@@ -72,11 +72,13 @@
             <div class="d-flex row">
                 <div class="col-md-3 white">
                     <div class="p-5 mt-5">
-                        <img src="/paper/static/picture/logo.png" alt="">
+                        @*<img src="/paper/static/picture/logo.png" alt="">*@
                     </div>
                     <div class="p-5">
-                        <h3>Welcome Back</h3>
-                        <p>Hey Soldier welcome back signin now there is lot of new stuff waiting for you</p>
+                        <h3>Please Sign in</h3>
+                        <p>
+                            The framework use ABP vNext purpose Build a fast Development Framework
+                        </p>
                         <partial name="_ValidationSummary" />
                         <form asp-route="/Login">
                             <input type="hidden" asp-for="ReturnUrl" />

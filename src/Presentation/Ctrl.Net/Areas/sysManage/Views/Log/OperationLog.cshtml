@@ -1,33 +1,27 @@
 ﻿@{
     ViewData["Title"] = "操作日志";
-    Layout = "~/Areas/SysManage/Views/Shared/_LayoutPageBaseList.cshtml";
+    Layout = "~/Areas/sysManage/Views/Shared/_LayoutPage.cshtml";
 }
 
-    <div class="row">
-        <div id="toolbar">
-            <h1 class="page-title">操作日志</h1>
-            <div class="form-inline pull-right" id="toolbutton">
-                <div class="input-group input-group-sm">
-                    <input type="text" name="date2" id="date2" class="form-control input-sm">
-                    <span class="input-group-addon"><i class="fas fa-calendar-alt fa-lg"></i></span>
-                </div>
-                <div class="form-group">
-                    <label>用户名：</label>
-                    <input type="text" class="form-control input-sm" name="CreateUserName" placeholder="请输入用户名">
-                </div>
-                <div class="form-group">
-                    <label>登录代码：</label>
-                    <input type="text" class="form-control input-sm" name="CreateUserCode" placeholder="请输入登录代码">
-                </div>
-                <button class="btn btn-default btn-xs" name="btn_select_box" type="submit"><i class=" fa fa-search fa-lg"></i> 查询 </button>
-            </div>
-        </div>
-        <div id="ctrltable">
 
+<div class="container-fluid relative animatedParent animateOnce my-3 paper-card ">
+    <div class="row">
+        <div class="col-12">
+            <div class="box">
+                <!-- /.box-header -->
+                <div class="box-body table-responsive no-padding" id="ctrltable">
+
+                </div>
+
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
         </div>
     </div>
-    <script type="text/javascript">
-
+</div>
+@section script{
+<script type="text/javascript">
+    console.dir($)
         var $grid = $("#ctrltable").ctrlGrid({
             id: "#ctrltable",
             url: "/SysManage/Log/GetPagingOperationLog",
@@ -61,14 +55,5 @@
             Sord: "desc",
             Serial: true
         });
-        $("input[name='date2']").ctrldaterangepicker();
-        $("[name='btn_select_box']").click(function () {
-            $grid.registersearchClick();
-        })
-        function details(obj) {
-            var id = $(obj).data("id");
-            if (!$.IsEmptyGuid(id)) {
-                $.windowsOpen("/sysManage/Log/OperationDetails?id=" + id, "日志详情", '65%', '65%');
-            }
-        }
-    </script>
+</script>
+}
