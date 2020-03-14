@@ -120,7 +120,7 @@
         * @param url
         * @param data
         */
-        $.fn.CtrlSelect2 = function (url, data = {},callback) {
+        $.fn.CtrlSelect2 = function (url, data = {}, callback) {
             var _self = this;
             $fetch(url, data).then(function (data) {
                 $(_self).select2({
@@ -131,6 +131,14 @@
                 });
                 callback && callback();
             });
+        },
+        $.fn.IsEmptyGuid = function () {
+            console.dir(e)
+            if (e === "00000000-0000-0000-0000-000000000000") {
+                return true;
+            } else {
+                return false;
+            }
         },
         $.fn.zTreeSelect = function (treeDivId, inputId, treeDataList, onClick) {
             var setting = {
@@ -170,13 +178,6 @@
         };
 })(jQuery);
 jQuery.extend({
-    IsEmptyGuid: function (e) {
-        if (e === "00000000-0000-0000-0000-000000000000") {
-            return true;
-        } else {
-            return false;
-        }
-    },
     getQueryString: function (name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
         var r = window.location.search.substr(1).match(reg);

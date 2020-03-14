@@ -4,6 +4,7 @@ using Ctrl.Core.Core.Attributes;
 using Ctrl.Core.Core.Auth;
 using Ctrl.Core.Core.Log;
 using Ctrl.Core.Core.Security;
+using Ctrl.Core.Entities;
 using Ctrl.Core.Web;
 using Ctrl.Core.Web.Attributes;
 using Ctrl.Domain.Business.Identity;
@@ -32,20 +33,11 @@ namespace Ctrl.Web.Host.Areas.sysManage.Controllers
         #endregion
 
         #region 视图
+        [HttpGet]
         [SkipPermission]
-        public  ActionResult Login()
+        public ActionResult Login(string ReturnUrl)
         {
-            Response.Cookies.Append(
-                "_tenant",
-                Guid.NewGuid().ToString(),
-                new CookieOptions
-                {
-                    Path = "/",
-                    HttpOnly = false,
-                    Expires = DateTimeOffset.Now.AddYears(10)
-                }
-            );
-            return View();
+            return View(new UserLoginInput { ReturnUrl = ReturnUrl });
         }
         /// <summary>
         /// 登录退出界面
@@ -82,9 +74,9 @@ namespace Ctrl.Web.Host.Areas.sysManage.Controllers
         /// </summary>
         /// <param name="input">登录参数</param>
         /// <returns></returns> 
-        //[ValidateAntiForgeryToken]
         [HttpPost]
-        public async Task<JsonResult> Login(UserLoginInput model)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login(UserLoginInput model)
         {
             model.Password = _3DESEncrypt.Encrypt(model.Password);
             var info = await _systemUserLogic.CheckUserByCodeAndPwdAsync(model);
@@ -98,9 +90,9 @@ namespace Ctrl.Web.Host.Areas.sysManage.Controllers
                     IsAdmin = info.Data.IsAdmin,
                     //TODO先注释
                     //RoleName = info.Data.RoleName,
-                    ImgUrl =info.Data.ImgUrl
+                    ImgUrl = info.Data.ImgUrl
                 };
-                if (prin.Code=="admin")
+                if (prin.Code == "admin")
                 {
                     prin.RoleName = "超级管理员";
                 }
@@ -108,10 +100,32 @@ namespace Ctrl.Web.Host.Areas.sysManage.Controllers
                 AuthenticationExtension.SetAuthCookie(prin);
 
                 //写入日志
-                //var logHandler = new LoginLogHandler(info.Data.Id.ToString(), info.Data.Code, info.Data.Name, (int)EnumLoginType.账号密码登录);
-                //logHandler.WriteLog();
+                var logHandler = new LoginLogHandler(info.Data.Id.ToString(), info.Data.Code, info.Data.Name, (int)EnumLoginType.账号密码登录);
+                logHandler.WriteLog();
             }
-            return Json(info);
+            if (info.ResultSign == ResultSign.Successful)
+            {
+                if (Url.IsLocalUrl(model.ReturnUrl))
+                {
+                    return Redirect(model.ReturnUrl);
+                }
+                else if (string.IsNullOrEmpty(model.ReturnUrl))
+                {
+                    return Redirect("~/");
+                }
+                else
+                {
+                    // user might have clicked on a malicious link - should be logged
+                    throw new Exception("invalid return URL");
+                }
+            }
+            else
+            {
+                ModelState.AddModelError(string.Empty, info.Message);
+
+            }
+
+            return View();
         }
 
         #endregion

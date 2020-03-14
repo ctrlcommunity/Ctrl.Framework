@@ -1,7 +1,8 @@
 ﻿@{
     ViewData["Title"] = "后台管理系统-登录";
-    Layout=null;
+    Layout = null;
 }
+@model Ctrl.Domain.Models.Dtos.UserLoginInput
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -76,54 +77,64 @@
                     <div class="p-5">
                         <h3>Welcome Back</h3>
                         <p>Hey Soldier welcome back signin now there is lot of new stuff waiting for you</p>
-                        <form action="/SysManage/Account/Login" method="POST">
-                            <div class="form-group has-icon"><i class="icon-envelope-o"></i><input type="text"
-                                    class="form-control form-control-lg" name="Code" value="admin" placeholder="Email Address"></div>
-                            <div class="form-group has-icon"><i class="icon-user-secret"></i><input type="text"
-                                    class="form-control form-control-lg" placeholder="Password" name="Password" value="admin" ></div><input
-                                type="submit" class="btn btn-primary btn-lg btn-block" value="Log In">
+                        <partial name="_ValidationSummary" />
+                        <form asp-route="/Login">
+                            <input type="hidden" asp-for="ReturnUrl" />
+                            <div class="form-group has-icon">
+                                <i class="icon-envelope-o"></i><input type="text"
+                                                                      class="form-control form-control-lg" asp-for="Code" value="admin" placeholder="Email Address">
+                            </div>
+                            <div class="form-group has-icon">
+                                <i class="icon-user-secret"></i><input type="password" asp-for="Password"
+                                                                       class="form-control form-control-lg" placeholder="Password" value="admin">
+                            </div><input type="submit" class="btn btn-primary btn-lg btn-block" value="Log In">
                         </form>
                     </div>
                 </div>
                 <div class="col-md-9  height-full blue accent-3 align-self-center text-center d-none d-md-block"
-                    data-bg-repeat="false" data-bg-possition="center"></div>
+                     data-bg-repeat="false" data-bg-possition="center"></div>
             </div>
         </div><!-- Right Sidebar -->
         <aside class="control-sidebar fixed white ">
             <div class="slimScroll">
                 <div class="sidebar-header">
                     <h4>Activity List</h4><a href="#" data-toggle="control-sidebar"
-                        class="paper-nav-toggle  active"><i></i></a>
+                                             class="paper-nav-toggle  active"><i></i></a>
                 </div>
                 <div class="p-3">
                     <div>
-                        <div class="my-3"><small>25% Complete</small>
+                        <div class="my-3">
+                            <small>25% Complete</small>
                             <div class="progress" style="height: 3px;">
                                 <div class="progress-bar bg-success" role="progressbar" style="width: 25%;"
-                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                     aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
-                        <div class="my-3"><small>45% Complete</small>
+                        <div class="my-3">
+                            <small>45% Complete</small>
                             <div class="progress" style="height: 3px;">
                                 <div class="progress-bar bg-info" role="progressbar" style="width: 45%;"
-                                    aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
+                                     aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
-                        <div class="my-3"><small>60% Complete</small> `<div class="progress" style="height: 3px;">
+                        <div class="my-3">
+                            <small>60% Complete</small> `<div class="progress" style="height: 3px;">
                                 <div class="progress-bar bg-warning" role="progressbar" style="width: 60%;"
-                                    aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                     aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
-                        <div class="my-3"><small>75% Complete</small>
+                        <div class="my-3">
+                            <small>75% Complete</small>
                             <div class="progress" style="height: 3px;">
                                 <div class="progress-bar bg-danger" role="progressbar" style="width: 75%;"
-                                    aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                     aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
-                        <div class="my-3"><small>100% Complete</small>
+                        <div class="my-3">
+                            <small>100% Complete</small>
                             <div class="progress" style="height: 3px;">
                                 <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100"
-                                    aria-valuemin="0" aria-valuemax="100"></div>
+                                     aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
                     </div>
@@ -131,14 +142,15 @@
                 <div class="p-3 bg-primary text-white">
                     <div class="row">
                         <div class="col-md-6">
-                            <h5 class="font-weight-normal s-14">Sodium</h5><span
-                                class="font-weight-lighter text-primary">Spark Bar</span>
-                            <div>Oxygen<span class="text-primary"><i class="icon icon-arrow_downward"></i>67%</span>
+                            <h5 class="font-weight-normal s-14">Sodium</h5><span class="font-weight-lighter text-primary">Spark Bar</span>
+                            <div>
+                                Oxygen<span class="text-primary"><i class="icon icon-arrow_downward"></i>67%</span>
                             </div>
                         </div>
-                        <div class="col-md-6"><canvas width="100" height="70" data-chart="spark" data-chart-type="bar"
-                                data-dataset="[[28,68,41,43,96,45,100,28,68,41,43,96,45,100,28,68,41,43,96,45,100,28,68,41,43,96,45,100]]"
-                                data-labels="['a','b','c','d','e','f','g','h','i','j','k','l','m','n','a','b','c','d','e','f','g','h','i','j','k','l','m','n']"></canvas>
+                        <div class="col-md-6">
+                            <canvas width="100" height="70" data-chart="spark" data-chart-type="bar"
+                                    data-dataset="[[28,68,41,43,96,45,100,28,68,41,43,96,45,100,28,68,41,43,96,45,100,28,68,41,43,96,45,100]]"
+                                    data-labels="['a','b','c','d','e','f','g','h','i','j','k','l','m','n','a','b','c','d','e','f','g','h','i','j','k','l','m','n']"></canvas>
                         </div>
                     </div>
                 </div>
@@ -175,30 +187,38 @@
                 </div>
                 <div class="sidebar-header">
                     <h4>Activity</h4><a href="#" data-toggle="control-sidebar"
-                        class="paper-nav-toggle  active"><i></i></a>
+                                        class="paper-nav-toggle  active"><i></i></a>
                 </div>
                 <div class="p-4">
                     <div class="activity-item activity-primary">
-                        <div class="activity-content"><small class="text-muted"><i
-                                    class="icon icon-user position-left"></i>5 mins ago</small>
+                        <div class="activity-content">
+                            <small class="text-muted">
+                                <i class="icon icon-user position-left"></i>5 mins ago
+                            </small>
                             <p>Lorem ipsum dolor sit amet conse ctetur which ascing elit users.</p>
                         </div>
                     </div>
                     <div class="activity-item activity-danger">
-                        <div class="activity-content"><small class="text-muted"><i
-                                    class="icon icon-user position-left"></i>8 mins ago</small>
+                        <div class="activity-content">
+                            <small class="text-muted">
+                                <i class="icon icon-user position-left"></i>8 mins ago
+                            </small>
                             <p>Lorem ipsum dolor sit ametcon the sectetur that ascing elit users.</p>
                         </div>
                     </div>
                     <div class="activity-item activity-success">
-                        <div class="activity-content"><small class="text-muted"><i
-                                    class="icon icon-user position-left"></i>10 mins ago</small>
+                        <div class="activity-content">
+                            <small class="text-muted">
+                                <i class="icon icon-user position-left"></i>10 mins ago
+                            </small>
                             <p>Lorem ipsum dolor sit amet cons the ecte tur and adip ascing elit users.</p>
                         </div>
                     </div>
                     <div class="activity-item activity-warning">
-                        <div class="activity-content"><small class="text-muted"><i
-                                    class="icon icon-user position-left"></i>12 mins ago</small>
+                        <div class="activity-content">
+                            <small class="text-muted">
+                                <i class="icon icon-user position-left"></i>12 mins ago
+                            </small>
                             <p>Lorem ipsum dolor sit amet consec tetur adip ascing elit users.</p>
                         </div>
                     </div>
