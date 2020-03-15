@@ -77,6 +77,6 @@ namespace Ctrl.Domain.Models.Dtos.Logs
         /// <summary>
         ///     创建时间
         /// </summary>
-        public string CreateTime { get; set; }
+        public DateTime CreateTime { get; set; }
     }
 }
