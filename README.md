@@ -2,7 +2,8 @@
 ==============
 
 ![LICENSE](https://img.shields.io/github/license/ctrlcommunity/Ctrl.Framework?style=plastic)
-[![Build Status](https://dev.azure.com/HueiFeng/Ctrl.Framework/_apis/build/status/hueifeng.Ctrl.Framework?branchName=master)](https://dev.azure.com/HueiFeng/Ctrl.Framework/_build/latest?definitionId=14&branchName=master)
+[![Build Status](https://dev.azure.com/HueiFeng/Ctrl.Framework/_apis/build/status/ctrlcommunity.Ctrl.Framework?branchName=master)](https://dev.azure.com/HueiFeng/Ctrl.Framework/_build/latest?definitionId=15&branchName=master)
+
 
 
 在线预览地址：http://abp.stackable.cn/
