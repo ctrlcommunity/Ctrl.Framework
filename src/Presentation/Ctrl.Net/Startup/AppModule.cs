@@ -7,6 +7,7 @@ using Ctrl.Domain.Models.Dtos.Identity;
 using Ctrl.System.Business;
 using Ctrl.System.DataAccess;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.Extensions.DependencyInjection;
@@ -26,6 +27,7 @@ using Volo.Abp.Autofac;
 using Volo.Abp.AutoMapper;
 using Volo.Abp.Dapper;
 using Volo.Abp.DependencyInjection;
+using Volo.Abp.Json;
 using Volo.Abp.Modularity;
 using Volo.Abp.MultiTenancy;
 using Volo.Abp.ObjectMapping;
@@ -94,6 +96,11 @@ namespace Ctrl.Web.Host.Startup
                 options.TenantResolvers.Add(new HeaderTenantResolveContributor());
                 options.TenantResolvers.Add(new CookieTenantResolveContributor());
             });
+            Configure<MvcNewtonsoftJsonOptions>(options =>
+            {
+                options.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss";//对类型为DateTime的生效
+            });
+            Configure<AbpJsonOptions>(options => options.DefaultDateTimeFormat = "yyyy-MM-dd HH:mm:ss");　
             ConfigureAutoMapper();
             context.Services.GetSingletonInstance<IObjectAccessor<IServiceProvider>>();
 

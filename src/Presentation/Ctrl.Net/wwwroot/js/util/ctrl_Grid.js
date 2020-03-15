@@ -119,7 +119,7 @@ ctrlGrid.prototype = {
         self.params.pageindex = pn;
         self.params.Sorting = self.settings.Sidx;
         self.params.Sord = self.settings.Sord;
-        self.params.SkipCount = (pn-1) * self.defaults.pagerow;
+        self.params.SkipCount = (pn-1) * self.settings.pagerow;
         _.assign(self.params, self.settings.Swhere);
         $post(_op.settings.url, $.param(self.params)).then(function (json) {
             self.settings.dataall = json.items;

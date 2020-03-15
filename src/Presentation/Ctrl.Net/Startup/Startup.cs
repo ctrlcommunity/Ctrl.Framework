@@ -35,12 +35,7 @@ namespace Ctrl.Web.Host.Startup
                 options.Filters.Add(typeof(OperationLogAttribute));
                 options.Filters.Add(typeof(ExceptionFilterAttribute));
                 options.Filters.Add(typeof(WebPermissionFilter));
-            })
-            .AddNewtonsoftJson(options =>
-            {
-                options.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss";
-            });
-
+            });        
             services.AddApplication<AppModule>();
         }
 
@@ -49,5 +44,6 @@ namespace Ctrl.Web.Host.Startup
         {
             app.InitializeApplication();
         }
+        
     }
 }
