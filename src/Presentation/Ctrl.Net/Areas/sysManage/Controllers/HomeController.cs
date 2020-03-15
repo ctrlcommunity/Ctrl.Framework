@@ -69,7 +69,6 @@ namespace Ctrl.Web.Host.Areas.sysManage.Controllers
         [Description("首页-方法-获取菜单模块权限")]
         public Task<IEnumerable<TreeEntity>> LoadMenuPermission()
         {
-            throw new Exception("1");
             var data = (_permissionLogic.GetSystemPermissionMenuByUserId(CurrentUser.UserId));
             return data;
         }

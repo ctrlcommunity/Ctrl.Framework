@@ -14,9 +14,8 @@ namespace Ctrl.Web.Host.Startup {
 
     public class Startup {
         public void ConfigureServices (IServiceCollection services) {
-            services.AddMemoryCache ();
-            services.AddHttpContextAccessors ();
-            services.AddAuthentication (CookieAuthenticationDefaults.AuthenticationScheme)
+            services.AddHttpContextAccessors();
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie (o => {
                     o.LoginPath = new PathString ("/sysManage/Account/Login");
                     o.AccessDeniedPath = new PathString ("/sysManage/Home/NotFounds");
