@@ -115,8 +115,9 @@ ctrlGrid.prototype = {
         var self = this;
         self.settings.pageindex = pn;
         self.params.pagerow = self.settings.pagerow;
+        self.params.MaxResultCount=self.settings.pagerow;
         self.params.pageindex = pn;
-        self.params.Sidx = self.settings.Sidx;
+        self.params.Sorting = self.settings.Sidx;
         self.params.Sord = self.settings.Sord;
         self.params.SkipCount = (pn-1) * self.defaults.pagerow;
         _.assign(self.params, self.settings.Swhere);
