@@ -3,23 +3,26 @@ using Ctrl.Core.Entities.Paging;
 using Ctrl.Domain.DataAccess.Log;
 using Ctrl.Domain.Models.Dtos.Logs;
 using Ctrl.Domain.Models.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Volo.Abp.Application.Dtos;
+using Volo.Abp.Application.Services;
 using Volo.Abp.DependencyInjection;
+using Volo.Abp.Domain.Repositories;
 
 namespace Ctrl.Domain.Business.Log
 {
     /// <summary>
     ///     登录日志业务逻辑实现
     /// </summary>
-    public class SystemLoginLogLogic : AsyncLogic<SystemLoginLog>, ISystemLoginLogLogic, IScopedDependency
+    public class SystemLoginLogLogic : CrudAppService<SystemLoginLog,SystemLoginLogOutput,Guid>, ISystemLoginLogLogic, IScopedDependency
     {
         #region 构造函数
         private readonly ISystemLoginLogRepository _loginLogRepository;
 
-        public SystemLoginLogLogic(ISystemLoginLogRepository loginLogRepository)
-            : base(loginLogRepository)
+        public SystemLoginLogLogic(IRepository<SystemLoginLog, Guid> repository,ISystemLoginLogRepository loginLogRepository) : base(repository)
         {
             _loginLogRepository = loginLogRepository;
         }
@@ -30,9 +33,9 @@ namespace Ctrl.Domain.Business.Log
         /// </summary>
         /// <param name="param"></param>
         /// <returns></returns>
-        public Task<PagedResultsDto<SystemLoginLog>> PagingLoginLogQuery(SystemLoginLogPagingInput logPagingInput)
+        public Task<PagedResultDto<SystemLoginLogOutput>> PagingLoginLogQuery(PagedAndSortedResultRequestDto pagedAndSortedResult)
         {
-            return _loginLogRepository.PagingLoginLogQuery(logPagingInput);
+            return GetListAsync(pagedAndSortedResult);
         }
         /// <summary>
         ///     登录数据分析图数据

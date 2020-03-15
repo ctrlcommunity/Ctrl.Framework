@@ -1,17 +1,9 @@
-﻿using Ctrl.Core.Entities;
-using Ctrl.Core.PetaPoco;
 using System;
-using Volo.Abp.Domain.Entities;
+using Volo.Abp.Application.Dtos;
 
-namespace Ctrl.Domain.Models.Entities
+namespace Ctrl.Domain.Models.Dtos.Logs
 {
-    /// <summary>
-    ///     Sys_LoginLog类
-    /// </summary>
-    [Serializable]
-    [TableName("Sys_LoginLog")]
-    [PrimaryKey("LoginLogId")]
-    public class SystemLoginLog:Entity<Guid>
+    public class SystemLoginLogOutput:EntityDto<Guid>
     {
         /// <summary>
         ///     Ip对应地址

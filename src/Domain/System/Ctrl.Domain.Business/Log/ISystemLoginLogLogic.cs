@@ -2,8 +2,11 @@
 using Ctrl.Core.Entities.Paging;
 using Ctrl.Domain.Models.Dtos.Logs;
 using Ctrl.Domain.Models.Entities;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Volo.Abp.Application.Dtos;
+using Volo.Abp.Application.Services;
 using Volo.Abp.DependencyInjection;
 
 namespace Ctrl.Domain.Business.Log
@@ -11,14 +14,14 @@ namespace Ctrl.Domain.Business.Log
     /// <summary>
     ///     登录日志业务逻辑接口
     /// </summary>
-    public interface ISystemLoginLogLogic :IAsyncLogic<SystemLoginLog>,IScopedDependency
+    public interface ISystemLoginLogLogic: ICrudAppService<SystemLoginLogOutput, Guid>,IScopedDependency
     {
         /// <summary>
         ///     分页查询登录信息
         /// </summary>
         /// <param name="param"></param>
         /// <returns></returns>
-        Task<PagedResultsDto<SystemLoginLog>> PagingLoginLogQuery(SystemLoginLogPagingInput logPagingInput);
+        Task<PagedResultDto<SystemLoginLogOutput>> PagingLoginLogQuery(PagedAndSortedResultRequestDto pagedAndSortedResult);
         /// <summary>
         ///     登录数据分析图数据
         /// </summary>

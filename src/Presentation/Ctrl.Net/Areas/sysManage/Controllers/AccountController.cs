@@ -98,7 +98,6 @@ namespace Ctrl.Web.Host.Areas.sysManage.Controllers
                 }
                 //写入Cookie信息
                 AuthenticationExtension.SetAuthCookie(prin);
-
                 //写入日志
                 var logHandler = new LoginLogHandler(info.Data.Id.ToString(), info.Data.Code, info.Data.Name, (int)EnumLoginType.账号密码登录);
                 logHandler.WriteLog();

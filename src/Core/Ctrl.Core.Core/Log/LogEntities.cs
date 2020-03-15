@@ -10,7 +10,7 @@ namespace Ctrl.Core.Core.Log
         /// <summary>
         ///     主键Id
         /// </summary>
-        public string LoginLogId { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
         ///     Ip对应地址

@@ -117,8 +117,7 @@ namespace Ctrl.Core.EntityFrameworkCore.EntityFrameworkCore
             builder.Entity<SystemLoginLog>(b =>
             {
                 b.ToTable("Sys_LoginLog");
-                b.HasKey(p => p.LoginLogId);
-                b.Property(p => p.LoginLogId).HasMaxLength(50);
+                b.HasKey(p => p.Id);
                 b.Property(p => p.IpAddressName).HasMaxLength(50);
                 b.Property(p => p.ServerHost).HasMaxLength(50);
                 b.Property(p => p.ClientHost).HasMaxLength(50);

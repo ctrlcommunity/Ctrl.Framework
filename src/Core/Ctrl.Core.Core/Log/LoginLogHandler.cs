@@ -13,7 +13,7 @@ namespace Ctrl.Core.Core.Log
             log = 
             new LoginLog
             {
-                LoginLogId = CombUtil.NewComb().ToString(),
+                Id = CombUtil.NewComb().ToString(),
                 CreateUserId = UserId,
                 CreateUserCode = Code ?? "",
                 ServerHost = String.Format("{0}【{1}】", IpBrowserUtil.GetServerHost(), IpBrowserUtil.GetServerHostIp()),

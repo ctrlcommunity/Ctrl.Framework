@@ -14,6 +14,7 @@ namespace Ctrl.Web.Host.Startup
             CreateMap<SystemArticle, SystemArticleOutput>().ReverseMap();
             CreateMap<SystemExceptionLog, SystemExceptionLogDto>().ReverseMap();
             CreateMap<SystemOperateLog, SystemOperateLogOutput>().ReverseMap();
+            CreateMap<SystemLoginLog,SystemLoginLogOutput>().ReverseMap();
         }
     }
 }

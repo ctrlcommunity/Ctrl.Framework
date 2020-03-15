@@ -51,9 +51,9 @@ namespace Ctrl.Net.Areas.SysManage.Controllers
         [HttpPost]
         [CreateBy("冯辉")]
         [Description("登录日志-方法-列表-获取所有登录日志信息")]
-        public async Task<JsonResult> GetPagingLoginLog(SystemLoginLogPagingInput logPagingInput)
+        public Task<PagedResultDto<SystemLoginLogOutput>> GetPagingLoginLog(PagedAndSortedResultRequestDto sortedResultRequestDto)
         {
-            return JsonForGridPaging(await _loginLogLogic.PagingLoginLogQuery(logPagingInput));
+            return _loginLogLogic.PagingLoginLogQuery(sortedResultRequestDto);
         }
 
         /// <summary>
@@ -89,10 +89,10 @@ namespace Ctrl.Net.Areas.SysManage.Controllers
         /// <returns></returns>
         public async Task<ActionResult> LoginDetails(NullableIdInput input) {
             SystemLoginLog systemLogin = new SystemLoginLog();
-            if (!input.Id.IsNullOrEmptyGuid())
-            {
-                systemLogin = await _loginLogLogic.GetById(input.Id);
-            }
+            // if (!input.Id.IsNullOrEmptyGuid())
+            // {
+            //     systemLogin = await _loginLogLogic.GetAsync(input.Id.Value);
+            // }
             return View(systemLogin);
         }
      
