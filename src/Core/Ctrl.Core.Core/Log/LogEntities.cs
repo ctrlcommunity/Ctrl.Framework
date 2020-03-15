@@ -216,7 +216,7 @@ namespace Ctrl.Core.Core.Log
         /// <summary>
         ///     主键编码
         /// </summary>
-        public string ExceptionLogId { get; set; }
+        public string Id { get; set; }
         /// <summary>
         ///     消息
         /// </summary>

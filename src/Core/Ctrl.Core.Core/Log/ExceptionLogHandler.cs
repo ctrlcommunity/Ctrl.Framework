@@ -36,7 +36,7 @@ namespace Ctrl.Core.Core.Log
             }
             log = new ExceptionLog()
             {
-                ExceptionLogId = CombUtil.NewComb().ToString(),
+                Id = CombUtil.NewComb().ToString(),
                 CreateUserCode=principalUser.Code,
                 CreateUserId=principalUser.UserId.ToString(),
                 CreateUserName=principalUser.Name,

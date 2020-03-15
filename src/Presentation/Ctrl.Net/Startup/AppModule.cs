@@ -1,6 +1,7 @@
 ﻿using System;
 using Ctrl.Core.Core.Http;
 using Ctrl.Core.EntityFrameworkCore.EntityFrameworkCore;
+using Ctrl.Core.Web.Attributes;
 using Ctrl.Domain.Business;
 using Ctrl.Domain.Models;
 using Ctrl.Domain.Models.Dtos.Identity;
@@ -99,6 +100,11 @@ namespace Ctrl.Web.Host.Startup
             Configure<MvcNewtonsoftJsonOptions>(options =>
             {
                 options.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss";//对类型为DateTime的生效
+            });
+            Configure<MvcOptions>(options=>{
+                options.Filters.Add(typeof(OperationLogAttribute));
+                options.Filters.Add(typeof(ExceptionFilterAttribute));
+                options.Filters.Add(typeof(WebPermissionFilter));
             });
             Configure<AbpJsonOptions>(options => options.DefaultDateTimeFormat = "yyyy-MM-dd HH:mm:ss");　
             ConfigureAutoMapper();
