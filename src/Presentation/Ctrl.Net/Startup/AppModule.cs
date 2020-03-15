@@ -102,8 +102,6 @@ namespace Ctrl.Web.Host.Startup
             });
             Configure<AbpJsonOptions>(options => options.DefaultDateTimeFormat = "yyyy-MM-dd HH:mm:ss");　
             ConfigureAutoMapper();
-            context.Services.GetSingletonInstance<IObjectAccessor<IServiceProvider>>();
-
         }
 
         private void ConfigureAutoMapper()
