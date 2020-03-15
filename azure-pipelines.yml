@@ -14,7 +14,7 @@ variables:
   dockerId: 695979933@qq.com                 
   namespace: fhdotnet                             
   imageName: ctrlframework                        
-  registry: registry.cn-hangzhou.aliyuncs.com
+  registry: registry.cn-hangzhou.aliyuncs.com 
   dockerfilepath:  src/Presentation/Ctrl.Net/Dockerfile     
 
 
