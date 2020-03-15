@@ -11,11 +11,11 @@ pool:
 
 
 variables:
-  dockerId: 695979933@qq.com                  # 阿里云 login username
-  namespace: fhdotnet                              # 阿里云 命名空间
-  imageName: ctrlframework                        # 阿里云 仓库名称
-  registry: registry.cn-shenzhen.aliyuncs.com   # 阿里云 公网地址
-  dockerfilepath:  src/Presentation/Ctrl.Net/Dockerfile       # Github Dockerfile相对路径
+  dockerId: 695979933@qq.com                 
+  namespace: fhdotnet                             
+  imageName: ctrlframework                        
+  registry: registry.cn-hangzhou.aliyuncs.com
+  dockerfilepath:  src/Presentation/Ctrl.Net/Dockerfile     
 
 
 steps:
