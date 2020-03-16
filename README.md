@@ -1,8 +1,10 @@
 ﻿Ctrl.Framework
 ==============
 
-![LICENSE](https://img.shields.io/github/license/ctrlcommunity/Ctrl.Framework?style=plastic)
+
 [![Build Status](https://dev.azure.com/HueiFeng/Ctrl.Framework/_apis/build/status/ctrlcommunity.Ctrl.Framework?branchName=master)](https://dev.azure.com/HueiFeng/Ctrl.Framework/_build/latest?definitionId=15&branchName=master)
+![LICENSE](https://img.shields.io/github/license/ctrlcommunity/Ctrl.Framework?color=%230366d6)
+![language](https://img.shields.io/badge/language-csharp-green.svg)
 
 
 
