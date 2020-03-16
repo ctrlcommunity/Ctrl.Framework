@@ -1,6 +1,6 @@
 ﻿@{
-    ViewData["Title"] = "操作日志";
-    Layout = "~/Areas/sysManage/Views/Shared/_LayoutPage.cshtml";
+ViewData["Title"] = "操作日志";
+Layout = "~/Areas/sysManage/Views/Shared/_LayoutPage.cshtml";
 }
 
 
@@ -8,6 +8,30 @@
     <div class="row">
         <div class="col-12">
             <div class="box">
+                <div class="box-header">
+                    <div class="box-tools">
+                        <div class="form-inline pull-right" id="toolbutton">
+                            <div class="form-group">
+                                <input type="text" name="date2" id="date2" class="form-control r-0 light s-12">
+                                <span class="input-group-addon"><i class="fas fa-calendar-alt fa-lg"></i></span>
+                            </div>
+                            <div class="form-group">
+                                <label>用户名：</label>
+                                <input placeholder="请输入用户名" class="form-control r-0 light s-12 " type="text"
+                                    name="CreateUserName">
+                            </div>
+                            <div class="form-group">
+                                <label>登录代码：</label>
+                                <input placeholder="请输入登录代码" class="form-control r-0 light s-12 " type="text"
+                                    name="CreateUserCode">
+                            </div>
+                            <button type="button" class="btn btn-outline-primary btn-sm"
+                                name="btn_select_box">查询</button>
+                            <!-- <button class="btn btn-default btn-xs" name="btn_select_box" type="submit"><i
+                                    class=" fa fa-search fa-lg"></i> 查询 </button> -->
+                        </div>
+                    </div>
+                </div>
                 <!-- /.box-header -->
                 <div class="box-body table-responsive no-padding" id="ctrltable">
 
@@ -20,39 +44,126 @@
     </div>
 </div>
 @section script{
+<link rel="stylesheet" href="~/lib/bootstrap-timepicker/css/bootstrap-timepicker.css" asp-append-version="true">
+<link rel="stylesheet" href="~/lib/bootstrap-daterangepicker/daterangepicker.css" asp-append-version="true">
+<script src="~/lib/moment/moment.js" asp-append-version="true"></script>
+<script src="~/lib/moment/locale/zh-cn.js" asp-append-version="true"></script>
+<script src="~/lib/bootstrap-daterangepicker/daterangepicker.js" asp-append-version="true"></script>
 <script type="text/javascript">
-        var $grid = $("#ctrltable").ctrlGrid({
-            id: "#ctrltable",
-            url: "/SysManage/Log/GetPagingOperationLog",
-            columns: [
-                //{ field: 'ck', checkbox: true },
-                { field: 'createTime', title: '操作时间', width: 200, align: 'left', sort: true },
-                { field: 'describe', title: '描述', width: 100, align: 'left' },
-                { field: 'createUserCode', title: '登录名', width: 100, align: 'left' },
-                { field: 'createUserName', title: '真实姓名', width: 100, align: 'left' },
-                { field: 'url', title: '当前请求Url信息', width: 150, align: 'left' },
-                { field: 'urlReferrer', title: '上次请求Url信息', width: 150, align: 'left' },
-                { field: 'controllerName', title: '控制器', width: 100, align: 'left' },
-                { field: 'actionName', title: '方法名称', width: 150, align: 'left' },
-                { field: 'requestData', title: '请求数据', width: 150, align: 'left' },
-                { field: 'responseStatus', title: '响应状态', width: 150, align: 'left' },
-                { field: 'resultExecutionTime', title: '页面展示(秒)', width: 150, align: 'left', sort: true },
-                { field: 'actionExecutionTime', title: '方法执行(秒)', width: 150, align: 'left', sort: true },
-                { field: 'userAgent', title: '浏览器', width: 100, align: 'left' },
-                { field: 'clientHost', title: '客户端IP', width: 150, align: 'left' },
-                { field: 'serverHost', title: '服务端IP', width: 150, align: 'left' },
-                {
-                    title: '操作', align: 'center', forrmatter: function (data) {
-                        return '<button type="button" class="btn btn-primary btn-xs" onclick="details(this)" data-id=' + data.operateLogId + '><i class="fas fa-search-plus"></i>查看详情</button>';
-                    }
+    $("input[name='date2']").ctrldaterangepicker();
+    var $grid = $("#ctrltable").ctrlGrid({
+        id: "#ctrltable",
+        url: "/SysManage/Log/GetPagingOperationLog",
+        columns: [
+            //{ field: 'ck', checkbox: true },
+            {
+                field: 'createTime',
+                title: '操作时间',
+                width: 200,
+                align: 'left',
+                sort: true
+            },
+            {
+                field: 'describe',
+                title: '描述',
+                width: 100,
+                align: 'left'
+            },
+            {
+                field: 'createUserCode',
+                title: '登录名',
+                width: 100,
+                align: 'left'
+            },
+            {
+                field: 'createUserName',
+                title: '真实姓名',
+                width: 100,
+                align: 'left'
+            },
+            {
+                field: 'url',
+                title: '当前请求Url信息',
+                width: 150,
+                align: 'left'
+            },
+            {
+                field: 'urlReferrer',
+                title: '上次请求Url信息',
+                width: 150,
+                align: 'left'
+            },
+            {
+                field: 'controllerName',
+                title: '控制器',
+                width: 100,
+                align: 'left'
+            },
+            {
+                field: 'actionName',
+                title: '方法名称',
+                width: 150,
+                align: 'left'
+            },
+            {
+                field: 'requestData',
+                title: '请求数据',
+                width: 150,
+                align: 'left'
+            },
+            {
+                field: 'responseStatus',
+                title: '响应状态',
+                width: 150,
+                align: 'left'
+            },
+            {
+                field: 'resultExecutionTime',
+                title: '页面展示(秒)',
+                width: 150,
+                align: 'left',
+                sort: true
+            },
+            {
+                field: 'actionExecutionTime',
+                title: '方法执行(秒)',
+                width: 150,
+                align: 'left',
+                sort: true
+            },
+            {
+                field: 'userAgent',
+                title: '浏览器',
+                width: 100,
+                align: 'left'
+            },
+            {
+                field: 'clientHost',
+                title: '客户端IP',
+                width: 150,
+                align: 'left'
+            },
+            {
+                field: 'serverHost',
+                title: '服务端IP',
+                width: 150,
+                align: 'left'
+            },
+            {
+                title: '操作',
+                align: 'center',
+                forrmatter: function (data) {
+                    return '<button type="button" class="btn btn-primary btn-xs" onclick="details(this)" data-id=' +
+                        data.operateLogId + '><i class="fas fa-search-plus"></i>查看详情</button>';
                 }
-            ],
-            pagination: true,
-            searchnation: true,
-            pagerow: 20,
-            Sidx: "createTime",
-            Sord: "desc",
-            Serial: true
-        });
+            }
+        ],
+        pagination: true,
+        searchnation: true,
+        pagerow: 20,
+        Sidx: "createTime",
+        Sord: "desc",
+        Serial: true
+    });
 </script>
 }
