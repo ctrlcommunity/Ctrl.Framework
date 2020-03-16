@@ -110,7 +110,7 @@ namespace Ctrl.Web.Host.Areas.sysManage.Controllers
                 }
                 else if (string.IsNullOrEmpty(model.ReturnUrl))
                 {
-                    return Redirect("~/");
+                    return Redirect("/");
                 }
                 else
                 {
