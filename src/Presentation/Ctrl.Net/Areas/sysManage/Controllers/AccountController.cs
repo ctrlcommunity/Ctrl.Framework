@@ -90,7 +90,7 @@ namespace Ctrl.Web.Host.Areas.sysManage.Controllers
                     IsAdmin = info.Data.IsAdmin,
                     //TODO先注释
                     //RoleName = info.Data.RoleName,
-                    ImgUrl = info.Data.ImgUrl
+                    //ImgUrl = info.Data.ImgUrl
                 };
                 if (prin.Code == "admin")
                 {
