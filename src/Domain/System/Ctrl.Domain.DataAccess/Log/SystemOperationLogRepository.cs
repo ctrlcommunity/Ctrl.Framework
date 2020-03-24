@@ -1,17 +1,13 @@
-﻿using System;
+﻿using Ctrl.Core.EntityFrameworkCore.EntityFrameworkCore;
+using Ctrl.Domain.Models.Dtos.Logs;
+using Ctrl.Domain.Models.Entities;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Threading;
 using System.Threading.Tasks;
-using Ctrl.Core.DataAccess;
-using Ctrl.Core.Entities.Paging;
-using Ctrl.Core.EntityFrameworkCore.EntityFrameworkCore;
-using Ctrl.Core.PetaPoco;
-using Ctrl.Domain.Models.Dtos.Logs;
-using Ctrl.Domain.Models.Entities;
-using Microsoft.EntityFrameworkCore;
-using Volo.Abp.DependencyInjection;
 using Volo.Abp.Domain.Repositories.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
 

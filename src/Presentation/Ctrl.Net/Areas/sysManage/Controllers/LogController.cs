@@ -51,9 +51,9 @@ namespace Ctrl.Net.Areas.SysManage.Controllers
         [HttpPost]
         [CreateBy("冯辉")]
         [Description("登录日志-方法-列表-获取所有登录日志信息")]
-        public Task<PagedResultDto<SystemLoginLogOutput>> GetPagingLoginLog(PagedAndSortedResultRequestDto sortedResultRequestDto)
+        public Task<PagedResultDto<SystemLoginLogOutput>> GetPagingLoginLog(SystemLoginLogResultRequestDto input)
         {
-            return _loginLogLogic.PagingLoginLogQuery(sortedResultRequestDto);
+            return _loginLogLogic.PagingLoginLogQuery(input);
         }
 
         /// <summary>

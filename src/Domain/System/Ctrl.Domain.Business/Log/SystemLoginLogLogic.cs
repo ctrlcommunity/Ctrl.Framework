@@ -33,9 +33,15 @@ namespace Ctrl.Domain.Business.Log
         /// </summary>
         /// <param name="param"></param>
         /// <returns></returns>
-        public Task<PagedResultDto<SystemLoginLogOutput>> PagingLoginLogQuery(PagedAndSortedResultRequestDto pagedAndSortedResult)
+        public async Task<PagedResultDto<SystemLoginLogOutput>> PagingLoginLogQuery(SystemLoginLogResultRequestDto input)
         {
-            return GetListAsync(pagedAndSortedResult);
+            var list = await _loginLogRepository.GetListAsync(input);
+            var totalCount = await _loginLogRepository.GetCountAsync(input);
+
+            return new PagedResultDto<SystemLoginLogOutput>(
+                totalCount,
+                ObjectMapper.Map<List<SystemLoginLog>, List<SystemLoginLogOutput>>(list)
+                );
         }
         /// <summary>
         ///     登录数据分析图数据
@@ -50,7 +56,7 @@ namespace Ctrl.Domain.Business.Log
             {
                 loginDatas.Add(new LoginDataOutPut
                 {
-                    LoginCount = await _loginLogRepository.GetLoginCountByAreaName(item),
+                  //  LoginCount = await _loginLogRepository.GetLoginCountByAreaName(item),
                     provinceName = item
                 });
 
@@ -65,14 +71,14 @@ namespace Ctrl.Domain.Business.Log
         {
             LoginDataAnalysisOutPut outPut = new LoginDataAnalysisOutPut();
             List<int> ydata = new List<int>();
-            outPut.xdata = (await _loginLogRepository.GetDateMonth()).ToList();
-            var loges = (await _loginLogRepository.GetLoginLogDateMonth()).ToList();
+          //  outPut.xdata = (await _loginLogRepository.GetDateMonth()).ToList();
+            //var loges = (await _loginLogRepository.GetLoginLogDateMonth()).ToList();
 
-            foreach (var item in outPut.xdata)
-            {
-              ydata.Add(loges.Count(d => d.CreateTime.ToString("MM-dd") == item));
-            }
-            outPut.ydata = ydata;
+            //foreach (var item in outPut.xdata)
+            //{
+            //  ydata.Add(loges.Count(d => d.CreateTime.ToString("MM-dd") == item));
+            //}
+            //outPut.ydata = ydata;
             return outPut;
 
         }
