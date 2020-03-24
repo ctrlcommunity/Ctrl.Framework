@@ -6,14 +6,38 @@
 <div class="container-fluid relative animatedParent animateOnce my-3 paper-card ">
     <div class="row">
         <div class="col-12">
-            <div class="box">
+            <div class="box" id="toolbar">
+                <div class="box-header">
+                    <div class="box-tools">
+                        <div class="form-inline pull-right" id="toolbutton">
+                            <div class="form-group">
+                                <label>用户名：</label>
+                                <input placeholder="请输入用户名" class="form-control r-0 light s-12 " type="text"
+                                       name="CreateUserName">
+                            </div>
+                            <div class="form-group">
+                                <label>登录代码：</label>
+                                <input placeholder="请输入登录代码" class="form-control r-0 light s-12 " type="text"
+                                       name="CreateUserCode">
+                            </div>
+                            <button type="button" class="btn btn-outline-primary btn-sm"
+                                    name="btn_select_box">
+                                查询
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-header -->
                 <div class="box-body table-responsive no-padding" id="ctrltable">
 
                 </div>
+                <!-- /.box-body -->
             </div>
+            <!-- /.box -->
         </div>
     </div>
 </div>
+
 @section script{
     <script type="text/javascript">
        var $grid = $("#ctrltable").ctrlGrid({
@@ -43,6 +67,9 @@
         Sord: "desc",
         Serial: true
     });
+       $("[name='btn_select_box']").click(function () {
+            $grid.registersearchClick();
+        })
     </script>
 }
 
