@@ -20,7 +20,7 @@ var ctrlGrid = function (ele, opt) {
         Sidx: null,
         // 默认排序方式,如:asc
         Sord: "asc",
-        Swhere: '',
+        //Swhere: '',
         dataall: null,
         onSelectRow: function () { },
         Serial: false
@@ -34,7 +34,7 @@ var ctrlGrid = function (ele, opt) {
         //Sidx: this.defaults.Sidx,
         // 默认排序方式,如:asc
         //Sord: this.defaults.Sord,
-        //Swhere: this.Swhere
+        Swhere: this.Swhere,
         MaxResultCount: this.defaults.pagerow,
         SkipCount: this.defaults.pageindex * this.defaults.pagerow
     };
@@ -119,7 +119,7 @@ ctrlGrid.prototype = {
         self.params.pageindex = pn;
         self.params.Sorting = self.settings.Sidx;
         self.params.Sord = self.settings.Sord;
-        self.params.SkipCount = (pn-1) * self.settings.pagerow;
+        self.params.SkipCount = (pn - 1) * self.settings.pagerow;
         _.assign(self.params, self.settings.Swhere);
         $post(_op.settings.url, $.param(self.params)).then(function (json) {
             self.settings.dataall = json.items;

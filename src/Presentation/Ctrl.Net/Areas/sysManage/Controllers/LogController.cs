@@ -111,7 +111,7 @@ namespace Ctrl.Net.Areas.SysManage.Controllers
         [HttpPost]
         [CreateBy("冯辉")]
         [Description("操作日志-方法-列表-获取所有操作日志信息")]
-        public async Task<PagedResultDto<SystemOperateLogOutput>> GetPagingOperationLog(PagedAndSortedResultRequestDto queryParam) {
+        public async Task<PagedResultDto<SystemOperateLogOutput>> GetPagingOperationLog(SystemOperateLogResultRequestDto queryParam) {
             return await _operationLogLogic.GetPagingOperationLog(queryParam);
         }
         /// <summary>

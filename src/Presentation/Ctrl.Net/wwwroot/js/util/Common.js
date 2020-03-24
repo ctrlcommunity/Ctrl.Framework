@@ -192,7 +192,8 @@ jQuery.extend({
                 data = data.filter(item => item.area.toLowerCase() === location.pathname.split('/')[1].toLowerCase() && item.controller.toLowerCase()
                     === location.pathname.split('/')[2].toLowerCase() && item.action.toLowerCase() === location.pathname.split('/')[3].toLowerCase());
                 _.forEach(data, function (item, i) {
-                    $("#toolbar .form-inline").append(`<button class="btn btn-default btn-xs" onclick='${item.script}' type="submit"><i class="${item.icon}"></i> ${item.name} </button>`);
+                    $("#toolbar .form-inline").append(`<button type="button" onclick='${item.script}' class="btn btn-outline-primary btn-sm" name="btn_select_box"><i class="${item.icon}"></i> ${item.name}</button>`);
+                    //$("#toolbar .form-inline").append(`<button class="btn btn-default btn-xs" onclick='${item.script}' type="submit"><i class="${item.icon}"></i> ${item.name} </button>`);
                 });
             });
         }
@@ -202,7 +203,8 @@ jQuery.extend({
                 === location.pathname.split('/')[2].toLowerCase() && item.action.toLowerCase() === location.pathname.split('/')[3].toLowerCase());
         }
         _.forEach(arr, function (item, i) {
-            $("#toolbar .form-inline").append(`<button class="btn btn-default btn-xs" onclick='${item.script}'   type="submit"><i class="${item.icon}"></i> ${item.name} </button>`);
+            $("#toolbar .form-inline").append(`<button type="button" onclick='${item.script}' class="btn btn-outline-primary btn-sm" name="btn_select_box"><i class="${item.icon}"></i> ${item.name}</button>`);
+            //$("#toolbar .form-inline").append(`<button class="btn btn-default btn-xs" onclick='${item.script}'   type="submit"><i class="${item.icon}"></i> ${item.name} </button>`);
         });
     },
     editor: function (name) {

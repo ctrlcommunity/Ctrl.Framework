@@ -1,10 +1,9 @@
-﻿using System;
-using System.Threading.Tasks;
-using Ctrl.Core.Business;
-using Ctrl.Core.Entities.Paging;
-using Ctrl.Domain.DataAccess.Log;
+﻿using Ctrl.Domain.DataAccess.Log;
 using Ctrl.Domain.Models.Dtos.Logs;
 using Ctrl.Domain.Models.Entities;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 using Volo.Abp.DependencyInjection;
@@ -12,20 +11,15 @@ using Volo.Abp.Domain.Repositories;
 
 namespace Ctrl.Domain.Business.Log
 {
-    public class SystemOperationLogLogic : CrudAppService<SystemOperateLog, SystemOperateLogOutput,Guid>, ISystemOperationLogLogic,IScopedDependency
+    public class SystemOperationLogLogic : CrudAppService<SystemOperateLog, SystemOperateLogOutput,
+        Guid, SystemOperateLogResultRequestDto>, ISystemOperationLogLogic, IScopedDependency
     {
-        public SystemOperationLogLogic(IRepository<SystemOperateLog, Guid> repository) : base(repository)
+        private readonly ISystemOperationLogRepository _systemOperationLogRepository;
+        public SystemOperationLogLogic(IRepository<SystemOperateLog, Guid> repository, ISystemOperationLogRepository systemOperationLogRepository) : base(repository)
         {
+            this._systemOperationLogRepository = systemOperationLogRepository;
         }
         #region 构造函数
-
-        //private readonly ISystemOperationLogRepository _repository;
-
-        //public SystemOperationLogLogic(ISystemOperationLogRepository operationLogRepository)
-        //    : base(operationLogRepository)
-        //{
-        //    _repository = operationLogRepository;
-        //}
 
         #endregion
         /// <summary>
@@ -33,9 +27,17 @@ namespace Ctrl.Domain.Business.Log
         /// </summary>
         /// <param name="queryParam"></param>
         /// <returns></returns>
-        public Task<PagedResultDto<SystemOperateLogOutput>> GetPagingOperationLog(PagedAndSortedResultRequestDto queryParam)
+        public async Task<PagedResultDto<SystemOperateLogOutput>> GetPagingOperationLog(SystemOperateLogResultRequestDto queryParam)
         {
-            return GetListAsync(queryParam);
+            var list = await _systemOperationLogRepository.GetListAsync(queryParam);
+            var totalCount = await _systemOperationLogRepository.GetCountAsync(queryParam);
+
+            return new PagedResultDto<SystemOperateLogOutput>(
+                totalCount,
+                ObjectMapper.Map<List<SystemOperateLog>, List<SystemOperateLogOutput>>(list)
+                );
         }
+
+
     }
 }
