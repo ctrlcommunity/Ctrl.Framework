@@ -14,25 +14,27 @@ using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Domain.Repositories;
+using System.Collections.Generic;
 
 namespace Ctrl.System.Business
 {
     /// <summary>
     ///     文章业务逻辑接口实现
     /// </summary>
-    public class SystemArticleLogic : CrudAppService<SystemArticle, SystemArticleOutput, Guid>,ISystemArticleLogic,IScopedDependency
+    public class SystemArticleLogic : CrudAppService<SystemArticle, SystemArticleOutput, Guid>,ISystemArticleLogic, IScopedDependency
     {
+
         #region 构造函数
         private readonly ISystemArticleRepository _systemArticleRepository;
-        public SystemArticleLogic(IRepository<SystemArticle, Guid> repository,
-            ISystemArticleRepository systemArticleRepository) : base(repository)
-        {
-            this._systemArticleRepository = systemArticleRepository;
-        }
-        //private readonly ISystemArticleRepository _systemArticleRepository;
 
-        //public SystemArticleLogic(ISystemArticleRepository systemArticleRepository):base(systemArticleRepository) {
-        //    _systemArticleRepository = systemArticleRepository;
+        public SystemArticleLogic(IRepository<SystemArticle, Guid> repository) : base(repository)
+        {
+        }
+
+        //public SystemArticleLogic(IRepository<SystemArticle, Guid> repository,
+        //     ISystemArticleRepository systemArticleRepository) : base(repository)
+        //{
+        //    this._systemArticleRepository = systemArticleRepository;
         //}
         #endregion
 
@@ -59,9 +61,15 @@ namespace Ctrl.System.Business
         /// </summary>
         /// <param name="param"></param>
         /// <returns></returns>
-        public Task<PagedResultDto<SystemArticleOutput>> GetPagingArticle(PagedAndSortedResultRequestDto param)
+        public async Task<PagedResultDto<SystemArticleOutput>> GetPagingArticle(SystemArticleResultRequestDto param)
         {
-            return GetListAsync(param);
+            var list = await _systemArticleRepository.GetPagingArticleType(param);
+            var totalCount = await _systemArticleRepository.GetCountAsync(param);
+
+            return new PagedResultDto<SystemArticleOutput>(
+                totalCount,
+                ObjectMapper.Map<List<SystemArticle>, List<SystemArticleOutput>>(list)
+                );
         }
 
         #endregion

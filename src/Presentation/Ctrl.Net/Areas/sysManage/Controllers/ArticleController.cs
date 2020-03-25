@@ -20,16 +20,17 @@ namespace Ctrl.Net.Areas.sysManage.Controllers
     /// </summary>
     public class  ArticleController : BaseController
     {
+
         #region 构造函数
         private readonly ISystemArticleLogic _systemArticleLogic;
         public ArticleController(ISystemArticleLogic systemArticleLogic)
         {
-            _systemArticleLogic = systemArticleLogic;
+            this._systemArticleLogic = systemArticleLogic;
+
         }
         #endregion
-
         #region 视图
-		 /// <summary>
+        /// <summary>
         ///     列表
         /// </summary>
         /// <returns></returns>
@@ -77,7 +78,7 @@ namespace Ctrl.Net.Areas.sysManage.Controllers
         [CreateBy("冯辉")]
         [Description("应用系统-文章-方法-获取文章列表")]
         //public async Task<JsonResult> GetPagingArticle(SystemArticlePagingInput param)
-        public async Task<PagedResultDto<SystemArticleOutput>> GetPagingArticle(PagedAndSortedResultRequestDto param)
+        public async Task<PagedResultDto<SystemArticleOutput>> GetPagingArticle(SystemArticleResultRequestDto param)
         {
             return await _systemArticleLogic.GetPagingArticle(param);
         }

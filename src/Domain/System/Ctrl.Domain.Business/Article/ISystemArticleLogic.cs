@@ -9,13 +9,14 @@ using System.Threading.Tasks;
 using Ctrl.Domain.Models.Entities;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
+using Volo.Abp.DependencyInjection;
 
 namespace Ctrl.System.Business
 {
     /// <summary>
     /// 文章业务逻辑接口
     /// </summary>
-    public interface ISystemArticleLogic: ICrudAppService<SystemArticleOutput, Guid>
+    public interface ISystemArticleLogic: ICrudAppService<SystemArticleOutput, Guid>, IScopedDependency
     {
         /// <summary>
         ///     保存文章
@@ -28,6 +29,6 @@ namespace Ctrl.System.Business
         /// </summary>
         /// <param name="param"></param>
         /// <returns></returns>
-        Task<PagedResultDto<SystemArticleOutput>> GetPagingArticle(PagedAndSortedResultRequestDto param);
+        Task<PagedResultDto<SystemArticleOutput>> GetPagingArticle(SystemArticleResultRequestDto param);
     }
 }
