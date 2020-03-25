@@ -27,8 +27,9 @@ namespace Ctrl.System.Business
         #region 构造函数
         private readonly ISystemArticleRepository _systemArticleRepository;
 
-        public SystemArticleLogic(IRepository<SystemArticle, Guid> repository) : base(repository)
+        public SystemArticleLogic(IRepository<SystemArticle, Guid> repository,ISystemArticleRepository articleRepository) : base(repository)
         {
+            this._systemArticleRepository=articleRepository;
         }
 
         //public SystemArticleLogic(IRepository<SystemArticle, Guid> repository,

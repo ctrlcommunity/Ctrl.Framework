@@ -14,7 +14,7 @@ namespace Ctrl.System.DataAccess
     /// <summary>
     /// 文章数据访问接口
     /// </summary>
-    public interface ISystemArticleRepository : IBasicRepository<SystemArticle>,
+    public interface ISystemArticleRepository : IBasicRepository<SystemArticle>
     {
         Task<long> GetCountAsync(
         SystemArticleResultRequestDto input,

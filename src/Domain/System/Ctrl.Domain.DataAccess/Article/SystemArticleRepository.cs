@@ -17,14 +17,15 @@ using Volo.Abp.EntityFrameworkCore;
 
 namespace Ctrl.System.DataAccess
 {
-    public class SystemExceptionLogRepository : EfCoreRepository<CtrlDbContext, SystemArticle, Guid>, ISystemArticleRepository
+    public class SystemArticleRepository : EfCoreRepository<CtrlDbContext, SystemArticle, Guid>, ISystemArticleRepository
     {
-        public SystemExceptionLogRepository(IDbContextProvider<CtrlDbContext> dbContextProvider) : base(dbContextProvider)
+        public SystemArticleRepository(IDbContextProvider<CtrlDbContext> dbContextProvider) : base(dbContextProvider)
         {
         }
 
         public async Task<long> GetCountAsync(SystemArticleResultRequestDto input, CancellationToken cancellationToken = default)
         {
+            //{No property or field 'article' exists in type 'SystemArticle' (at index 0)}
             return await this.WhereIf(
                  !input.Title.IsNullOrEmpty(),
                  o => o.Title.Contains(input.Title)
@@ -35,11 +36,11 @@ namespace Ctrl.System.DataAccess
         public async Task<List<SystemArticle>> GetPagingArticleType(SystemArticleResultRequestDto param,
              CancellationToken cancellationToken = default)
         {
-            return await this.WhereIf(
+            return await DbSet.WhereIf(
                 !param.Title.IsNullOrEmpty(),
                 a=>a.Title.Contains(param.Title)
                 )
-                  .OrderBy(param.Sorting ?? nameof(SystemArticleOutput.CreateTime))
+              .OrderBy(param.Sorting ?? nameof(SystemArticle.CreateTime))
               .PageBy(param.SkipCount, param.MaxResultCount)
               .ToListAsync(GetCancellationToken(cancellationToken));
         }

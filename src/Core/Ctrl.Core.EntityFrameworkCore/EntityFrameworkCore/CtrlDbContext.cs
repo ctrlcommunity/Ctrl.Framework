@@ -13,7 +13,7 @@ namespace Ctrl.Core.EntityFrameworkCore.EntityFrameworkCore
         public DbSet<SystemUser> Users { get; set; }
 
         public DbSet<SystemPermission> Permissions { get; set; }
-
+        
         public DbSet<SystemArticle> SystemArticles { get; set; }
 
         public DbSet<SystemExceptionLog> SystemExceptionLogs { get; set; }
