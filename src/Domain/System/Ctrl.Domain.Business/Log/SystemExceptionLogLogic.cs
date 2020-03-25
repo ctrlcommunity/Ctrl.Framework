@@ -1,11 +1,8 @@
-﻿using Ctrl.Core.Business;
-using Ctrl.Core.Entities.Paging;
-using Ctrl.Domain.DataAccess.Log;
+﻿using Ctrl.Domain.DataAccess.Log;
 using Ctrl.Domain.Models.Dtos.Logs;
 using Ctrl.Domain.Models.Entities;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
@@ -16,11 +13,14 @@ namespace Ctrl.Domain.Business.Log
 {
     public class SystemExceptionLogLogic : CrudAppService<SystemExceptionLog, SystemExceptionLogDto,Guid>, ISystemExceptionLogLogic, IScopedDependency
     {
-        public SystemExceptionLogLogic(IRepository<SystemExceptionLog, Guid> repository) : base(repository)
+        private readonly ISystemExceptionLogRepository _exceptionLogRepository;
+        public SystemExceptionLogLogic(IRepository<SystemExceptionLog, Guid> repository,
+            ISystemExceptionLogRepository exceptionLogRepository) : base(repository)
         {
+            this._exceptionLogRepository = exceptionLogRepository;
         }
         #region 构造函数
-        //private readonly ISystemExceptionLogRepository _exceptionLogRepository;
+     
         //public SystemExceptionLogLogic(ISystemExceptionLogRepository exceptionLogRepository)
         //    : base(exceptionLogRepository)
         //{
@@ -35,9 +35,15 @@ namespace Ctrl.Domain.Business.Log
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>
-        public Task<PagedResultDto<SystemExceptionLogDto>> PagingExceptionLogQuery(PagedAndSortedResultRequestDto query)
+        public async Task<PagedResultDto<SystemExceptionLogDto>> PagingExceptionLogQuery(SystemExceptionLogResultRequestDto query)
         {
-            return GetListAsync(query);
+            var list = await _exceptionLogRepository.GetListAsync(query);
+            var totalCount = await _exceptionLogRepository.GetCountAsync(query);
+
+            return new PagedResultDto<SystemExceptionLogDto>(
+                totalCount,
+                ObjectMapper.Map<List<SystemExceptionLog>, List<SystemExceptionLogDto>>(list)
+                );
         }
         #endregion
     }

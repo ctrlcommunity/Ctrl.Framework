@@ -15,6 +15,6 @@ namespace Ctrl.Domain.Business.Log
     /// </summary>
     public interface ISystemExceptionLogLogic : ICrudAppService<SystemExceptionLogDto, Guid>, IScopedDependency
     {
-        Task<PagedResultDto<SystemExceptionLogDto>> PagingExceptionLogQuery(PagedAndSortedResultRequestDto query);
+        Task<PagedResultDto<SystemExceptionLogDto>> PagingExceptionLogQuery(SystemExceptionLogResultRequestDto query);
     }
 }

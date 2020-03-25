@@ -28,7 +28,7 @@ namespace Ctrl.Domain.Business.Log
         }
 
         #endregion
-        /// <summary>
+        /// <summary> 
         ///     登录信息分页查询
         /// </summary>
         /// <param name="param"></param>

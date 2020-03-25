@@ -138,7 +138,7 @@ namespace Ctrl.Net.Areas.SysManage.Controllers
 
         [CreateBy("冯辉")]
         [Description("错误日志-方法-列表-获取所有异常日志信息")]
-        public async Task<PagedResultDto<SystemExceptionLogDto>> GetPagingExceptionLog(PagedAndSortedResultRequestDto queryParam)
+        public async Task<PagedResultDto<SystemExceptionLogDto>> GetPagingExceptionLog(SystemExceptionLogResultRequestDto queryParam)
         {
             return await _exceptionLogLogic.PagingExceptionLogQuery(queryParam);
         }
