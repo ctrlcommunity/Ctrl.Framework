@@ -1,12 +1,11 @@
-﻿using Ctrl.Core.Entities.Dtos;
-using Ctrl.Core.Entities.Paging;
+﻿using Volo.Abp.Application.Dtos;
 
 namespace Ctrl.Domain.Models.Dtos.Config
 {
     /// <summary>
     ///     字典分页dto
     /// </summary>
-    public class SystemDictionaryPagingInput : QueryParam, IInputDto
+    public class SystemDictionaryResultRequestDto : PagedAndSortedResultRequestDto
     {
         public string Id { get; set; }
     }

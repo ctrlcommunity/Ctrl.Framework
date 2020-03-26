@@ -22,7 +22,6 @@ namespace Ctrl.Net.Areas.sysManage.Controllers
 
         private readonly ISystemDictionaryLogic _systemDictionaryLogic;
 
-
         public DictionaryController(ISystemDictionaryLogic systemDictionaryLogic)
         {
             _systemDictionaryLogic = systemDictionaryLogic;

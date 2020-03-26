@@ -17,6 +17,7 @@ using Ctrl.System.Models.Entities;
 using Ctrl.Core.Web;
 using Ctrl.Core.Entities.Paging;
 using Ctrl.Core.Web.Attributes;
+using Ctrl.Domain.Models.Dtos.Article;
 
 namespace Ctrl.Net.Areas.sysManage.Controllers
 {
@@ -60,7 +61,7 @@ namespace Ctrl.Net.Areas.sysManage.Controllers
             SystemArticleType ArticleType = new SystemArticleType();
             if (!input.Id.IsNullOrEmptyGuid())
             {
-                ArticleType = await _systemArticleTypeLogic.GetById(input.Id);
+              //  ArticleType = await _systemArticleTypeLogic.GetById(input.Id);
             }
             return View(ArticleType);
         }
@@ -75,7 +76,8 @@ namespace Ctrl.Net.Areas.sysManage.Controllers
         [Description("应用系统-文章类型-方法-获取文章类型")]
         public async Task<JsonResult> GetList()
         {
-            return Json(await _systemArticleTypeLogic.GetAllEnumerableAsync());
+            return null;
+            //return Json(await _systemArticleTypeLogic.GetAllEnumerableAsync());
         }
         /// <summary>
         ///     保存文章类型
@@ -99,7 +101,7 @@ namespace Ctrl.Net.Areas.sysManage.Controllers
         /// <returns></returns>
         [CreateBy("冯辉")]
         [Description("应用系统-文章类型-方法-获取文章类型列表")]
-        public async Task<JsonResult> GetPagingArticleType(QueryParam param) {
+        public async Task<JsonResult> GetPagingArticleType(SystemArticleResultRequestDto param) {
             return JsonForGridPaging(await _systemArticleTypeLogic.GetPagingArticleType(param));
         }
 

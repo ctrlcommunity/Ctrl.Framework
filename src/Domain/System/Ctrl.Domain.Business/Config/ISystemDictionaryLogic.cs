@@ -1,23 +1,23 @@
-using Ctrl.Core.Business;
 using Ctrl.Core.Entities;
 using Ctrl.Core.Entities.Dtos;
 using Ctrl.Core.Entities.Paging;
 using Ctrl.Core.Entities.Select2;
 using Ctrl.Core.Entities.Tree;
-using Ctrl.Domain.Models.Dtos;
 using Ctrl.Domain.Models.Dtos.Config;
 using Ctrl.System.Models.Entities;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Volo.Abp.Application.Services;
+using Volo.Abp.DependencyInjection;
 
 namespace Ctrl.System.Business
 {
     /// <summary>
     /// 字典业务逻辑接口
     /// </summary>
-    public interface ISystemDictionaryLogic : IAsyncLogic<SystemDictionary>
+    public interface ISystemDictionaryLogic : ICrudAppService<SystemDictionaryOutput, Guid>, IScopedDependency
     {
-
         /// <summary>
         ///     保存字典
         /// </summary>
@@ -34,7 +34,7 @@ namespace Ctrl.System.Business
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>
-        Task<PagedResultsDto<SystemDictionaryOutput>> PagingDictionaryQuery(SystemDictionaryPagingInput query);
+        Task<PagedResultsDto<SystemDictionaryOutput>> PagingDictionaryQuery(SystemArticleTypeResultRequestDto query);
         /// <summary>
         ///     根据上级编码获取子级
         /// </summary>

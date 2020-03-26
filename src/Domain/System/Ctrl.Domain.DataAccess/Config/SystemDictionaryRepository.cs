@@ -3,20 +3,32 @@ using Ctrl.Core.Entities.Dtos;
 using Ctrl.Core.Entities.Paging;
 using Ctrl.Core.Entities.Select2;
 using Ctrl.Core.Entities.Tree;
+using Ctrl.Core.EntityFrameworkCore.EntityFrameworkCore;
 using Ctrl.Core.PetaPoco;
 using Ctrl.Domain.Models.Dtos.Config;
 using Ctrl.System.Models.Entities;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Dynamic.Core;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using Volo.Abp.Domain.Repositories.EntityFrameworkCore;
+using Volo.Abp.EntityFrameworkCore;
 
 namespace Ctrl.System.DataAccess
 {
     /// <summary>
     ///     字典数据访问接口实现
     /// </summary>
-    public class SystemDictionaryRepository : PetaPocoRepository<SystemDictionary>, ISystemDictionaryRepository
+    public class SystemDictionaryRepository : EfCoreRepository<CtrlDbContext, SystemDictionary, Guid>, ISystemDictionaryRepository
     {
+        public SystemDictionaryRepository(IDbContextProvider<CtrlDbContext> dbContextProvider) : base(dbContextProvider)
+        {
+        }
+
         /// <summary>
         ///     获取字典树
         /// </summary>
@@ -46,17 +58,17 @@ namespace Ctrl.System.DataAccess
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>
-        public Task<PagedResultsDto<SystemDictionaryOutput>> PagingDictionaryQuery(SystemDictionaryPagingInput query)
+        public async Task<List<SystemDictionary>> PagingDictionaryQuery(SystemDictionaryResultRequestDto input,
+             CancellationToken cancellationToken = default)
         {
-            string swhere = "";
-            if (!string.IsNullOrWhiteSpace(query.Id))
-            {
-                swhere += $" And dic.ParentId='{query.Id}'";
-            }
-            string sql = $@" select dic.*,dic1.Name ParentName
-                            from Sys_Dictionary dic
-                            left join Sys_Dictionary dic1 on dic.ParentId=dic1.DictionaryId where 1=1 {swhere}";
-            return SqlMapperUtil.PagingQuery<SystemDictionaryOutput>(sql,query);
+            return await DbSet
+             .WhereIf(
+               !input.Id.IsNullOrEmpty(),
+               o => o.Id==Guid.Parse(input.Id)
+              )
+           .OrderBy(input.Sorting ?? nameof(SystemDictionary.CreateTime))
+           .PageBy(input.SkipCount, input.MaxResultCount)
+           .ToListAsync(GetCancellationToken(cancellationToken));
         }
     }
 }

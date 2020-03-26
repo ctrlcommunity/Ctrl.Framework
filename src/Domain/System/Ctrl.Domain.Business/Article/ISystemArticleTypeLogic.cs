@@ -5,15 +5,20 @@ using Ctrl.Core.Entities.Tree;
 using Ctrl.Domain.Models.Dtos;
 using Ctrl.Domain.Models.Dtos.Article;
 using Ctrl.System.Models.Entities;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Volo.Abp.Application.Dtos;
+using Volo.Abp.Application.Services;
+using Volo.Abp.DependencyInjection;
 
 namespace Ctrl.System.Business
 {
     /// <summary>
     /// 文章类型业务逻辑接口
     /// </summary>
-    public interface ISystemArticleTypeLogic: IAsyncLogic<SystemArticleType>
+   // public interface ISystemArticleTypeLogic: IAsyncLogic<SystemArticleType>
+    public interface ISystemArticleTypeLogic : ICrudAppService<SystemArticleTypeResultRequestDto, Guid>, IScopedDependency
     {
         /// <summary>
         ///     保存文章类型
@@ -31,6 +36,6 @@ namespace Ctrl.System.Business
         /// </summary>
         /// <param name="param"></param>
         /// <returns></returns>
-        Task<PagedResultsDto<SystemArticleTypeOutput>> GetPagingArticleType(QueryParam param);
+        Task<PagedResultDto<SystemArticleTypeResultRequestDto>> GetPagingArticleType(SystemArticleResultRequestDto param);
     }
 }

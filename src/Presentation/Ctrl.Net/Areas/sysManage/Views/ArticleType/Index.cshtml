@@ -2,7 +2,7 @@
     ViewData["Title"] = "文章类型";
     Layout = "~/Areas/SysManage/Views/Shared/_LayoutPageBaseList.cshtml";
 }
-<div class="row">
+@*<div class="row">
     <div id="toolbar">
         <h1 class="page-title">文章类型</h1>
         <div class="form-inline pull-right">
@@ -14,8 +14,39 @@
     <div id="ctrltable">
 
     </div>
-</div>
+</div>*@
 
+
+<div class="container-fluid relative animatedParent animateOnce my-3 paper-card ">
+    <div class="row">
+        <div class="col-12">
+            <div class="box" id="toolbar">
+                @*<div class="box-header">
+                    <div class="box-tools">
+                        <div class="form-inline pull-right" id="toolbutton">
+                            <div class="form-group">
+                                <label>文章：</label>
+                                <input placeholder="请输入标题" class="form-control r-0 light s-12 " type="text"
+                                       name="Title">
+                            </div>
+
+                            <button type="button" class="btn btn-outline-primary btn-sm"
+                                    name="btn_select_box">
+                                查询
+                            </button>
+                        </div>
+                    </div>
+                </div>*@
+                <!-- /.box-header -->
+                <div class="box-body table-responsive no-padding" id="ctrltable">
+
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+    </div>
+</div>
 
 <script type="text/javascript">
     var $grid = $("#ctrltable").ctrlGrid({
@@ -37,7 +68,7 @@
         pagination: true,
         searchnation: true,
         pagerow: 15,
-        Sidx: "arttype.CreateTime",
+       // Sidx: "arttype.CreateTime",
         Sord: "desc",
         Serial: true
     });

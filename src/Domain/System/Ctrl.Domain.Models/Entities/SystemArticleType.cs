@@ -1,22 +1,20 @@
 using Ctrl.Core.PetaPoco;
 using System;
-using Ctrl.Core.Entities;
-using Volo.Abp.MultiTenancy;
+using Volo.Abp.Domain.Entities;
 
 namespace Ctrl.System.Models.Entities
 {
-	/// <summary>
+    /// <summary>
     ///    文章类型表实体类
     /// </summary>
-    [Serializable]
     [TableName("Sys_ArticleType")]
     [PrimaryKey("ArticleTypeId")]
-    public class SystemArticleType: EntityBase, IMultiTenant
+    public class SystemArticleType: Entity<Guid>
     {
 		/// <summary>
         /// 主键编码  
         /// </summary>
-        public Guid ArticleTypeId { get; set; }
+       // public Guid ArticleTypeId { get; set; }
 
         /// <summary>
         /// 上级编码

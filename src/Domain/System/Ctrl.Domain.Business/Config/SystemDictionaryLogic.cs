@@ -12,21 +12,23 @@ using Ctrl.Domain.Models.Dtos.Config;
 using Ctrl.System.Business;
 using Ctrl.System.DataAccess;
 using Ctrl.System.Models.Entities;
+using Volo.Abp.Application.Services;
 using Volo.Abp.DependencyInjection;
+using Volo.Abp.Domain.Repositories;
 
 namespace Ctrl.Domain.Business.Config
 {
     /// <summary>
     ///     字典业务逻辑接口实现
     /// </summary>
-    public class SystemDictionaryLogic : AsyncLogic<SystemDictionary>, ISystemDictionaryLogic, IScopedDependency
+    public class SystemDictionaryLogic : CrudAppService<SystemDictionary, SystemDictionaryOutput, Guid>, ISystemDictionaryLogic, IScopedDependency
     {
         #region 构造函数
         private readonly ISystemDictionaryRepository _systemDictionaryRepository;
 
-        public SystemDictionaryLogic(ISystemDictionaryRepository systemDictionaryRepository) : base(systemDictionaryRepository)
+        public SystemDictionaryLogic(IRepository<SystemDictionary, Guid> repository, ISystemDictionaryRepository systemDictionaryRepository) : base(repository)
         {
-            _systemDictionaryRepository = systemDictionaryRepository;
+            this._systemDictionaryRepository = systemDictionaryRepository;
         }
 
         #endregion
@@ -44,14 +46,15 @@ namespace Ctrl.Domain.Business.Config
             {
                 input.CreateTime = DateTime.Now;
                 input.DictionaryId = Guid.NewGuid();
-                return await InsertAsync(input);
+                //return await InsertAsync(input);
             }
             else
             {
               var dir=await _systemDictionaryRepository.GetById(input.DictionaryId);
                 input.CreateTime = dir.CreateTime;
-                return await UpdateAsync(input);
+                //return await UpdateAsync(input);
             }
+            return null;
             
         }
 
@@ -69,9 +72,10 @@ namespace Ctrl.Domain.Business.Config
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>
-        public Task<PagedResultsDto<SystemDictionaryOutput>> PagingDictionaryQuery(SystemDictionaryPagingInput query)
+        public Task<PagedResultsDto<SystemDictionaryOutput>> PagingDictionaryQuery(SystemDictionaryResultRequestDto query)
         {
-            return _systemDictionaryRepository.PagingDictionaryQuery(query);
+
+           // return _systemDictionaryRepository.PagingDictionaryQuery(query);
         }
         /// <summary>
         ///     根据父级编码获取子级

@@ -1,32 +1,30 @@
-using Ctrl.Core.Business;
-using Ctrl.Core.Entities;
-using Ctrl.System.DataAccess;
-using Ctrl.Domain.Models.Dtos;
-using Ctrl.System.Models.Entities;
-using System.Threading.Tasks;
 using Ctrl.Core.Core.Utils;
-using System;
+using Ctrl.Core.Entities;
 using Ctrl.Core.Entities.Tree;
-using System.Collections.Generic;
-using Ctrl.Core.Entities.Paging;
 using Ctrl.Domain.Models.Dtos.Article;
+using Ctrl.System.DataAccess;
+using Ctrl.System.Models.Entities;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Volo.Abp.Application.Dtos;
+using Volo.Abp.Application.Services;
 using Volo.Abp.DependencyInjection;
+using Volo.Abp.Domain.Repositories;
 
 namespace Ctrl.System.Business
 {
     /// <summary>
     ///     文章类型业务逻辑接口实现
     /// </summary>
-    public class SystemArticleTypeLogic:AsyncLogic<SystemArticleType>,ISystemArticleTypeLogic, IScopedDependency
+    public class SystemArticleTypeLogic : CrudAppService<SystemArticleType, SystemArticleTypeResultRequestDto, Guid>, ISystemArticleTypeLogic, IScopedDependency
     {
-        #region 构造函数
         private readonly ISystemArticleTypeRepository _systemArticleTypeRepository;
-
-        public SystemArticleTypeLogic(ISystemArticleTypeRepository systemArticleTypeRepository):base(systemArticleTypeRepository) {
+        public SystemArticleTypeLogic(IRepository<SystemArticleType, Guid> repository, ISystemArticleTypeRepository systemArticleTypeRepository) : base(repository)
+        {
             _systemArticleTypeRepository = systemArticleTypeRepository;
         }
-
-
+        #region 构造函数
 
         #endregion
 
@@ -39,17 +37,18 @@ namespace Ctrl.System.Business
 
         public async Task<OperateStatus> SaveArticleType(SystemArticleType articleType)
         {
-            if (articleType.ArticleTypeId.IsEmptyGuid())
+            if (articleType.Id.IsEmptyGuid())
             {
                 articleType.CreateTime = DateTime.Now;
-                articleType.ArticleTypeId = CombUtil.NewComb();
-                return await InsertAsync(articleType);
+                //articleType.Id = CombUtil.NewComb();
+                //return await InsertAsync(articleType);
             }
             else {
-                var artType = await _systemArticleTypeRepository.GetById(articleType.ArticleTypeId);
-                articleType.CreateTime = artType.CreateTime;
-                return await UpdateAsync(articleType);
+                //var artType = await _systemArticleTypeRepository.GetById(articleType.Id);
+               // articleType.CreateTime = artType.CreateTime;
+               // return await UpdateAsync(articleType);
             }
+            return null;
         }
         /// <summary>
         ///     获取文章类型树
@@ -65,9 +64,15 @@ namespace Ctrl.System.Business
         /// </summary>
         /// <param name="param"></param>
         /// <returns></returns>
-        public Task<PagedResultsDto<SystemArticleTypeOutput>> GetPagingArticleType(QueryParam param)
+        public async Task<PagedResultDto<SystemArticleTypeResultRequestDto>> GetPagingArticleType(SystemArticleResultRequestDto param)
         {
-            return _systemArticleTypeRepository.GetPagingArticleType(param);
+            var list = await _systemArticleTypeRepository.GetListAsync(param);
+            var totalCount = await _systemArticleTypeRepository.GetCountAsync(param);
+
+            return new PagedResultDto<SystemArticleTypeResultRequestDto>(
+                totalCount,
+                ObjectMapper.Map<List<SystemArticleType>, List<SystemArticleTypeResultRequestDto>>(list)
+                );
         }
         #endregion
     }

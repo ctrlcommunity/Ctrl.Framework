@@ -2,6 +2,7 @@ using Ctrl.Core.PetaPoco;
 using System;
 using Ctrl.Core.Entities;
 using Volo.Abp.MultiTenancy;
+using Volo.Abp.Domain.Entities;
 
 namespace Ctrl.System.Models.Entities
 {
@@ -10,7 +11,7 @@ namespace Ctrl.System.Models.Entities
     /// </summary>
     [TableName("Sys_Dictionary")]
     [PrimaryKey("DictionaryId")]
-    public class SystemDictionary: EntityBase, IMultiTenant
+    public class SystemDictionary : Entity<Guid>
     {
 		        /// <summary>
         /// 主键编码

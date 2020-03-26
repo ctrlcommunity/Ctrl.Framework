@@ -27,9 +27,6 @@ namespace Ctrl.Domain.Business.Log
         //    this._exceptionLogRepository = exceptionLogRepository;
         //}
 
-
-
-
         /// <summary>
         ///     异常信息分页
         /// </summary>
