@@ -3,7 +3,7 @@
 }
 @model SystemArticleType
 <form class="form-horizontal ctrl-form">
-    <input value="@Model.ArticleTypeId" name="ArticleTypeId" hidden/>
+    <input value="@Model.Id" name="ArticleTypeId" hidden/>
     @Html.AntiForgeryToken()
     <div class='hr-line-dashed'></div>
     <div class="form-group">

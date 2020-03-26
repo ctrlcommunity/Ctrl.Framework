@@ -8,6 +8,7 @@ using Ctrl.System.Models.Entities;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 using Volo.Abp.DependencyInjection;
 
@@ -34,7 +35,7 @@ namespace Ctrl.System.Business
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>
-        Task<PagedResultsDto<SystemDictionaryOutput>> PagingDictionaryQuery(SystemArticleTypeResultRequestDto query);
+        Task<PagedResultDto<SystemDictionaryOutput>> PagingDictionaryQuery(SystemDictionaryResultRequestDto query);
         /// <summary>
         ///     根据上级编码获取子级
         /// </summary>

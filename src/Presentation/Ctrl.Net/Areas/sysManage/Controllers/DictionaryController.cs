@@ -10,6 +10,7 @@ using System.ComponentModel;
 using System.Threading.Tasks;
 using Ctrl.Core.Core.Utils;
 using Ctrl.Core.Entities.Dtos;
+using Volo.Abp.Application.Dtos;
 
 namespace Ctrl.Net.Areas.sysManage.Controllers
 {
@@ -52,23 +53,23 @@ namespace Ctrl.Net.Areas.sysManage.Controllers
             SystemDictionary dictionary = new SystemDictionary();
             if (!input.Id.IsNullOrEmptyGuid())
             {
-                dictionary = await _systemDictionaryLogic.GetById(input.Id);
+               // dictionary = await _systemDictionaryLogic.GetById(input.Id);
             }
             return View(dictionary);
         }
         #endregion
 
         #region 方法
-        /// <summary>
-        ///     获取字典
-        /// </summary>
-        /// <returns></returns>
-        [CreateBy("冯辉")]
-        [Description("应用系统-字典-方法-获取字典")]
-        public async Task<JsonResult> GetList()
-        {
-            return Json(await _systemDictionaryLogic.GetAllEnumerableAsync());
-        }
+        ///// <summary>
+        /////     获取字典
+        ///// </summary>
+        ///// <returns></returns>
+        //[CreateBy("冯辉")]
+        //[Description("应用系统-字典-方法-获取字典")]
+        //public async Task<JsonResult> GetList()
+        //{
+        //    return Json(await _systemDictionaryLogic.GetAllEnumerableAsync());
+        //}
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Description("应用系统-方法-保存字典")]
@@ -87,9 +88,9 @@ namespace Ctrl.Net.Areas.sysManage.Controllers
         [HttpPost]
         [CreateBy("冯辉")]
         [Description("字典管理-方法-列表-获取字典分页信息")]
-        public async Task<JsonResult> GetPagingDictionary(SystemDictionaryPagingInput queryParam)
+        public async Task<PagedResultDto<SystemDictionaryOutput>> GetPagingDictionary(SystemDictionaryResultRequestDto queryParam)
         {
-            return JsonForGridPaging(await _systemDictionaryLogic.PagingDictionaryQuery(queryParam));
+            return await _systemDictionaryLogic.PagingDictionaryQuery(queryParam);
         }
         [HttpGet]
         [CreateBy("冯辉")]

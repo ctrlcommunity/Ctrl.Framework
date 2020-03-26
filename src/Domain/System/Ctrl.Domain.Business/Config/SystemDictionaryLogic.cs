@@ -12,6 +12,7 @@ using Ctrl.Domain.Models.Dtos.Config;
 using Ctrl.System.Business;
 using Ctrl.System.DataAccess;
 using Ctrl.System.Models.Entities;
+using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Domain.Repositories;
@@ -50,14 +51,13 @@ namespace Ctrl.Domain.Business.Config
             }
             else
             {
-              var dir=await _systemDictionaryRepository.GetById(input.DictionaryId);
-                input.CreateTime = dir.CreateTime;
+              //var dir=await _systemDictionaryRepository.GetById(input.DictionaryId);
+              //  input.CreateTime = dir.CreateTime;
                 //return await UpdateAsync(input);
             }
             return null;
             
         }
-
 
         /// <summary>
         ///     获取字典树
@@ -72,10 +72,16 @@ namespace Ctrl.Domain.Business.Config
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>
-        public Task<PagedResultsDto<SystemDictionaryOutput>> PagingDictionaryQuery(SystemDictionaryResultRequestDto query)
+        public async Task<PagedResultDto<SystemDictionaryOutput>> PagingDictionaryQuery(SystemDictionaryResultRequestDto query)
         {
+            var list = await _systemDictionaryRepository.PagingDictionaryQuery(query);
+            var totalCount = await _systemDictionaryRepository.GetCountAsync(query);
 
-           // return _systemDictionaryRepository.PagingDictionaryQuery(query);
+            return new PagedResultDto<SystemDictionaryOutput>(
+                totalCount,
+                ObjectMapper.Map<List<SystemDictionary>, List<SystemDictionaryOutput>>(list)
+                );
+            // return _systemDictionaryRepository.PagingDictionaryQuery(query);
         }
         /// <summary>
         ///     根据父级编码获取子级

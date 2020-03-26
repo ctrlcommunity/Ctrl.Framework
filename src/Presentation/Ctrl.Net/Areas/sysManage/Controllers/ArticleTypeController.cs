@@ -102,7 +102,7 @@ namespace Ctrl.Net.Areas.sysManage.Controllers
         [CreateBy("冯辉")]
         [Description("应用系统-文章类型-方法-获取文章类型列表")]
         public async Task<JsonResult> GetPagingArticleType(SystemArticleResultRequestDto param) {
-            return JsonForGridPaging(await _systemArticleTypeLogic.GetPagingArticleType(param));
+            return Json(await _systemArticleTypeLogic.GetPagingArticleType(param));
         }
 
         #endregion

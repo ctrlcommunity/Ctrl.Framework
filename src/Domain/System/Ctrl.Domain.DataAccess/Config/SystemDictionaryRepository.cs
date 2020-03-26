@@ -29,6 +29,16 @@ namespace Ctrl.System.DataAccess
         {
         }
 
+        public async Task<long> GetCountAsync(SystemDictionaryResultRequestDto input, CancellationToken cancellationToken = default)
+        {
+            return await this
+              .WhereIf(
+               !input.Id.IsNullOrEmpty(),
+               o => o.Id == Guid.Parse(input.Id)
+              )
+    .LongCountAsync(GetCancellationToken(cancellationToken));
+        }
+
         /// <summary>
         ///     获取字典树
         /// </summary>
@@ -64,7 +74,7 @@ namespace Ctrl.System.DataAccess
             return await DbSet
              .WhereIf(
                !input.Id.IsNullOrEmpty(),
-               o => o.Id==Guid.Parse(input.Id)
+               o => o.Id == Guid.Parse(input.Id)
               )
            .OrderBy(input.Sorting ?? nameof(SystemDictionary.CreateTime))
            .PageBy(input.SkipCount, input.MaxResultCount)

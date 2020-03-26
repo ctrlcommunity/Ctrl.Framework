@@ -81,8 +81,8 @@ namespace Ctrl.Core.EntityFrameworkCore.EntityFrameworkCore
             builder.Entity<SystemArticleType>(b =>
             {
                 b.ToTable("Sys_ArticleType");
-                b.HasKey(p => p.ArticleTypeId);
-                b.Property(p => p.ArticleTypeId).HasMaxLength(50);
+                b.HasKey(p => p.Id);
+                b.Property(p => p.Id).HasMaxLength(50);
                 b.Property(p => p.ParentId).HasMaxLength(50);
                 b.Property(p => p.Name).HasMaxLength(64);
                 b.Property(p => p.SeoTitle).HasMaxLength(64);

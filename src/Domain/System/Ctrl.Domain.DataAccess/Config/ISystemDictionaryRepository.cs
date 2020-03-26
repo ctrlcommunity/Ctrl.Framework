@@ -27,7 +27,11 @@ namespace Ctrl.System.DataAccess
         /// <returns></returns>
         Task<List<SystemDictionary>> PagingDictionaryQuery(SystemDictionaryResultRequestDto input,
              CancellationToken cancellationToken = default);
-       
+
+        Task<long> GetCountAsync(
+SystemDictionaryResultRequestDto input,
+CancellationToken cancellationToken = default);
+
         /// <summary>
         ///     根据父级编码获取子级
         /// </summary>
