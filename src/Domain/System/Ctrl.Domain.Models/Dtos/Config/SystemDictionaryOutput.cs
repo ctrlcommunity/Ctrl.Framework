@@ -12,7 +12,7 @@ namespace Ctrl.Domain.Models.Dtos.Config
         /// <summary>
         ///     父级名称
         /// </summary>
-        public string ParentName { get; set; }
+        //public string ParentName { get; set; }
         public Guid Id { get; set; }
     }
 }

@@ -12,18 +12,27 @@ using Ctrl.Core.Entities.Tree;
 using Ctrl.Domain.Models.Dtos.Permission;
 using Ctrl.System.DataAccess;
 using Ctrl.System.Models.Entities;
+using Volo.Abp.Application.Services;
+using Volo.Abp.DependencyInjection;
+using Volo.Abp.Domain.Repositories;
 
 namespace Ctrl.System.Business {
     /// <summary>
     ///     系统菜单业务逻辑接口实现
     /// /// </summary>
-    public class SystemMenuLogic :AsyncLogic<SystemMenu>, ISystemMenuLogic {
+    public class SystemMenuLogic : CrudAppService<SystemMenu, SystemMenuOutput, Guid>, ISystemMenuLogic, IScopedDependency
+    { 
         #region 构造函数
         private readonly ISystemMenuRepository _systemMenuRepository;
 
-        public SystemMenuLogic(ISystemMenuRepository systemMenuRepository){
+        public SystemMenuLogic(IRepository<SystemMenu, Guid> repository, ISystemMenuRepository systemMenuRepository) : base(repository)
+        {
             this._systemMenuRepository = systemMenuRepository;
         }
+
+        //public SystemMenuLogic(ISystemMenuRepository systemMenuRepository){
+        //    this._systemMenuRepository = systemMenuRepository;
+        //}
         #endregion
 
         #region 方法
@@ -36,12 +45,13 @@ namespace Ctrl.System.Business {
             if (systemMenu.MenuId.IsEmptyGuid())
             {
                 systemMenu.MenuId = Guid.NewGuid();
-                return InsertAsync(systemMenu);
+               // return InsertAsync(systemMenu);
             }
             else
             {
-                return UpdateAsync(systemMenu);
+                //return UpdateAsync(systemMenu);
             }
+            return null;
         }
         /// <summary>
         ///     根据状态为True的菜单信息
@@ -74,21 +84,21 @@ namespace Ctrl.System.Business {
         /// <param name="input"></param>
         public async Task<OperateStatus>DeleteMenu(IdInput input){
                var OperateStatus=new OperateStatus();
-            var Menu = await GetById(input.Id);
+            //var Menu = await GetById(input.Id);
             //判断是否存在
-            if (Menu == default(SystemMenu))
-            {
-                OperateStatus.ResultSign = ResultSign.Error;
-                OperateStatus.Message = Chs.HaveDelete;
-                goto Ending;
-            }
+            //if (Menu == default(SystemMenu))
+            //{
+            //    OperateStatus.ResultSign = ResultSign.Error;
+            //    OperateStatus.Message = Chs.HaveDelete;
+            //    goto Ending;
+            //}
             //是否可以删除
-            if (!Menu.CanbeDelete)
-            {
-                OperateStatus.ResultSign = ResultSign.Error;
-                OperateStatus.Message = Chs.CanotDelete;
-                goto Ending;
-            }
+            //if (!Menu.CanbeDelete)
+            //{
+            //    OperateStatus.ResultSign = ResultSign.Error;
+            //    OperateStatus.Message = Chs.CanotDelete;
+            //    goto Ending;
+            //}
             //是否存在下级菜单 
             if ((await GetMenuByPid(input)).Any())
             {
@@ -96,7 +106,7 @@ namespace Ctrl.System.Business {
                 OperateStatus.Message = string.Format(Chs.Error, ResourceSystem.具有下级项);
                 goto Ending;
             }
-            OperateStatus = await DeleteById(input.Id);
+          //  OperateStatus = await DeleteById(input.Id);
 
             Ending:
                 return OperateStatus;

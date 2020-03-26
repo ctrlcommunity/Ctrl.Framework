@@ -98,7 +98,6 @@ namespace Ctrl.Domain.Business.Permission
             }
             catch
             {
-
                 return null;
             }
 

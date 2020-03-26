@@ -13,10 +13,10 @@ namespace Ctrl.System.Models.Entities
     [PrimaryKey("DictionaryId")]
     public class SystemDictionary : Entity<Guid>
     {
-		        /// <summary>
+		 /// <summary>
         /// 主键编码
         /// </summary>
-        public Guid DictionaryId { get; set; }
+       // public Guid DictionaryId { get; set; }
 
         /// <summary>
         /// 父级编码

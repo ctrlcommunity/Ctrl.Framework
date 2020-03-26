@@ -1,28 +1,45 @@
 @{
     ViewData["Title"] = "字典";
-    Layout = "~/Areas/SysManage/Views/Shared/_LayoutPageBaseList.cshtml";
+    Layout = "_LayoutPage";
 }
-<div class="row">
-    <div id="toolbar">
-        <h1 class="page-title">字典</h1>
-        <div class="form-inline pull-right">
-            <button class="btn btn-default btn-xs" name="btn_select_box" type="submit"><i class=" fa fa-search fa-lg"></i> 查询 </button>
-            <input id="pid" name="id" hidden>
 
+    <div class="container-fluid relative animatedParent animateOnce my-3 paper-card ">
+        <div class="row">
+            <div class="col-12">
+                <div class="box" id="toolbar">
+                    <div class="box-header">
+                        <div class="box-tools">
+                            <div class="form-inline pull-right" id="toolbutton">
+
+                                <button type="button" class="btn btn-outline-primary btn-sm"
+                                        name="btn_select_box">
+                                    查询
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-body table-responsive no-padding">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div style="background-color:white;overflow:scroll;margin-top:25px;height:100vh">
+                                    <ul id="treeMenu" class="ztree"></ul>
+                                </div>
+                            </div>
+                            <div class="col-md-10">
+                                <div id="ctrltable">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+
+                    <!-- /.box-body -->
+                </div>
+                    <!-- /.box -->
+                </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-2">
-            <div style="background-color:white;overflow:scroll;margin-top:25px;height:100vh">
-                <ul id="treeMenu" class="ztree"></ul>
-            </div>
-        </div>
-        <div class="col-md-10">
-            <div id="ctrltable">
-            </div>
-        </div>
-    </div>
-</div>
 
 
 <script type="text/javascript">
@@ -36,10 +53,10 @@
             onClick: onClick
         }
     };
-    $post("/SysManage/Dictionary/GetDictionaryTree").then(function (data) {
-        var ztree = $.fn.zTree.init($("#treeMenu"), setting, data);
-        ztree.expandAll(true);
-    })
+    //$post("/SysManage/Dictionary/GetDictionaryTree").then(function (data) {
+    //    var ztree = $.fn.zTree.init($("#treeMenu"), setting, data);
+    //    ztree.expandAll(true);
+    //})
     function onClick(e, treeId, treeNode) {
         $("#pid").val(treeNode.id);
         $grid.registersearchClick();
@@ -67,7 +84,7 @@
         pagination: true,
         searchnation: true,
         pagerow: 15,
-        Sidx: "dic.CreateTime",
+        //Sidx: "dic.CreateTime",
         Sord: "desc",
         Serial: true
     });

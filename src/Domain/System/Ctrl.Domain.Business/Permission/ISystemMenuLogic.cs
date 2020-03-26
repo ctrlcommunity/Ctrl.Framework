@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -8,12 +9,15 @@ using Ctrl.Core.Entities.Tree;
 using Ctrl.Domain.Models.Dtos;
 using Ctrl.Domain.Models.Dtos.Permission;
 using Ctrl.System.Models.Entities;
+using Volo.Abp.Application.Services;
+using Volo.Abp.DependencyInjection;
 
 namespace Ctrl.System.Business {
     /// <summary>
     /// 系统菜单业务逻辑接口
     /// </summary>
-    public interface ISystemMenuLogic:IAsyncLogic<SystemMenu> {
+    public interface ISystemMenuLogic: ICrudAppService<SystemMenuOutput, Guid>, IScopedDependency
+    {
         /// <summary>
         ///     保存菜单
         /// </summary>

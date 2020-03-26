@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading.Tasks;
 using Ctrl.Core.Core.Attributes;
@@ -5,6 +6,7 @@ using Ctrl.Core.Core.Utils;
 using Ctrl.Core.Entities.Dtos;
 using Ctrl.Core.Web;
 using Ctrl.Core.Web.Attributes;
+using Ctrl.Domain.Models.Dtos.Permission;
 using Ctrl.System.Business;
 using Ctrl.System.Models.Entities;
 using Microsoft.AspNetCore.Mvc;
@@ -50,7 +52,7 @@ namespace Ctrl.Web.Host.Areas.sysManage.Controllers
             SystemMenu menu = new SystemMenu();
             if (!input.Id.IsNullOrEmptyGuid())
             { 
-                menu =await _systemMenuLogic.GetById(input.Id);
+               // menu =await _systemMenuLogic.GetById(input.Id);
             }
          
             return View(menu);
@@ -66,7 +68,8 @@ namespace Ctrl.Web.Host.Areas.sysManage.Controllers
         [Description("模块维护-方法-获取系统菜单")]
         public async Task<JsonResult> GetList()
         {
-            return Json(await _systemMenuLogic.GetAllEnumerableAsync());
+            return null;
+           // return Json(await _systemMenuLogic.GetAllEnumerableAsync());
         }
         [HttpPost]
         [CreateBy("冯辉")]
@@ -79,8 +82,8 @@ namespace Ctrl.Web.Host.Areas.sysManage.Controllers
         [HttpPost]
         [CreateBy("冯辉")]
         [Description("模块维护-方法-列表根据父级Id获取下级菜单")]
-        public async Task<JsonResult>GetMeunuByPId(IdInput input){
-            return Json(await _systemMenuLogic.GetMenuByPid(input));
+        public async Task<IEnumerable<SystemMenuOutput>> GetMeunuByPId(IdInput input){
+            return await _systemMenuLogic.GetMenuByPid(input);
         }
         /// <summary>
         ///     删除菜单

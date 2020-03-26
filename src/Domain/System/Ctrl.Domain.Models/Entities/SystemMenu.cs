@@ -1,6 +1,7 @@
 using Ctrl.Core.PetaPoco;
 using System;
 using Ctrl.Core.Entities;
+using Volo.Abp.Domain.Entities;
 
 namespace Ctrl.System.Models.Entities
 {
@@ -10,9 +11,9 @@ namespace Ctrl.System.Models.Entities
     [Serializable]
     [TableName("Sys_Menu")]
     [PrimaryKey("MenuId")]
-    public class SystemMenu: EntityBase
+    public class SystemMenu: Entity<Guid>
     {
-		        /// <summary>
+		/// <summary>
         /// 主键编码
         /// </summary>
         public Guid MenuId { get; set; }

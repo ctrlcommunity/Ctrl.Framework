@@ -38,13 +38,12 @@ namespace Ctrl.System.DataAccess
                 sql.Append(@" AND  PrivilegeAccessValue in(select MenuButtonId from 
                         sys_menubutton where MenuId=@privilegeMenuId)");
             }
-            return SqlMapperUtil.Query<SystemPermission>(sql.ToString(), new
+            return DbConnection.QueryAsync<SystemPermission>(sql.ToString(), new
             {
                 privilegeAccess = (byte)input.PrivilegeAccess,
-                privilegeMasterValue = input.PrivilegeMasterValue
-                ,
+                privilegeMasterValue = input.PrivilegeMasterValue,
                 privilegeMenuId = input.PrivilegeMenuId
-            });
+            }, transaction:DbTransaction);
         }
         /// <summary>
         ///     根据权限归属Id删除菜单权限信息

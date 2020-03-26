@@ -128,11 +128,11 @@ ctrlGrid.prototype = {
                 self.settings.totalpage++;
             self.settings.totalpage = parseInt(self.settings.totalpage);
             var rowsdata = "";
-            //if (!self.settings.pagination) {
-            //    json.rows = json.items;
-            //}
             json.rows = json.items;
-            _.forEach(json.items, function (data, i) {
+            if (!self.settings.pagination) {
+                json.rows = json;
+            }
+            _.forEach(json.rows, function (data, i) {
                 rowsdata += "<tr data-id=" + i + ">";
                 _.forEach(columns, function (column, j) {
                     if (j===0) {

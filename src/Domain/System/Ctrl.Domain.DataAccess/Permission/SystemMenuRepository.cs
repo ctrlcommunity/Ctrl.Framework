@@ -55,7 +55,7 @@ namespace Ctrl.System.DataAccess {
             if (!string.IsNullOrWhiteSpace(input.Id))
                 sql.AppendFormat(" AND  menu.ParentId='{0}'", input.Id);
             sql.Append(" ORDER BY menu.menuid");
-            return DbConnection.QueryAsync<SystemMenuOutput>(sql.ToString());
+            return DbConnection.QueryAsync<SystemMenuOutput>(sql.ToString(), transaction:DbTransaction);
         }
 
         public SystemMenuRepository(IDbContextProvider<CtrlDbContext> dbContextProvider) : base(dbContextProvider)

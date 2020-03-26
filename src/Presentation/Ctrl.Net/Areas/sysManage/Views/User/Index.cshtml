@@ -1,19 +1,35 @@
 ﻿@{
     ViewData["Title"] = "用户列表";
-    Layout = "~/Areas/SysManage/Views/Shared/_LayoutPageBaseList.cshtml";
+    Layout = "_LayoutPage";
 }
 
 
-<div class="row">
-    <div id="toolbar">
-        <h1 class="page-title">用户列表</h1>
-        <div class="form-inline pull-right " id="toolbutton">
-            <button class="btn btn-default btn-xs" name="btn_select_box" type="submit"><i class=" fa fa-search fa-lg"></i> 查询 </button>
+@*<div class="row">
+        <div id="toolbar">
+            <h1 class="page-title">用户列表</h1>
+            <div class="form-inline pull-right " id="toolbutton">
+                <button class="btn btn-default btn-xs" name="btn_select_box" type="submit"><i class=" fa fa-search fa-lg"></i> 查询 </button>
+            </div>
+
         </div>
+        <div id="ctrltable">
 
-    </div>
-    <div id="ctrltable">
+        </div>
+    </div>*@
 
+<div class="container-fluid relative animatedParent animateOnce my-3 paper-card ">
+    <div class="row">
+        <div class="col-12">
+            <div class="box" id="toolbar">
+
+                <!-- /.box-header -->
+                <div class="box-body table-responsive no-padding" id="ctrltable">
+
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
     </div>
 </div>
 
@@ -21,29 +37,29 @@
     var $grid = $("#ctrltable").ctrlGrid({
         id: "#ctrltable",
         url: "/sysManage/user/GetPagingUser",
-        columns:[
-            {field:"code",title:"登录名",width:120,sort:false,align:"center"},
-            {field:"name",title:"真实姓名",width:100,sort:false,align:"center"},
-            {field:"mobile",title:"电话",width:100,sort:false,align:"center"},
-            {field:"email",title:"邮箱",width:100,sort:false,align:"center"},
-            { field:"firstVisitTime",title:"第一次访问时间",width:150,sort:false,align:"center"},
-            { field:"lastVisitTime",title:"最后一次访问时间",width:150,sort:false,align:"center"},
-            {field:"remark",title:"备注",width:100,sort:false,align:"center"},
+        columns: [
+            { field: "code", title: "登录名", width: 120, sort: false, align: "center" },
+            { field: "name", title: "真实姓名", width: 100, sort: false, align: "center" },
+            { field: "mobile", title: "电话", width: 100, sort: false, align: "center" },
+            { field: "email", title: "邮箱", width: 100, sort: false, align: "center" },
+            { field: "firstVisitTime", title: "第一次访问时间", width: 150, sort: false, align: "center" },
+            { field: "lastVisitTime", title: "最后一次访问时间", width: 150, sort: false, align: "center" },
+            { field: "remark", title: "备注", width: 100, sort: false, align: "center" },
             {
                 field: "isAdmin", title: "是否是管理员", width: 100, sort: false, align: "center", forrmatter(obj) {
                     if (!obj.isAdmin) {
                         return '<p>否</p>';
                     }
-                    return '<p class="bg-primary">是</p>';
+                    return '是';
                 }
             },
-            {field:"createTime",title:"创建时间",width:100,sort:false,align:"center"},
+            { field: "createTime", title: "创建时间", width: 100, sort: false, align: "center" },
             {
                 field: "isFreeze", title: "冻结", width: 100, sort: false, align: "center", forrmatter(obj) {
                     if (obj.isFreeze) {
-                        return '<p>冻结</p>';
+                        return '冻结';
                     }
-                    return '<p class="bg-primary">未冻结</p>';
+                    return '未冻结';
                 }
             }
         ],
@@ -51,7 +67,7 @@
         pagerow: 15,
         Sidx: "createTime",
         Sord: "desc",
-        Serial:true
+        Serial: true
     });
     $("[name='btn_select_box']").click(function () {
         $grid.registersearchClick();

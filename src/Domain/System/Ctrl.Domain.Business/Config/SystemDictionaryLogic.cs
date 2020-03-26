@@ -43,10 +43,10 @@ namespace Ctrl.Domain.Business.Config
         /// <returns></returns>
         public async Task<OperateStatus> SaveSystemDictionary(SystemDictionary input)
         {
-            if (input.DictionaryId.IsEmptyGuid())
+            if (input.Id.IsEmptyGuid())
             {
                 input.CreateTime = DateTime.Now;
-                input.DictionaryId = Guid.NewGuid();
+               // input.Id = Guid.NewGuid();
                 //return await InsertAsync(input);
             }
             else
@@ -81,7 +81,6 @@ namespace Ctrl.Domain.Business.Config
                 totalCount,
                 ObjectMapper.Map<List<SystemDictionary>, List<SystemDictionaryOutput>>(list)
                 );
-            // return _systemDictionaryRepository.PagingDictionaryQuery(query);
         }
         /// <summary>
         ///     根据父级编码获取子级

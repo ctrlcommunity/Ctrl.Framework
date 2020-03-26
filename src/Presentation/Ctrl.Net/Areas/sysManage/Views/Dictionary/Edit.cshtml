@@ -4,7 +4,7 @@
 @model SystemDictionary
 <form class="form-horizontal ctrl-form">
     @Html.AntiForgeryToken()
-    @Html.HiddenFor(m => m.DictionaryId)
+    @Html.HiddenFor(m => m.Id)
     <div class='hr-line-dashed'></div>
     <div class='form-group'>
         <label class='col-sm-2 control-label'> 上级：</label>

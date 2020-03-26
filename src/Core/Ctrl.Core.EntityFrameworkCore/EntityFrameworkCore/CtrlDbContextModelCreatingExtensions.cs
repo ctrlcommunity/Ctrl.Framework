@@ -105,8 +105,8 @@ namespace Ctrl.Core.EntityFrameworkCore.EntityFrameworkCore
             builder.Entity<SystemDictionary>(b =>
             {
                 b.ToTable("Sys_Dictionary");
-                b.HasKey(p => p.DictionaryId);
-                b.Property(p => p.DictionaryId).HasMaxLength(50);
+                b.HasKey(p => p.Id);
+                b.Property(p => p.Id).HasMaxLength(50);
                 b.Property(p => p.ParentId).HasMaxLength(128);
                 b.Property(p => p.Name).HasMaxLength(128);
                 b.Property(p => p.Code).HasMaxLength(128);
@@ -259,7 +259,7 @@ namespace Ctrl.Core.EntityFrameworkCore.EntityFrameworkCore
                 new SystemMenu(menuId: Guid.Parse("89532468-de42-4f17-b681-8db668c5e50c"), parentId: Guid.Parse("9d804188-dded-418f-99c4-c9ee145673fb"), code: "", name: "敏捷开发", openType: null, icon: "fas fa-handshake", area: "", controller: "", action: "", openUrl: "", remark: null, orderNo: 0, canbeDelete: false, isFreeze: false, isShowMenu: true),
                 new SystemMenu(menuId: Guid.Parse("de921f49-b63d-47c8-95b1-93d13ecab2ca"), parentId: Guid.Parse("26d560a2-c68a-4796-afcd-29ddce64d1f8"), code: "", name: "系统配置", openType: null, icon: "fas fa-cogs", area: "SysManage", controller: "Config", action: "Index", openUrl: "/SysManage/Config/Index", remark: null, orderNo: 0, canbeDelete: false, isFreeze: false, isShowMenu: true),
                 new SystemMenu(menuId: Guid.Parse("2986d468-ffe7-4a52-ab24-a594f5f79f33"), parentId: Guid.Parse("00000000-0000-0000-0000-000000000000"), code: "", name: "文章管理", openType: null, icon: "fas fa-book-reader", area: "", controller: "", action: "", openUrl: "", remark: null, orderNo: 0, canbeDelete: false, isFreeze: false, isShowMenu: true),
-                new SystemMenu(menuId: Guid.Parse("af66d9a6-3567-4267-a7cc-a79982b53fd0"), parentId: Guid.Parse("26d560a2-c68a-4796-afcd-29ddce64d1f8"), code: "", name: "字典管理", openType: null, icon: "fas fa-book", area: "SysManage", controller: "Dictionary", action: "Index", openUrl: "/SysManage/Log/Login", remark: null, orderNo: 0, canbeDelete: false, isFreeze: false, isShowMenu: true),
+                new SystemMenu(menuId: Guid.Parse("af66d9a6-3567-4267-a7cc-a79982b53fd0"), parentId: Guid.Parse("26d560a2-c68a-4796-afcd-29ddce64d1f8"), code: "", name: "字典管理", openType: null, icon: "fas fa-book", area: "SysManage", controller: "Dictionary", action: "Index", openUrl: "/SysManage/Dictionary/Index", remark: null, orderNo: 0, canbeDelete: false, isFreeze: false, isShowMenu: true),
                 new SystemMenu(menuId: Guid.Parse("9d804188-dded-418f-99c4-c9ee145673fb"), parentId: Guid.Parse("00000000-0000-0000-0000-000000000000"), code: "", name: "系统管理", openType: null, icon: "fas fa-cog", area: "", controller: "", action: "", openUrl: "", remark: null, orderNo: 0, canbeDelete: false, isFreeze: false, isShowMenu: true),
                 new SystemMenu(menuId: Guid.Parse("004e1aeb-5270-42cf-945c-dd7a1f277ced"), parentId: Guid.Parse("65294c4a-6bc4-49e7-8169-ffa7d628a8f6"), code: "", name: "系统用户", openType: null, icon: "fas fa-user", area: "SysManage", controller: "User", action: "Index", openUrl: "/SysManage/User/Index", remark: null, orderNo: 0, canbeDelete: false, isFreeze: false, isShowMenu: true),
                 new SystemMenu(menuId: Guid.Parse("52453f3e-02e7-47d0-a5c8-fcaa5e26005d"), parentId: Guid.Parse("89532468-de42-4f17-b681-8db668c5e50c"), code: "", name: "代码生成", openType: null, icon: "fas fa-code", area: "SysManage", controller: "CodeGeneration", action: "Index", openUrl: "/SysManage/CodeGeneration/Index", remark: null, orderNo: 0, canbeDelete: false, isFreeze: false, isShowMenu: true),
