@@ -1,16 +1,14 @@
-﻿using System;
-using Ctrl.Core.Core.Http;
+﻿using Ctrl.Core.Core.Http;
 using Ctrl.Core.PetaPoco.DependencyInjection;
-using Ctrl.Core.Web.Attributes;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
-using NLog;
-using Volo.Abp.Modularity;
+using System.IO;
 
-namespace Ctrl.Web.Host.Startup {
+namespace Ctrl.Web.Host.Startup
+{
 
     public class Startup {
         public void ConfigureServices (IServiceCollection services) {
@@ -25,7 +23,9 @@ namespace Ctrl.Web.Host.Startup {
                 o.ConnectionString = "Data Source=.;Initial Catalog=Ctrl.Framework;User ID=sa;Password=123456;MultipleActiveResultSets=true;";
                 o.Name = "mssql";
             });
-         
+            //基于文件系统的密钥存储库（持久性保持密钥）
+            services.AddDataProtection()
+                .PersistKeysToFileSystem(new DirectoryInfo(Path.Combine("login-keys")));
             services.AddApplication<AppModule> ();
         }
 
