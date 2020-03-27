@@ -38,16 +38,16 @@ namespace Ctrl.Web.Host.Startup
         typeof(CtrlDomainBusinessModule),
         typeof(AbpAspNetCoreMvcUiBasicThemeModule),
         typeof(AbpDapperModule))]
-    public class AppModule:AbpModule
+    public class AppModule : AbpModule
     {
         public override void OnApplicationInitialization(ApplicationInitializationContext context)
         {
             var app = context.GetApplicationBuilder();
             var env = context.GetEnvironment();
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+            //if (env.IsDevelopment())
+            //{
+            app.UseDeveloperExceptionPage();
+            //}
             var provider = new FileExtensionContentTypeProvider();
             provider.Mappings[".less"] = "text/css";
             app.UseStaticFiles(new StaticFileOptions()
@@ -92,12 +92,13 @@ namespace Ctrl.Web.Host.Startup
             {
                 options.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss";//对类型为DateTime的生效
             });
-            Configure<MvcOptions>(options=>{
+            Configure<MvcOptions>(options =>
+            {
                 options.Filters.Add(typeof(OperationLogAttribute));
                 options.Filters.Add(typeof(ExceptionFilterAttribute));
                 options.Filters.Add(typeof(WebPermissionFilter));
             });
-            Configure<AbpJsonOptions>(options => options.DefaultDateTimeFormat = "yyyy-MM-dd HH:mm:ss");　
+            Configure<AbpJsonOptions>(options => options.DefaultDateTimeFormat = "yyyy-MM-dd HH:mm:ss");
             ConfigureAutoMapper();
         }
 
