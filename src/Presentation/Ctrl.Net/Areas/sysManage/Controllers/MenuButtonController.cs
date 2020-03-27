@@ -52,7 +52,7 @@ namespace Ctrl.Net.Areas.sysManage.Controllers
             SystemMenuButton menuButton = new SystemMenuButton();
             if (!input.Id.IsNullOrEmptyGuid())
             {
-                menuButton=await _systemMenuButtonLogic.GetById(input.Id);
+               // menuButton=await _systemMenuButtonLogic.GetById(input.Id);
             }
             return View(menuButton);
         }
@@ -67,7 +67,8 @@ namespace Ctrl.Net.Areas.sysManage.Controllers
         [Description("应用系统-菜单按钮-方法-获取菜单按钮")]
         public async Task<JsonResult> GetList()
         {
-            return Json(await _systemMenuButtonLogic.GetAllEnumerableAsync());
+            return null;
+            //return Json(await _systemMenuButtonLogic.GetAllEnumerableAsync());
         }
         /// <summary>
         ///     

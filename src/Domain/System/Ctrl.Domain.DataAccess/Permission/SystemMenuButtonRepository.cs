@@ -47,7 +47,7 @@ namespace Ctrl.Domain.DataAccess.Permission
             {
                 sb.AppendFormat(" AND f.MenuId='{0}'", input.Id);
             }
-            return SqlMapperUtil.Query<SystemMenuButtonOutput>(sb.ToString());
+            return DbConnection.QueryAsync<SystemMenuButtonOutput>(sb.ToString(), transaction: DbTransaction);
         }
         /// <summary>
         ///     根据用户编码获取权限按钮

@@ -5,15 +5,19 @@ using Ctrl.Core.Entities.Paging;
 using Ctrl.Domain.Models.Dtos;
 using Ctrl.Domain.Models.Dtos.Permission;
 using Ctrl.System.Models.Entities;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Volo.Abp.Application.Services;
+using Volo.Abp.DependencyInjection;
 
 namespace Ctrl.System.Business
 {
     /// <summary>
     /// 菜单按钮业务逻辑接口
     /// </summary>
-    public interface ISystemMenuButtonLogic: IAsyncLogic<SystemMenuButton>
+   // public interface ISystemMenuButtonLogic: IAsyncLogic<SystemMenuButton>
+    public interface ISystemMenuButtonLogic : ICrudAppService<SystemMenuButtonOutput, Guid>, IScopedDependency
     {
         /// <summary>
         ///     获取按钮分页信息
