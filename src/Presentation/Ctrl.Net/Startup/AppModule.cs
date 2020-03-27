@@ -1,37 +1,27 @@
-﻿using System;
-using Ctrl.Core.Core.Http;
+﻿using Ctrl.Core.Core.Http;
 using Ctrl.Core.EntityFrameworkCore.EntityFrameworkCore;
 using Ctrl.Core.Web.Attributes;
 using Ctrl.Domain.Business;
-using Ctrl.Domain.Models;
-using Ctrl.Domain.Models.Dtos.Identity;
 using Ctrl.System.Business;
 using Ctrl.System.DataAccess;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Options;
 using NLog;
 using Volo.Abp;
 using Volo.Abp.Application;
 using Volo.Abp.AspNetCore.MultiTenancy;
 using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.AspNetCore.Mvc.DependencyInjection;
-using Volo.Abp.AspNetCore.Mvc.Localization;
-using Volo.Abp.AspNetCore.Mvc.UI;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic;
-using Volo.Abp.AspNetCore.VirtualFileSystem;
 using Volo.Abp.Autofac;
 using Volo.Abp.AutoMapper;
 using Volo.Abp.Dapper;
-using Volo.Abp.DependencyInjection;
 using Volo.Abp.Json;
 using Volo.Abp.Modularity;
 using Volo.Abp.MultiTenancy;
-using Volo.Abp.ObjectMapping;
 
 namespace Ctrl.Web.Host.Startup
 {
@@ -46,6 +36,7 @@ namespace Ctrl.Web.Host.Startup
         typeof(AbpAutofacModule),
         typeof(AbpDddApplicationModule),
         typeof(CtrlDomainBusinessModule),
+        typeof(AbpAspNetCoreMvcUiBasicThemeModule),
         typeof(AbpDapperModule))]
     public class AppModule:AbpModule
     {
