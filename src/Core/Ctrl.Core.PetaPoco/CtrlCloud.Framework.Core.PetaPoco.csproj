@@ -5,6 +5,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <AssemblyTitle>Ctrl.Core.PetaPoco</AssemblyTitle>
     <Description>fh write</Description>
+    <AssemblyName>CtrlCloud.Framework.Core.PetaPoco</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,7 +13,7 @@
     <PackageReference Include="System.Reflection.Emit.Lightweight" Version="4.7.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Ctrl.Core.Core\Ctrl.Core.Core.csproj" />
+    <ProjectReference Include="..\Ctrl.Core.Core\CtrlCloud.Framework.Core.csproj" />
     <ProjectReference Include="..\Ctrl.Core.Entities\Ctrl.Core.Entities.csproj" />
   </ItemGroup>
   <ItemGroup>

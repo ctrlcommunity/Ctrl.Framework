@@ -1,16 +1,14 @@
 using Ctrl.Core.Core.Attributes;
 using Ctrl.Core.Core.Utils;
 using Ctrl.Core.Entities.Dtos;
-using Ctrl.Core.Entities.Paging;
 using Ctrl.Core.Web;
 using Ctrl.Core.Web.Attributes;
 using Ctrl.Domain.Models.Dtos.Article;
+using Ctrl.Domain.Models.Entities;
 using Ctrl.System.Business;
-using Ctrl.System.Models.Entities;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel;
 using System.Threading.Tasks;
-using Ctrl.Domain.Models.Entities;
 using Volo.Abp.Application.Dtos;
 
 namespace Ctrl.Net.Areas.sysManage.Controllers
@@ -77,8 +75,7 @@ namespace Ctrl.Net.Areas.sysManage.Controllers
         /// <returns></returns>
         [CreateBy("冯辉")]
         [Description("应用系统-文章-方法-获取文章列表")]
-        //public async Task<JsonResult> GetPagingArticle(SystemArticlePagingInput param)
-        public async Task<PagedResultDto<SystemArticleOutput>> GetPagingArticle(SystemArticleResultRequestDto param)
+        public async Task<PagedResultDto<SystemArticleDto>> GetPagingArticle(SystemArticleResultRequestDto param)
         {
             return await _systemArticleLogic.GetPagingArticle(param);
         }

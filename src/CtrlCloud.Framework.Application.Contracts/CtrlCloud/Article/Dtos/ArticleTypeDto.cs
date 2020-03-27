@@ -7,7 +7,7 @@ namespace Ctrl.Domain.Models.Dtos.Article
     /// <summary>
     ///     文章类型输出类
     /// </summary>
-    public class SystemArticleTypeResultRequestDto: SystemArticleType, IEntityDto<Guid>
+    public class ArticleTypeDto: SystemArticleType, IEntityDto<Guid>
     {
         public string ParentName { get; set; }
 

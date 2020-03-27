@@ -13,7 +13,7 @@ namespace Ctrl.Web.Host.Startup
         public CtrlWebAutoMapperProfile()
         {
             CreateMap<SystemUser, UserLoginOutput>().ReverseMap();
-            CreateMap<SystemArticle, SystemArticleOutput>().ReverseMap();
+            CreateMap<SystemArticle, SystemArticleDto>().ReverseMap();
             CreateMap<SystemExceptionLog, SystemExceptionLogDto>().ReverseMap();
             CreateMap<SystemOperateLog, SystemOperateLogOutput>().ReverseMap();
             CreateMap<SystemLoginLog,SystemLoginLogOutput>().ReverseMap();

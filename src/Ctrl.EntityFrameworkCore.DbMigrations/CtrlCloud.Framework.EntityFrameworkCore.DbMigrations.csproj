@@ -3,6 +3,8 @@
   <Import Project="..\..\configureawait.props" />
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>CtrlCloud.Framework.EntityFrameworkCore.DbMigrations</AssemblyName>
+    <RootNamespace>CtrlCloud.Framework.EntityFrameworkCore.DbMigrations</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -23,19 +25,19 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.2">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.2">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Volo.Abp.EntityFrameworkCore" Version="2.2.1" />
+    <PackageReference Include="Volo.Abp.EntityFrameworkCore" Version="2.3.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Core\Ctrl.Core.EntityFrameworkCore\Ctrl.Core.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\Core\Ctrl.Core.EntityFrameworkCore\CtrlCloud.Framework.EntityFrameworkCore.csproj" />
   </ItemGroup>
 
 </Project>

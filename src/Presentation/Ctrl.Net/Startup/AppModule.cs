@@ -1,14 +1,15 @@
-﻿using Ctrl.Core.Core.Http;
+﻿using Ctrl.Application;
+using Ctrl.Core.Core.Http;
 using Ctrl.Core.EntityFrameworkCore.EntityFrameworkCore;
 using Ctrl.Core.Web.Attributes;
 using Ctrl.Domain.Business;
 using Ctrl.System.Business;
 using Ctrl.System.DataAccess;
+using CtrlCloud.Framework.Application.Contracts.CtrlCloud;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using NLog;
 using Volo.Abp;
 using Volo.Abp.Application;
@@ -32,11 +33,13 @@ namespace Ctrl.Web.Host.Startup
         typeof(AbpAspNetCoreMultiTenancyModule),
         typeof(CtrlEntityFrameworkCoreModule),
         typeof(AbpDddApplicationModule),
+        typeof(CtrlCloudApplicationContractsModule),
         typeof(AbpAutoMapperModule),
         typeof(AbpAutofacModule),
         typeof(AbpDddApplicationModule),
         typeof(CtrlDomainBusinessModule),
         typeof(AbpAspNetCoreMvcUiBasicThemeModule),
+        typeof(CtrlApplicationModule),
         typeof(AbpDapperModule))]
     public class AppModule : AbpModule
     {

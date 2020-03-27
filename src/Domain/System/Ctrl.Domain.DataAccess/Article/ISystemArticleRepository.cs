@@ -1,13 +1,9 @@
-using Ctrl.Core.DataAccess;
-using Ctrl.Core.Entities.Paging;
-using Ctrl.Domain.Models.Dtos;
 using Ctrl.Domain.Models.Dtos.Article;
-using Ctrl.System.Models.Entities;
-using System.Threading.Tasks;
 using Ctrl.Domain.Models.Entities;
-using Volo.Abp.Domain.Repositories;
 using System.Collections.Generic;
 using System.Threading;
+using System.Threading.Tasks;
+using Volo.Abp.Domain.Repositories;
 
 namespace Ctrl.System.DataAccess
 {

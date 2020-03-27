@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\..\configureawait.props" />
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>CtrlCloud.Framework.Domain.DataAccess</AssemblyName>
+    <RootNamespace>CtrlCloud.Framework.Domain.DataAccess</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Autofac" Version="2.3.0" />
+    <PackageReference Include="Volo.Abp.Dapper" Version="2.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Core\Ctrl.Core.DataAccess\Ctrl.Core.DataAccess.csproj" />
+    <ProjectReference Include="..\..\..\Core\Ctrl.Core.EntityFrameworkCore\CtrlCloud.Framework.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\..\..\CtrlCloud.Framework.Application.Contracts\CtrlCloud.Framework.Application.Contracts.csproj" />
+    <ProjectReference Include="..\Ctrl.Domain.Models\CtrlCloud.Framework.Domain.Models.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Ctrl.Core.Core\Ctrl.Core.Core.csproj" />
+    <ProjectReference Include="..\Ctrl.Core.Core\CtrlCloud.Framework.Core.csproj" />
   </ItemGroup>
 
 

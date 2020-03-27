@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\configureawait.props" />
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp" Version="2.3.0" />
+    <PackageReference Include="Volo.Abp.Ddd.Application" Version="2.3.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\System\Ctrl.Domain.Models\CtrlCloud.Framework.Domain.Models.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CtrlCloud\Identity\" />
+  </ItemGroup>
+
+</Project>

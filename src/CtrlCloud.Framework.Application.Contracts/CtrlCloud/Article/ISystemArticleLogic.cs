@@ -1,12 +1,8 @@
-using System;
-using Ctrl.Core.Business;
 using Ctrl.Core.Entities;
-using Ctrl.Core.Entities.Paging;
-using Ctrl.Domain.Models.Dtos;
 using Ctrl.Domain.Models.Dtos.Article;
-using Ctrl.System.Models.Entities;
-using System.Threading.Tasks;
 using Ctrl.Domain.Models.Entities;
+using System;
+using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 using Volo.Abp.DependencyInjection;
@@ -16,7 +12,7 @@ namespace Ctrl.System.Business
     /// <summary>
     /// 文章业务逻辑接口
     /// </summary>
-    public interface ISystemArticleLogic: ICrudAppService<SystemArticleOutput, Guid>, IScopedDependency
+    public interface ISystemArticleLogic: ICrudAppService<SystemArticleDto, Guid>, IScopedDependency
     {
         /// <summary>
         ///     保存文章
@@ -29,6 +25,6 @@ namespace Ctrl.System.Business
         /// </summary>
         /// <param name="param"></param>
         /// <returns></returns>
-        Task<PagedResultDto<SystemArticleOutput>> GetPagingArticle(SystemArticleResultRequestDto param);
+        Task<PagedResultDto<SystemArticleDto>> GetPagingArticle(SystemArticleResultRequestDto param);
     }
 }

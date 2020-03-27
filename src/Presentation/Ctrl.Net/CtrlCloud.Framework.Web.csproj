@@ -7,6 +7,7 @@
     <UserSecretsId>65c66e08-925c-44a6-a49d-240e3db9d47b</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..\..</DockerfileContext>
+    <AssemblyName>CtrlCloud.Framework.Web</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,21 +15,15 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
     <PackageReference Include="MySql.Data" Version="8.0.19" />
     <PackageReference Include="NLog.Web.AspNetCore" Version="4.9.0" />
-    <PackageReference Include="Volo.Abp.AspNetCore.MultiTenancy" Version="2.2.1" />
-    <PackageReference Include="Volo.Abp.AspNetCore.Mvc" Version="2.2.1" />
-    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI" Version="2.2.1" />
-    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic" Version="2.2.1" />
-    <PackageReference Include="Volo.Abp.Autofac" Version="2.2.1" />
-    <PackageReference Include="Volo.Abp.AutoMapper" Version="2.2.1" />
-    <PackageReference Include="Volo.Abp.MultiTenancy" Version="2.2.1" />
+    <PackageReference Include="Volo.Abp.AspNetCore.MultiTenancy" Version="2.3.0" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc" Version="2.3.0" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI" Version="2.3.0" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic" Version="2.3.0" />
+    <PackageReference Include="Volo.Abp.Autofac" Version="2.3.0" />
+    <PackageReference Include="Volo.Abp.AutoMapper" Version="2.3.0" />
+    <PackageReference Include="Volo.Abp.MultiTenancy" Version="2.3.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\Core\Ctrl.Core.Core\Ctrl.Core.Core.csproj" />
-    <ProjectReference Include="..\..\Core\Ctrl.Core.Web\Ctrl.Core.Web.csproj" />
-    <ProjectReference Include="..\..\Domain\System\Ctrl.Domain.Business\Ctrl.Domain.Business.csproj" /> 
-    <ProjectReference Include="..\..\Domain\System\Ctrl.Domain.Models\Ctrl.Domain.Models.csproj" />
-  </ItemGroup>
 
   <ItemGroup>
     <Content Update="Configs\nlog.config">
@@ -38,6 +33,15 @@
 
   <ItemGroup>
     <Folder Include="Properties\PublishProfiles\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Ctrl.Core.Core\CtrlCloud.Framework.Core.csproj" />
+    <ProjectReference Include="..\..\Core\Ctrl.Core.EntityFrameworkCore\CtrlCloud.Framework.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\..\Core\Ctrl.Core.Web\Ctrl.Core.Web.csproj" />
+    <ProjectReference Include="..\..\Ctrl.Application\CtrlCloud.Framework.Application.csproj" />
+    <ProjectReference Include="..\..\Domain\System\Ctrl.Domain.Business\CtrlCloud.Framework.Domain.Business.csproj" />
+    <ProjectReference Include="..\..\Domain\System\Ctrl.Domain.DataAccess\CtrlCloud.Framework.Domain.DataAccess.csproj" />
   </ItemGroup>
 
   <ProjectExtensions>

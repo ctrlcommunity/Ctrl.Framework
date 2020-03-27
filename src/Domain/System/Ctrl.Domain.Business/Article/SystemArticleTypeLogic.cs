@@ -17,7 +17,7 @@ namespace Ctrl.System.Business
     /// <summary>
     ///     文章类型业务逻辑接口实现
     /// </summary>
-    public class SystemArticleTypeLogic : CrudAppService<SystemArticleType, SystemArticleTypeResultRequestDto, Guid>, ISystemArticleTypeLogic, IScopedDependency
+    public class SystemArticleTypeLogic : CrudAppService<SystemArticleType, ArticleTypeDto, Guid>, ISystemArticleTypeLogic, IScopedDependency
     {
         private readonly ISystemArticleTypeRepository _systemArticleTypeRepository;
         public SystemArticleTypeLogic(IRepository<SystemArticleType, Guid> repository, ISystemArticleTypeRepository systemArticleTypeRepository) : base(repository)
@@ -64,14 +64,14 @@ namespace Ctrl.System.Business
         /// </summary>
         /// <param name="param"></param>
         /// <returns></returns>
-        public async Task<PagedResultDto<SystemArticleTypeResultRequestDto>> GetPagingArticleType(SystemArticleResultRequestDto param)
+        public async Task<PagedResultDto<ArticleTypeDto>> GetPagingArticleType(SystemArticleResultRequestDto param)
         {
             var list = await _systemArticleTypeRepository.GetListAsync(param);
             var totalCount = await _systemArticleTypeRepository.GetCountAsync(param);
 
-            return new PagedResultDto<SystemArticleTypeResultRequestDto>(
+            return new PagedResultDto<ArticleTypeDto>(
                 totalCount,
-                ObjectMapper.Map<List<SystemArticleType>, List<SystemArticleTypeResultRequestDto>>(list)
+                ObjectMapper.Map<List<SystemArticleType>, List<ArticleTypeDto>>(list)
                 );
         }
         #endregion

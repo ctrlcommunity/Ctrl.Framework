@@ -4,7 +4,7 @@ using Volo.Abp.Application.Dtos;
 
 namespace Ctrl.Domain.Models.Dtos.Article
 {
-    public class SystemArticleOutput:SystemArticle, IEntityDto<Guid>
+    public class SystemArticleDto:SystemArticle, IEntityDto<Guid>
     {
         /// <summary>
         ///     文章类型名称

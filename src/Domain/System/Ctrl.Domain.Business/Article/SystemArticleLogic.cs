@@ -15,7 +15,7 @@ namespace Ctrl.System.Business
     /// <summary>
     ///     文章业务逻辑接口实现
     /// </summary>
-    public class SystemArticleLogic : CrudAppService<SystemArticle, SystemArticleOutput, Guid>,ISystemArticleLogic, IScopedDependency
+    public class SystemArticleLogic : CrudAppService<SystemArticle, SystemArticleDto, Guid>,ISystemArticleLogic, IScopedDependency
     {
 
         #region 构造函数
@@ -56,14 +56,14 @@ namespace Ctrl.System.Business
         /// </summary>
         /// <param name="param"></param>
         /// <returns></returns>
-        public async Task<PagedResultDto<SystemArticleOutput>> GetPagingArticle(SystemArticleResultRequestDto param)
+        public async Task<PagedResultDto<SystemArticleDto>> GetPagingArticle(SystemArticleResultRequestDto param)
         {
             var list = await _systemArticleRepository.GetPagingArticleType(param);
             var totalCount = await _systemArticleRepository.GetCountAsync(param);
 
-            return new PagedResultDto<SystemArticleOutput>(
+            return new PagedResultDto<SystemArticleDto>(
                 totalCount,
-                ObjectMapper.Map<List<SystemArticle>, List<SystemArticleOutput>>(list)
+                ObjectMapper.Map<List<SystemArticle>, List<SystemArticleDto>>(list)
                 );
         }
 

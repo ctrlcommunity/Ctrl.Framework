@@ -4,12 +4,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.EntityFrameworkCore" Version="2.2.1" />
+    <PackageReference Include="Volo.Abp.EntityFrameworkCore" Version="2.3.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Ctrl.Core.Core\Ctrl.Core.Core.csproj" />
-    <ProjectReference Include="..\Ctrl.Core.PetaPoco\Ctrl.Core.PetaPoco.csproj" />
+    <ProjectReference Include="..\Ctrl.Core.Core\CtrlCloud.Framework.Core.csproj" />
+    <ProjectReference Include="..\Ctrl.Core.PetaPoco\CtrlCloud.Framework.Core.PetaPoco.csproj" />
   </ItemGroup>
 
 </Project>
