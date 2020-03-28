@@ -9,6 +9,7 @@ using Ctrl.Core.Web.Attributes;
 using Ctrl.Domain.Models.Dtos.Permission;
 using Ctrl.System.Business;
 using Ctrl.System.Models.Entities;
+using CtrlCloud.Framework.Application.Contracts.CtrlCloud.Permission.Dtos;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Ctrl.Web.Host.Areas.sysManage.Controllers
@@ -76,13 +77,13 @@ namespace Ctrl.Web.Host.Areas.sysManage.Controllers
         [ValidateAntiForgeryToken]
         [Description("模块维护-方法-新增/编辑-保存")]
         [Permission("xtgl-mkwh-SaveMenu")]
-        public async Task<JsonResult> SaveMenu(SystemMenu systemMenu) {
+        public async Task<JsonResult> SaveMenu(CreateMenuDto systemMenu) {
             return Json(await _systemMenuLogic.SaveMenu(systemMenu));
         }
         [HttpPost]
         [CreateBy("冯辉")]
         [Description("模块维护-方法-列表根据父级Id获取下级菜单")]
-        public async Task<IEnumerable<SystemMenuOutput>> GetMeunuByPId(IdInput input){
+        public async Task<IEnumerable<SystemMenuDto>> GetMeunuByPId(IdInput input){
             return await _systemMenuLogic.GetMenuByPid(input);
         }
         /// <summary>

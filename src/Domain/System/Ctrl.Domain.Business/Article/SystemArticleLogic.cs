@@ -5,6 +5,7 @@ using Ctrl.System.DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using CtrlCloud.Framework.Application.Contracts.CtrlCloud.Article.Dtos;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 using Volo.Abp.DependencyInjection;
@@ -39,7 +40,7 @@ namespace Ctrl.System.Business
         /// </summary>
         /// <param name="article"></param>
         /// <returns></returns>
-        public Task<OperateStatus> SaveArticle(SystemArticle article)
+        public Task<OperateStatus> SaveArticle(CreateArticleDto article)
         {
             return null;
             //if (article.ArticleId.IsEmptyGuid())

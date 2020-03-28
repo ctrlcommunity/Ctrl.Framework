@@ -1,5 +1,5 @@
-﻿using Ctrl.Core.Core.Resource;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using CtrlCloud.Framework.Core.Properties;
 
 namespace Ctrl.Core.Entities
 {

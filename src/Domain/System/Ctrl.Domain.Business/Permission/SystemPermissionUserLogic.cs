@@ -1,14 +1,11 @@
-﻿using Ctrl.Core.Business;
-using Ctrl.Core.Core.Resource;
-using Ctrl.Core.Entities;
+﻿using Ctrl.Core.Entities;
 using Ctrl.Domain.Models.Entities;
 using Ctrl.Domain.Models.Enums;
 using Ctrl.System.DataAccess;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using CtrlCloud.Framework.Core.Properties;
 using Volo.Abp.DependencyInjection;
 
 namespace Ctrl.Domain.Business.Permission
@@ -16,13 +13,11 @@ namespace Ctrl.Domain.Business.Permission
     /// <summary>
     ///     权限用户业务逻辑
     /// </summary>
-    public class SystemPermissionUserLogic : AsyncLogic<SystemPermissionUser>, ISystemPermissionUserLogic,IScopedDependency
+    public class SystemPermissionUserLogic : ISystemPermissionUserLogic, IScopedDependency
     {
         #region 构造函数
         private readonly ISystemPermissionUserRepository _permissionUserRepository;
-        public SystemPermissionUserLogic(ISystemPermissionUserRepository permissionUserRepository):base(permissionUserRepository) {
-            this._permissionUserRepository = permissionUserRepository;
-        }
+
         /// <summary>
         ///     删除用户对应权限数据
         /// </summary>
@@ -59,10 +54,10 @@ namespace Ctrl.Domain.Business.Permission
                 PrivilegeMasterValue = value
             }).ToList();
             //批量保存
-            foreach (var item in systemPermissionUsers)
-            {
-                operateStatus = await InsertAsync(item);
-            }
+            //foreach (var item in systemPermissionUsers)
+            //{
+            //    operateStatus = await InsertAsync(item);
+            //}
             return operateStatus;
         }
         #endregion

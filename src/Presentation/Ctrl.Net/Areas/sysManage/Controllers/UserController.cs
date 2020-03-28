@@ -63,7 +63,7 @@ namespace Ctrl.Net.Areas.sysManage.Controllers
         [CreateBy("冯辉")]
         [Description("用户列表-方法-保存用户")]
         [Permission("xtgl-xtyh-SaveUser")]
-        public async Task<JsonResult> SaveUser(SystemUserSaveInput input)
+        public async Task<JsonResult> SaveUser(CreateUserDto input)
         {
             return Json(await _systemUserLogic.SaveUser(input));
         }

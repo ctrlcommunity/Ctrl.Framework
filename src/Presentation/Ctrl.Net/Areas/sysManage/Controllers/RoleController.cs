@@ -80,26 +80,26 @@ namespace Ctrl.Net.Areas.sysManage.Controllers
         #endregion
 
         #region 方法
-        /// <summary>
-        ///     保存角色数据
-        /// </summary>
-        /// <param name="role">角色信息</param>
-        /// <returns></returns>
-        [ValidateAntiForgeryToken]
-        [HttpPost]
-        [CreateBy("冯辉")]
-        [Description("角色维护-方法-新增/编辑-保存")]
-        [Permission("xtgl-jswh-SaveRole")]
-        public async Task<JsonResult> SaveRole(SystemRole role)
-        {
-            role.CreateUserId = CurrentUser.UserId;
-            role.CreateUserName = CurrentUser.Name;
-            return Json(await _systemRoleLogic.SaveRole(role));
-        }
+        ///// <summary>
+        /////     保存角色数据
+        ///// </summary>
+        ///// <param name="role">角色信息</param>
+        ///// <returns></returns>
+        //[ValidateAntiForgeryToken]
+        //[HttpPost]
+        //[CreateBy("冯辉")]
+        //[Description("角色维护-方法-新增/编辑-保存")]
+        //[Permission("xtgl-jswh-SaveRole")]
+        //public async Task<JsonResult> SaveRole(SystemRole role)
+        //{
+        //    role.CreateUserId = CurrentUser.UserId;
+        //    role.CreateUserName = CurrentUser.Name;
+        //    return Json(await _systemRoleLogic.SaveRole(role));
+        //}
         [HttpPost]
         [CreateBy("冯辉")]
         [Description("角色列表-方法-列表-获取角色列表")]
-        public Task<PagedResultDto<SystemRoleOutput>> GetPagingRole(PagedAndSortedResultRequestDto queryParam)
+        public Task<PagedResultDto<SystemRoleDto>> GetPagingRole(PagedAndSortedResultRequestDto queryParam)
         {
             return _systemRoleLogic.GetPagingSysRole(queryParam);
         }

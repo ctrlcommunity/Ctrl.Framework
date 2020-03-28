@@ -1,6 +1,6 @@
-﻿using Ctrl.Core.Core.Resource;
-using Ctrl.Core.DataAccess;
+﻿using Ctrl.Core.DataAccess;
 using Ctrl.Core.Entities;
+using CtrlCloud.Framework.Core.Properties;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;

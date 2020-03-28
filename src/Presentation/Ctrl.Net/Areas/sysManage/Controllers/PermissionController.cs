@@ -1,9 +1,8 @@
 using Ctrl.Core.Web;
+using Ctrl.Domain.Business.Permission;
 using Ctrl.Domain.Models.Dtos.Permission;
-using Ctrl.System.Business;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using Ctrl.Domain.Business.Permission;
 
 namespace Ctrl.Net.Areas.sysManage.Controllers
 {
@@ -34,7 +33,7 @@ namespace Ctrl.Net.Areas.sysManage.Controllers
         /// <param name="input">权限类型:菜单、模块按钮</param>
         /// <returns></returns>
         [HttpPost]         
-        public async Task<JsonResult> SavePermission(SavePermissionInput input)
+        public async Task<JsonResult> SavePermission(CreatePermissionDto input)
         {
             if (input.MenuPermissions!=null)
             {

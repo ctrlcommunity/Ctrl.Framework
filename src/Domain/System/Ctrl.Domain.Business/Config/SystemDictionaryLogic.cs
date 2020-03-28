@@ -1,17 +1,15 @@
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Ctrl.Core.Business;
-using Ctrl.Core.Core.Utils;
 using Ctrl.Core.Entities;
 using Ctrl.Core.Entities.Dtos;
-using Ctrl.Core.Entities.Paging;
 using Ctrl.Core.Entities.Select2;
 using Ctrl.Core.Entities.Tree;
 using Ctrl.Domain.Models.Dtos.Config;
 using Ctrl.System.Business;
 using Ctrl.System.DataAccess;
 using Ctrl.System.Models.Entities;
+using CtrlCloud.Framework.Application.Contracts.CtrlCloud.Config.Dtos;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 using Volo.Abp.DependencyInjection;
@@ -41,20 +39,20 @@ namespace Ctrl.Domain.Business.Config
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public async Task<OperateStatus> SaveSystemDictionary(SystemDictionary input)
+        public async Task<OperateStatus> SaveSystemDictionary(CreateSystemDictionaryDto input)
         {
-            if (input.Id.IsEmptyGuid())
-            {
-                input.CreateTime = DateTime.Now;
-               // input.Id = Guid.NewGuid();
-                //return await InsertAsync(input);
-            }
-            else
-            {
-              //var dir=await _systemDictionaryRepository.GetById(input.DictionaryId);
-              //  input.CreateTime = dir.CreateTime;
-                //return await UpdateAsync(input);
-            }
+            //if (input.Id.IsEmptyGuid())
+            //{
+            //    input.CreateTime = DateTime.Now;
+            //   // input.Id = Guid.NewGuid();
+            //    //return await InsertAsync(input);
+            //}
+            //else
+            //{
+            //  //var dir=await _systemDictionaryRepository.GetById(input.DictionaryId);
+            //  //  input.CreateTime = dir.CreateTime;
+            //    //return await UpdateAsync(input);
+            //}
             return null;
             
         }

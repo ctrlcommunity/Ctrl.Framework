@@ -9,6 +9,7 @@ using Ctrl.System.Models.Entities;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using CtrlCloud.Framework.Application.Contracts.CtrlCloud.Identity.Dtos;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 using Volo.Abp.DependencyInjection;
@@ -19,7 +20,7 @@ namespace Ctrl.System.Business
     /// <summary>
     ///     角色表业务逻辑接口实现
     /// /// </summary>
-    public class SystemRoleLogic:CrudAppService<SystemRole,SystemRoleOutput,Guid>,ISystemRoleLogic, IScopedDependency
+    public class SystemRoleLogic:CrudAppService<SystemRole,SystemRoleDto,Guid>,ISystemRoleLogic, IScopedDependency
     {
         #region 构造函数
         private readonly ISystemRoleRepository _systemRoleRepository;
@@ -36,15 +37,15 @@ namespace Ctrl.System.Business
         /// </summary>
         /// <param name="role">角色信息</param>
         /// <returns></returns>
-        public  Task<OperateStatus> SaveRole(SystemRole role)
+        public  Task<OperateStatus> SaveRole(CreateRoleDto role)
         {
-            if (role.Id.IsEmptyGuid())
-            {
-                role.CreateTime = DateTime.Now;
-               // role.RoleId = Guid.NewGuid();
-                //return InsertAsync(role);
-                return null;
-            }
+            //if (role.Id.IsEmptyGuid())
+            //{
+            //    role.CreateTime = DateTime.Now;
+            //   // role.RoleId = Guid.NewGuid();
+            //    //return InsertAsync(role);
+            //    return null;
+            //}
             return null;
         }
         /// <summary>
@@ -52,7 +53,7 @@ namespace Ctrl.System.Business
         /// </summary>
         /// <param name="queryParam">分页信息</param>
         /// <returns></returns>
-        public Task<PagedResultDto<SystemRoleOutput>> GetPagingSysRole(PagedAndSortedResultRequestDto queryParam)
+        public Task<PagedResultDto<SystemRoleDto>> GetPagingSysRole(PagedAndSortedResultRequestDto queryParam)
         {
             return  GetListAsync(queryParam);
         }

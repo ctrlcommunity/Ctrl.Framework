@@ -9,6 +9,7 @@ using Ctrl.System.Models.Entities;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel;
 using System.Threading.Tasks;
+using CtrlCloud.Framework.Application.Contracts.CtrlCloud.Permission.Dtos;
 
 namespace Ctrl.Net.Areas.sysManage.Controllers
 {
@@ -85,7 +86,7 @@ namespace Ctrl.Net.Areas.sysManage.Controllers
         [CreateBy("冯辉")]
         [Description("按钮管理-方法-新增/编辑-保存")]
         [Permission("xtgl-cdan-SaveMenuButton")]
-        public async Task<JsonResult> SaveMenuButton(SystemMenuButton button)
+        public async Task<JsonResult> SaveMenuButton(CreateMenuButtonDto button)
         {
             return Json(await _systemMenuButtonLogic.SaveMenuButton(button));
         }

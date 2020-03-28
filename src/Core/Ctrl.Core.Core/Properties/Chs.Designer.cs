@@ -8,8 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Ctrl.Core.Core.Resource
-{
+namespace CtrlCloud.Framework.Core.Properties {
     using System;
     
     
@@ -40,7 +39,7 @@ namespace Ctrl.Core.Core.Resource
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Ctrl.Core.Core.Properties.Chs", typeof(Chs).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CtrlCloud.Framework.Core.Properties.Chs", typeof(Chs).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

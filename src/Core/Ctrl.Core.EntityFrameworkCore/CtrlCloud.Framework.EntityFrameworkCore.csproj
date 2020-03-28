@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Domain\System\Ctrl.Domain.Models\CtrlCloud.Framework.Domain.Models.csproj" />
+    <ProjectReference Include="..\..\Domain\System\Ctrl.Domain.Models\CtrlCloud.Framework.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>

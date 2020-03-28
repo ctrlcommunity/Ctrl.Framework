@@ -26,10 +26,10 @@ namespace Ctrl.Core.Web.Attributes
             if (userinfo.IsAdmin)
                 return true;
             else {
-                List<HavePermisionOutput> usePermits = null;
+                List<HavePermisionDto> usePermits = null;
                 //ISystemPermissionDapperRepository systemPermission = new SystemPermissionDapperRepository();
                 string cacheKey = USER_PERMITS_CACHE_KEY + userinfo.UserId.ToString();
-                usePermits = this._cache.Get<List<HavePermisionOutput>>(cacheKey);
+                usePermits = this._cache.Get<List<HavePermisionDto>>(cacheKey);
                 if (usePermits == null)
                 {
                     usePermits = _systemPermissionDapper.GetHavePermisionByUserId(userinfo.UserId.ToString()).Result.ToList();
@@ -54,7 +54,6 @@ namespace Ctrl.Core.Web.Attributes
                 usePermits = this._cache.Get<List<string>>(cacheKey);
                 if (usePermits == null)
                 {
-                    ISystemPermissionRepository systemPermission = new SystemPermissionRepository();
                     usePermits = _systemPermissionDapper.GetHavePermisionStrByUserId(userId).Result.ToList();
                     _cache.Set(cacheKey, usePermits, TimeSpan.FromMinutes(15));//缓存15分钟，15分钟后重新加载
                 }

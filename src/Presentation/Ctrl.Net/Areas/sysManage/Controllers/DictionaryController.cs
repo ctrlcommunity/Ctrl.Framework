@@ -10,6 +10,7 @@ using System.ComponentModel;
 using System.Threading.Tasks;
 using Ctrl.Core.Core.Utils;
 using Ctrl.Core.Entities.Dtos;
+using CtrlCloud.Framework.Application.Contracts.CtrlCloud.Config.Dtos;
 using Volo.Abp.Application.Dtos;
 
 namespace Ctrl.Net.Areas.sysManage.Controllers
@@ -74,7 +75,7 @@ namespace Ctrl.Net.Areas.sysManage.Controllers
         [ValidateAntiForgeryToken]
         [Description("应用系统-方法-保存字典")]
         [Permission("xtgl-zdgl-SaveSystemDictionary")]
-        public async Task<JsonResult> SaveSystemDictionary(SystemDictionary input)
+        public async Task<JsonResult> SaveSystemDictionary(CreateSystemDictionaryDto input)
         {
             return Json(await _systemDictionaryLogic.SaveSystemDictionary(input));
         }

@@ -3,6 +3,7 @@ using Ctrl.Core.Core.Http;
 using Ctrl.Core.EntityFrameworkCore.EntityFrameworkCore;
 using Ctrl.Core.Web.Attributes;
 using Ctrl.Domain.Business;
+using Ctrl.Domain.Models;
 using Ctrl.System.Business;
 using Ctrl.System.DataAccess;
 using CtrlCloud.Framework.Application.Contracts.CtrlCloud;
@@ -40,6 +41,7 @@ namespace Ctrl.Web.Host.Startup
         typeof(CtrlDomainBusinessModule),
         typeof(AbpAspNetCoreMvcUiBasicThemeModule),
         typeof(CtrlApplicationModule),
+        typeof(CtrlDomainModule),
         typeof(AbpDapperModule))]
     public class AppModule : AbpModule
     {
@@ -78,8 +80,10 @@ namespace Ctrl.Web.Host.Startup
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
             context.Services.AddMemoryCache();
-            context.Services.AddAssemblyOf<ISystemSqlLogLogic>();
-            context.Services.AddAssemblyOf<ISystemSqlLogRepository>();
+            context.Services.AddAssemblyOf<ISystemArticleTypeLogic>();
+            context.Services.AddAssemblyOf<ISystemArticleTypeRepository>();
+            context.Services.AddAssemblyOf<SystemArticleTypeLogic>();
+            context.Services.AddAssemblyOf<SystemArticleTypeRepository>();
             Configure<AbpMultiTenancyOptions>(options =>
             {
                 options.IsEnabled = true;

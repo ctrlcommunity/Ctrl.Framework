@@ -1,23 +1,17 @@
-﻿using Ctrl.Core.Core.Resource;
-using Ctrl.Core.Core.Security;
-using Ctrl.Core.Core.Utils;
-using Ctrl.Core.Entities;
+﻿using Ctrl.Core.Entities;
 using Ctrl.Core.Entities.Dtos;
 using Ctrl.Domain.Business.Permission;
 using Ctrl.Domain.DataAccess.Identity;
 using Ctrl.Domain.Models.Dtos;
 using Ctrl.Domain.Models.Dtos.Identity;
 using Ctrl.Domain.Models.Entities;
-using Ctrl.Domain.Models.Enums;
-using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
+using CtrlCloud.Framework.Core.Properties;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Domain.Repositories;
-using Volo.Abp.ObjectMapping;
 
 namespace Ctrl.Domain.Business.Identity
 {
@@ -105,53 +99,53 @@ namespace Ctrl.Domain.Business.Identity
         /// </summary>
         /// <param name="user">人员信息</param>
         /// <returns></returns>
-        public async Task<OperateStatus> SaveUser(SystemUserSaveInput user)
+        public async Task<OperateStatus> SaveUser(CreateUserDto user)
         {
             OperateStatus operateStatus=new OperateStatus();
-            if (string.IsNullOrWhiteSpace(user.Id.ToString()))
-            {
-                user.CreateTime = DateTime.Now;
-                user.Password = _3DESEncrypt.Encrypt("123456");
-                var resultUser = await _systemUserRepository.InsertAsync(
-                    new SystemUser(CombUtil.NewComb(), user.Code, user.Name, user.Password, user.Mobile,
-                        user.Email, user.FirstVisitTime, user.LastVisitTime, user.Remark, user.IsAdmin, user.CreateTime,
-                        user.IsFreeze, user.ImgUrl));
-                if (resultUser !=null)
-                {
-                    //添加用户到组织机构
-                    operateStatus = await _permissionUserLogic.SavePermissionUser(EnumPrivilegeMaster.角色, user.RoleId,
-                        new List<string> { user.Id.ToString() });
-                    if (operateStatus.ResultSign == ResultSign.Successful)
-                    {
-                        return operateStatus;
-                    }
-                }
-                else
-                {
-                    return operateStatus;
-                }
-            }
-            else
-            {
-                //删除对应组织机构
-                operateStatus = await _permissionUserLogic.DeletePrivilegeMasterUser(user.Id.ToString(), EnumPrivilegeMaster.角色);
-                if (operateStatus.ResultSign == ResultSign.Successful)
-                {
-                    //添加用户到组织机构
-                    operateStatus = await _permissionUserLogic.SavePermissionUser(EnumPrivilegeMaster.角色, user.RoleId, new List<string> { user.Id.ToString() });
-                    if (operateStatus.ResultSign == ResultSign.Successful)
-                    {
-                        var userInfo = await _systemUserRepository.GetAsync(user.Id);
-                        user.Password = userInfo.Password;
-                        var result = await _systemUserRepository.UpdateAsync(user);
-                        if (result!=null)
-                        {
-                            operateStatus.Message = "Success";
-                            operateStatus.ResultSign = ResultSign.Successful;
-                        }
-                    }
-                }
-            }
+            //if (string.IsNullOrWhiteSpace(user.Id.ToString()))
+            //{
+            //    user.CreateTime = DateTime.Now;
+            //    user.Password = _3DESEncrypt.Encrypt("123456");
+            //    var resultUser = await _systemUserRepository.InsertAsync(
+            //        new SystemUser(CombUtil.NewComb(), user.Code, user.Name, user.Password, user.Mobile,
+            //            user.Email, user.FirstVisitTime, user.LastVisitTime, user.Remark, user.IsAdmin, user.CreateTime,
+            //            user.IsFreeze, user.ImgUrl));
+            //    if (resultUser !=null)
+            //    {
+            //        //添加用户到组织机构
+            //        operateStatus = await _permissionUserLogic.SavePermissionUser(EnumPrivilegeMaster.角色, user.RoleId,
+            //            new List<string> { user.Id.ToString() });
+            //        if (operateStatus.ResultSign == ResultSign.Successful)
+            //        {
+            //            return operateStatus;
+            //        }
+            //    }
+            //    else
+            //    {
+            //        return operateStatus;
+            //    }
+            //}
+            //else
+            //{
+            //    //删除对应组织机构
+            //    operateStatus = await _permissionUserLogic.DeletePrivilegeMasterUser(user.Id.ToString(), EnumPrivilegeMaster.角色);
+            //    if (operateStatus.ResultSign == ResultSign.Successful)
+            //    {
+            //        //添加用户到组织机构
+            //        operateStatus = await _permissionUserLogic.SavePermissionUser(EnumPrivilegeMaster.角色, user.RoleId, new List<string> { user.Id.ToString() });
+            //        if (operateStatus.ResultSign == ResultSign.Successful)
+            //        {
+            //            var userInfo = await _systemUserRepository.GetAsync(user.Id);
+            //            user.Password = userInfo.Password;
+            //            var result = await _systemUserRepository.UpdateAsync(user);
+            //            if (result!=null)
+            //            {
+            //                operateStatus.Message = "Success";
+            //                operateStatus.ResultSign = ResultSign.Successful;
+            //            }
+            //        }
+            //    }
+            //}
             return operateStatus;
         }
         /// <summary>
@@ -159,7 +153,7 @@ namespace Ctrl.Domain.Business.Identity
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public async Task<OperateStatus> UserInfoUpdateSave(UserUpdateInput input)
+        public async Task<OperateStatus> UserInfoUpdateSave(UpdateUserDto input)
         {
             OperateStatus operateStatus = new OperateStatus() ;
             if (!await _systemUserDapperRepository.UserInfoUpdateSave(input))

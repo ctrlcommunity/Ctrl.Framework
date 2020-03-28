@@ -1,10 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Ctrl.Core.Business;
 using Ctrl.Core.Entities.Dtos;
 using Ctrl.Core.Entities.Tree;
 using Ctrl.Domain.DataAccess.Config;
+using Ctrl.Domain.Models.Dtos.Article;
 using Ctrl.Domain.Models.Dtos.Config;
+using Ctrl.Domain.Models.Entities;
+using Ctrl.System.Business;
+using Volo.Abp.Application.Services;
 using Volo.Abp.DependencyInjection;
 
 namespace Ctrl.Domain.Business.Config
@@ -12,17 +17,18 @@ namespace Ctrl.Domain.Business.Config
     /// <summary>
     ///     系统配置文件接口实现
     /// </summary>
-    public class SystemDataBaseLogic:AsyncLogic<SystemDataBaseTableOutput>,ISystemDataBaseLogic, IScopedDependency
+    public class SystemDataBaseLogic : ISystemDataBaseLogic
+    //public class SystemDataBaseLogic:AsyncLogic<SystemDataBaseTableOutput>,ISystemDataBaseLogic, IScopedDependency
     {
         #region 构造函数
 
         private readonly ISystemDataBaseRepository _dataBaseRepository;
 
-        public SystemDataBaseLogic(ISystemDataBaseRepository dataBaseRepository)
-            : base(dataBaseRepository)
-        {
-            _dataBaseRepository = dataBaseRepository;
-        }
+        //public SystemDataBaseLogic(ISystemDataBaseRepository dataBaseRepository)
+        //    : base(dataBaseRepository)
+        //{
+        //    _dataBaseRepository = dataBaseRepository;
+        //}
         #endregion
 
 

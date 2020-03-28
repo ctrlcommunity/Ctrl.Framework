@@ -1,7 +1,7 @@
 using Ctrl.Core.Entities;
 using Ctrl.Core.Entities.Tree;
 using Ctrl.Domain.Models.Dtos.Article;
-using Ctrl.System.Models.Entities;
+using CtrlCloud.Framework.Application.Contracts.CtrlCloud.Article.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -21,7 +21,7 @@ namespace Ctrl.System.Business
         /// </summary>
         /// <param name="articleType"></param>
         /// <returns></returns>
-        Task<OperateStatus> SaveArticleType(SystemArticleType articleType);
+        Task<OperateStatus> SaveArticleType(CreateArticleTypeDto articleType);
         /// <summary>
         ///     获取文章类型树 
         /// </summary>

@@ -1,11 +1,11 @@
-using Ctrl.Core.Entities;
 using Ctrl.Domain.Models.Dtos.Article;
-using Ctrl.Domain.Models.Entities;
 using System;
 using System.Threading.Tasks;
+using CtrlCloud.Framework.Application.Contracts.CtrlCloud.Article.Dtos;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 using Volo.Abp.DependencyInjection;
+using Ctrl.Core.Entities;
 
 namespace Ctrl.System.Business
 {
@@ -19,7 +19,7 @@ namespace Ctrl.System.Business
         /// </summary>
         /// <param name="article"></param>
         /// <returns></returns>
-        Task<OperateStatus> SaveArticle(SystemArticle article);
+        Task<OperateStatus> SaveArticle(CreateArticleDto article);
         /// <summary>
         ///     获取文章分页
         /// </summary>

@@ -13,7 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CtrlCloud.Framework.Application.Contracts\CtrlCloud.Framework.Application.Contracts.csproj" />
-    <ProjectReference Include="..\Domain\System\Ctrl.Domain.Models\CtrlCloud.Framework.Domain.Models.csproj" />
+    <ProjectReference Include="..\Domain\System\Ctrl.Domain.Models\CtrlCloud.Framework.Domain.csproj" />
   </ItemGroup>
 
 </Project>

@@ -9,6 +9,7 @@ using Ctrl.System.Business;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel;
 using System.Threading.Tasks;
+using CtrlCloud.Framework.Application.Contracts.CtrlCloud.Article.Dtos;
 using Volo.Abp.Application.Dtos;
 
 namespace Ctrl.Net.Areas.sysManage.Controllers
@@ -90,7 +91,7 @@ namespace Ctrl.Net.Areas.sysManage.Controllers
         [ValidateAntiForgeryToken]
         [Description("应用系统-文章类型-方法-保存文章类型")]
         [Permission("xtgl-wz-SaveArticle")]
-        public async Task<JsonResult> SaveArticle(SystemArticle article) {
+        public async Task<JsonResult> SaveArticle(CreateArticleDto article) {
             return Json(await _systemArticleLogic.SaveArticle(article));
         }
 		#endregion

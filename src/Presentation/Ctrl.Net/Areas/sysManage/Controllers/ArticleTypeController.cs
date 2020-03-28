@@ -1,23 +1,15 @@
 using Ctrl.Core.Core.Attributes;
-using Ctrl.Core.Core.Converts;
 using Ctrl.Core.Core.Utils;
-using Ctrl.Core.Entities;
 using Ctrl.Core.Entities.Dtos;
-using Ctrl.Domain.Business.Config;
-using Ctrl.Domain.Models.Dtos.Config;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.ComponentModel;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Ctrl.System.Business;
-using Ctrl.System.Models.Entities;
 using Ctrl.Core.Web;
-using Ctrl.Core.Entities.Paging;
 using Ctrl.Core.Web.Attributes;
 using Ctrl.Domain.Models.Dtos.Article;
+using Ctrl.System.Business;
+using Ctrl.System.Models.Entities;
+using CtrlCloud.Framework.Application.Contracts.CtrlCloud.Article.Dtos;
+using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel;
+using System.Threading.Tasks;
 
 namespace Ctrl.Net.Areas.sysManage.Controllers
 {
@@ -87,7 +79,7 @@ namespace Ctrl.Net.Areas.sysManage.Controllers
         [ValidateAntiForgeryToken]
         [Description("应用系统-文章类型-方法-保存文章类型")]
         [Permission("xtgl-wzlx-SaveArticleType")]
-        public async Task<JsonResult> SaveArticleType(SystemArticleType articleType) {
+        public async Task<JsonResult> SaveArticleType(CreateArticleTypeDto articleType) {
             return Json(await _systemArticleTypeLogic.SaveArticleType(articleType));
         }
         [CreateBy("冯辉")]

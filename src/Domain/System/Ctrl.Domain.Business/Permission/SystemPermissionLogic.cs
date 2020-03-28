@@ -1,19 +1,19 @@
-using Ctrl.Core.Core.Resource;
 using Ctrl.Core.Entities;
 using Ctrl.Core.Entities.Dtos;
 using Ctrl.Core.Entities.Tree;
 using Ctrl.Domain.DataAccess.Identity;
+using Ctrl.Domain.Models.Dtos.Identity;
 using Ctrl.Domain.Models.Dtos.Permission;
 using Ctrl.Domain.Models.Entities;
 using Ctrl.Domain.Models.Enums;
 using Ctrl.System.DataAccess;
-using Ctrl.System.Models.Entities;
+using CtrlCloud.Framework.Application.Contracts.CtrlCloud.Permission.Dtos;
+using CtrlCloud.Framework.Core.Properties;
 using Microsoft.Extensions.Caching.Memory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Ctrl.Domain.Models.Dtos.Identity;
 using Volo.Abp.Application.Services;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Domain.Repositories;
@@ -86,7 +86,7 @@ namespace Ctrl.Domain.Business.Permission
             {
                 //获取所有菜单
                 var getMenuAll = (await _menuRepository.GetAllMenu()).ToList();
-                IEnumerable<SystemPermission> getPermissionByMaster = (await _systemPermissionDapperRepository.GetPermissionByPrivilegeMasterValue(input)).ToList();
+                IEnumerable<SystemPermissionDto> getPermissionByMaster = (await _systemPermissionDapperRepository.GetPermissionByPrivilegeMasterValue(input)).ToList();
                 List<TreeEntity> treeList = new List<TreeEntity>();
                 foreach (TreeEntity tree in getMenuAll)
                 {
@@ -107,7 +107,7 @@ namespace Ctrl.Domain.Business.Permission
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public async Task<OperateStatus> SavePermission(SavePermissionInput input)
+        public async Task<OperateStatus> SavePermission(CreatePermissionDto input)
         {
             var operateStatus = new OperateStatus();
             try
@@ -125,7 +125,7 @@ namespace Ctrl.Domain.Business.Permission
                 if (input.PrivilegeMaster == EnumPrivilegeMaster.人员)
                 {
                     //删除对应人员数据
-                    await _permissionUserRepository.DeletePermissionUser(input.PrivilegeMaster, input.PrivilegeMasterValue);
+                  //  await _permissionUserRepository.DeletePermissionUser(input.PrivilegeMaster, input.PrivilegeMasterValue);
                     //判断是否具有权限
                     if (!systemPermissions.Any())
                     {
@@ -140,7 +140,7 @@ namespace Ctrl.Domain.Business.Permission
                         PrivilegeMasterUserId = input.PrivilegeMasterValue.ToString(),
                         PrivilegeMasterValue = input.PrivilegeMasterValue.ToString()
                     };
-                    await _permissionUserRepository.Insert(permissionUser);
+                  //  await _permissionUserRepository.Insert(permissionUser);
                 }
                 //是否具有权限数据
                 if (!systemPermissions.Any())
@@ -161,7 +161,7 @@ namespace Ctrl.Domain.Business.Permission
             }
         }
 
-        public Task<IEnumerable<SystemMenuButtonOutput>> GetMenuButtonByMenuId(IdInput input)
+        public Task<IEnumerable<SystemMenuButtonDto>> GetMenuButtonByMenuId(IdInput input)
         {
             throw new NotImplementedException();
         }
@@ -199,7 +199,7 @@ namespace Ctrl.Domain.Business.Permission
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public Task<IEnumerable<SystemPermission>> GetPermissionByPrivilegeMasterValue(GetPermissionByPrivilegeMasterValueInput input)
+        public Task<IEnumerable<SystemPermissionDto>> GetPermissionByPrivilegeMasterValue(GetPermissionByPrivilegeMasterValueInput input)
         {
             return _systemPermissionDapperRepository.GetPermissionByPrivilegeMasterValue(input);
         }

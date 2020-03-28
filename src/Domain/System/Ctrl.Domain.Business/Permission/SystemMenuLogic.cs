@@ -1,10 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Ctrl.Core.Business;
 using Ctrl.Core.Core.Converts;
-using Ctrl.Core.Core.Resource;
 using Ctrl.Core.Core.Utils;
 using Ctrl.Core.Entities;
 using Ctrl.Core.Entities.Dtos;
@@ -12,15 +6,22 @@ using Ctrl.Core.Entities.Tree;
 using Ctrl.Domain.Models.Dtos.Permission;
 using Ctrl.System.DataAccess;
 using Ctrl.System.Models.Entities;
+using CtrlCloud.Framework.Application.Contracts.CtrlCloud.Permission.Dtos;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using CtrlCloud.Framework.Core.Properties;
 using Volo.Abp.Application.Services;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Domain.Repositories;
 
-namespace Ctrl.System.Business {
+namespace Ctrl.System.Business
+{
     /// <summary>
     ///     系统菜单业务逻辑接口实现
     /// /// </summary>
-    public class SystemMenuLogic : CrudAppService<SystemMenu, SystemMenuOutput, Guid>, ISystemMenuLogic, IScopedDependency
+    public class SystemMenuLogic : CrudAppService<SystemMenu, SystemMenuDto, Guid>, ISystemMenuLogic, IScopedDependency
     { 
         #region 构造函数
         private readonly ISystemMenuRepository _systemMenuRepository;
@@ -41,7 +42,7 @@ namespace Ctrl.System.Business {
         /// </summary>
         /// <param name="systemMenu"></param>
         /// <returns></returns>
-        public  Task<OperateStatus> SaveMenu (SystemMenu systemMenu) {
+        public  Task<OperateStatus> SaveMenu (CreateMenuDto systemMenu) {
             if (systemMenu.MenuId.IsEmptyGuid())
             {
                 systemMenu.MenuId = Guid.NewGuid();
@@ -74,7 +75,7 @@ namespace Ctrl.System.Business {
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public  Task<IEnumerable<SystemMenuOutput>> GetMenuByPid(IdInput input)
+        public  Task<IEnumerable<SystemMenuDto>> GetMenuByPid(IdInput input)
         {
             return   _systemMenuRepository.GetMenuByPid(input);
         }

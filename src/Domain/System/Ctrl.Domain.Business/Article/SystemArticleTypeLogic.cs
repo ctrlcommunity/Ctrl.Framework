@@ -7,6 +7,7 @@ using Ctrl.System.Models.Entities;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using CtrlCloud.Framework.Application.Contracts.CtrlCloud.Article.Dtos;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 using Volo.Abp.DependencyInjection;
@@ -35,7 +36,7 @@ namespace Ctrl.System.Business
         /// <param name="articleType"></param>
         /// <returns></returns>
 
-        public async Task<OperateStatus> SaveArticleType(SystemArticleType articleType)
+        public async Task<OperateStatus> SaveArticleType(CreateArticleTypeDto articleType)
         {
             if (articleType.Id.IsEmptyGuid())
             {
@@ -45,7 +46,7 @@ namespace Ctrl.System.Business
             }
             else {
                 //var artType = await _systemArticleTypeRepository.GetById(articleType.Id);
-               // articleType.CreateTime = artType.CreateTime;
+               // articleType.CreateTime = artType.CreateTime
                // return await UpdateAsync(articleType);
             }
             return null;

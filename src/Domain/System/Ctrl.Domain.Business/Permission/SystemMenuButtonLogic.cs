@@ -8,6 +8,7 @@ using Ctrl.System.Models.Entities;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using CtrlCloud.Framework.Application.Contracts.CtrlCloud.Permission.Dtos;
 using Volo.Abp.Application.Services;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Domain.Repositories;
@@ -17,8 +18,7 @@ namespace Ctrl.System.Business
     /// <summary>
     ///     菜单按钮业务逻辑接口实现
     /// </summary>
-    //public class SystemMenuButtonLogic:AsyncLogic<SystemMenuButton>,ISystemMenuButtonLogic
-    public class SystemMenuButtonLogic : CrudAppService<SystemMenuButton, SystemMenuButtonOutput, Guid>, ISystemMenuButtonLogic, IScopedDependency
+    public class SystemMenuButtonLogic : CrudAppService<SystemMenuButton, SystemMenuButtonDto, Guid>, ISystemMenuButtonLogic, IScopedDependency
     {
         #region 构造函数
         private readonly ISystemMenuButtonRepository _systemMenuButtonRepository;
@@ -40,7 +40,7 @@ namespace Ctrl.System.Business
         ///     获取按钮分页
         /// </summary>
         /// <returns></returns>
-        public Task<PagedResultsDto<SystemMenuButtonOutput>> GetPagingMenuButton(QueryParam param)
+        public Task<PagedResultsDto<SystemMenuButtonDto>> GetPagingMenuButton(QueryParam param)
         {
             return _systemMenuButtonDapperRepository.GetPagingMenuButton(param);
         }
@@ -48,28 +48,28 @@ namespace Ctrl.System.Business
         ///     保存功能项信息  
         /// </summary>
         /// <returns>功能项信息</returns>
-        public async Task<OperateStatus> SaveMenuButton(SystemMenuButton menuButton)
+        public async Task<OperateStatus> SaveMenuButton(CreateMenuButtonDto menuButton)
         {
-            if (menuButton.Id.IsEmptyGuid())
-            {
-                menuButton.CreateTime = DateTime.Now;
-                //TODO 先注释
-                //menuButton.Id = CombUtil.NewComb();
-                //return await InsertAsync(menuButton);
-            }
-            else {
-                //TODO 先注释
-                //var  sysbutton=await _systemMenuButtonRepository.GetById(menuButton.MenuButtonId);
-              //  menuButton.CreateTime = sysbutton.CreateTime;
-                //return await UpdateAsync(menuButton);
-            }
+            //if (menuButton.Id.IsEmptyGuid())
+            //{
+            //    menuButton.CreateTime = DateTime.Now;
+            //    //TODO 先注释
+            //    //menuButton.Id = CombUtil.NewComb();
+            //    //return await InsertAsync(menuButton);
+            //}
+            //else {
+            //    //TODO 先注释
+            //    //var  sysbutton=await _systemMenuButtonRepository.GetById(menuButton.MenuButtonId);
+            //  //  menuButton.CreateTime = sysbutton.CreateTime;
+            //    //return await UpdateAsync(menuButton);
+            //}
             return null;
         }
         /// <summary>
         ///     根据菜单获取功能项信息
         /// </summary>
         /// <returns></returns>
-        public Task<IEnumerable<SystemMenuButtonOutput>> GetMenuButtonByMenuId(IdInput input) {
+        public Task<IEnumerable<SystemMenuButtonDto>> GetMenuButtonByMenuId(IdInput input) {
             return _systemMenuButtonDapperRepository.GetMenuButtonByMenuId(input);
         }
         #endregion

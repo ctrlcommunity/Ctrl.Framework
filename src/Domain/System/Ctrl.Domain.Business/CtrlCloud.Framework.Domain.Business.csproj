@@ -16,8 +16,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\Core\Ctrl.Core.Business\Ctrl.Core.Business.csproj" />
     <ProjectReference Include="..\..\..\Core\Ctrl.Core.Entities\Ctrl.Core.Entities.csproj" />
-    <ProjectReference Include="..\Ctrl.Domain.DataAccess\CtrlCloud.Framework.Domain.DataAccess.csproj" />
-    <ProjectReference Include="..\Ctrl.Domain.Models\CtrlCloud.Framework.Domain.Models.csproj" />
+    <ProjectReference Include="..\..\..\CtrlCloud.Framework.Application.Contracts\CtrlCloud.Framework.Application.Contracts.csproj" />
+    <ProjectReference Include="..\Ctrl.Domain.Models\CtrlCloud.Framework.Domain.csproj" />
   </ItemGroup>
 
 </Project>

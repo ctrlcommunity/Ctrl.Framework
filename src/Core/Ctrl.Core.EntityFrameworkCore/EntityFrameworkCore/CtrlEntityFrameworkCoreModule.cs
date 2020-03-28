@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Ctrl.Domain.Models;
+using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore.MySQL;
 using Volo.Abp.Guids;
@@ -7,7 +8,8 @@ using Volo.Abp.Modularity;
 namespace Ctrl.Core.EntityFrameworkCore.EntityFrameworkCore
 {
     [DependsOn(typeof(AbpEntityFrameworkCoreMySQLModule),
-        typeof(AbpGuidsModule))]
+        typeof(AbpGuidsModule),
+        typeof(CtrlDomainModule))]
     public class CtrlEntityFrameworkCoreModule:AbpModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)

@@ -20,6 +20,16 @@
 
  
   <ItemGroup>
+    <Compile Update="Properties\Chs.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Chs.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Properties\ResourceSystem.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ResourceSystem.resx</DependentUpon>
+    </Compile>
     <Compile Update="Resource\Chs.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -32,6 +42,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Update="Properties\Chs.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Chs.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties\ResourceSystem.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourceSystem.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resource\Chs.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Chs.Designer.cs</LastGenOutput>
