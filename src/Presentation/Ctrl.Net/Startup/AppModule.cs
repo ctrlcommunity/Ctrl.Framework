@@ -38,7 +38,6 @@ namespace Ctrl.Web.Host.Startup
         typeof(AbpAutoMapperModule),
         typeof(AbpAutofacModule),
         typeof(AbpDddApplicationModule),
-        typeof(CtrlDomainBusinessModule),
         typeof(AbpAspNetCoreMvcUiBasicThemeModule),
         typeof(CtrlApplicationModule),
         typeof(CtrlDomainModule),
@@ -80,10 +79,6 @@ namespace Ctrl.Web.Host.Startup
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
             context.Services.AddMemoryCache();
-            context.Services.AddAssemblyOf<ISystemArticleTypeLogic>();
-            context.Services.AddAssemblyOf<ISystemArticleTypeRepository>();
-            context.Services.AddAssemblyOf<SystemArticleTypeLogic>();
-            context.Services.AddAssemblyOf<SystemArticleTypeRepository>();
             Configure<AbpMultiTenancyOptions>(options =>
             {
                 options.IsEnabled = true;

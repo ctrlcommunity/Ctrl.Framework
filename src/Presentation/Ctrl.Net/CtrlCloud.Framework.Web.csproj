@@ -41,7 +41,6 @@
     <ProjectReference Include="..\..\Core\Ctrl.Core.Web\Ctrl.Core.Web.csproj" />
     <ProjectReference Include="..\..\Ctrl.Application\CtrlCloud.Framework.Application.csproj" />
     <ProjectReference Include="..\..\CtrlCloud.Framework.Application.Contracts\CtrlCloud.Framework.Application.Contracts.csproj" />
-    <ProjectReference Include="..\..\Domain\System\Ctrl.Domain.Business\CtrlCloud.Framework.Domain.Business.csproj" />
   </ItemGroup>
 
   <ProjectExtensions>

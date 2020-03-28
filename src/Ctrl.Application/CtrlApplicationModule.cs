@@ -1,9 +1,15 @@
-﻿using Ctrl.Web.Host.Startup;
+﻿using Ctrl.Domain.Models;
+using Ctrl.Web.Host.Startup;
+using CtrlCloud.Framework.Application.Contracts.CtrlCloud;
 using Volo.Abp.AutoMapper;
 using Volo.Abp.Modularity;
 
 namespace Ctrl.Application
 {
+    [DependsOn(
+        typeof(CtrlDomainModule),
+        typeof(CtrlCloudApplicationContractsModule)
+    )]
     public class CtrlApplicationModule: AbpModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
