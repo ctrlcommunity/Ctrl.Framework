@@ -30,7 +30,7 @@ namespace Ctrl.Web.Host.Startup
 
     [DependsOn(
         typeof(AbpAspNetCoreMvcModule),
-        typeof(AbpMultiTenancyModule),
+        //typeof(AbpMultiTenancyModule),
         typeof(AbpAspNetCoreMultiTenancyModule),
         typeof(CtrlEntityFrameworkCoreModule),
         typeof(AbpDddApplicationModule),
@@ -78,18 +78,18 @@ namespace Ctrl.Web.Host.Startup
 
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
-            context.Services.AddMemoryCache();
-            Configure<AbpMultiTenancyOptions>(options =>
-            {
-                options.IsEnabled = true;
-            });
-            Configure<AbpTenantResolveOptions>(options =>
-            {
-                options.TenantResolvers.Add(new QueryStringTenantResolveContributor());
-                options.TenantResolvers.Add(new RouteTenantResolveContributor());
-                options.TenantResolvers.Add(new HeaderTenantResolveContributor());
-                options.TenantResolvers.Add(new CookieTenantResolveContributor());
-            });
+            //context.Services.AddMemoryCache();
+            // Configure<AbpMultiTenancyOptions>(options =>
+            // {
+            //     options.IsEnabled = true;
+            // });
+            // Configure<AbpTenantResolveOptions>(options =>
+            // {
+            //     options.TenantResolvers.Add(new QueryStringTenantResolveContributor());
+            //     options.TenantResolvers.Add(new RouteTenantResolveContributor());
+            //     options.TenantResolvers.Add(new HeaderTenantResolveContributor());
+            //     options.TenantResolvers.Add(new CookieTenantResolveContributor());
+            // });
             Configure<MvcNewtonsoftJsonOptions>(options =>
             {
                 options.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss";//对类型为DateTime的生效
