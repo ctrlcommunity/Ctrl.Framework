@@ -30,7 +30,7 @@ ASP.NET Core3.1、AbpvNext、BootStrap进行构建的快速开发通用型基础
 
 项目介绍
 =====
-**Ctrl.Framework**是一个升级版基础权限开发型框架，支持权限管理，代码生成，日志审计等。
+**Ctrl.Framework**将打造一个简单快速适合中小型企业的快速开发框架
 
 ![](https://imgkr.cn-bj.ufileos.com/0299c942-8cc3-4b8f-96b0-02f474d89e53.png)
 

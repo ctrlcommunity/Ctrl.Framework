@@ -18,6 +18,7 @@ namespace Ctrl.Web.Host.Startup
                     o.LoginPath = new PathString ("/sysManage/Account/Login");
                     o.AccessDeniedPath = new PathString ("/sysManage/Home/NotFounds");
                     o.SlidingExpiration = true;
+                    o.Cookie.SameSite = SameSiteMode.None;
                 });
             services.AddPetaPoco (o => {
                 o.ConnectionString = "Data Source=.;Initial Catalog=Ctrl.Framework;User ID=sa;Password=123456;MultipleActiveResultSets=true;";
