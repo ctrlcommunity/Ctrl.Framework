@@ -63,7 +63,7 @@ namespace Ctrl.Web.Host.Startup
             LogManager.Configuration.Variables["connectionString"] = context.GetConfiguration()["ConnectionStrings:Default"];
             LogManager.Configuration.Variables["nlogDbProvider"] = context.GetConfiguration()["ConnectionStrings:Default"];
             #endregion
-            app.UseMultiTenancy();
+         
             app.UseStaticHttpContext();
             app.UseCookiePolicy();
             app.UseAuthentication();
