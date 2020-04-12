@@ -15,7 +15,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Core\Ctrl.Core.Entities\Ctrl.Core.Entities.csproj" />
-    <ProjectReference Include="..\..\..\Core\Ctrl.Core.PetaPoco\CtrlCloud.Framework.Core.PetaPoco.csproj" />
     <ProjectReference Include="..\..\..\CtrlCloud.Framework.Application.Contracts\CtrlCloud.Framework.Application.Contracts.csproj" />
   </ItemGroup>
 </Project>

@@ -1,15 +1,11 @@
-using Ctrl.Core.PetaPoco;
 using System;
 using Volo.Abp.Domain.Entities;
 
-namespace Ctrl.System.Models.Entities
+namespace CtrlCloud.Framework.Domain.Models.CtrlCloud.Config
 {
     /// <summary>
     ///     支付配置表表实体类
     /// </summary>
-    [Serializable]
-    [TableName("Sys_Pays")]
-    [PrimaryKey("PayId")]
     public class SystemPays: Entity<Guid>
     {
 		        /// <summary>

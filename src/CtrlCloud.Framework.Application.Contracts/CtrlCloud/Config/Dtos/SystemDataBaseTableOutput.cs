@@ -1,7 +1,7 @@
 ﻿using System;
 using Volo.Abp.Domain.Entities;
 
-namespace Ctrl.Domain.Models.Dtos.Config
+namespace CtrlCloud.Framework.Application.Contracts.CtrlCloud.Config.Dtos
 {
     public class SystemDataBaseTableOutput : Entity<Guid>
     {
@@ -17,6 +17,5 @@ namespace Ctrl.Domain.Models.Dtos.Config
         ///     创建时间
         /// </summary>
         public DateTime CreateDate { get; set; }
-        public Guid Id { get; set; }
     }
 }

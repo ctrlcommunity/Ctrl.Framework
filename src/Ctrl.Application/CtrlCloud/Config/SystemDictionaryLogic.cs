@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Ctrl.Core.Entities;
 using Ctrl.Core.Entities.Dtos;
 using Ctrl.Core.Entities.Select2;
@@ -7,15 +10,12 @@ using Ctrl.System.Business;
 using Ctrl.System.DataAccess;
 using Ctrl.System.Models.Entities;
 using CtrlCloud.Framework.Application.Contracts.CtrlCloud.Config.Dtos;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Domain.Repositories;
 
-namespace Ctrl.Domain.Business.Config
+namespace CtrlCloud.Framework.Application.CtrlCloud.Config
 {
     /// <summary>
     ///     字典业务逻辑接口实现
@@ -39,7 +39,7 @@ namespace Ctrl.Domain.Business.Config
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public async Task<OperateStatus> SaveSystemDictionary(CreateSystemDictionaryDto input)
+        public Task<OperateStatus> SaveSystemDictionary(CreateSystemDictionaryDto input)
         {
             //if (input.Id.IsEmptyGuid())
             //{

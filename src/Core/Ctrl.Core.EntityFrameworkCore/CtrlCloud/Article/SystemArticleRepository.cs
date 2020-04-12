@@ -8,6 +8,10 @@ using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Threading;
 using System.Threading.Tasks;
+using Ctrl.Domain.DataAccess.Identity;
+using CtrlCloud.Framework.Domain.Models.CtrlCloud.Article;
+using Volo.Abp.DependencyInjection;
+using Volo.Abp.Domain.Repositories.Dapper;
 using Volo.Abp.Domain.Repositories.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
 
@@ -42,29 +46,37 @@ namespace Ctrl.System.DataAccess
         }
     }
 
+    public class SystemArticleDapperRepository : DapperRepository<CtrlDbContext>, ISystemArticleDapperRepository,
+        IScopedDependency
+    {
+        public SystemArticleDapperRepository(IDbContextProvider<CtrlDbContext> dbContextProvider) : base(dbContextProvider)
+        {
+        }
+
+    }
 
     ///// <summary>
-    /////     文章数据访问接口实现
-    ///// </summary>
-    //public class SystemArticleRepository : PetaPocoRepository<SystemArticle>, ISystemArticleRepository, IScopedDependency
-    //{
-    //    /// <summary>
-    //    ///     获取文章分页
-    //    /// </summary>
-    //    /// <param name="param"></param>
-    //    /// <returns></returns>
-    //    public Task<PagedResultsDto<SystemArticleOutput>> GetPagingArticleType(SystemArticlePagingInput param)
-    //    {
-    //        string sWhere = "";
-    //        if (!string.IsNullOrWhiteSpace(param.Title))
-    //        {
-    //            sWhere += $" And Title like '%{param.Title.Trim()}%'";
-    //        }
-    //        string sql = @"select article.*,articletype.Name ArticleTypeName
-    //                        from Sys_Article article
-    //                        left join Sys_ArticleType articletype on article.ArticleTypeId=articletype.ArticleTypeId
-    //                          Where 1=1 "+sWhere;
-    //        return SqlMapperUtil.PagingQuery<SystemArticleOutput>(sql, param); ;
-    //    }
-    //}
-}
+        /////     文章数据访问接口实现
+        ///// </summary>
+        //public class SystemArticleRepository : PetaPocoRepository<SystemArticle>, ISystemArticleRepository, IScopedDependency
+        //{
+        //    /// <summary>
+        //    ///     获取文章分页
+        //    /// </summary>
+        //    /// <param name="param"></param>
+        //    /// <returns></returns>
+        //    public Task<PagedResultsDto<SystemArticleOutput>> GetPagingArticleType(SystemArticlePagingInput param)
+        //    {
+        //        string sWhere = "";
+        //        if (!string.IsNullOrWhiteSpace(param.Title))
+        //        {
+        //            sWhere += $" And Title like '%{param.Title.Trim()}%'";
+        //        }
+        //        string sql = @"select article.*,articletype.Name ArticleTypeName
+        //                        from Sys_Article article
+        //                        left join Sys_ArticleType articletype on article.ArticleTypeId=articletype.ArticleTypeId
+        //                          Where 1=1 "+sWhere;
+        //        return SqlMapperUtil.PagingQuery<SystemArticleOutput>(sql, param); ;
+        //    }
+        //}
+    }

@@ -1,16 +1,11 @@
-using Ctrl.Core.PetaPoco;
 using System;
-using Ctrl.Core.Entities;
 using Volo.Abp.Domain.Entities;
 
-namespace Ctrl.System.Models.Entities
-{   
+namespace CtrlCloud.Framework.Domain.Models.CtrlCloud.Identity
+{
     /// <summary>
-     ///    角色表表实体类
-     /// </summary>
-    [Serializable]
-    [TableName("Sys_Role")]
-    [PrimaryKey("RoleId")]
+    ///    角色表表实体类
+    /// </summary>
     public class SystemRole : Entity<Guid>
     {
         /// <summary>

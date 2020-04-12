@@ -1,16 +1,11 @@
 ﻿using System;
-using Ctrl.Core.Entities;
-using Ctrl.Core.PetaPoco;
 using Volo.Abp.Domain.Entities;
 
-
-namespace Ctrl.Domain.Models.Entities
+namespace CtrlCloud.Framework.Domain.Models.CtrlCloud.Permission
 {
-     /// <summary>
+    /// <summary>
     /// System_PermissionUser表实体类
     /// </summary>
-    [Serializable]
-    [TableName("Sys_PermissionUser")]
     public class SystemPermissionUser:Entity<Guid>
     {
          /// <summary>

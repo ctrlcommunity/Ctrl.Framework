@@ -49,7 +49,7 @@ namespace Ctrl.Net.Areas.sysManage.Controllers
         [CreateBy("冯辉")]
         [Description("应用系统-字典-编辑")]
         [Permission("xtgl-zdgl-SaveSystemDictionary")]
-        public async Task<IActionResult> Edit(NullableIdInput input)
+        public IActionResult Edit(NullableIdInput input)
         {
             SystemDictionary dictionary = new SystemDictionary();
             if (!input.Id.IsNullOrEmptyGuid())

@@ -1,5 +1,6 @@
 using Ctrl.System.Models.Entities;
 using System.Threading.Tasks;
+using CtrlCloud.Framework.Domain.Models.CtrlCloud.Config;
 using Volo.Abp.Domain.Repositories;
 
 namespace Ctrl.System.DataAccess

@@ -1,5 +1,4 @@
-﻿using Ctrl.Core.PetaPoco;
-using System;
+﻿using System;
 using Volo.Abp.Domain.Entities;
 
 namespace Ctrl.Domain.Models.Entities
@@ -7,8 +6,6 @@ namespace Ctrl.Domain.Models.Entities
     /// <summary>
     ///     Sys_User类
     /// </summary>
-    [TableName("Sys_User")]
-    [PrimaryKey("UserId")]
     public class SystemUser: Entity<Guid>
     {
         /// <summary>

@@ -99,9 +99,9 @@ namespace Ctrl.Domain.Business.Identity
         /// </summary>
         /// <param name="user">人员信息</param>
         /// <returns></returns>
-        public async Task<OperateStatus> SaveUser(CreateUserDto user)
+        public OperateStatus SaveUser(CreateUserDto user)
         {
-            OperateStatus operateStatus=new OperateStatus();
+            OperateStatus operateStatus = new OperateStatus();
             //if (string.IsNullOrWhiteSpace(user.Id.ToString()))
             //{
             //    user.CreateTime = DateTime.Now;

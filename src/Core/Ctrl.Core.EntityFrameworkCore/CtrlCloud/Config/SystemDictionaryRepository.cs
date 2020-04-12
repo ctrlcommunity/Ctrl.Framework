@@ -2,7 +2,6 @@ using Ctrl.Core.Entities.Dtos;
 using Ctrl.Core.Entities.Select2;
 using Ctrl.Core.Entities.Tree;
 using Ctrl.Core.EntityFrameworkCore.EntityFrameworkCore;
-using Ctrl.Core.PetaPoco;
 using Ctrl.Domain.Models.Dtos.Config;
 using Ctrl.System.Models.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -43,8 +42,9 @@ namespace Ctrl.System.DataAccess
         /// <returns></returns>
         public Task<IEnumerable<TreeEntity>> GetDictionaryTree()
         {
-            const string sql = "select Name,DictionaryId id,ParentId pId from Sys_Dictionary";
-            return SqlMapperUtil.Query<TreeEntity>(sql);
+           // const string sql = "select Name,DictionaryId id,ParentId pId from Sys_Dictionary";
+           //return SqlMapperUtil.Query<TreeEntity>(sql);
+           return null;
         }
         /// <summary>
         ///     根据父级编码获取子级
@@ -58,13 +58,13 @@ namespace Ctrl.System.DataAccess
                             left join Sys_Dictionary sds on sds.ParentId=sd.DictionaryId
                             where sd.Code='{0}'
                             order by sds.OrderNo desc", input.Id);
-            return SqlMapperUtil.Query<Select2Entity>(sb.ToString());
+            return null;
+            //return SqlMapperUtil.Query<Select2Entity>(sb.ToString());
         }
 
         /// <summary>
         ///     字典分页信息
         /// </summary>
-        /// <param name="query"></param>
         /// <returns></returns>
         public async Task<List<SystemDictionary>> PagingDictionaryQuery(SystemDictionaryResultRequestDto input,
              CancellationToken cancellationToken = default)

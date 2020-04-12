@@ -28,7 +28,7 @@ namespace Ctrl.System.Business
         /// </summary>
         /// <param name="menuButton">功能项信息</param>
         /// <returns></returns>
-        Task<OperateStatus> SaveMenuButton(CreateMenuButtonDto menuButton);
+        OperateStatus SaveMenuButton(CreateMenuButtonDto menuButton);
         /// <summary>
         ///     根据菜单获取功能项信息
         /// </summary>

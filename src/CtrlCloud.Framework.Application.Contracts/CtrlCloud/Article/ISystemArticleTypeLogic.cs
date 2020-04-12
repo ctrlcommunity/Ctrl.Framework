@@ -21,7 +21,7 @@ namespace Ctrl.System.Business
         /// </summary>
         /// <param name="articleType"></param>
         /// <returns></returns>
-        Task<OperateStatus> SaveArticleType(CreateArticleTypeDto articleType);
+        OperateStatus SaveArticleType(CreateArticleTypeDto articleType);
         /// <summary>
         ///     获取文章类型树 
         /// </summary>

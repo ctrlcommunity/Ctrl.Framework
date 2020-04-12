@@ -1,15 +1,17 @@
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Ctrl.Core.Entities.Paging;
 using Ctrl.Core.Entities.Tree;
 using Ctrl.Core.EntityFrameworkCore.EntityFrameworkCore;
-using Ctrl.Core.PetaPoco;
+using Ctrl.System.DataAccess;
 using Ctrl.System.Models.Entities;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+using CtrlCloud.Framework.Domain.Models.CtrlCloud.Identity;
+using Dapper;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Domain.Repositories.Dapper;
 using Volo.Abp.EntityFrameworkCore;
 
-namespace Ctrl.System.DataAccess
+namespace CtrlCloud.Framework.EntityFrameworkCore.CtrlCloud.Identity
 {
     /// <summary>
     ///     角色表数据访问接口实现
@@ -24,7 +26,7 @@ namespace Ctrl.System.DataAccess
         {
             var sql = @"select  roles.Name,roles.RoleId id
                         from Sys_Role roles";
-            return SqlMapperUtil.Query<TreeEntity>(sql);
+            return this.DbConnection.QueryAsync<TreeEntity>(sql);
         }
 
         /// <summary>
@@ -34,8 +36,9 @@ namespace Ctrl.System.DataAccess
         /// <returns></returns>
         public Task<PagedResultsDto<SystemRole>> GetPagingSysRole(QueryParam queryParam)
         {
-            var sql = "SELECT * FROM Sys_Role";
-            return SqlMapperUtil.PagingQuery<SystemRole>(sql, queryParam);
+            //var sql = "SELECT * FROM Sys_Role";
+            return null;
+            //return SqlMapperUtil.PagingQuery<SystemRole>(sql, queryParam);
         }
 
         public SystemRoleRepository(IDbContextProvider<CtrlDbContext> dbContextProvider) : base(dbContextProvider)

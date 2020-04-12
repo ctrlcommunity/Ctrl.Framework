@@ -2,7 +2,6 @@
 using Ctrl.Core.Entities.Dtos;
 using Ctrl.Core.Entities.Paging;
 using Ctrl.Core.EntityFrameworkCore.EntityFrameworkCore;
-using Ctrl.Core.PetaPoco;
 using Ctrl.Domain.Models.Dtos;
 using Ctrl.Domain.Models.Dtos.Identity;
 using Ctrl.Domain.Models.Entities;
@@ -42,8 +41,9 @@ namespace Ctrl.Domain.DataAccess.Identity
         /// <returns></returns>
         public Task<PagedResultsDto<SystemUser>> GetPagingSysUser(QueryParam queryParam)
         {
-            var sql = "SELECT * FROM Sys_User sysUser";
-            return SqlMapperUtil.PagingQuery<SystemUser>(sql, queryParam);
+            //var sql = "SELECT * FROM Sys_User sysUser";
+            return null;
+            //return SqlMapperUtil.PagingQuery<SystemUser>(sql, queryParam);
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace Ctrl.Domain.DataAccess.Identity
         /// <returns></returns>
         public async Task<bool> UpdateLastLoginTime(IdInput input)
         {
-            var sql = $@"UPDATE Sys_User SET LastVisitTime='{DateTime.Now.ToString("yyyy-MM-dd H:mm:ss")}' WHERE Id=@userId";
+            var sql = $@"UPDATE Sys_User SET LastVisitTime='{DateTime.Now:yyyy-MM-dd H:mm:ss}' WHERE Id=@userId";
             return (await DbConnection.ExecuteAsync(sql, new {userId = input.Id},DbTransaction))>0;
         }
 
@@ -64,7 +64,7 @@ namespace Ctrl.Domain.DataAccess.Identity
         /// <returns></returns>
         public async Task<bool> UpdateFirstVisitTime(IdInput input)
         {
-            var sql = $@"UPDATE Sys_User SET FirstVisitTime='{DateTime.Now.ToString("yyyy-MM-dd H:mm:ss")}' WHERE Id=@userId";
+            var sql = $@"UPDATE Sys_User SET FirstVisitTime='{DateTime.Now:yyyy-MM-dd H:mm:ss}' WHERE Id=@userId";
             return (await DbConnection.ExecuteAsync(sql, new { userId = input.Id }, DbTransaction))>0;
         }
         /// <summary>
@@ -72,27 +72,30 @@ namespace Ctrl.Domain.DataAccess.Identity
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public Task<bool> UserInfoUpdateSave(UpdateUserDto input)
+        public async Task<bool> UserInfoUpdateSave(UpdateUserDto input)
         {
             const string sql = @"UPDATE Sys_User 
                                 SET ImgUrl=@ImgUrl,
                                 Name=@Name
                                 WHERE Id=@userId";
-            return SqlMapperUtil.InsertUpdateOrDeleteSqlBool(sql, input);
+            return (await this.DbConnection.ExecuteAsync(sql, input)>0);
         }
         /// <summary>
         ///     检测代码是否已经具有重复项
         /// </summary>
         /// <param name="input">需要验证的参数</param>
         /// <returns></returns>
-        public Task<bool> CheckUserCode(CheckSameValueInput input)
+        public async Task<bool> CheckUserCode(CheckSameValueInput input)
         {
             string sql = "select UserId from Sys_User where Code=@param";
             if (!input.Id.IsNullOrEmptyGuid())
             {
                 sql += " And Id!=@UserId";
             }
-            return SqlMapperUtil.SqlWithParamsBool<SystemUser>(sql, new { param = input.Param, UserId = input.Id });
+
+            return (await this.DbConnection.QueryFirstOrDefaultAsync<SystemUser>(sql,
+                    new {param = input.Param, UserId = input.Id}))
+                !=default;
         }
         public SystemUserDapperRepository(IDbContextProvider<CtrlDbContext> dbContextProvider) : base(dbContextProvider)
         {

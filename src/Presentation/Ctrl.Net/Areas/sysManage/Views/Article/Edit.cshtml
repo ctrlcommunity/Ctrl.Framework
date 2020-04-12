@@ -1,7 +1,7 @@
 @{
     Layout = "~/Areas/SysManage/Views/Shared/_LayoutPageBaseForm.cshtml";
 }
-@model SystemArticle
+@model CtrlCloud.Framework.Domain.Models.CtrlCloud.Article.SystemArticle
 <form class="form-horizontal ctrl-form">
     @Html.AntiForgeryToken()
     <input hidden value="@Model.Id" name="Id" id="Id" />

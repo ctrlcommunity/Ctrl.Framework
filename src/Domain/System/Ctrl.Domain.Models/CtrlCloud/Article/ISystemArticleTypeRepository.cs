@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Domain.Repositories;
+using Volo.Abp.Domain.Repositories.Dapper;
 
 namespace Ctrl.System.DataAccess
 {
@@ -14,13 +15,10 @@ namespace Ctrl.System.DataAccess
     /// </summary>
     public interface ISystemArticleTypeRepository : IBasicRepository<SystemArticleType>
     {
-        Task<IEnumerable<TreeEntity>> GetArticleTypeTree();
-
         // Task<PagedResultsDto<SystemArticleTypeOutput>> GetPagingArticleType(PagedAndSortedResultRequestDto param);
         /// <summary>
         ///     获取文章类型分页
         /// </summary>
-        /// <param name="param"></param>
         /// <returns></returns>
         Task<List<SystemArticleType>> GetListAsync(
                 PagedAndSortedResultRequestDto input,
@@ -30,9 +28,9 @@ namespace Ctrl.System.DataAccess
         Task<long> GetCountAsync(
             SystemArticleResultRequestDto input,
             CancellationToken cancellationToken = default);
-
-
-
-
+    }
+    public interface ISystemArticleTypeDapperRepository : IDapperRepository
+    {
+        Task<IEnumerable<TreeEntity>> GetArticleTypeTree();
     }
 }

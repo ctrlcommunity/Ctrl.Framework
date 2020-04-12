@@ -5,6 +5,8 @@ using Ctrl.Domain.Models.Dtos.Identity;
 using Ctrl.Domain.Models.Dtos.Logs;
 using Ctrl.Domain.Models.Entities;
 using Ctrl.System.Models.Entities;
+using CtrlCloud.Framework.Domain.Models.CtrlCloud.Article;
+using CtrlCloud.Framework.Domain.Models.CtrlCloud.Logs;
 
 namespace Ctrl.Web.Host.Startup
 {

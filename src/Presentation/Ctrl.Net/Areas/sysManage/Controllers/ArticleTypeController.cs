@@ -41,32 +41,32 @@ namespace Ctrl.Net.Areas.sysManage.Controllers
         {
             return View();
         }
-		 /// <summary>
+        /// <summary>
         ///     编辑
         /// </summary>
         /// <returns></returns>
         [CreateBy("冯辉")]
         [Description("应用系统-文章类型-编辑")]
         [Permission("xtgl-wzlx-SaveArticleType")]
-        public async Task<IActionResult> Edit(NullableIdInput input)
+        public IActionResult Edit(NullableIdInput input)
         {
             SystemArticleType ArticleType = new SystemArticleType();
             if (!input.Id.IsNullOrEmptyGuid())
             {
-              //  ArticleType = await _systemArticleTypeLogic.GetById(input.Id);
+                //  ArticleType = await _systemArticleTypeLogic.GetById(input.Id);
             }
             return View(ArticleType);
         }
         #endregion
 
         #region 方法
-		/// <summary>
+        /// <summary>
         ///     获取文章类型
         /// </summary>
         /// <returns></returns>
         [CreateBy("冯辉")]
         [Description("应用系统-文章类型-方法-获取文章类型")]
-        public async Task<JsonResult> GetList()
+        public JsonResult GetList()
         {
             return null;
             //return Json(await _systemArticleTypeLogic.GetAllEnumerableAsync());
@@ -79,8 +79,9 @@ namespace Ctrl.Net.Areas.sysManage.Controllers
         [ValidateAntiForgeryToken]
         [Description("应用系统-文章类型-方法-保存文章类型")]
         [Permission("xtgl-wzlx-SaveArticleType")]
-        public async Task<JsonResult> SaveArticleType(CreateArticleTypeDto articleType) {
-            return Json(await _systemArticleTypeLogic.SaveArticleType(articleType));
+        public JsonResult SaveArticleType(CreateArticleTypeDto articleType)
+        {
+            return Json(_systemArticleTypeLogic.SaveArticleType(articleType));
         }
         [CreateBy("冯辉")]
         [Description("应用系统-文章类型-方法-获取文章类型树")]

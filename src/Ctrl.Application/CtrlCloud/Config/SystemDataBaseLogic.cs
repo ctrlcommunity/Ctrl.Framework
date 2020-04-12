@@ -1,11 +1,13 @@
-﻿using Ctrl.Core.Entities.Dtos;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using Ctrl.Core.Entities.Dtos;
 using Ctrl.Core.Entities.Tree;
+using Ctrl.Domain.Business.Config;
 using Ctrl.Domain.DataAccess.Config;
 using Ctrl.Domain.Models.Dtos.Config;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+using CtrlCloud.Framework.Application.Contracts.CtrlCloud.Config.Dtos;
 
-namespace Ctrl.Domain.Business.Config
+namespace CtrlCloud.Framework.Application.CtrlCloud.Config
 {
     /// <summary>
     ///     系统配置文件接口实现
@@ -15,7 +17,7 @@ namespace Ctrl.Domain.Business.Config
     {
         #region 构造函数
 
-        private readonly ISystemDataBaseRepository _dataBaseRepository;
+        private readonly ISystemDataBaseDapperRepository _dataBaseRepository;
 
         //public SystemDataBaseLogic(ISystemDataBaseRepository dataBaseRepository)
         //    : base(dataBaseRepository)

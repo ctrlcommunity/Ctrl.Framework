@@ -1,14 +1,15 @@
-﻿using Ctrl.Core.Entities;
-using Ctrl.Domain.Models.Entities;
-using Ctrl.Domain.Models.Enums;
-using Ctrl.System.DataAccess;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Ctrl.Core.Entities;
+using Ctrl.Domain.Business.Permission;
+using Ctrl.Domain.Models.Enums;
+using Ctrl.System.DataAccess;
 using CtrlCloud.Framework.Core.Properties;
+using CtrlCloud.Framework.Domain.Models.CtrlCloud.Permission;
 using Volo.Abp.DependencyInjection;
 
-namespace Ctrl.Domain.Business.Permission
+namespace CtrlCloud.Framework.Application.CtrlCloud.Permission
 {
     /// <summary>
     ///     权限用户业务逻辑
@@ -16,7 +17,12 @@ namespace Ctrl.Domain.Business.Permission
     public class SystemPermissionUserLogic : ISystemPermissionUserLogic, IScopedDependency
     {
         #region 构造函数
-        private readonly ISystemPermissionUserRepository _permissionUserRepository;
+        private readonly ISystemPermissionUserDapperRepository _permissionUserDapperRepository;
+
+        public SystemPermissionUserLogic(ISystemPermissionUserDapperRepository systemPermissionDapperRepository)
+        {
+            this._permissionUserDapperRepository = systemPermissionDapperRepository;
+        }
 
         /// <summary>
         ///     删除用户对应权限数据
@@ -27,7 +33,7 @@ namespace Ctrl.Domain.Business.Permission
         public async Task<OperateStatus> DeletePrivilegeMasterUser(string privilegeMasterUserId, EnumPrivilegeMaster privilegeMaster)
         {
             var operateStatus = new OperateStatus();
-            if (await _permissionUserRepository.DeletePrivilegeMasterUser(privilegeMasterUserId, privilegeMaster))
+            if (await _permissionUserDapperRepository.DeletePrivilegeMasterUser(privilegeMasterUserId, privilegeMaster))
             {
                 operateStatus.ResultSign = ResultSign.Successful;
                 operateStatus.Message = Chs.Successful;
@@ -44,7 +50,7 @@ namespace Ctrl.Domain.Business.Permission
         /// <param name="value">业务表Id：如组织机构Id、人员Id等</param>
         /// <param name="userids">权限类型:组织机构、人员Id</param>
         /// <returns></returns>
-        public async Task<OperateStatus> SavePermissionUser(EnumPrivilegeMaster master, string value, IList<string> userids)
+        public Task<OperateStatus> SavePermissionUser(EnumPrivilegeMaster master, string value, IList<string> userids)
         {
             OperateStatus operateStatus = new OperateStatus();
             IList<SystemPermissionUser> systemPermissionUsers = userids.Select(userId => new SystemPermissionUser
@@ -58,7 +64,7 @@ namespace Ctrl.Domain.Business.Permission
             //{
             //    operateStatus = await InsertAsync(item);
             //}
-            return operateStatus;
+            return Task.FromResult(operateStatus);
         }
         #endregion
 

@@ -1,16 +1,11 @@
-using Ctrl.Core.PetaPoco;
 using System;
-using Ctrl.Core.Entities;
 using Volo.Abp.Domain.Entities;
 
-namespace Ctrl.System.Models.Entities
+namespace CtrlCloud.Framework.Domain.Models.CtrlCloud.Permission
 {
-	/// <summary>
+    /// <summary>
     ///    菜单按钮表实体类
     /// </summary>
-    [Serializable]
-    [TableName("Sys_MenuButton")]
-    [PrimaryKey("MenuButtonId")]
     public class SystemMenuButton: Entity<Guid>
     {
 

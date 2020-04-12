@@ -1,4 +1,3 @@
-using Ctrl.Core.PetaPoco;
 using System;
 using Volo.Abp.Domain.Entities;
 
@@ -7,8 +6,6 @@ namespace Ctrl.System.Models.Entities
     /// <summary>
     ///    文章类型表实体类
     /// </summary>
-    [TableName("Sys_ArticleType")]
-    [PrimaryKey("ArticleTypeId")]
     public class SystemArticleType: Entity<Guid>
     {
 		/// <summary>

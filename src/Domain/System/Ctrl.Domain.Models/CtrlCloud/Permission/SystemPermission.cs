@@ -1,5 +1,4 @@
 using System;
-using Ctrl.Core.PetaPoco;
 using Volo.Abp.Domain.Entities;
 
 namespace Ctrl.Domain.Models.Entities
@@ -7,8 +6,6 @@ namespace Ctrl.Domain.Models.Entities
     /// <summary>
     ///    权限记录表表实体类
     /// </summary>
-    [TableName("Sys_Permission")]
-    [PrimaryKey("PrivilegeAccess")]
     public class SystemPermission: Entity<Guid>
     {
                 /// <summary>

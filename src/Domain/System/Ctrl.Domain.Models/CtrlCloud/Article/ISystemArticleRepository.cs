@@ -3,7 +3,9 @@ using Ctrl.Domain.Models.Entities;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using CtrlCloud.Framework.Domain.Models.CtrlCloud.Article;
 using Volo.Abp.Domain.Repositories;
+using Volo.Abp.Domain.Repositories.Dapper;
 
 namespace Ctrl.System.DataAccess
 {
@@ -21,5 +23,10 @@ namespace Ctrl.System.DataAccess
         /// <param name="param"></param>
         /// <returns></returns>
         Task<List<SystemArticle>> GetPagingArticleType(SystemArticleResultRequestDto param, CancellationToken cancellationToken = default);
+    }
+
+    public interface ISystemArticleDapperRepository : IDapperRepository
+    {
+
     }
 }

@@ -1,15 +1,11 @@
-using Ctrl.Core.PetaPoco;
 using System;
 using Ctrl.Core.Entities;
 
-namespace Ctrl.System.Models.Entities
+namespace CtrlCloud.Framework.Domain.Models.CtrlCloud.Logs
 {
 	/// <summary>
     ///    sql执行日志表表实体类
     /// </summary>
-    [Serializable]
-    [TableName("Sys_SqlLog")]
-    [PrimaryKey("SqlLogId")]
     public class SystemSqlLog: EntityBase
     {
 		        /// <summary>

@@ -3,6 +3,7 @@ using Ctrl.Core.Entities.Tree;
 using Ctrl.System.Models.Entities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using CtrlCloud.Framework.Domain.Models.CtrlCloud.Identity;
 using Volo.Abp.Domain.Repositories;
 using Volo.Abp.Domain.Repositories.Dapper;
 

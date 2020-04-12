@@ -4,6 +4,7 @@ using Ctrl.Domain.Models.Entities;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using CtrlCloud.Framework.Domain.Models.CtrlCloud.Logs;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 using Volo.Abp.DependencyInjection;

@@ -4,6 +4,7 @@ using Ctrl.Domain.Models.Entities;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using CtrlCloud.Framework.Domain.Models.CtrlCloud.Logs;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 using Volo.Abp.DependencyInjection;
@@ -44,7 +45,7 @@ namespace Ctrl.Domain.Business.Log
         ///     登录数据分析图数据
         /// </summary>
         /// <returns></returns>
-        public async Task<List<LoginDataOutPut>> GetLoginCountData()
+        public List<LoginDataOutPut> GetLoginCountData()
         {
             List<LoginDataOutPut> loginDatas = new List<LoginDataOutPut>();
 
@@ -53,7 +54,7 @@ namespace Ctrl.Domain.Business.Log
             {
                 loginDatas.Add(new LoginDataOutPut
                 {
-                  //  LoginCount = await _loginLogRepository.GetLoginCountByAreaName(item),
+                    //  LoginCount = await _loginLogRepository.GetLoginCountByAreaName(item),
                     provinceName = item
                 });
 
@@ -64,11 +65,11 @@ namespace Ctrl.Domain.Business.Log
         ///     获取登录日志分析数据
         /// </summary>
         /// <returns></returns>
-        public async Task<LoginDataAnalysisOutPut> FindLoginLogAnalysis()
+        public LoginDataAnalysisOutPut FindLoginLogAnalysis()
         {
             LoginDataAnalysisOutPut outPut = new LoginDataAnalysisOutPut();
             List<int> ydata = new List<int>();
-          //  outPut.xdata = (await _loginLogRepository.GetDateMonth()).ToList();
+            //  outPut.xdata = (await _loginLogRepository.GetDateMonth()).ToList();
             //var loges = (await _loginLogRepository.GetLoginLogDateMonth()).ToList();
 
             //foreach (var item in outPut.xdata)

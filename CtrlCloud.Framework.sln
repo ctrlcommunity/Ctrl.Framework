@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CtrlCloud.Framework.Core", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ctrl.Core.Entities", "src\Core\Ctrl.Core.Entities\Ctrl.Core.Entities.csproj", "{8E606A60-F16E-4C91-A4EA-DBA9003D1908}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CtrlCloud.Framework.Core.PetaPoco", "src\Core\Ctrl.Core.PetaPoco\CtrlCloud.Framework.Core.PetaPoco.csproj", "{D4EB1FE4-7629-4D03-964D-EA33539D5B87}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ctrl.Core.Web", "src\Core\Ctrl.Core.Web\Ctrl.Core.Web.csproj", "{356B3181-5F71-4CEF-9B7C-7EC75C36F055}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CtrlCloud.Framework.Domain", "src\Domain\System\Ctrl.Domain.Models\CtrlCloud.Framework.Domain.csproj", "{1673D783-95D8-4F40-818C-9FDA06F95B73}"
@@ -27,7 +25,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CtrlCloud.Framework.EntityF
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CtrlCloud.Framework.Application.Contracts", "src\CtrlCloud.Framework.Application.Contracts\CtrlCloud.Framework.Application.Contracts.csproj", "{0E5F725E-F3B1-4422-ABCE-821A025B8A46}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CtrlCloud.Framework.Domain.Shared", "src\CtrlCloud.Framework.Domain.Shared\CtrlCloud.Framework.Domain.Shared.csproj", "{471BE96C-01E1-4654-BD84-4CD30ABA47ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CtrlCloud.Framework.Domain.Shared", "src\CtrlCloud.Framework.Domain.Shared\CtrlCloud.Framework.Domain.Shared.csproj", "{471BE96C-01E1-4654-BD84-4CD30ABA47ED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,10 +41,6 @@ Global
 		{8E606A60-F16E-4C91-A4EA-DBA9003D1908}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E606A60-F16E-4C91-A4EA-DBA9003D1908}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E606A60-F16E-4C91-A4EA-DBA9003D1908}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D4EB1FE4-7629-4D03-964D-EA33539D5B87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D4EB1FE4-7629-4D03-964D-EA33539D5B87}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D4EB1FE4-7629-4D03-964D-EA33539D5B87}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D4EB1FE4-7629-4D03-964D-EA33539D5B87}.Release|Any CPU.Build.0 = Release|Any CPU
 		{356B3181-5F71-4CEF-9B7C-7EC75C36F055}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{356B3181-5F71-4CEF-9B7C-7EC75C36F055}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{356B3181-5F71-4CEF-9B7C-7EC75C36F055}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -86,7 +80,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{4887C029-6E1F-42E2-9096-DE71BA6CC78C} = {FEA0B9AE-16A9-4683-8213-F7DD1BE7B1A4}
 		{8E606A60-F16E-4C91-A4EA-DBA9003D1908} = {FEA0B9AE-16A9-4683-8213-F7DD1BE7B1A4}
-		{D4EB1FE4-7629-4D03-964D-EA33539D5B87} = {FEA0B9AE-16A9-4683-8213-F7DD1BE7B1A4}
 		{356B3181-5F71-4CEF-9B7C-7EC75C36F055} = {FEA0B9AE-16A9-4683-8213-F7DD1BE7B1A4}
 		{1673D783-95D8-4F40-818C-9FDA06F95B73} = {FEA0B9AE-16A9-4683-8213-F7DD1BE7B1A4}
 		{E71F7D68-9837-4BA8-90FD-EC487A87C028} = {FEA0B9AE-16A9-4683-8213-F7DD1BE7B1A4}

@@ -1,7 +1,7 @@
 @{
     Layout = "~/Areas/SysManage/Views/Shared/_LayoutPageBaseForm.cshtml";
 }
-@model SystemPays
+@model CtrlCloud.Framework.Domain.Models.CtrlCloud.Config.SystemPays
     <form class="form-horizontal ctrl-form">
         @Html.HiddenFor(p => p.PayId)
         @Html.AntiForgeryToken()

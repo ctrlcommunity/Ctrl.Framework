@@ -1,6 +1,7 @@
 ﻿using Ctrl.Core.Entities.Dtos;
 using Ctrl.Domain.Models.Enums;
 using System.Collections.Generic;
+using CtrlCloud.Framework.Application.Contracts.CtrlCloud.Config.Dtos;
 
 namespace Ctrl.Domain.Models.Dtos.Config
 {

@@ -10,9 +10,10 @@ using Ctrl.Domain.Models.Dtos.Permission;
 using Ctrl.System.Business;
 using Ctrl.System.Models.Entities;
 using CtrlCloud.Framework.Application.Contracts.CtrlCloud.Permission.Dtos;
+using CtrlCloud.Framework.Domain.Models.CtrlCloud.Permission;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Ctrl.Web.Host.Areas.sysManage.Controllers
+namespace CtrlCloud.Framework.Web.Areas.sysManage.Controllers
 {
     /// <summary>
     /// 系统菜单控制器
@@ -49,13 +50,14 @@ namespace Ctrl.Web.Host.Areas.sysManage.Controllers
         [CreateBy("冯辉")]
         [Description("应用系统-系统菜单-编辑")]
         [Permission("xtgl-mkwh-SaveMenu")]
-        public async Task<IActionResult> Edit(NullableIdInput input) {
+        public IActionResult Edit(NullableIdInput input)
+        {
             SystemMenu menu = new SystemMenu();
             if (!input.Id.IsNullOrEmptyGuid())
-            { 
-               // menu =await _systemMenuLogic.GetById(input.Id);
+            {
+                // menu =await _systemMenuLogic.GetById(input.Id);
             }
-         
+
             return View(menu);
         }
         #endregion
@@ -67,10 +69,10 @@ namespace Ctrl.Web.Host.Areas.sysManage.Controllers
         /// <returns></returns>
         [CreateBy("冯辉")]
         [Description("模块维护-方法-获取系统菜单")]
-        public async Task<JsonResult> GetList()
+        public JsonResult GetList()
         {
             return null;
-           // return Json(await _systemMenuLogic.GetAllEnumerableAsync());
+            // return Json(await _systemMenuLogic.GetAllEnumerableAsync());
         }
         [HttpPost]
         [CreateBy("冯辉")]

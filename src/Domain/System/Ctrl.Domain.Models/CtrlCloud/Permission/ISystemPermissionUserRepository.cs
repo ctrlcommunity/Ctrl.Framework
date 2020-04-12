@@ -2,11 +2,17 @@ using Ctrl.Domain.Models.Entities;
 using Ctrl.Domain.Models.Enums;
 using System;
 using System.Threading.Tasks;
+using CtrlCloud.Framework.Domain.Models.CtrlCloud.Permission;
 using Volo.Abp.Domain.Repositories;
+using Volo.Abp.Domain.Repositories.Dapper;
 
 namespace Ctrl.System.DataAccess
 {
     public interface ISystemPermissionUserRepository: IRepository<SystemPermissionUser>
+    {
+    }
+
+    public interface ISystemPermissionUserDapperRepository : IDapperRepository
     {
         /// <summary>
         ///     根据用户Id删除权限用户信息
@@ -14,7 +20,7 @@ namespace Ctrl.System.DataAccess
         /// <param name="privilegeMaster"></param>
         /// <param name="privilegeMasterValue"></param>DeletePermissionUser
         /// <returns></returns>     
-         Task<bool>DeletePermissionUser(EnumPrivilegeMaster privilegeMaster,Guid privilegeMasterValue);
+        Task<bool> DeletePermissionUser(EnumPrivilegeMaster privilegeMaster, Guid privilegeMasterValue);
 
         /// <summary>
         ///     删除用户

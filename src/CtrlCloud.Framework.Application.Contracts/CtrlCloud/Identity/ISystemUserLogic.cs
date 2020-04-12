@@ -32,9 +32,8 @@ namespace Ctrl.Domain.Business.Identity
         ///     保存人员信息
         /// </summary>
         /// <param name="user">人员信息</param>
-        /// <param name="RoleId">业务表Id：如组织机构、角色Id</param>
         /// <returns></returns>
-        Task<OperateStatus> SaveUser(CreateUserDto user);
+        OperateStatus SaveUser(CreateUserDto user);
         /// <summary>
         ///     检测代码是否已经具有重复项
         /// </summary>

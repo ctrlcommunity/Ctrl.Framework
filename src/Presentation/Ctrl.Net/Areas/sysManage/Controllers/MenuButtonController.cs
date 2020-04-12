@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel;
 using System.Threading.Tasks;
 using CtrlCloud.Framework.Application.Contracts.CtrlCloud.Permission.Dtos;
+using CtrlCloud.Framework.Domain.Models.CtrlCloud.Permission;
 
 namespace Ctrl.Net.Areas.sysManage.Controllers
 {
@@ -48,12 +49,12 @@ namespace Ctrl.Net.Areas.sysManage.Controllers
         [CreateBy("冯辉")]
         [Description("应用系统-菜单按钮-编辑")]
         [Permission("xtgl-cdan-SaveMenuButton")]
-        public async Task<IActionResult> Edit(NullableIdInput input)
+        public IActionResult Edit(NullableIdInput input)
         {
             SystemMenuButton menuButton = new SystemMenuButton();
             if (!input.Id.IsNullOrEmptyGuid())
             {
-               // menuButton=await _systemMenuButtonLogic.GetById(input.Id);
+                // menuButton=await _systemMenuButtonLogic.GetById(input.Id);
             }
             return View(menuButton);
         }
@@ -66,7 +67,7 @@ namespace Ctrl.Net.Areas.sysManage.Controllers
         /// <returns></returns>
         [CreateBy("冯辉")]
         [Description("应用系统-菜单按钮-方法-获取菜单按钮")]
-        public async Task<JsonResult> GetList()
+        public JsonResult GetList()
         {
             return null;
             //return Json(await _systemMenuButtonLogic.GetAllEnumerableAsync());
@@ -86,9 +87,9 @@ namespace Ctrl.Net.Areas.sysManage.Controllers
         [CreateBy("冯辉")]
         [Description("按钮管理-方法-新增/编辑-保存")]
         [Permission("xtgl-cdan-SaveMenuButton")]
-        public async Task<JsonResult> SaveMenuButton(CreateMenuButtonDto button)
+        public JsonResult SaveMenuButton(CreateMenuButtonDto button)
         {
-            return Json(await _systemMenuButtonLogic.SaveMenuButton(button));
+            return Json(_systemMenuButtonLogic.SaveMenuButton(button));
         }
         /// <summary>
         ///     根据菜单Id获取模块按钮信息

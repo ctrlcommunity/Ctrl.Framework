@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CtrlCloud.Framework.Core.Properties;
+using CtrlCloud.Framework.Domain.Models.CtrlCloud.Permission;
 using Volo.Abp.Application.Services;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Domain.Repositories;

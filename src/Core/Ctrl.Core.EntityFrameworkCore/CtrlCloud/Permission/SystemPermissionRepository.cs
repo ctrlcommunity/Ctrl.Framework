@@ -1,19 +1,19 @@
-using Ctrl.Core.Entities.Tree;
-using Ctrl.Core.EntityFrameworkCore.EntityFrameworkCore;
-using Ctrl.Core.PetaPoco;
-using Ctrl.Domain.Models.Dtos.Permission;
-using Ctrl.Domain.Models.Enums;
-using CtrlCloud.Framework.Application.Contracts.CtrlCloud.Permission.Dtos;
-using Dapper;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Ctrl.Core.Entities.Tree;
+using Ctrl.Core.EntityFrameworkCore.EntityFrameworkCore;
+using Ctrl.Domain.Models.Dtos.Permission;
+using Ctrl.Domain.Models.Enums;
+using Ctrl.System.DataAccess;
+using CtrlCloud.Framework.Application.Contracts.CtrlCloud.Permission.Dtos;
+using Dapper;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Domain.Repositories.Dapper;
 using Volo.Abp.EntityFrameworkCore;
 
-namespace Ctrl.System.DataAccess
+namespace CtrlCloud.Framework.EntityFrameworkCore.CtrlCloud.Permission
 {
     public class SystemPermissionDapperRepository : DapperRepository<CtrlDbContext>, ISystemPermissionDapperRepository, IScopedDependency
     {
@@ -49,7 +49,7 @@ namespace Ctrl.System.DataAccess
         /// <param name="privilegeMasterValue"></param>
         /// <param name="privilegeMenuId"></param>
         /// <returns></returns>
-        public Task<bool> DeletePermissionByPrivilegeMasterValue(EnumPrivilegeAccess? privilegeAccess,
+        public async Task<bool> DeletePermissionByPrivilegeMasterValue(EnumPrivilegeAccess? privilegeAccess,
             Guid privilegeMasterValue, Guid privilegeMenuId)
         {
             var deleteSql = new StringBuilder("delete from sys_Permission where privilegeMasterValue=@privilegeMasterValue");
@@ -60,10 +60,13 @@ namespace Ctrl.System.DataAccess
                 {
                     deleteSql.Append(" AND privilegeMenuId=@privilegeMenuId");
                 }
-                return SqlMapperUtil.InsertUpdateOrDeleteSqlBool
-                    (deleteSql.ToString(), new { PrivilegeAccess = (int)privilegeAccess, privilegeMasterValue, privilegeMenuId });
+
+                return (await this.DbConnection.ExecuteAsync(deleteSql.ToString(),
+                           new {PrivilegeAccess = (int) privilegeAccess, privilegeMasterValue, privilegeMenuId})) > 0;
+
             }
-            return SqlMapperUtil.InsertUpdateOrDeleteSqlBool(deleteSql.ToString(), new { privilegeMasterValue });
+
+            return (await this.DbConnection.ExecuteAsync(deleteSql.ToString(), new {privilegeMasterValue}))>0;
         }
         /// <summary>
         ///     根据用户id获取用户具有的菜单权限
@@ -122,8 +125,9 @@ namespace Ctrl.System.DataAccess
 	                                            menu.OrderNo 
                                             ORDER BY
 	                                            menu.OrderNo";
-            return SqlMapperUtil.Query<HavePermisionDto>(sql.ToString(),
-      new { privilegeAccess = (byte)EnumPrivilegeAccess.菜单, isShowMenu = true, isFreeze = false, userId });
+            return this.DbConnection.QueryAsync<HavePermisionDto>(sql,
+                new {privilegeAccess = (byte) EnumPrivilegeAccess.菜单, isShowMenu = true, isFreeze = false, userId});
+
         }
         /// <summary>
         ///     根据用户id获取权限
@@ -158,14 +162,13 @@ namespace Ctrl.System.DataAccess
             var sql = new StringBuilder(
                 @"SELECT MenuId id,ParentId pId,name,icon FROM Sys_Menu menu WHERE MenuId IN( SELECT PrivilegeAccessValue  FROM Sys_Permission WHERE PrivilegeAccess=@privilegeAccess AND PrivilegeMasterValue=@privilegeMasterValue GROUP BY PrivilegeAccessValue)
 order by OrderNo");
-            return SqlMapperUtil.SqlWithParams<TreeEntity>(sql.ToString(),
-              new
-              {
-                  privilegeAccess = EnumPrivilegeAccess.菜单,
-                  privilegeMasterValue = input.PrivilegeMasterValue,
-                  isFreeze = false
-              });
-
+            return this.DbConnection.QueryAsync<TreeEntity>(sql.ToString(),
+                new
+                {
+                    privilegeAccess = EnumPrivilegeAccess.菜单,
+                    privilegeMasterValue = input.PrivilegeMasterValue,
+                    isFreeze = false
+                });
         }
 
     }

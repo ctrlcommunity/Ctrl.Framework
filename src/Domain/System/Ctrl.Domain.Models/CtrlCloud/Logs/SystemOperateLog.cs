@@ -1,14 +1,8 @@
-﻿using Ctrl.Core.Entities;
-using Ctrl.Core.PetaPoco;
-using System;
-using Volo.Abp.Application.Dtos;
+﻿using System;
 using Volo.Abp.Domain.Entities;
 
-namespace Ctrl.Domain.Models.Entities
+namespace CtrlCloud.Framework.Domain.Models.CtrlCloud.Logs
 {
-    [Serializable]
-    [TableName("Sys_OperateLog")]
-    [PrimaryKey("OperateLogId")]
     public class SystemOperateLog : Entity<Guid>
     {
         /// <summary>

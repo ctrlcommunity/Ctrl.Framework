@@ -1,18 +1,18 @@
+using System.ComponentModel;
+using System.Threading.Tasks;
 using Ctrl.Core.Core.Attributes;
 using Ctrl.Core.Core.Utils;
 using Ctrl.Core.Entities.Dtos;
 using Ctrl.Core.Web;
 using Ctrl.Core.Web.Attributes;
 using Ctrl.Domain.Models.Dtos.Article;
-using Ctrl.Domain.Models.Entities;
 using Ctrl.System.Business;
-using Microsoft.AspNetCore.Mvc;
-using System.ComponentModel;
-using System.Threading.Tasks;
 using CtrlCloud.Framework.Application.Contracts.CtrlCloud.Article.Dtos;
+using CtrlCloud.Framework.Domain.Models.CtrlCloud.Article;
+using Microsoft.AspNetCore.Mvc;
 using Volo.Abp.Application.Dtos;
 
-namespace Ctrl.Net.Areas.sysManage.Controllers
+namespace CtrlCloud.Framework.Web.Areas.sysManage.Controllers
 {
     /// <summary>
     /// 文章控制器
@@ -39,32 +39,32 @@ namespace Ctrl.Net.Areas.sysManage.Controllers
         {
             return View();
         }
-		 /// <summary>
+        /// <summary>
         ///     编辑
         /// </summary>
         /// <returns></returns>
         [CreateBy("冯辉")]
         [Description("应用系统-文章-编辑")]
         [Permission("xtgl-wz-SaveArticle")]
-        public async Task<IActionResult> Edit(NullableIdInput input)
+        public IActionResult Edit(NullableIdInput input)
         {
             SystemArticle Article = new SystemArticle();
             if (!input.Id.IsNullOrEmptyGuid())
             {
-              //  Article = await _systemArticleLogic.GetById(input.Id);
+                //  Article = await _systemArticleLogic.GetById(input.Id);
             }
             return View(Article);
         }
         #endregion
 
         #region 方法
-		/// <summary>
+        /// <summary>
         ///     获取文章
         /// </summary>
         /// <returns></returns>
         [CreateBy("冯辉")]
         [Description("应用系统-文章-方法-获取文章")]
-        public async Task<JsonResult> GetList()
+        public JsonResult GetList()
         {
             return null;
             // return Json(await _systemArticleLogic.GetAllEnumerableAsync());

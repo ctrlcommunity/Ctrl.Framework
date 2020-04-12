@@ -1,4 +1,6 @@
-﻿#if NETCOREAPP
+﻿
+using System;
+#if NETCOREAPP
 using Ctrl.Core.Core.Http;
 using Ctrl.Core.Entities.Paging;
 using Microsoft.Extensions.DependencyInjection;
@@ -8,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace Ctrl.Core.PetaPoco
 {
+    [Obsolete]
     public static class SqlMapperUtil {
         public static Database CreateDbBase () {
            var dbBase = HttpContexts.Current.RequestServices.GetRequiredService<PetaPocoClient>();

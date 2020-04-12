@@ -1,16 +1,11 @@
-﻿using Ctrl.Core.Entities;
-using Ctrl.Core.PetaPoco;
-using System;
+﻿using System;
 using Volo.Abp.Domain.Entities;
 
-namespace Ctrl.Domain.Models.Entities
+namespace CtrlCloud.Framework.Domain.Models.CtrlCloud.Logs
 {
     /// <summary>
     ///     Sys_LoginLog类
     /// </summary>
-    [Serializable]
-    [TableName("Sys_LoginLog")]
-    [PrimaryKey("LoginLogId")]
     public class SystemLoginLog:Entity<Guid>
     {
         /// <summary>

@@ -1,5 +1,10 @@
 ﻿using Ctrl.Domain.Models.Entities;
 using Ctrl.System.Models.Entities;
+using CtrlCloud.Framework.Domain.Models.CtrlCloud.Article;
+using CtrlCloud.Framework.Domain.Models.CtrlCloud.Config;
+using CtrlCloud.Framework.Domain.Models.CtrlCloud.Identity;
+using CtrlCloud.Framework.Domain.Models.CtrlCloud.Logs;
+using CtrlCloud.Framework.Domain.Models.CtrlCloud.Permission;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;

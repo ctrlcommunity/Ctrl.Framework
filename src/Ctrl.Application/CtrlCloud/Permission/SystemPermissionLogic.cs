@@ -14,6 +14,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CtrlCloud.Framework.Domain.Models.CtrlCloud.Permission;
 using Volo.Abp.Application.Services;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Domain.Repositories;
@@ -178,7 +179,7 @@ namespace Ctrl.Domain.Business.Permission
                 var result = await _systemMenuButtonDapperRepository.GetMenuButtonByUserId(UserId, userInfo.IsAdmin);
                 return result;
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
                 return null;

@@ -9,6 +9,7 @@ using Ctrl.Domain.Models.Entities;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel;
 using System.Threading.Tasks;
+using CtrlCloud.Framework.Domain.Models.CtrlCloud.Logs;
 using Volo.Abp.Application.Dtos;
 
 namespace Ctrl.Net.Areas.SysManage.Controllers
@@ -70,8 +71,9 @@ namespace Ctrl.Net.Areas.SysManage.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost]
-        public async Task<JsonResult> GetLoginCountData() {
-            return Json(await _loginLogLogic.GetLoginCountData());
+        public JsonResult GetLoginCountData()
+        {
+            return Json(_loginLogLogic.GetLoginCountData());
         }
         /// <summary>
         ///     获取登录日志分析数据
@@ -80,14 +82,15 @@ namespace Ctrl.Net.Areas.SysManage.Controllers
         [HttpPost]
         [CreateBy("冯辉")]
         [Description("登录日志-数据日志数据分析")]
-        public async Task<JsonResult> FindLoginLogAnalysis() {
-            return Json(await _loginLogLogic.FindLoginLogAnalysis());
+        public JsonResult FindLoginLogAnalysis()
+        {
+            return Json(_loginLogLogic.FindLoginLogAnalysis());
         }
         /// <summary>
         ///     日志详情
         /// </summary>
         /// <returns></returns>
-        public async Task<ActionResult> LoginDetails(NullableIdInput input) {
+        public  ActionResult LoginDetails(NullableIdInput input) {
             SystemLoginLog systemLogin = new SystemLoginLog();
             // if (!input.Id.IsNullOrEmptyGuid())
             // {
@@ -119,7 +122,8 @@ namespace Ctrl.Net.Areas.SysManage.Controllers
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public async Task<ActionResult> OperationDetails(NullableIdInput input) {
+        public ActionResult OperationDetails(NullableIdInput input)
+        {
             SystemOperateLog operateLog = new SystemOperateLog();
             if (!input.Id.IsNullOrEmptyGuid())
             {
@@ -147,7 +151,8 @@ namespace Ctrl.Net.Areas.SysManage.Controllers
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public async Task<ActionResult> ExceptionDetails(NullableIdInput input) {
+        public ActionResult ExceptionDetails(NullableIdInput input)
+        {
             SystemExceptionLog exceptionLog = new SystemExceptionLog();
             if (!input.Id.IsNullOrEmptyGuid())
             {

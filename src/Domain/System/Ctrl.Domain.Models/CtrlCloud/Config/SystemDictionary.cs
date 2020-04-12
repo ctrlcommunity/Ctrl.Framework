@@ -1,16 +1,11 @@
-using Ctrl.Core.PetaPoco;
 using System;
-using Ctrl.Core.Entities;
-using Volo.Abp.MultiTenancy;
 using Volo.Abp.Domain.Entities;
 
 namespace Ctrl.System.Models.Entities
 {
-	/// <summary>
+    /// <summary>
     ///    字典表实体类
     /// </summary>
-    [TableName("Sys_Dictionary")]
-    [PrimaryKey("DictionaryId")]
     public class SystemDictionary : Entity<Guid>
     {
 		 /// <summary>

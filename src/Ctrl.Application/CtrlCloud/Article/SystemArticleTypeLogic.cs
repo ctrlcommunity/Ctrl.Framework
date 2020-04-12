@@ -21,9 +21,12 @@ namespace Ctrl.System.Business
     public class SystemArticleTypeLogic : CrudAppService<SystemArticleType, ArticleTypeDto, Guid>, ISystemArticleTypeLogic, IScopedDependency
     {
         private readonly ISystemArticleTypeRepository _systemArticleTypeRepository;
-        public SystemArticleTypeLogic(IRepository<SystemArticleType, Guid> repository, ISystemArticleTypeRepository systemArticleTypeRepository) : base(repository)
+        private readonly ISystemArticleTypeDapperRepository _articleTypeDapperRepository;
+        public SystemArticleTypeLogic(IRepository<SystemArticleType, Guid> repository, ISystemArticleTypeRepository systemArticleTypeRepository,
+            ISystemArticleTypeDapperRepository articleTypeDapperRepository) : base(repository)
         {
             _systemArticleTypeRepository = systemArticleTypeRepository;
+            this._articleTypeDapperRepository = articleTypeDapperRepository;
         }
         #region 构造函数
 
@@ -36,7 +39,7 @@ namespace Ctrl.System.Business
         /// <param name="articleType"></param>
         /// <returns></returns>
 
-        public async Task<OperateStatus> SaveArticleType(CreateArticleTypeDto articleType)
+        public OperateStatus SaveArticleType(CreateArticleTypeDto articleType)
         {
             if (articleType.Id.IsEmptyGuid())
             {
@@ -44,10 +47,11 @@ namespace Ctrl.System.Business
                 //articleType.Id = CombUtil.NewComb();
                 //return await InsertAsync(articleType);
             }
-            else {
+            else
+            {
                 //var artType = await _systemArticleTypeRepository.GetById(articleType.Id);
-               // articleType.CreateTime = artType.CreateTime
-               // return await UpdateAsync(articleType);
+                // articleType.CreateTime = artType.CreateTime
+                // return await UpdateAsync(articleType);
             }
             return null;
         }
@@ -57,7 +61,7 @@ namespace Ctrl.System.Business
         /// <returns></returns>
         public Task<IEnumerable<TreeEntity>> GetArticleTypeTree()
         {
-            return _systemArticleTypeRepository.GetArticleTypeTree();
+            return _articleTypeDapperRepository.GetArticleTypeTree();
         }
         
         /// <summary>

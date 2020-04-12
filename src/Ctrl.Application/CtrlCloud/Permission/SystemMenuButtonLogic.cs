@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using CtrlCloud.Framework.Application.Contracts.CtrlCloud.Permission.Dtos;
+using CtrlCloud.Framework.Domain.Models.CtrlCloud.Permission;
 using Volo.Abp.Application.Services;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Domain.Repositories;
@@ -48,7 +49,7 @@ namespace Ctrl.System.Business
         ///     保存功能项信息  
         /// </summary>
         /// <returns>功能项信息</returns>
-        public async Task<OperateStatus> SaveMenuButton(CreateMenuButtonDto menuButton)
+        public OperateStatus SaveMenuButton(CreateMenuButtonDto menuButton)
         {
             //if (menuButton.Id.IsEmptyGuid())
             //{

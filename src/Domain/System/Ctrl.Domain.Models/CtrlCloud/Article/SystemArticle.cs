@@ -1,23 +1,16 @@
 using System;
-using System.ComponentModel.DataAnnotations.Schema;
-using Ctrl.Core.Entities;
-using Ctrl.Core.PetaPoco;
 using Volo.Abp.Domain.Entities;
-using Volo.Abp.MultiTenancy;
 
-namespace Ctrl.Domain.Models.Entities
+namespace CtrlCloud.Framework.Domain.Models.CtrlCloud.Article
 {
     /// <summary>
     ///    文章表实体类
     /// </summary>
-    [Serializable]
-    [TableName("Sys_Article")]
-    [PrimaryKey("ArticleId")]
     public class SystemArticle: Entity<Guid>
     {
-        /// <summary>
-        /// 主键编码
-        /// </summary>
+        ///// <summary>
+        ///// 主键编码
+        ///// </summary>
         //public Guid ArticleId { get; set; }
 
         /// <summary>

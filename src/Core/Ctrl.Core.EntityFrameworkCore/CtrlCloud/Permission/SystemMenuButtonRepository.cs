@@ -1,22 +1,21 @@
-using Ctrl.Core.Entities.Dtos;
-using Ctrl.Core.Entities.Paging;
-using Ctrl.Core.EntityFrameworkCore.EntityFrameworkCore;
-using Ctrl.Core.PetaPoco;
-using Ctrl.Domain.Models.Dtos.Identity;
-using Ctrl.Domain.Models.Dtos.Permission;
-using Ctrl.System.DataAccess;
-using Ctrl.System.Models.Entities;
-using Dapper;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Ctrl.Core.Entities.Dtos;
+using Ctrl.Core.Entities.Paging;
+using Ctrl.Core.EntityFrameworkCore.EntityFrameworkCore;
+using Ctrl.Domain.Models.Dtos.Permission;
+using Ctrl.System.DataAccess;
+using Ctrl.System.Models.Entities;
+using CtrlCloud.Framework.Domain.Models.CtrlCloud.Permission;
+using Dapper;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Domain.Repositories.Dapper;
 using Volo.Abp.Domain.Repositories.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
 
-namespace Ctrl.Domain.DataAccess.Permission
+namespace CtrlCloud.Framework.EntityFrameworkCore.CtrlCloud.Permission
 {
     public class SystemMenuButtonRepository : EfCoreRepository<CtrlDbContext, SystemMenuButton, Guid>, ISystemMenuButtonRepository, IScopedDependency
     {
@@ -81,10 +80,11 @@ namespace Ctrl.Domain.DataAccess.Permission
         /// <returns></returns>
         public Task<PagedResultsDto<SystemMenuButtonDto>> GetPagingMenuButton(QueryParam param)
         {
-            string sql = @"select button.*,menu.Name menuname
-                        from Sys_MenuButton button
-                        left join Sys_Menu menu on button.MenuId=menu.MenuId";
-            return SqlMapperUtil.PagingQuery<SystemMenuButtonDto>(sql, param);
+            //string sql = @"select button.*,menu.Name menuname
+            //            from Sys_MenuButton button
+            //            left join Sys_Menu menu on button.MenuId=menu.MenuId";
+            return null;
+            //return SqlMapperUtil.PagingQuery<SystemMenuButtonDto>(sql, param);
         }
 
     }

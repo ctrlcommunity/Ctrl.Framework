@@ -5,6 +5,7 @@ using Ctrl.System.Models.Entities;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using CtrlCloud.Framework.Domain.Models.CtrlCloud.Permission;
 using Volo.Abp.Domain.Repositories;
 using Volo.Abp.Domain.Repositories.Dapper;
 

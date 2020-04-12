@@ -1,22 +1,13 @@
-using Ctrl.Core.PetaPoco;
 using System;
-using Ctrl.Core.Entities;
 using Volo.Abp.Domain.Entities;
-using Volo.Abp.MultiTenancy;
 
-namespace Ctrl.System.Models.Entities
+namespace CtrlCloud.Framework.Domain.Models.CtrlCloud.Config
 {
-	/// <summary>
+    /// <summary>
     ///    网站配置表实体类
     /// </summary>
-    [TableName("Sys_Config")]
-    [PrimaryKey("Id")]
     public class SystemConfig:Entity<Guid>
     {
-		        /// <summary>
-        /// 主键编码
-        /// </summary>
-        public Guid Id { get; set; }
 
         /// <summary>
         /// 网站名称

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using CtrlCloud.Framework.Domain.Models.CtrlCloud.Logs;
 using Volo.Abp.Domain.Repositories;
 
 namespace Ctrl.Domain.DataAccess.Log

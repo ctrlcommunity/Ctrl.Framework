@@ -23,11 +23,11 @@ namespace Ctrl.Domain.Business.Log
         ///     登录数据分析图数据
         /// </summary>
         /// <returns></returns>
-        Task<List<LoginDataOutPut>> GetLoginCountData();
+        List<LoginDataOutPut> GetLoginCountData();
         /// <summary>
         ///     获取登录日志分析数据
         /// </summary>
         /// <returns></returns>
-        Task<LoginDataAnalysisOutPut> FindLoginLogAnalysis();
+        LoginDataAnalysisOutPut FindLoginLogAnalysis();
     }
 }
