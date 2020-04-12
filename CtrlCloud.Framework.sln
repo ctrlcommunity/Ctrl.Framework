@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29318.209
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ctrl.Core.Web", "src\Core\Ctrl.Core.Web\Ctrl.Core.Web.csproj", "{356B3181-5F71-4CEF-9B7C-7EC75C36F055}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CtrlCloud.Framework.Domain", "src\Domain\System\Ctrl.Domain.Models\CtrlCloud.Framework.Domain.csproj", "{1673D783-95D8-4F40-818C-9FDA06F95B73}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CtrlCloud.Framework.Web", "src\Presentation\Ctrl.Net\CtrlCloud.Framework.Web.csproj", "{E71F7D68-9837-4BA8-90FD-EC487A87C028}"
@@ -23,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CtrlCloud.Framework.Applica
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CtrlCloud.Framework.Domain.Shared", "src\CtrlCloud.Framework.Domain.Shared\CtrlCloud.Framework.Domain.Shared.csproj", "{471BE96C-01E1-4654-BD84-4CD30ABA47ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CtrlCloud.Framework.Core", "src\CtrlCloud.Framework.Core\CtrlCloud.Framework.Core.csproj", "{3F685A9F-7266-46A5-A420-63523C04EA54}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CtrlCloud.Framework.Core", "src\CtrlCloud.Framework.Core\CtrlCloud.Framework.Core.csproj", "{3F685A9F-7266-46A5-A420-63523C04EA54}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,10 +29,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{356B3181-5F71-4CEF-9B7C-7EC75C36F055}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{356B3181-5F71-4CEF-9B7C-7EC75C36F055}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{356B3181-5F71-4CEF-9B7C-7EC75C36F055}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{356B3181-5F71-4CEF-9B7C-7EC75C36F055}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1673D783-95D8-4F40-818C-9FDA06F95B73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1673D783-95D8-4F40-818C-9FDA06F95B73}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1673D783-95D8-4F40-818C-9FDA06F95B73}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -72,7 +66,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{356B3181-5F71-4CEF-9B7C-7EC75C36F055} = {FEA0B9AE-16A9-4683-8213-F7DD1BE7B1A4}
 		{1673D783-95D8-4F40-818C-9FDA06F95B73} = {FEA0B9AE-16A9-4683-8213-F7DD1BE7B1A4}
 		{E71F7D68-9837-4BA8-90FD-EC487A87C028} = {FEA0B9AE-16A9-4683-8213-F7DD1BE7B1A4}
 		{F3AB4097-8F8A-47DA-AB57-13597B2D24A1} = {FEA0B9AE-16A9-4683-8213-F7DD1BE7B1A4}

@@ -36,7 +36,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Core\Ctrl.Core.EntityFrameworkCore\CtrlCloud.Framework.EntityFrameworkCore.csproj" />
-    <ProjectReference Include="..\..\Core\Ctrl.Core.Web\Ctrl.Core.Web.csproj" />
     <ProjectReference Include="..\..\Ctrl.Application\CtrlCloud.Framework.Application.csproj" />
     <ProjectReference Include="..\..\CtrlCloud.Framework.Application.Contracts\CtrlCloud.Framework.Application.Contracts.csproj" />
   </ItemGroup>
