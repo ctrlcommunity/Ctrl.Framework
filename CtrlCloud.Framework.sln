@@ -23,6 +23,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CtrlCloud.Framework.Domain.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CtrlCloud.Framework.Core", "src\CtrlCloud.Framework.Core\CtrlCloud.Framework.Core.csproj", "{3F685A9F-7266-46A5-A420-63523C04EA54}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CtrlCloud.Framework.Web.Core", "src\CtrlCloud.Framework.Web.Core\CtrlCloud.Framework.Web.Core.csproj", "{36AD323E-6B4C-4003-8975-ED9AB9A60E50}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,10 @@ Global
 		{3F685A9F-7266-46A5-A420-63523C04EA54}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F685A9F-7266-46A5-A420-63523C04EA54}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F685A9F-7266-46A5-A420-63523C04EA54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36AD323E-6B4C-4003-8975-ED9AB9A60E50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36AD323E-6B4C-4003-8975-ED9AB9A60E50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36AD323E-6B4C-4003-8975-ED9AB9A60E50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36AD323E-6B4C-4003-8975-ED9AB9A60E50}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -74,6 +80,7 @@ Global
 		{0E5F725E-F3B1-4422-ABCE-821A025B8A46} = {FEA0B9AE-16A9-4683-8213-F7DD1BE7B1A4}
 		{471BE96C-01E1-4654-BD84-4CD30ABA47ED} = {FEA0B9AE-16A9-4683-8213-F7DD1BE7B1A4}
 		{3F685A9F-7266-46A5-A420-63523C04EA54} = {FEA0B9AE-16A9-4683-8213-F7DD1BE7B1A4}
+		{36AD323E-6B4C-4003-8975-ED9AB9A60E50} = {FEA0B9AE-16A9-4683-8213-F7DD1BE7B1A4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {15263E9B-6650-4CFC-A742-C40003127E40}

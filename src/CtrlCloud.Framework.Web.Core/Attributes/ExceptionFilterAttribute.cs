@@ -1,6 +1,7 @@
 ﻿using Ctrl.Core.Core.Log;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System.Threading.Tasks;
+using CtrlCloud.Framework.Core.Logs;
 
 namespace Ctrl.Core.Web.Attributes
 {

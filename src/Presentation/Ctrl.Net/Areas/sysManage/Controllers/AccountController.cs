@@ -9,13 +9,11 @@ using Ctrl.Core.Web;
 using Ctrl.Core.Web.Attributes;
 using Ctrl.Domain.Business.Identity;
 using Ctrl.Domain.Models.Dtos;
-using Ctrl.Domain.Models.Entities;
 using Ctrl.Domain.Models.Enums;
-using Microsoft.AspNetCore.Http;
+using CtrlCloud.Framework.Core.Logs;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
 
-namespace Ctrl.Web.Host.Areas.sysManage.Controllers
+namespace CtrlCloud.Framework.Web.Areas.sysManage.Controllers
 {
     /// <summary>
     ///     登录控制器

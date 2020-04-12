@@ -1,30 +1,31 @@
-﻿using Ctrl.Core.Core.Utils;
+﻿using System;
+using Ctrl.Core.Core.Log;
+using Ctrl.Core.Core.Utils;
 using Ctrl.Core.Core.Web;
-using System;
 
-namespace Ctrl.Core.Core.Log
+namespace CtrlCloud.Framework.Core.Logs
 {
     /// <summary>
     ///     构造函数
     /// </summary>
     public class LoginLogHandler:BaseHandler<LoginLog>
     {
-        public LoginLogHandler(string UserId,string Code,string UserName,int LoginStatus):base("LoginLogToDatabase") {
+        public LoginLogHandler(string userId,string code,string userName,int loginStatus):base("LoginLogToDatabase") {
             log = 
             new LoginLog
             {
-                LoginLogId = CombUtil.NewComb().ToString(),
-                CreateUserId = UserId,
-                CreateUserCode = Code ?? "",
-                ServerHost = String.Format("{0}【{1}】", IpBrowserUtil.GetServerHost(), IpBrowserUtil.GetServerHostIp()),
-                ClientHost = String.Format("{0}", IpBrowserUtil.GetClientIp()),
+                Id = CombUtil.NewComb(),
+                CreateUserId = userId,
+                CreateUserCode = code ?? "",
+                ServerHost = $"{IpBrowserUtil.GetServerHost()}【{IpBrowserUtil.GetServerHostIp()}】",
+                ClientHost = $"{IpBrowserUtil.GetClientIp()}",
                 UserAgent = IpBrowserUtil.GetBrowser(),
                 OsVersion = IpBrowserUtil.GetOsVersion(),
                 LoginTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
                 IpAddressName = IpBrowserUtil.GetAddressByApi(),
                 CreateTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
-                CreateUserName = UserName,
-                LoginStatus=LoginStatus
+                CreateUserName = userName,
+                LoginStatus=loginStatus
 
             };
         }

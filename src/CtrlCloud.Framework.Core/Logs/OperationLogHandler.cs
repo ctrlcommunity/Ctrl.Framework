@@ -20,10 +20,10 @@ namespace Ctrl.Core.Core.Log
             var request = HttpContexts.Current.Request;
             log = new OperateLog()
             {
-                OperateLogId = CombUtil.NewComb(),
+                Id = CombUtil.NewComb(),
                 CreateTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
-                ServerHost = String.Format("{0}【{1}】", IpBrowserUtil.GetServerHost(), IpBrowserUtil.GetServerHostIp()),
-                ClientHost = String.Format("{0}", IpBrowserUtil.GetClientIp()),
+                ServerHost = $"{IpBrowserUtil.GetServerHost()}【{IpBrowserUtil.GetServerHostIp()}】",
+                ClientHost = $"{IpBrowserUtil.GetClientIp()}",
                 RequestContentLength = httpRequest.ContentLength == null ? 0 : (int)httpRequest.ContentLength,
                 RequestType = request.Method,
                 UserAgent = request.Headers[HeaderNames.UserAgent]

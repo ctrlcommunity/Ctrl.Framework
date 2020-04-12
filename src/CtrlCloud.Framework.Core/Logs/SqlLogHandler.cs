@@ -1,9 +1,10 @@
-﻿using Ctrl.Core.Core.Auth;
+﻿using System;
+using Ctrl.Core.Core.Auth;
 using Ctrl.Core.Core.Http;
+using Ctrl.Core.Core.Log;
 using Ctrl.Core.Core.Utils;
-using System;
 
-namespace Ctrl.Core.Core.Log
+namespace CtrlCloud.Framework.Core.Logs
 {
     public class SqlLogHandler : BaseHandler<SqlLog>
     {
@@ -34,7 +35,7 @@ namespace Ctrl.Core.Core.Log
             }
             log = new SqlLog
             {
-                SqlLogId = CombUtil.NewComb(),
+                Id = CombUtil.NewComb(),
                 CreateTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
                 CreateUserId = principalUser.UserId.ToString(),
                 CreateUserCode = principalUser.Code,

@@ -13,6 +13,7 @@ COPY ["src/Domain/System/Ctrl.Domain.Models/CtrlCloud.Framework.Domain.csproj", 
 COPY ["src/CtrlCloud.Framework.Application.Contracts/CtrlCloud.Framework.Application.Contracts.csproj", "src/CtrlCloud.Framework.Application.Contracts/"]
 COPY ["src/CtrlCloud.Framework.Domain.Shared/CtrlCloud.Framework.Domain.Shared.csproj", "src/CtrlCloud.Framework.Domain.Shared/"]
 COPY ["src/CtrlCloud.Framework.Core/CtrlCloud.Framework.Core.csproj", "src/CtrlCloud.Framework.Core/"]
+COPY ["src/CtrlCloud.Framework.Web.Core/CtrlCloud.Framework.Web.Core.csproj", "src/CtrlCloud.Framework.Web.Core/"]
 COPY ["src/Ctrl.Application/CtrlCloud.Framework.Application.csproj", "src/Ctrl.Application/"]
 RUN dotnet restore "src/Presentation/Ctrl.Net/CtrlCloud.Framework.Web.csproj"
 COPY . .

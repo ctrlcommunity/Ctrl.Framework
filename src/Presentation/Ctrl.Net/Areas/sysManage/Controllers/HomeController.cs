@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading.Tasks;
+using Volo.Abp.Users;
 
 namespace Ctrl.Web.Host.Areas.sysManage.Controllers
 {

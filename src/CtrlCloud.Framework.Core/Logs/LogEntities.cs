@@ -7,11 +7,7 @@ namespace Ctrl.Core.Core.Log
     /// </summary>
     public class LoginLog
     {
-        /// <summary>
-        ///     主键Id
-        /// </summary>
-        public string LoginLogId { get; set; }
-
+        public Guid Id { get; set; }
         /// <summary>
         ///     Ip对应地址
         /// </summary>
@@ -75,7 +71,7 @@ namespace Ctrl.Core.Core.Log
         /// <summary>
         ///     sql日志Id
         /// </summary>
-        public Guid SqlLogId { get; set; }
+        public Guid Id { get; set; }
 
         /// <summary>
         ///     操作sql
@@ -125,7 +121,7 @@ namespace Ctrl.Core.Core.Log
         /// <summary>
         ///     主键编码
         /// </summary>
-        public Guid OperateLogId { get; set; }
+        public Guid Id { get; set; }
         /// <summary>
         ///     客户端
         /// </summary>
@@ -216,7 +212,7 @@ namespace Ctrl.Core.Core.Log
         /// <summary>
         ///     主键编码
         /// </summary>
-        public string ExceptionLogId { get; set; }
+        public string Id { get; set; }
         /// <summary>
         ///     消息
         /// </summary>

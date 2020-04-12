@@ -1,14 +1,15 @@
-﻿using Ctrl.Core.Core.Auth;
-using Ctrl.Core.Core.Converts;
-using Ctrl.Core.Core.Http;
-using Ctrl.Core.Core.Utils;
-using Ctrl.Core.Core.Web;
-using System;
+﻿using System;
 using System.IO;
 using System.Text;
 using System.Web;
+using Ctrl.Core.Core.Auth;
+using Ctrl.Core.Core.Converts;
+using Ctrl.Core.Core.Http;
+using Ctrl.Core.Core.Log;
+using Ctrl.Core.Core.Utils;
+using Ctrl.Core.Core.Web;
 
-namespace Ctrl.Core.Core.Log
+namespace CtrlCloud.Framework.Core.Logs
 {
     /// <summary>
     ///     异常日志记录
@@ -36,12 +37,12 @@ namespace Ctrl.Core.Core.Log
             }
             log = new ExceptionLog()
             {
-                ExceptionLogId = CombUtil.NewComb().ToString(),
+                Id = CombUtil.NewComb().ToString(),
                 CreateUserCode=principalUser.Code,
                 CreateUserId=principalUser.UserId.ToString(),
                 CreateUserName=principalUser.Name,
-                ServerHost = String.Format("{0}【{1}】", IpBrowserUtil.GetServerHost(), IpBrowserUtil.GetServerHostIp()),
-                ClientHost = String.Format("{0}", IpBrowserUtil.GetClientIp()),
+                ServerHost = $"{IpBrowserUtil.GetServerHost()}【{IpBrowserUtil.GetServerHostIp()}】",
+                ClientHost = $"{IpBrowserUtil.GetClientIp()}",
                 Runtime = "Web",
                 CreateTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
                 Message = exception.Message,
@@ -52,13 +53,12 @@ namespace Ctrl.Core.Core.Log
             };
             //获取服务器信息
             var request = HttpContexts.Current.Request;
-            log.RequestUrl = string.Format("{0} ", request.Path);
+            log.RequestUrl = $"{request.Path} ";
             log.HttpMethod = request.Method;
             log.UserAgent = request.Headers["user-agent"];
             log.InnerException = exception.InnerException != null ? GetExceptionFullMessage(exception.InnerException) : "";
             if (request.Method.ToLower() == "post")
             {
-                var Result = request.Form;
                 log.RequestData = request.Form.ToJson();
             }
             else
