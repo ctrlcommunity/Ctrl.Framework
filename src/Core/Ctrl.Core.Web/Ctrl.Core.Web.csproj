@@ -9,8 +9,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Domain\System\Ctrl.Domain.Models\CtrlCloud.Framework.Domain.csproj" />
-    <ProjectReference Include="..\Ctrl.Core.Core\CtrlCloud.Framework.Core.csproj" />
-    <ProjectReference Include="..\Ctrl.Core.Entities\Ctrl.Core.Entities.csproj" />
     <ProjectReference Include="..\Ctrl.Core.EntityFrameworkCore\CtrlCloud.Framework.EntityFrameworkCore.csproj" />
   </ItemGroup>
 </Project>
