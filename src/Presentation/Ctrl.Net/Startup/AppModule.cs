@@ -2,10 +2,7 @@
 using Ctrl.Core.Core.Http;
 using Ctrl.Core.EntityFrameworkCore.EntityFrameworkCore;
 using Ctrl.Core.Web.Attributes;
-using Ctrl.Domain.Business;
 using Ctrl.Domain.Models;
-using Ctrl.System.Business;
-using Ctrl.System.DataAccess;
 using CtrlCloud.Framework.Application.Contracts.CtrlCloud;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc;
@@ -23,14 +20,12 @@ using Volo.Abp.AutoMapper;
 using Volo.Abp.Dapper;
 using Volo.Abp.Json;
 using Volo.Abp.Modularity;
-using Volo.Abp.MultiTenancy;
 
 namespace Ctrl.Web.Host.Startup
 {
 
     [DependsOn(
         typeof(AbpAspNetCoreMvcModule),
-        //typeof(AbpMultiTenancyModule),
         typeof(AbpAspNetCoreMultiTenancyModule),
         typeof(CtrlEntityFrameworkCoreModule),
         typeof(AbpDddApplicationModule),
@@ -78,18 +73,6 @@ namespace Ctrl.Web.Host.Startup
 
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
-            //context.Services.AddMemoryCache();
-            // Configure<AbpMultiTenancyOptions>(options =>
-            // {
-            //     options.IsEnabled = true;
-            // });
-            // Configure<AbpTenantResolveOptions>(options =>
-            // {
-            //     options.TenantResolvers.Add(new QueryStringTenantResolveContributor());
-            //     options.TenantResolvers.Add(new RouteTenantResolveContributor());
-            //     options.TenantResolvers.Add(new HeaderTenantResolveContributor());
-            //     options.TenantResolvers.Add(new CookieTenantResolveContributor());
-            // });
             Configure<MvcNewtonsoftJsonOptions>(options =>
             {
                 options.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss";//对类型为DateTime的生效
