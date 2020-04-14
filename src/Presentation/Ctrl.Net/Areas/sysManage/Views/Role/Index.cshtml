@@ -1,13 +1,20 @@
 @{
-    ViewData["Title"] = "角色表";
+    ViewData["Title"] = "角色列表";
     Layout = "_LayoutPage";
 }
 <div class="container-fluid relative animatedParent animateOnce my-3 paper-card ">
     <div class="row">
         <div class="col-12">
             <div class="box" id="toolbar">
+                <div class="box-header">
+                    <div class="box-tools">
+                        <div class="form-inline pull-right" id="toolbutton">
+                        </div>
+                    </div>
+                </div>
                 <!-- /.box-header -->
                 <div class="box-body table-responsive no-padding" id="ctrltable">
+
                 </div>
                 <!-- /.box-body -->
             </div>
@@ -46,7 +53,8 @@
     });
 
     function btn_add_box() {
-        $.windowsOpen("/sysManage/Role/Edit", "新增角色", '55%', '55%');
+        location.href="/sysManage/Role/Edit";
+       // $.windowsOpen("/sysManage/Role/Edit", "新增角色", '55%', '55%');
     }
 
     $("[name='btn_select_box']").click(function () {

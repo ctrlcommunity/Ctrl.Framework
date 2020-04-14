@@ -2,26 +2,16 @@
     ViewData["Title"] = "用户列表";
     Layout = "_LayoutPage";
 }
-
-
-@*<div class="row">
-        <div id="toolbar">
-            <h1 class="page-title">用户列表</h1>
-            <div class="form-inline pull-right " id="toolbutton">
-                <button class="btn btn-default btn-xs" name="btn_select_box" type="submit"><i class=" fa fa-search fa-lg"></i> 查询 </button>
-            </div>
-
-        </div>
-        <div id="ctrltable">
-
-        </div>
-    </div>*@
-
 <div class="container-fluid relative animatedParent animateOnce my-3 paper-card ">
     <div class="row">
         <div class="col-12">
             <div class="box" id="toolbar">
-
+                <div class="box-header">
+                    <div class="box-tools">
+                        <div class="form-inline pull-right" id="toolbutton">
+                        </div>
+                    </div>
+                </div>
                 <!-- /.box-header -->
                 <div class="box-body table-responsive no-padding" id="ctrltable">
 
@@ -73,6 +63,7 @@
         $grid.registersearchClick();
     })
     function btn_add_box() {
-        $.windowsOpen("/sysManage/User/Edit", "新增用户", '55%', '60%');
+        location.href="/sysManage/User/Edit";
+        //$.windowsOpen("/sysManage/User/Edit", "新增用户", '55%', '60%');
     }
 </script>
