@@ -61,7 +61,7 @@
         $grid.registersearchClick();
     })
     function btn_add_box() {
-        $.windowsOpen("/sysManage/articletype/Edit", "新增文章类型", '55%', '65%');
+        location.href='/sysManage/articletype/Edit';
     }
     function btn_edit_box() {
         var obj = $grid.gridRowValue();
@@ -69,6 +69,6 @@
             $.Alert({ resultSign: 1, message: "请选择一个类别！" });
             return false;
         }
-        $.windowsOpen("/sysManage/articletype/Edit?id=" + obj.articleTypeId, "编辑文章类别", '55%', '85%');
+        location.href='"/sysManage/articletype/Edit?id=" + obj.articleTypeId'
     }
 </script>

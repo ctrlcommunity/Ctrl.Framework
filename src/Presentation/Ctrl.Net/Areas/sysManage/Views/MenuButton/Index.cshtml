@@ -83,9 +83,9 @@
     });
     $("[name='btn_select_box']").click(function () {
         $grid.registersearchClick();
-    })
+    });
     function btn_add_box() {
-        $.windowsOpen("/sysManage/MenuButton/Edit", "新增菜单按钮", '55%', '65%');
+        location.href='/sysManage/MenuButton/Edit';
     }
     function btn_edit_box() {
         var obj = $grid.gridRowValue();
@@ -93,6 +93,6 @@
             $.Alert({ resultSign: 1, message: "请选择一条数据！" });
             return false;
         }
-        $.windowsOpen("/sysManage/MenuButton/Edit?id=" + obj.menuButtonId, "编辑按钮", '55%', '65%');
+        location.href="/sysManage/MenuButton/Edit?id=" + obj.menuButtonId
     }
 </script>

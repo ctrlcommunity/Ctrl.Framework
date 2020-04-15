@@ -92,7 +92,7 @@
         $grid.registersearchClick();
     })
     function btn_add_box() {
-        $.windowsOpen("/sysManage/dictionary/Edit", "新增字典", '55%', '65%');
+        location.href='/sysManage/dictionary/Edit';
     }
     function btn_edit_box() {
         var obj = $grid.gridRowValue();
@@ -100,6 +100,6 @@
             $.Alert({ resultSign: 1, message: "请选择一条数据！" });
             return false;
         }
-        $.windowsOpen("/sysManage/dictionary/Edit?id=" + obj.dictionaryId, "编辑字典", '55%', '65%');
+        location.href="/sysManage/dictionary/Edit?id=" + obj.dictionaryId;
     }
 </script>

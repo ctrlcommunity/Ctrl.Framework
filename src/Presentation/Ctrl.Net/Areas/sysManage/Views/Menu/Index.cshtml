@@ -113,7 +113,7 @@
         $grid.registersearchClick();
     })
     function btn_add_box() {
-        $.windowsOpen("/sysManage/Menu/Edit", "新增菜单", '55%', '85%');
+        location.href='/sysManage/Menu/Edit';
     }
     function btn_edit_box() {
         var obj = $grid.gridRowValue();
@@ -121,7 +121,7 @@
             $.Alert({ resultSign: 1, message: "请选择一个角色！" });
             return false;
         }
-        $.windowsOpen("/sysManage/Menu/Edit?id=" + obj.menuId, "编辑菜单", '55%', '85%');
+        location.href="/sysManage/Menu/Edit?id=" + obj.menuId
     }
     function btn_delete_box() {
         var obj = $grid.gridRowValue();

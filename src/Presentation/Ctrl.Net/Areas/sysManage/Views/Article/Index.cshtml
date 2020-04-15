@@ -72,7 +72,7 @@
         $grid.registersearchClick();
     })
     function btn_add_box() {
-        $.windowsOpen("/sysManage/article/Edit", "新增文章", '55%', '95%');
+        location.href='/sysManage/article/Edit';
     }
     function btn_edit_box() {
         var obj = $grid.gridRowValue();
@@ -80,6 +80,6 @@
                 $.Alert({ resultSign: 1, message: "请选择一个文章！" });
                 return false;
             }
-            $.windowsOpen("/sysManage/article/Edit?id=" + obj.articleId, "编辑文章", '55%', '95%');
+            location.href="/sysManage/article/Edit?id=" + obj.articleId
     }
 </script>

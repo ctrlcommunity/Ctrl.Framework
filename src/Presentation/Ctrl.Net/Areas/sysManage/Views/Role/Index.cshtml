@@ -67,7 +67,7 @@
             $.Alert({ resultSign: 1, message: "请选择一个角色！" });
             return false;
         }
-        $.windowsOpen("/sysManage/Role/Chosen?roleid=" + obj.roleId, "模块权限", '20%', '60%');
+        location.href="/sysManage/Role/Chosen?roleid=" + obj.roleId
     }
 
     function buttonPermission() {
@@ -76,7 +76,7 @@
             $.Alert({ resultSign: 1, message: "请选择一个角色！" });
             return false;
         }
-        $.windowsOpen("/sysManage/Role/ChosenButton?roleid=" + obj.roleId, "按钮权限", '60%', '60%');
+        location.href="/sysManage/Role/ChosenButton?roleid=" + obj.roleId
     }
 
 </script>
