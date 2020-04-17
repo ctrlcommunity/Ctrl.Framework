@@ -93,5 +93,5 @@ Update-Database
 
 # LICENSE
 
-MIT
+[MIT](https://github.com/ctrlcommunity/Ctrl.Framework/blob/master/LICENSE)
 
