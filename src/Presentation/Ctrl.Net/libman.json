@@ -302,11 +302,13 @@
       ]
     },
     {
-      "provider": "cdnjs",
-      "library": "parsley.js@2.9.2",
+      "provider": "unpkg",
+      "library": "parsleyjs@2.9.2",
       "destination": "wwwroot/lib/parsley/dist",
       "files": [
-        "parsley.min.js"
+        "dist/parsley.min.js",
+        "src/parsley.css",
+        "src/i18n/zh_cn.js"
       ]
     },
     {

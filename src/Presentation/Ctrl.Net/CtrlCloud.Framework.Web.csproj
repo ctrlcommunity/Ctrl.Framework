@@ -36,6 +36,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\lib\parsley\dist\dist\parsley.min.js" />
+    <None Include="wwwroot\lib\parsley\dist\parsley.min.js" />
+    <None Include="wwwroot\lib\parsley\dist\src\i18n\zh_cn.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\Core\Ctrl.Core.EntityFrameworkCore\CtrlCloud.Framework.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\..\Ctrl.Application\CtrlCloud.Framework.Application.csproj" />
     <ProjectReference Include="..\..\CtrlCloud.Framework.Application.Contracts\CtrlCloud.Framework.Application.Contracts.csproj" />
