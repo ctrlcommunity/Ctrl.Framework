@@ -1,5 +1,5 @@
 @{
-    Layout = "~/Areas/SysManage/Views/Shared/_LayoutPageBaseForm.cshtml";
+    Layout = "_LayoutPage";
 }
 @model CtrlCloud.Framework.Domain.Models.CtrlCloud.Article.SystemArticle
 <form class="form-horizontal ctrl-form">
@@ -36,7 +36,7 @@
     <div class='form-group'>
         <label class='col-sm-2 control-label'> 排序码：</label>
         <div class='form-group  col-sm-10'>
-            <input type='text' name='OrderNo' id='OrderNo' class='form-control input-sm' value="@Model.OrderNo"> 
+            <input type='text' name='OrderNo' id='OrderNo' class='form-control input-sm' value="@Model.OrderNo">
         </div>
     </div>  <div class='hr-line-dashed'></div>
     <div class='form-group'>
@@ -59,7 +59,7 @@
     <div class='form-group'>
         <label class='col-sm-2 control-label'> 文章内容：</label>
         <div class='form-group col-sm-10'>
-            <textarea name='Contents' id='Contents' >@Model.Contents</textarea>
+            <textarea name='Contents' id='Contents'>@Model.Contents</textarea>
         </div>
     </div>
     <div class='hr-line-dashed'></div>
@@ -123,7 +123,7 @@
         $('#CreateTime').ctrldatepicker();
 
         $("#File").fileimage("/sysManage/UserControl/FileSave", $("#Pic"),$("#Pic").val());
-     
+
         $post("/sysManage/ArticleType/GetArticleTypeTree", null).then(function (data) {
               @{
                 if (!Model.ArticleTypeId.IsEmptyGuid())
